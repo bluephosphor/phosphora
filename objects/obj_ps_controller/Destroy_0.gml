@@ -1,0 +1,1 @@
+if (ds_exists(fireball, ds_type_list)) ds_list_destroy(fireball);

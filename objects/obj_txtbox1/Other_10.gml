@@ -1,0 +1,45 @@
+///@description advance textbox, set question state if applicable
+
+line_index++;
+line_skipped = false;
+str_pause = 0;
+
+if (line_index == lines){
+	///if we have no more lines, finish up and exit
+	instance_destroy(self);
+	global.actionable = true;
+	o_player.spin_cooldown = 1;
+	exit;
+}
+
+question = is_array(dialog[line_index, 1]);
+
+if (question){
+	line_array = dialog[line_index,1];
+	entries = array_length_1d(line_array) - 1;
+	line_to_draw = line_array[0];
+	///get the longest line
+	var i = 0, str, wid; repeat(entries){
+		str = string_read(line_array[i + 1]);
+		wid[i] = string_width(str);
+		longest_line = max(longest_line,wid[i]);
+		i++;
+	}
+} else {
+	line_array = -1;
+	entries = 0;
+	line_to_draw = dialog[line_index,1];
+	longest_line = 0;
+}
+
+scribble_line = scribble_draw(x_origin,y_origin,line_to_draw);
+
+raw_str = string_read(line_to_draw); len = string_length(raw_str);
+textbox = scribble_get_bbox(scribble_line,x_origin,y_origin,8,8,8,8);
+
+options_width = max(
+	textbox[SCRIBBLE_BOX.TR_X],
+	textbox[SCRIBBLE_BOX.TL_X] + longest_line + 16,
+);
+
+scribble_autotype_fade_in(scribble_line,SCRIBBLE_AUTOTYPE_PER_CHARACTER,autotype_spd,0);
