@@ -6,7 +6,7 @@ audio_group_load(audiogroup_soundeffects);
 global.webmode = (!os_browser == browser_not_a_browser);
 
 //global vars
-globalvar playerstate, debug_log, cont_daycycle, cont_lighting, cont_audio, cont_menu, cont_inv, cont_weather, cont_textbox;
+globalvar playerstate, debug_log, cont_daycycle, cont_lighting, cont_audio, cont_menu, cont_inv, cont_weather, cont_textbox, cont_cutscene;
 global.actionable	= true;
 global.debug		= false;
 global.rift_count	= 0;
@@ -70,15 +70,23 @@ cont_menu		= instance_create_layer(0,0,layer,obj_menu);
 cont_inv		= instance_create_layer(0,0,layer,obj_inv);
 cont_weather	= instance_create_layer(0,0,layer,obj_weather);
 cont_textbox = noone;
+cont_cutscene = noone;
 
-add_dialog(-1,"...",false);
-add_dialog(-1,"Oh dear!");
-add_dialog(-1,"What do we have here?");
-add_dialog(-1,"It seems another lost child has wandered into my forest.");
-add_dialog(-1,"Little friend... Are you lost?");
-add_dialog(-1,"Please, do not despair... I am here now.");
-add_dialog(-1,"You will be safe now...");
-add_dialog(-1,"With [c_red][sound,secret]me.[/c]");
+var scene = [
+	[cs_add_dialog,-1,"...",false],
+	[cs_add_dialog,-1,"Oh dear!"],
+	[cs_add_dialog,-1,"What do we have here?"],
+	[cs_add_dialog,-1,"It seems another lost child has wandered into my forest."],
+	[cs_add_dialog,-1,"Little friend... Are you lost?"],
+	[cs_end_dialog],
+	[cs_wait,2],
+	[cs_add_dialog,-1,"Please, do not despair... I am here now.",false],
+	[cs_add_dialog,-1,"You will be safe now..."],
+	[cs_add_dialog,-1,"With [c_red][sound,secret]me.[/c]"],
+	[cs_end_dialog]
+];
+
+new_cutscene(scene);
 
 //if (audio_group_is_loaded(audiogroup_music)) {
 //	room_goto_next();

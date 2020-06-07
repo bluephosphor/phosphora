@@ -4,7 +4,7 @@ if (keyboard_check_pressed(vk_escape)){
 }
 
 if (room == r_init){
-	if (cont_textbox == noone) room_goto_next();
+	if (cont_cutscene == noone) room_goto_next();
 	exit;
 }
 
