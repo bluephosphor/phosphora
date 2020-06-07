@@ -6,7 +6,7 @@ audio_group_load(audiogroup_soundeffects);
 global.webmode = (!os_browser == browser_not_a_browser);
 
 //global vars
-globalvar playerstate, debug_log, cont_daycycle, cont_lighting, cont_audio, cont_menu, cont_inv, cont_weather;
+globalvar playerstate, debug_log, cont_daycycle, cont_lighting, cont_audio, cont_menu, cont_inv, cont_weather, cont_textbox;
 global.actionable	= true;
 global.debug		= false;
 global.rift_count	= 0;
@@ -56,7 +56,7 @@ debug_log_entries = 5;
 debug_log_index = 0;
 
 if (!variable_global_exists("__scribble_global_count")){
-    scribble_init("fonts","font_main",true);
+    scribble_init("","font_main",true);
 	scribble_draw_set_animation(2,undefined,undefined,1,undefined,undefined,undefined,undefined,undefined,undefined,undefined);
 }
 
@@ -67,5 +67,6 @@ cont_audio		= instance_create_layer(0,0,layer,obj_audio_controller);
 cont_menu		= instance_create_layer(0,0,layer,obj_menu);
 cont_inv		= instance_create_layer(0,0,layer,obj_inv);
 cont_weather	= instance_create_layer(0,0,layer,obj_weather);
+cont_textbox = noone;
 
 if (audio_group_is_loaded(audiogroup_music)) room_goto_next();

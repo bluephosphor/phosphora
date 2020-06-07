@@ -6,6 +6,7 @@ str_pause = 0;
 
 if (line_index == lines){
 	///if we have no more lines, finish up and exit
+	cont_textbox = noone;
 	instance_destroy(self);
 	global.actionable = true;
 	o_player.spin_cooldown = 1;
@@ -34,11 +35,11 @@ if (question){
 
 raw_str = string_read(line_to_draw);
 scribble_line = scribble_draw(x_origin,y_origin,line_to_draw);
-textbox = scribble_get_bbox(scribble_line,x_origin,y_origin,8,8,8,8);
+textbox_dims = scribble_get_bbox(scribble_line,x_origin,y_origin,8,8,8,8);
 
 options_width = max(
-	textbox[SCRIBBLE_BBOX.R],
-	textbox[SCRIBBLE_BBOX.L] + longest_line + 16,
+	textbox_dims[SCRIBBLE_BBOX.R],
+	textbox_dims[SCRIBBLE_BBOX.L] + longest_line + 16,
 );
 
 scribble_autotype_fade_in(scribble_line,SCRIBBLE_AUTOTYPE_PER_CHARACTER,autotype_spd,0);

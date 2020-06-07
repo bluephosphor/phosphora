@@ -9,6 +9,10 @@ if (keyboard_check(vk_shift)){
 		o_camera.visible = global.debug;
 		show_debug_overlay(global.debug);
 	}
+	
+	if (keyboard_check_pressed(ord("R"))){
+		scr_room_change();
+	}
 }
 
 if (room_transition){

@@ -15,6 +15,7 @@ var i = 0; repeat(height){
 			grid[# 1, i] -= 1;
 			if (grid[# 1, i] == 0) grid[# 0, i] = item.none;
 		}
+		debug_log_add("Removed a " + item_info[# 0, item_no]);
 		break;
 	}
 	i++;

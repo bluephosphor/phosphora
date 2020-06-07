@@ -17,7 +17,7 @@ line_index	= -1; // Current index towards our lines
 depth -= 10;
 
 scribble_line	= -1;
-textbox			= -1;
+textbox_dims	= -1;
 line_skipped	= false;
 autotype_spd	= 0.5;
 str_pause		= 0;

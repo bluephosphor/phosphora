@@ -1,22 +1,22 @@
-if (textbox == -1) exit;
+if (textbox_dims == -1) exit;
 
 nine_slice_box_s(spr_9slice2, 
-	textbox[SCRIBBLE_BBOX.L],
-	textbox[SCRIBBLE_BBOX.T],
-	textbox[SCRIBBLE_BBOX.R],
-	textbox[SCRIBBLE_BBOX.B],
+	textbox_dims[SCRIBBLE_BBOX.L],
+	textbox_dims[SCRIBBLE_BBOX.T],
+	textbox_dims[SCRIBBLE_BBOX.R],
+	textbox_dims[SCRIBBLE_BBOX.B],
 	global.menu_color,
 );
 		
 scribble_draw(x_origin, y_origin, scribble_line);
 
 if (question) and (state == 1 or line_skipped){
-	var options_x = textbox[SCRIBBLE_BBOX.L] + 8;
-	var options_y = textbox[SCRIBBLE_BBOX.B] + 8;
+	var options_x = textbox_dims[SCRIBBLE_BBOX.L] + 8;
+	var options_y = textbox_dims[SCRIBBLE_BBOX.B] + 8;
 	
 	nine_slice_box_s(spr_9slice2,
-		textbox[SCRIBBLE_BBOX.L],	
-		textbox[SCRIBBLE_BBOX.B] + 4,
+		textbox_dims[SCRIBBLE_BBOX.L],	
+		textbox_dims[SCRIBBLE_BBOX.B] + 4,
 		options_width,
 		options_y + 4 + (12 * entries),
 		global.menu_color,

@@ -1,10 +1,12 @@
 ///@description string_read
 ///@arg string
 
-//this is a poorly named script but what it essentially does is it iterates through the 
-//string and surgically removes the bbcode tags used for formatting scribble text lines 
-//so that we can do things like determine the width and find the position of a character 
-//seperately while not messing too much with the dark evil magic that is scribble text
+/*
+this is a poorly named script but what it essentially does is it iterates through the 
+string and surgically removes the bbcode tags used for formatting scribble text lines 
+so that we can do things like determine the width and find the position of a character 
+seperately while not messing too much with the dark evil magic that is scribble text
+*/
 
 var str = argument0; var flag = false;
 
