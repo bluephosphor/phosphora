@@ -3,6 +3,11 @@ if (keyboard_check_pressed(vk_escape)){
 	window_set_fullscreen(global.fullscreen);
 }
 
+if (room == r_init){
+	if (cont_textbox == noone) room_goto_next();
+	exit;
+}
+
 if (keyboard_check(vk_shift)){
 	if (keyboard_check_pressed(ord("D"))){
 		global.debug = !global.debug;

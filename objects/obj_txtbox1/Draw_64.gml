@@ -1,12 +1,14 @@
 if (textbox_dims == -1) exit;
 
-nine_slice_box_s(spr_9slice2, 
-	textbox_dims[SCRIBBLE_BBOX.L],
-	textbox_dims[SCRIBBLE_BBOX.T],
-	textbox_dims[SCRIBBLE_BBOX.R],
-	textbox_dims[SCRIBBLE_BBOX.B],
-	global.menu_color,
-);
+if (draw_box) {
+		nine_slice_box_s(spr_9slice2, 
+		textbox_dims[SCRIBBLE_BBOX.L],
+		textbox_dims[SCRIBBLE_BBOX.T],
+		textbox_dims[SCRIBBLE_BBOX.R],
+		textbox_dims[SCRIBBLE_BBOX.B],
+		global.menu_color,
+	);
+}
 		
 scribble_draw(x_origin, y_origin, scribble_line);
 

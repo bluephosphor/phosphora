@@ -56,8 +56,10 @@ debug_log_entries = 5;
 debug_log_index = 0;
 
 if (!variable_global_exists("__scribble_global_count")){
-    scribble_init("","font_main",true);
+    scribble_init("","font_main",false);
+	scribble_add_font("font_main");
 	scribble_draw_set_animation(2,undefined,undefined,1,undefined,undefined,undefined,undefined,undefined,undefined,undefined);
+	scribble_autotype_add_event("sound",scribble_sound);
 }
 
 //create controller objects
@@ -69,4 +71,15 @@ cont_inv		= instance_create_layer(0,0,layer,obj_inv);
 cont_weather	= instance_create_layer(0,0,layer,obj_weather);
 cont_textbox = noone;
 
-if (audio_group_is_loaded(audiogroup_music)) room_goto_next();
+add_dialog(-1,"...",false);
+add_dialog(-1,"Oh dear!");
+add_dialog(-1,"What do we have here?");
+add_dialog(-1,"It seems another lost child has wandered into my forest.");
+add_dialog(-1,"Little friend... Are you lost?");
+add_dialog(-1,"Please, do not despair... I am here now.");
+add_dialog(-1,"You will be safe now...");
+add_dialog(-1,"With [c_red][sound,secret]me.[/c]");
+
+//if (audio_group_is_loaded(audiogroup_music)) {
+//	room_goto_next();
+//}

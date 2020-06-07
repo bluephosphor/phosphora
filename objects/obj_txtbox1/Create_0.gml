@@ -14,8 +14,9 @@ text_max_width = tb_width - 16; scribble_draw_set_wrap(8,text_max_width);
 lines		= 0;  // Number of Lines in a specific conversaion
 line_index	= -1; // Current index towards our lines
 
-depth -= 10;
+depth -= 3000;
 
+draw_box = true;
 scribble_line	= -1;
 textbox_dims	= -1;
 line_skipped	= false;

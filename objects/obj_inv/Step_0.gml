@@ -31,7 +31,7 @@ switch(state){
 			}
 		}
 		//equip items
-		if (in_equip) and (!instance_exists(mc_held_item)){
+		if (in_equip) and (instance_exists(o_player)) and (!instance_exists(mc_held_item)){
 			var num = selected_item;
 			if (num != item.none){
 				with (instance_create_layer(o_player.x,o_player.y,"Instances",mc_held_item)){
@@ -119,7 +119,7 @@ switch(state){
 			}
 		}
 		//equip items
-		if (in_equip) and (!instance_exists(mc_held_item)){
+		if (in_equip) and (instance_exists(o_player)) and (!instance_exists(mc_held_item)){
 			var num = selected_item;
 			if (num != item.none){
 				with (instance_create_layer(o_player.x,o_player.y,"Instances",mc_held_item)){

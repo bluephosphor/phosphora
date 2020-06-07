@@ -9,7 +9,7 @@ if (line_index == lines){
 	cont_textbox = noone;
 	instance_destroy(self);
 	global.actionable = true;
-	o_player.spin_cooldown = 1;
+	if (instance_exists(o_player)) o_player.spin_cooldown = 1;
 	exit;
 }
 
@@ -34,6 +34,12 @@ if (question){
 }
 
 raw_str = string_read(line_to_draw);
+
+if (!draw_box) {
+	x_origin = (global.view_width / 2) - (string_width(raw_str) / 2);
+	y_origin = (global.view_height / 2) - (string_height(raw_str) / 2);
+}
+
 scribble_line = scribble_draw(x_origin,y_origin,line_to_draw);
 textbox_dims = scribble_get_bbox(scribble_line,x_origin,y_origin,8,8,8,8);
 
