@@ -1,45 +1,23 @@
-/// Prepares Scribble for use.
-/// This script should be called before any other Scribble script.
+/// Prepares Scribble for use. This script should be called before any other Scribble scripts
 /// 
+/// Returns: Whether initialisation was successful
+/// @param fontDirectory    The directory to look in (relative to game_save_id) for font .yy files
+/// @param defaultFont      The name of the default Scribble font to use, as a string
+/// @param autoScan         Whether or not to automatically find font .yy files in the font directory
+///                         N.B. This only works for normal fonts
 /// 
-/// @param fontDirectory    The directory to look in (relative to game_save_id) for font .yy files.
-/// @param defaultFont      The name of the default Scribble font to use, as a string.
-/// @param autoScan         Whether or not to automatically find normal font .yy files in the font directory.
-///                         N.B. This only works for normal fonts, and on desktop platforms.
-/// 
-/// 
-/// This script achieves the following things:
-/// 1) Define the default font directory to pull font .yy files from
-/// 2) Create global text elements to store data and state
-/// 3) Define custom colours analogues for GM's native colour constants
-/// 4) Define names for default effects - wave, shake, rainbow
-/// 5) Creates a vertex format
-/// 6) Cache uniform indexes for the shd_scribble shader
-/// 7) Build a lookup table for decoding hexcode colours in scribble_draw()
-/// 8) Automatically scans Included Files for fonts (if enabled)
-/// 
-/// 
-/// Scribble v5.3.1
-/// 2020/01/07
+/// Scribble v5.5.0
+/// 2020-05-11
 /// @jujuadams
-/// With thanks to glitchroy, Mark Turner, Rob van Saaze, DragoniteSpam, and sp202
+/// With thanks to glitchroy, Mark Turner, DragoniteSpam, sp202, Rob van Saaze, soVes, and @stoozey_
 /// 
 /// For use with GMS2.2.2 and later
 
 #region Internal Macro Definitions
 
-#macro __SCRIBBLE_VERSION  "5.3.1"
-#macro __SCRIBBLE_DATE     "2020/01/07"
+#macro __SCRIBBLE_VERSION  "5.5.0"
+#macro __SCRIBBLE_DATE     "2020-05-05"
 #macro __SCRIBBLE_DEBUG    false
-
-enum SCRIBBLE_BOX
-{
-    TL_X, TL_Y, //Top left corner
-    TR_X, TR_Y, //Top right corner
-    BL_X, BL_Y, //Bottom left corner
-    BR_X, BR_Y, //Bottom right corner
-    __SIZE
-}
 
 //You'll usually only want to modify SCRIBBLE_GLYPH.X_OFFSET, SCRIBBLE_GLYPH.Y_OFFSET, and SCRIBBLE_GLYPH.SEPARATION
 enum SCRIBBLE_GLYPH
@@ -76,17 +54,35 @@ enum __SCRIBBLE_FONT
 
 enum __SCRIBBLE_FONT_TYPE
 {
-    FONT,
-    SPRITE
+    FONT,  //0
+    SPRITE //1
+}
+
+enum __SCRIBBLE_PAGE
+{
+    LINES,                //0
+    CHARACTERS,           //1
+    LINES_ARRAY,          //2
+    VERTEX_BUFFERS_ARRAY, //3
+    
+    EVENT_PREVIOUS,       //4
+    EVENT_CHAR_PREVIOUS,  //5
+    EVENT_CHAR_ARRAY,     //6
+    EVENT_NAME_ARRAY,     //7
+    EVENT_VISITED_ARRAY,  //8
+    EVENT_DATA_ARRAY,     //9
+    
+    __SIZE
 }
 
 enum __SCRIBBLE_LINE
 {
     LAST_CHAR, //0
-    WIDTH,     //1
-    HEIGHT,    //2
-    HALIGN,    //3
-    __SIZE     //4
+    Y,         //1
+    WIDTH,     //2
+    HEIGHT,    //3
+    HALIGN,    //4
+    __SIZE     //5
 }
 
 enum __SCRIBBLE_VERTEX_BUFFER
@@ -96,6 +92,7 @@ enum __SCRIBBLE_VERTEX_BUFFER
     TEXTURE,
     CHAR_START_TELL,
     WORD_START_TELL,
+    WORD_X_OFFSET,
     LINE_START_LIST,
     TEXEL_WIDTH,
     TEXEL_HEIGHT,
@@ -127,17 +124,15 @@ enum SCRIBBLE_STATE
     COLOUR,
     ALPHA,
     LINE_MIN_HEIGHT,
-    MIN_WIDTH,
     MAX_WIDTH,
-    MIN_HEIGHT,
     MAX_HEIGHT,
     CHARACTER_WRAP,
     HALIGN,
     VALIGN,
-    TYPEWRITER_FADE_IN,
-    TYPEWRITER_POSITION,
-    TYPEWRITER_SMOOTHNESS,
-    TYPEWRITER_METHOD,
+    AUTOTYPE_FADE_IN,
+    AUTOTYPE_POSITION, //TODO
+    AUTOTYPE_SMOOTHNESS,
+    AUTOTYPE_METHOD,
     ANIMATION_ARRAY,
     CACHE_GROUP,
     ALLOW_DRAW,
@@ -147,46 +142,52 @@ enum SCRIBBLE_STATE
 
 enum __SCRIBBLE
 {
-    __SECTION0,          // 0
-    VERSION,             // 1
-    STRING,              // 2
-    DEFAULT_FONT,        // 3
-    DEFAULT_COLOUR,      // 4
-    DEFAULT_HALIGN,      // 5
-    WIDTH_LIMIT,         // 6
-    LINE_HEIGHT,         // 7
+    __SECTION0,             // 0
+    VERSION,                // 1
+    STRING,                 // 2
+    CACHE_STRING,           // 3
+    DEFAULT_FONT,           // 3
+    DEFAULT_COLOUR,         // 4
+    DEFAULT_HALIGN,         // 5
+    WIDTH_LIMIT,            // 6
+    HEIGHT_LIMIT,           // 7
+    LINE_HEIGHT,            // 8
     
-    __SECTION1,          // 8
-    WIDTH,               // 9
-    HEIGHT,              //10
-    CHARACTERS,          //11
-    LINES,               //12
-    GLOBAL_INDEX,        //13
+    __SECTION1,             // 9
+    WIDTH,                  //10
+    HEIGHT,                 //11
+    CHARACTERS,             //12
+    LINES,                  //13
+    PAGES,                  //14
+    GLOBAL_INDEX,           //15
+    GLYPH_LTRB_ARRAY,       //16
     
-    __SECTION2,          //14
-    ANIMATION_TIME,      //15
-    TIME,                //16
-    FREED,               //17
+    __SECTION2,             //17
+    ANIMATION_TIME,         //18
+    TIME,                   //19
+    FREED,                  //20
+    SOUND_FINISH_TIME,      //21
     
-    __SECTION3,          //18
-    LINE_LIST,           //19
-    VERTEX_BUFFER_LIST,  //20
+    __SECTION3,             //22
+    PAGES_ARRAY,            //23
     
-    __SECTION4,          //21
-    AUTOTYPE_FADE_IN,    //22
-    AUTOTYPE_SPEED,      //23
-    AUTOTYPE_POSITION,   //24
-    AUTOTYPE_METHOD,     //25
-    AUTOTYPE_SMOOTHNESS, //26
+    __SECTION4,             //24
+    AUTOTYPE_PAGE,          //25
+    AUTOTYPE_FADE_IN,       //26
+    AUTOTYPE_SPEED,         //27
+    AUTOTYPE_SKIP,          //28
+    AUTOTYPE_TAIL_MOVING,   //29
+    AUTOTYPE_TAIL_POSITION, //30
+    AUTOTYPE_HEAD_POSITION, //31
+    AUTOTYPE_METHOD,        //32
+    AUTOTYPE_SMOOTHNESS,    //33
+    AUTOTYPE_SOUND_ARRAY,   //34
+    AUTOTYPE_SOUND_OVERLAP, //35
+    AUTOTYPE_PAUSED,        //36
+    AUTOTYPE_DELAY_PAUSED,  //37
+    AUTOTYPE_DELAY_END,     //38
     
-    __SECTION5,          //27
-    EVENT_PREVIOUS,      //28
-    EVENT_CHAR_PREVIOUS, //29
-    EVENT_CHAR_ARRAY,    //30
-    EVENT_NAME_ARRAY,    //31
-    EVENT_DATA_ARRAY,    //32
-    
-    __SIZE               //33
+    __SIZE                  //39
 }
 
 #macro __SCRIBBLE_ON_DIRECTX           ((os_type == os_windows) || (os_type == os_xboxone) || (os_type == os_uwp) || (os_type == os_win8native) || (os_type == os_winphone))
@@ -206,15 +207,17 @@ enum __SCRIBBLE
 #macro SCRIBBLE_FADE_PER_CHARACTER      SCRIBBLE_AUTOTYPE_PER_CHARACTER
 #macro SCRIBBLE_FADE_PER_LINE           SCRIBBLE_AUTOTYPE_PER_LINE
 
+#macro scribble_add_colour  scribble_add_color
+
 #endregion
 
-if ( variable_global_exists("__scribble_global_count") )
+if (variable_global_exists("__scribble_global_count"))
 {
-    show_error("Scribble:\nscribble_init() should not be called twice!\n ", false);
-    exit;
+    if (SCRIBBLE_WARNING_REINITIALIZE) show_error("Scribble:\nscribble_init() should not be called twice!\n(Set SCRIBBLE_WARNING_REINITIALIZE to <false> to hide this warning)\n ", false);
+    return false;
 }
 
-debug_log_add("Scribble: Welcome to Scribble by @jujuadams! This is version " + __SCRIBBLE_VERSION + ", " + __SCRIBBLE_DATE);
+show_debug_message("Scribble: Welcome to Scribble by @jujuadams! This is version " + __SCRIBBLE_VERSION + ", " + __SCRIBBLE_DATE);
 
 var _font_directory = argument0;
 var _default_font   = argument1;
@@ -224,7 +227,7 @@ if (__SCRIBBLE_ON_MOBILE)
 {
     if (_font_directory != "")
     {
-        debug_log_add("Scribble: Included Files work a bit strangely on iOS and Android. Please use an empty string for the font directory and place fonts in the root of Included Files.");
+        show_debug_message("Scribble: Included Files work a bit strangely on iOS and Android. Please use an empty string for the font directory and place fonts in the root of Included Files.");
         show_error("Scribble:\nGameMaker's Included Files work a bit strangely on iOS and Android.\nPlease use an empty string for the font directory and place fonts in the root of Included Files.\n ", true);
         exit;
     }
@@ -233,7 +236,7 @@ else if (__SCRIBBLE_ON_WEB)
 {
     if (_font_directory != "")
     {
-        debug_log_add("Scribble: Using folders inside Included Files might not work properly on HTML5. If you're having trouble, try using an empty string for the font directory and place fonts in the root of Included Files.");
+        show_debug_message("Scribble: Using folders inside Included Files might not work properly on HTML5. If you're having trouble, try using an empty string for the font directory and place fonts in the root of Included Files.");
     }
 }
 
@@ -249,7 +252,7 @@ if (!__SCRIBBLE_ON_WEB)
     //Check if the directory exists
     if (!directory_exists(_font_directory))
     {
-        debug_log_add("Scribble: WARNING! Font directory \"" + string(_font_directory) + "\" could not be found in \"" + game_save_id + "\"!");
+        show_debug_message("Scribble: WARNING! Font directory \"" + string(_font_directory) + "\" could not be found in \"" + game_save_id + "\"!");
     }
 }
 
@@ -274,6 +277,7 @@ else if ((asset_get_type(_default_font) != asset_font) && (asset_get_type(_defau
 }
 
 //Declare global variables
+global.__scribble_lcg               = date_current_datetime()*100;
 global.__scribble_font_directory    = _font_directory;
 global.__scribble_font_data         = ds_map_create();  //Stores a data array for each font defined inside Scribble
 global.__scribble_colours           = ds_map_create();  //Stores colour definitions, including custom colours
@@ -318,6 +322,9 @@ global.__scribble_colours[? "c_teal"   ] = c_teal;
 global.__scribble_colours[? "c_white"  ] = c_white;
 global.__scribble_colours[? "c_yellow" ] = c_yellow;
 
+global.__scribble_autotype_events[? "pause"] = undefined;
+global.__scribble_autotype_events[? "delay"] = undefined;
+
 //Add bindings for default effect names
 //Effect index 0 is reversed for sprites
 global.__scribble_effects[?       "wave"    ] = 1;
@@ -340,14 +347,13 @@ vertex_format_add_texcoord();    // 8 bytes
 global.__scribble_vertex_format = vertex_format_end(); //36 bytes per vertex, 108 bytes per tri, 216 bytes per glyph
 
 //Cache uniform indexes
-global.__scribble_uniform_time          = shader_get_uniform(shd_scribble, "u_fTime"                );
-global.__scribble_uniform_colour_blend  = shader_get_uniform(shd_scribble, "u_vColourBlend"         );
-global.__scribble_uniform_tw_method     = shader_get_uniform(shd_scribble, "u_fTypewriterMethod"    );
-global.__scribble_uniform_tw_smoothness = shader_get_uniform(shd_scribble, "u_fTypewriterSmoothness");
-global.__scribble_uniform_tw_t          = shader_get_uniform(shd_scribble, "u_fTypewriterT"         );
-global.__scribble_uniform_data_fields   = shader_get_uniform(shd_scribble, "u_aDataFields"          );
-global.__scribble_uniform_texel         = shader_get_uniform(shd_scribble, "u_fTexel"               );
-global.__scribble_uniform_z             = shader_get_uniform(shd_scribble, "u_fZ"                   );
+global.__scribble_uniform_time          = shader_get_uniform(shd_scribble, "u_fTime"             );
+global.__scribble_uniform_colour_blend  = shader_get_uniform(shd_scribble, "u_vColourBlend"      );
+global.__scribble_uniform_tw_method     = shader_get_uniform(shd_scribble, "u_fTypewriterMethod" );
+global.__scribble_uniform_tw_tail_pos   = shader_get_uniform(shd_scribble, "u_fTypewriterTailPos");
+global.__scribble_uniform_tw_head_pos   = shader_get_uniform(shd_scribble, "u_fTypewriterHeadPos");
+global.__scribble_uniform_data_fields   = shader_get_uniform(shd_scribble, "u_aDataFields"       );
+global.__scribble_uniform_texel         = shader_get_uniform(shd_scribble, "u_fTexel"            );
 
 //Hex converter array
 var _min = ord("0");
@@ -416,12 +422,12 @@ if (_auto_scan)
                     
                     if (asset_get_type(_font) != asset_font)
                     {
-                        debug_log_add("Scribble: WARNING! Autoscan found \"" + _file + "\", but \"" + _font + "\" was not found in the project");
+                        show_debug_message("Scribble: Warning! Autoscan found \"" + _file + "\", but \"" + _font + "\" was not found in the project as a font asset");
                     }
                     else
                     {
                         scribble_add_font(_font, string_delete(_directory + _file, 1, _root_directory_size));
-                        if (SCRIBBLE_VERBOSE) debug_log_add("Scribble: Autoscan added \"" + _font + "\" as a standard font (via " + string(_directory + _file) + ")");
+                        if (SCRIBBLE_VERBOSE) show_debug_message("Scribble: Autoscan added \"" + _font + "\" as a standard font (via " + string(_directory + _file) + ")");
                     }
                 }
                 _file = file_find_next();
@@ -431,3 +437,5 @@ if (_auto_scan)
         ds_list_destroy(_directory_list);
     }
 }
+
+return true;

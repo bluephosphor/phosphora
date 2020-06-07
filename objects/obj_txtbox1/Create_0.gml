@@ -7,6 +7,7 @@ dialog[0, 0] = -1;  // Speaker(sprite?)
 dialog[0, 1] = "" ; // Dialogue(string)
 
 branch = -1;
+branch_index = 0;
 
 text_max_width = tb_width - 16; scribble_draw_set_wrap(8,text_max_width);
 
@@ -18,12 +19,10 @@ depth -= 10;
 scribble_line	= -1;
 textbox			= -1;
 line_skipped	= false;
-autotype_spd	= 0.4;
+autotype_spd	= 0.5;
 str_pause		= 0;
 
 state	= 0;
-len		= 0;
-pos		= 0;
 
 line_to_draw	= "";
 line_array		= -1;

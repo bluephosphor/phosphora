@@ -2,10 +2,12 @@
 
 
 
-#macro SCRIBBLE_HASH_NEWLINE        true   //Replaces hashes (#) with newlines (ASCII chr10) to emulate GMS1's newline behaviour
-#macro SCRIBBLE_COLOURISE_SPRITES   true   //Whether to apply the text colour to non-animated sprites (animated sprites are always blended white)
-#macro SCRIBBLE_VERBOSE             false  //Enables verbose console output to aid with debugging
-#macro SCRIBBLE_ADD_SPRITE_ORIGINS  false  //Whether to use sprite origins. Setting this to <false> will vertically centre sprites on the line of text
+#macro SCRIBBLE_HASH_NEWLINE                  true   //Replaces hashes (#) with newlines (ASCII chr10) to emulate GMS1's newline behaviour
+#macro SCRIBBLE_COLOURISE_SPRITES             true   //Whether to apply the text colour to non-animated sprites (animated sprites are always blended white)
+#macro SCRIBBLE_VERBOSE                       false  //Enables verbose console output to aid with debugging
+#macro SCRIBBLE_ADD_SPRITE_ORIGINS            false  //Whether to use sprite origins. Setting this to <false> will vertically centre sprites on the line of text
+#macro SCRIBBLE_SPRITEFONT_ALIGN_GLYPHS_LEFT  false  //Set to <true> to emulate GameMaker's native behaviour
+#macro SCRIBBLE_DEFAULT_DELAY_DURATION        450    //Default duration of the [delay] command, in milliseconds
 
 #region Default parameters
 
@@ -21,6 +23,7 @@
 //Text wrapping
 #macro SCRIBBLE_DEFAULT_LINE_MIN_HEIGHT  -1    //The default minimum height of each line of text. Set to a negative value to use the height of a space character of the default font.
 #macro SCRIBBLE_DEFAULT_MAX_WIDTH        -1    //The default maximum horizontal size of the textbox. Set to a negative value for no limit.
+#macro SCRIBBLE_DEFAULT_MAX_HEIGHT       -1    //The default maximum vertical size of the textbox. Set to a negative value for no limit.
 
 //Transform
 #macro SCRIBBLE_DEFAULT_XSCALE  1              //The default x-scale of the textbox.
@@ -37,12 +40,15 @@
 
 #region Advanced stuff
 
-#macro SCRIBBLE_STEP_SIZE                  (delta_time/game_get_speed(gamespeed_microseconds)) //The animation step size. The default command here uses delta_time ensures that animations are smooth at all framerates
-#macro SCRIBBLE_SLANT_AMOUNT               0.24  //The x-axis displacement when using the [slant] tag
-#macro SCRIBBLE_Z                          0     //The z-value for vertexes
+#macro SCRIBBLE_WARNING_REINITIALIZE  true  //Controls whether an error is thrown when calling scribble_init() twice
+#macro SCRIBBLE_WARNING_TEXTURE_PAGE  true  //Turns the Separate Texture Page warning for spritefonts on/off
 
-#macro SCRIBBLE_DEFAULT_CACHE_GROUP        0     //The name of the default cache group. Real value and strings accepted.
-#macro SCRIBBLE_CACHE_TIMEOUT              15000 //How long to wait (in milliseconds) before the cache automatically destroys a text element. Set to 0 (or less) to turn off automatic de-caching (you'll need to manually call scribble_cache_group_flush() instead)
+#macro SCRIBBLE_STEP_SIZE                 (delta_time/game_get_speed(gamespeed_microseconds)) //The animation step size. The default command here uses delta_time ensures that animations are smooth at all framerates
+#macro SCRIBBLE_SLANT_AMOUNT              0.24  //The x-axis displacement when using the [slant] tag
+#macro SCRIBBLE_CREATE_GLYPH_LTRB_ARRAY   false //Outputs an array of glyph LTRB bounding boxes
+                                      
+#macro SCRIBBLE_DEFAULT_CACHE_GROUP   0     //The name of the default cache group. Real value and strings accepted.
+#macro SCRIBBLE_CACHE_TIMEOUT         15000 //How long to wait (in milliseconds) before the cache automatically destroys a text element. Set to 0 (or less) to turn off automatic de-caching (you'll need to manually call scribble_cache_group_flush() instead)
 
 #macro SCRIBBLE_COMMAND_TAG_OPEN      ord("[") //Character used to open a command tag. First 127 ASCII chars only
 #macro SCRIBBLE_COMMAND_TAG_CLOSE     ord("]") //Character used to close a command tag. First 127 ASCII chars only

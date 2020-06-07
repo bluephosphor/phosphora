@@ -1,7 +1,6 @@
 ///@description add_dialog_branch
-///@arg index
-///@arg dialog_data_or_script
+///@arg dialog_array_or_script
 
 with (obj_txtbox1){
-	branch[argument0] = argument1;
+	branch[branch_index++] = argument0;
 }

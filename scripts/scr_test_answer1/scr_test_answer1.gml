@@ -7,21 +7,21 @@ add_dialog(-1,
 	]
 );
 
-add_dialog_branch(0, 
+add_dialog_branch( 
 	[
 		[-1,"I can't argue with that I guess..."],
-	],
+	]
 );
 
-add_dialog_branch(1, 
+add_dialog_branch(
 	[
 		[-1,"Yeah I didn't think so."],
 		[-1,"Listen, kid, there's way better [rainbow]colors[/rainbow] out there."],
-	],
+	]
 );
 
-add_dialog_branch(2, 
+add_dialog_branch(
 	[
 		[-1,"I'm just really passionate about this. Let me live."],
-	],
+	]
 );

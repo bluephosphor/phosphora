@@ -39,11 +39,10 @@ varying vec4 v_vColour;
 
 uniform vec4  u_vColourBlend;
 uniform float u_fTime;
-uniform float u_fZ;
 
 uniform float u_fTypewriterMethod;
-uniform float u_fTypewriterSmoothness;
-uniform float u_fTypewriterT;
+uniform float u_fTypewriterTailPos;
+uniform float u_fTypewriterHeadPos;
 
 uniform float u_aDataFields[MAX_DATA_FIELDS];
 //uniform vec2 u_vTexel; //Used in the fragment shader
@@ -165,21 +164,20 @@ vec4 rainbow(float characterIndex, float weight, float speed, vec4 colour)
 }
 
 //Fade effect for typewriter etc.
-float fade(float time, float smoothness, float limit)
+float fade(float tailPos, float headPos, float index)
 {
-    float multiplier = 1.0;
+    float multiplier = 0.0;
     
-    if (smoothness > 0.0)
+    if (tailPos == headPos)
     {
-        float adjustedTime = time*(1.0 + smoothness);
-        multiplier = clamp((adjustedTime - limit)/smoothness, 0.0, 1.0);
+        multiplier = step(headPos, index);
     }
     else
     {
-        multiplier = 1.0 - step(time, limit);
+        multiplier = min(max((index - tailPos) / (headPos - tailPos), 0.0), 1.0);
     }
-        
-    if (u_fTypewriterMethod < 0.0) multiplier = 1.0 - multiplier;
+    
+    if (u_fTypewriterMethod > 0.0) multiplier = 1.0 - multiplier;
     
     return multiplier;
 }
@@ -237,13 +235,13 @@ void main()
     //Apply fade (if we're given a method)
     if (u_fTypewriterMethod != 0.0)
     {
-        //Choose our limit based on what method's being used: if the method value == 1.0 then we're using character indexes, otherwise we use line indexes
-        float limit = (abs(u_fTypewriterMethod) == 1.0)? characterIndex : lineIndex;
-        v_vColour.a *= fade(u_fTypewriterT, u_fTypewriterSmoothness, limit);
+        //Choose our index based on what method's being used: if the method value == 1.0 then we're using character indexes, otherwise we use line indexes
+        float index = (abs(u_fTypewriterMethod) == 1.0)? characterIndex : lineIndex;
+        v_vColour.a *= fade(u_fTypewriterTailPos, u_fTypewriterHeadPos, index);
     }
     
     //Texture
     v_vTexcoord = in_TextureCoord;
     
-    gl_Position = gm_Matrices[MATRIX_WORLD_VIEW_PROJECTION]*vec4(pos, u_fZ, 1.0);
+    gl_Position = gm_Matrices[MATRIX_WORLD_VIEW_PROJECTION]*vec4(pos, 0.0, 1.0);
 }

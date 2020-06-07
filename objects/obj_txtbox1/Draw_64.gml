@@ -1,22 +1,22 @@
 if (textbox == -1) exit;
 
 nine_slice_box_s(spr_9slice2, 
-	textbox[SCRIBBLE_BOX.TL_X],
-	textbox[SCRIBBLE_BOX.TL_Y],
-	textbox[SCRIBBLE_BOX.TR_X],
-	textbox[SCRIBBLE_BOX.BR_Y],
+	textbox[SCRIBBLE_BBOX.L],
+	textbox[SCRIBBLE_BBOX.T],
+	textbox[SCRIBBLE_BBOX.R],
+	textbox[SCRIBBLE_BBOX.B],
 	global.menu_color,
 );
 		
 scribble_draw(x_origin, y_origin, scribble_line);
 
 if (question) and (state == 1 or line_skipped){
-	var options_x = textbox[SCRIBBLE_BOX.TL_X] + 8;
-	var options_y = textbox[SCRIBBLE_BOX.BL_Y] + 8;
+	var options_x = textbox[SCRIBBLE_BBOX.L] + 8;
+	var options_y = textbox[SCRIBBLE_BBOX.B] + 8;
 	
 	nine_slice_box_s(spr_9slice2,
-		textbox[SCRIBBLE_BOX.TL_X],	
-		textbox[SCRIBBLE_BOX.BL_Y] + 4,
+		textbox[SCRIBBLE_BBOX.L],	
+		textbox[SCRIBBLE_BBOX.B] + 4,
 		options_width,
 		options_y + 4 + (12 * entries),
 		global.menu_color,
@@ -33,10 +33,14 @@ if (question) and (state == 1 or line_skipped){
 
 if (!global.debug) exit;
 
-var str = "state: "			+ string(state)		+ "\n";
-	str += "len: "			+ string(len)		+ "\n";
-	str += "pos: "			+ string(ceil(pos)) + "\n";
-	str += "str_pause: "	+ string(str_pause) + "\n";
-	str += "s_autotype_pos" + string(scribble_line[@ __SCRIBBLE.AUTOTYPE_POSITION]);
+var _element_pages_array = scribble_line[__SCRIBBLE.PAGES_ARRAY];
+var _page_array = _element_pages_array[scribble_line[__SCRIBBLE.AUTOTYPE_PAGE]];
+var _typewriter_count = _page_array[__SCRIBBLE_PAGE.CHARACTERS];
+var _head_pos = scribble_line[__SCRIBBLE.AUTOTYPE_HEAD_POSITION];
+var _typewriter_t = _head_pos / _typewriter_count;
 
-draw_text(64,64,str);
+var str =  "_typewriter_count: " + string(_typewriter_count) + "\n";
+	str += "_head_pos: " + string(_head_pos) + "\n";
+	str += "_typewriter_t: " + string(_typewriter_t) + "\n";
+	
+draw_text(0,100,str);

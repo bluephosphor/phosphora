@@ -26,20 +26,20 @@ if (!is_real(_index) || (_index != floor(_index)) || (_index < 1) || (_index > (
 
 if (ds_map_exists(global.__scribble_colours, _name))
 {
-    debug_log_add("Scribble: WARNING! Effect name \"" + _name + "\" has already been defined as a colour");
+    show_debug_message("Scribble: WARNING! Effect name \"" + _name + "\" has already been defined as a colour");
     exit;
 }
 
 if (ds_map_exists(global.__scribble_autotype_events, _name))
 {
-    debug_log_add("Scribble: WARNING! Effect name \"" + _name + "\" has already been defined as an event");
+    show_debug_message("Scribble: WARNING! Effect name \"" + _name + "\" has already been defined as an event");
     exit;
 }
 
 var _old_name = global.__scribble_effects[? _index];
 if (_old_name != undefined)
 {
-    debug_log_add("Scribble: WARNING! Overwriting effect index " + string(_index) + " \"" + _old_name + "\"");
+    show_debug_message("Scribble: WARNING! Overwriting effect index " + string(_index) + " \"" + _old_name + "\"");
     ds_map_delete(global.__scribble_effects, _old_name);
     ds_map_delete(global.__scribble_effects_slash, "/" + _old_name);
 }
@@ -52,4 +52,4 @@ _name = "/" + _name;
 global.__scribble_effects_slash[? _index] = _name;
 global.__scribble_effects_slash[? _name ] = _index;
 
-if (SCRIBBLE_VERBOSE) debug_log_add("Scribble: Added effect name \"" + _name + "\" as index " + string(_index));
+if (SCRIBBLE_VERBOSE) show_debug_message("Scribble: Added effect name \"" + _name + "\" as index " + string(_index));

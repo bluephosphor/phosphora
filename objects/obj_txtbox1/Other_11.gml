@@ -4,6 +4,7 @@ var choice = branch[menu_index];
 
 if (!is_array(choice)) {
 	branch = -1;
+	branch_index = 0;
 	menu_index = 0;
 	script_execute(choice);
 } else {

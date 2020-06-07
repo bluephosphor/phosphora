@@ -28,18 +28,17 @@ if (question){
 } else {
 	line_array = -1;
 	entries = 0;
-	line_to_draw = dialog[line_index,1];
 	longest_line = 0;
+	line_to_draw = dialog[line_index,1];
 }
 
+raw_str = string_read(line_to_draw);
 scribble_line = scribble_draw(x_origin,y_origin,line_to_draw);
-
-raw_str = string_read(line_to_draw); len = string_length(raw_str);
 textbox = scribble_get_bbox(scribble_line,x_origin,y_origin,8,8,8,8);
 
 options_width = max(
-	textbox[SCRIBBLE_BOX.TR_X],
-	textbox[SCRIBBLE_BOX.TL_X] + longest_line + 16,
+	textbox[SCRIBBLE_BBOX.R],
+	textbox[SCRIBBLE_BBOX.L] + longest_line + 16,
 );
 
 scribble_autotype_fade_in(scribble_line,SCRIBBLE_AUTOTYPE_PER_CHARACTER,autotype_spd,0);

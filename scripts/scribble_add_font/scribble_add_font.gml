@@ -1,12 +1,20 @@
-/// Adds a normal font for use with Scribble.
+/// Adds a normal font for use with Scribble
 ///
-/// @param fontName   String name of the font to add.
-/// @param [path]     File path for the font's .yy file, including the .yy extension, relative to the font directory defined by scribble_init().
-///                   If not specified, Scribble will look in the root of the font directory.
+/// @param fontName   Name of the font to add, as a string
+/// @param [path]     File path for the font's .yy file, including the .yy extension, relative to the font directory defined by scribble_init()
+///                   If not specified, Scribble will look in the root of the font directory
 ///
-/// Scribble requires all standard fonts to have their .yy file added as an included file
-/// This means every time you modify a font you also need to update the included .yy file
-/// (Including .yy files isn't necessary for spritefonts)
+/// Scribble requires that you explicitly initialise fonts for use with Scribble. This is a three-step process:
+/// 
+///  1. Add a normal GameMaker font resource through the IDE
+///  2. Add the font's .yy file as an Included File (found in the font's folder in the project directory)
+///  3. Call scribble_add_font() targeting the font
+/// 
+/// Scribble needs to access information that GameMaker generates. All this information is contained in a single .yy file in the font's folder
+/// on disk inside the project directory. This file can sometimes be frustrating to locate, but fortunately there's a shortcut we can take.
+/// In the IDE, Navigate to the font resource you wish to add and right click on it. From the drop-down menu, select "Show In Explorer". A
+/// window will open showing various files for the font resource. You can drag-and-drop the .yy file into the GameMaker IDE to add it as an
+/// Included File.
 
 if (!variable_global_exists("__scribble_global_count"))
 {
@@ -70,7 +78,7 @@ global.__scribble_font_data[? _font ] = _data;
 
 
 
-if (SCRIBBLE_VERBOSE) debug_log_add("Scribble: Processing font \"" + _font + "\"");
+if (SCRIBBLE_VERBOSE) show_debug_message("Scribble: Processing font \"" + _font + "\"");
 
 var _asset       = asset_get_index(_font);
 var _texture     = font_get_texture(_asset);
@@ -83,7 +91,7 @@ _data[@ __SCRIBBLE_FONT.TEXTURE] = _texture;
 
 if (SCRIBBLE_VERBOSE)
 {
-    debug_log_add("Scribble:   \"" + _font +"\""
+    show_debug_message("Scribble:   \"" + _font +"\""
                      + ", asset = " + string(_asset)
                      + ", texture = " + string(_texture)
                      + ", size = " + string(_texture_w) + " x " + string(_texture_h)
@@ -115,7 +123,7 @@ if (!ds_map_exists(_json, "glyphs"))
 //If either of the checks have failed, delete the data array and abort
 if (_fail)
 {
-    if (__SCRIBBLE_DEBUG) debug_log_add("Scribble: JSON string that failed is \"" + string(_json_string) + "\"");
+    if (__SCRIBBLE_DEBUG) show_debug_message("Scribble: JSON string that failed is \"" + string(_json_string) + "\"");
     ds_map_delete(global.__scribble_font_data, _font);
     exit;
 }
@@ -123,7 +131,7 @@ if (_fail)
 
 var _yy_glyph_list = _json[? "glyphs" ];
 var _size = ds_list_size(_yy_glyph_list);
-if (SCRIBBLE_VERBOSE) debug_log_add("Scribble:   \"" + _font + "\" has " + string(_size) + " characters");
+if (SCRIBBLE_VERBOSE) show_debug_message("Scribble:   \"" + _font + "\" has " + string(_size) + " characters");
 
 
 
@@ -133,7 +141,7 @@ if (SCRIBBLE_SEQUENTIAL_GLYPH_TRY)
 {
     #region Sequential glyph index
     
-    if (SCRIBBLE_VERBOSE) debug_log_add("Scribble:   Trying sequential glyph index...");
+    if (SCRIBBLE_VERBOSE) show_debug_message("Scribble:   Trying sequential glyph index...");
     
     var _glyph_map = ds_map_create();
     
@@ -159,11 +167,11 @@ if (SCRIBBLE_SEQUENTIAL_GLYPH_TRY)
     _data[@ __SCRIBBLE_FONT.GLYPH_MAX] = _glyph_max;
     
     var _glyph_count = 1 + _glyph_max - _glyph_min;
-    if (SCRIBBLE_VERBOSE) debug_log_add("Scribble:   Glyphs start at " + string(_glyph_min) + " and end at " + string(_glyph_max) + ". Range is " + string(_glyph_count-1));
+    if (SCRIBBLE_VERBOSE) show_debug_message("Scribble:   Glyphs start at " + string(_glyph_min) + " and end at " + string(_glyph_max) + ". Range is " + string(_glyph_count-1));
     
     if ((_glyph_count-1) > SCRIBBLE_SEQUENTIAL_GLYPH_MAX_RANGE)
     {
-        if (SCRIBBLE_VERBOSE) debug_log_add("Scribble:   Glyph range exceeds maximum (" + string(SCRIBBLE_SEQUENTIAL_GLYPH_MAX_RANGE) + ")!");
+        if (SCRIBBLE_VERBOSE) show_debug_message("Scribble:   Glyph range exceeds maximum (" + string(SCRIBBLE_SEQUENTIAL_GLYPH_MAX_RANGE) + ")!");
     }
     else
     {
@@ -172,15 +180,15 @@ if (SCRIBBLE_SEQUENTIAL_GLYPH_TRY)
         ds_map_destroy(_glyph_map);
         var _fraction = _holes / _glyph_count;
         
-        if (SCRIBBLE_VERBOSE) debug_log_add("Scribble:   There are " + string(_holes) + " holes, " + string(_fraction*100) + "%");
+        if (SCRIBBLE_VERBOSE) show_debug_message("Scribble:   There are " + string(_holes) + " holes, " + string(_fraction*100) + "%");
         
         if (_fraction > SCRIBBLE_SEQUENTIAL_GLYPH_MAX_HOLES)
         {
-            if (SCRIBBLE_VERBOSE) debug_log_add("Scribble:   Hole proportion exceeds maximum (" + string(SCRIBBLE_SEQUENTIAL_GLYPH_MAX_HOLES*100) + "%)!");
+            if (SCRIBBLE_VERBOSE) show_debug_message("Scribble:   Hole proportion exceeds maximum (" + string(SCRIBBLE_SEQUENTIAL_GLYPH_MAX_HOLES*100) + "%)!");
         }
         else
         {
-            if (SCRIBBLE_VERBOSE) debug_log_add("Scribble:   Using an array to index glyphs");
+            if (SCRIBBLE_VERBOSE) show_debug_message("Scribble:   Using an array to index glyphs");
             _ds_map_fallback = false;
             
             var _font_glyphs_array = array_create(_glyph_count, undefined);
@@ -226,7 +234,7 @@ if (SCRIBBLE_SEQUENTIAL_GLYPH_TRY)
 
 if (_ds_map_fallback)
 {
-    if (SCRIBBLE_VERBOSE) debug_log_add("Scribble:   Using a ds_map to index glyphs");
+    if (SCRIBBLE_VERBOSE) show_debug_message("Scribble:   Using a ds_map to index glyphs");
     
     var _font_glyphs_map = ds_map_create();
     _data[@ __SCRIBBLE_FONT.GLYPHS_MAP] = _font_glyphs_map;
@@ -267,4 +275,4 @@ if (_ds_map_fallback)
 
 ds_map_destroy(_json);
 
-if (SCRIBBLE_VERBOSE) debug_log_add("Scribble: Added \"" + _font + "\" as a standard font");
+if (SCRIBBLE_VERBOSE) show_debug_message("Scribble: Added \"" + _font + "\" as a standard font");
