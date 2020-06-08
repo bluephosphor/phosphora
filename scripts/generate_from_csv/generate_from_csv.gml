@@ -23,6 +23,8 @@ var gx = 0; repeat(ww){
 	gx++;
 }
 
+if (!instance_exists(o_player)) spawn_player();
+
 ds_grid_destroy(file_grid);
 file_grid = -1;
 

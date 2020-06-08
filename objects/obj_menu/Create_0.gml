@@ -24,6 +24,7 @@ ds_menu_main = create_menu_page(
 	["INFO",		menu_element_type.page_transfer,	menu_page.info],
 	["SETTINGS",	menu_element_type.page_transfer,	menu_page.settings],
 	["EXIT",		menu_element_type.script_runner,	close_game],
+	["SAVE LEVEL",	menu_element_type.script_runner,	save_room_data],
 );
 
 ds_menu_info = create_menu_page(

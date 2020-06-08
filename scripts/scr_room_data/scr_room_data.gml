@@ -1,4 +1,5 @@
 enum rm {
+	name,
 	script,
 	level_file,
 	chest_loot,
@@ -33,6 +34,7 @@ ds_grid_set_region(room_data,0,0,_width,_height,-1);
 
 
 //----------------------------------------OUTSIDE--------------------------------------------------//
+room_data[# rm.name,			r_outside] = "forest";
 room_data[# rm.script,			r_outside] = generate_room_outside;
 room_data[# rm.mob_cap,			r_outside] = 7;
 room_data[# rm.mob_types,		r_outside] = [mob.fish,mob.minky,mob.ghost];
@@ -61,6 +63,7 @@ room_data[# rm.chest_loot,		r_outside] = [
 	[item.rubellite,	0.05],
 ];
 //----------------------------------------DEEP_GROVE--------------------------------------------------//
+room_data[# rm.name,			r_deep_grove] = "grove";
 room_data[# rm.script,			r_deep_grove] = generate_grove;
 room_data[# rm.mob_cap,			r_deep_grove] = 5;
 room_data[# rm.mob_types,		r_deep_grove] = [mob.ghost];
@@ -89,6 +92,7 @@ room_data[# rm.chest_loot,		r_deep_grove] = [
 ];
 //----------------------------------------DUNGEON---------------------------------------------------//
 
+room_data[# rm.name,			r_dungeon] = "dungeon";
 room_data[# rm.script,			r_dungeon] = generate_dungeon;
 room_data[# rm.mob_cap,			r_dungeon] = 7;
 room_data[# rm.mob_types,		r_dungeon] = [mob.void_demon,mob.minky,mob.chest_demon];
@@ -126,8 +130,9 @@ room_data[# rm.special_loot,	r_dungeon] = [
 	[item.rubellite,	0.05],
 ];
 //----------------------------------------CSVTEST--------------------------------------------------//
+room_data[# rm.name,			r_csv_test] = "csv_test";
 room_data[# rm.script,			r_csv_test] = generate_from_csv;
-room_data[# rm.level_file,		r_csv_test] = "LEVEL.csv";
+room_data[# rm.level_file,		r_csv_test] = "lvltest.csv";
 room_data[# rm.mob_cap,			r_csv_test]	= 3;
 room_data[# rm.mob_types,		r_csv_test]	= [mob.fish];
 room_data[# rm.bgm,				r_csv_test] = snd_forest;

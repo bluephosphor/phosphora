@@ -1,3 +1,5 @@
+
+
 show_inventory = false;
 global.actionable = false;
 

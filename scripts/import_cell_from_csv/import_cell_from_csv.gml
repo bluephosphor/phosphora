@@ -3,7 +3,7 @@
 
 var xx = argument0;
 var yy = argument1;
-var curr_cell = string(file_grid[# xx,yy]);
+var curr_cell = file_grid[# xx,yy];
 var x_offset = argument2; 
 var y_offset = argument3; 
 xx += x_offset; 
@@ -11,6 +11,8 @@ yy += y_offset;
 var place_x = (xx * CELL_WIDTH) + 16;
 var place_y = (yy * CELL_HEIGHT) + 16;
 
+
+//custom level
 switch(curr_cell) {
 	case "VOID": 
 		grid_[# xx,yy] = VOID;
@@ -54,5 +56,10 @@ switch(curr_cell) {
 			}
 			first_chest = true;
 		} else if (irandom(3) == 3) instance_create_layer(place_x,place_y,"Instances",obj_chest);
+		break;
+	default:
+		xx -= x_offset;
+		yy -= y_offset;
+		grid_[# xx,yy] = curr_cell;
 		break;
 }
