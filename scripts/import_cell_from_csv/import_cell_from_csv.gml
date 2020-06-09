@@ -58,7 +58,7 @@ switch(curr_cell) {
 		} else if (irandom(3) == 3) instance_create_layer(place_x,place_y,"Instances",obj_chest);
 		break;
 	default:
-		xx -= x_offset;
+		xx -= x_offset; 
 		yy -= y_offset;
 		grid_[# xx,yy] = curr_cell;
 		break;

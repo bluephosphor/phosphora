@@ -43,8 +43,8 @@ globalvar inventory;
 inventory = ds_grid_create(2,max_items);
 ds_grid_set_region(inventory,0,0,2,max_items,0);
 
-inventory[# 0,0] = item.ears;
-inventory[# 1,0] = 32;
+inventory[# 0,0] = item.ps_fire;
+inventory[# 1,0] = 10;
 
 enum inv_state {
 	inv,

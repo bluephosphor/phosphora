@@ -37,8 +37,18 @@ if (global.actionable){
 		
 		if (interact != noone and interact.interact_state == INTERACTABLE) {
 			with (interact) {
-				if (can_interact <= 0) {
+				if (cont_textbox == noone) and (can_interact <= 0) {
 					if (entity_type == "mob") {
+						xmove = 0;
+						ymove = 0;
+						x_speed_ = 0;
+						y_speed_ = 0;
+						update_movement = false;
+						
+						if (other.x > x) image_xscale = 1;
+						else image_xscale = -1;
+						
+						alarm[0] = -1;
 						mystate = mobstate.interact;
 					} else {
 						interact_state = INTERACTING;

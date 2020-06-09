@@ -1,7 +1,6 @@
 entity_type = -1;
 mytext = [
-	[-1,"Eee hee hee!"],
-	[-1,"Are you lost?"],
+	[-1,"This is a test message."],
 ]
 
 upixel_h = shader_get_uniform(sh_outline,"pixel_h");

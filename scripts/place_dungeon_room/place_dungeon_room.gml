@@ -1,7 +1,7 @@
 ///@param level_file
-
 var file = argument0;
 file_grid = load_csv(file);
+ds_grid_rotate(file_grid,true,irandom_range(1,3));
 var ww = ds_grid_width(file_grid);
 var hh = ds_grid_height(file_grid);
 
@@ -72,4 +72,4 @@ file_grid = -1;
 
 room_count ++;
 
-debug_log_add("Placed a room at x:" + string(xx) + " y: " + string(yy) + ".");
+debug_log_add("Placed " + file + " at x:" + string(xx) + " y:" + string(yy) + ".");

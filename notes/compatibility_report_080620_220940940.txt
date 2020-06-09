@@ -1,0 +1,4 @@
+Converting GML script: ${project_dir}\scripts\ds_grid_rotate\ds_grid_rotate.gml
+Converted description /// @description ds_grid_rotate(Grid id, Clockwise, Rotation)/// @param Grid id
+/// @param  Clockwise
+/// @param  Rotation

@@ -4,9 +4,10 @@
 
 var shift = keyboard_check(vk_shift);
 var count = 1;
+var times = 0;
 if (shift) count = 64;
 
-repeat(count){
+repeat(count) {
 	var sender_grid		= argument0;
 	var recipient_grid	= argument1;
 	var index			= argument2;
@@ -18,7 +19,7 @@ repeat(count){
 	var height		= ds_grid_height(recipient_grid);
 	var success		= false;
 
-	var i = 0; repeat(height){
+	var i = 0; repeat(height) {
 		//check if we already have item
 		if (recipient_grid[# 0, i] == item_num) and (recipient_grid[# 1, i] < stack_limit){
 			recipient_grid[# 1, i] += 1;
@@ -27,7 +28,7 @@ repeat(count){
 		}
 		i++;
 	}
-	if (!success){
+	if (!success) {
 		var i = 0; repeat(height){
 			//if not, see if there's an empty slot
 			if (recipient_grid[# 0, i] == item.none){
@@ -40,17 +41,25 @@ repeat(count){
 		}
 	}
 
-	if (success){
+	if (success) {
 		sender_grid[# 1, index] -= 1;
 		if (sender_grid[# 1, index] == 0) {
 			sender_grid[# 0, index] = item.none;
 		}
 		with (cont_inv) selected_item = inventory[# 0, menu_index];
-		debug_log_add("Traded item!");
 	} else {
 		debug_log_add("Inventory full!");
 	}
+	times++;
 	if (sender_grid[# 0, index] == item.none) break;
+}
+
+if (success) {
+	var prefix = "Stored ";
+	var name = item_info[# ITEM, item_num];
+	if (recipient_grid == inventory) prefix = "Recieved ";
+	if (count > 1) name += "s";
+	debug_log_add(prefix + string(times) + " " + name + ".");
 }
 
 return success;

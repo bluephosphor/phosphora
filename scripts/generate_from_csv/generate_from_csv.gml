@@ -32,9 +32,13 @@ if (layer_exists("Pebbles")){
 var _pebble_map_id = layer_tilemap_get_id("Pebbles");
 	var num = min(room_width,room_height) / 2;
 	repeat(num){
-		var xx = irandom(room_width / 8);
-		var yy = irandom(room_height / 8);
-		tilemap_set(_pebble_map_id,choose(1,2),xx,yy);
+		var xx = irandom(room_width);
+		var yy = irandom(room_height);
+		var grid_x = xx div CELL_WIDTH;
+		var grid_y = yy div CELL_HEIGHT;
+		if (grid_[# grid_x, grid_y] == FLOOR){
+			tilemap_set(_pebble_map_id,choose(1,2),xx div 8,yy div 8);
+		}
 	}
 }
 

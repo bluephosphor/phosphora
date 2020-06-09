@@ -17,7 +17,7 @@ draw_color = c_white;
 
 hitlag = 0;
 
-interact_range = 10;
+interact_range = 20;
 
 spin_duration = room_speed / 2;
 spin_cooldown = 0;

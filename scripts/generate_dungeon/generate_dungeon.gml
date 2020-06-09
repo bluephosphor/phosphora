@@ -107,7 +107,7 @@ for (var _y = 1; _y < height_-1; _y++) {
 
 
 repeat(irandom_range(5,10)){
-	var r = choose("ROOM1.csv","ROOM2.csv","ROOM3.csv","ROOM4.csv");
+	var r = choose("ROOM1.csv","ROOM2.csv","ROOM3.csv","ROOM4.csv","ROOM5.csv");
 	place_dungeon_room(r);
 }
 
