@@ -4,7 +4,8 @@ with (o_level){
 	var str = "";
 	var yy = 0; repeat(height_){
 		var xx = 0; repeat(width_){
-			str += string(grid_[# xx,yy]) + ",";
+			str += string(grid_[# xx,yy]);
+			if (xx != width_ -1) str += ",";
 			xx++;
 		}
 		str += "\n";
@@ -12,7 +13,8 @@ with (o_level){
 	}
 }
 
-var filename = room_data[# rm.name, room] + "_" + string(global.seed) + ".csv";
+//var filename = room_data[# rm.name, room] + "_" + string(global.seed) + ".map";
+var filename = "lvltest.map";
 var file = file_text_open_write(filename);
 file_text_write_string(file,str);
 file_text_close(file);

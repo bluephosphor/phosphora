@@ -727,14 +727,6 @@
             }
         },
         {
-            "Key": "5268bf39-fe8d-4038-9f4c-7a794644b0ed",
-            "Value": {
-                "id": "ff71943d-f25b-4518-8c91-d38a34a83156",
-                "resourcePath": "datafiles_yy\\lvltest.csv.yy",
-                "resourceType": "GMIncludedFile"
-            }
-        },
-        {
             "Key": "52900745-f14a-4475-b86c-1261c55c9170",
             "Value": {
                 "id": "0c5e6b2e-c24f-4f7b-b680-19c8f2b9ee55",

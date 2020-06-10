@@ -132,7 +132,7 @@ room_data[# rm.special_loot,	r_dungeon] = [
 //----------------------------------------CSVTEST--------------------------------------------------//
 room_data[# rm.name,			r_csv_test] = "csv_test";
 room_data[# rm.script,			r_csv_test] = generate_from_csv;
-room_data[# rm.level_file,		r_csv_test] = "lvltest.csv";
+room_data[# rm.level_file,		r_csv_test] = "lvltest.map";
 room_data[# rm.mob_cap,			r_csv_test]	= 3;
 room_data[# rm.mob_types,		r_csv_test]	= [mob.fish];
 room_data[# rm.bgm,				r_csv_test] = snd_forest;

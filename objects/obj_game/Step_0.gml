@@ -13,6 +13,8 @@ if (keyboard_check(vk_shift)){
 		global.debug = !global.debug;
 		o_camera.visible = global.debug;
 		show_debug_overlay(global.debug);
+		
+		if (!global.debug) global.show_grid = false;
 	}
 	
 	if (keyboard_check_pressed(ord("R"))){
@@ -44,6 +46,8 @@ if (!global.debug) exit;
 var in_w = keyboard_check_pressed(ord("W"));
 var in_t = keyboard_check_pressed(ord("T"));
 
+global.show_grid ^= keyboard_check_pressed(ord("G"));
+
 if (keyboard_check(vk_shift)){
 	if(in_w){
 		var xx = o_player.grid_x;
@@ -54,5 +58,5 @@ if (keyboard_check(vk_shift)){
 		var xx = o_player.x;
 		var yy = o_player.y;
 		instance_create_layer(xx,yy,"Instances",obj_tree);
-	}
+	} 
 }
