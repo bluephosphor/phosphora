@@ -1,14 +1,15 @@
 //var filename = room_data[# rm.name, room] + "_" + string(global.seed) + ".map";
 var _filename = "lvltest.map";
 var _map = ds_map_create();
-
+var _submap, _sublist;
 
 //saving dimensions and grid
-_map[? "mapdata"]	= ds_grid_write(grid_);
-_map[? "width"]		= o_level.width_;
-_map[? "height"]	= o_level.height_;
-
-var _submap, _sublist;
+_submap = -1;
+_submap = ds_map_create();
+_submap[? "grid"]	= ds_grid_write(grid_);
+_submap[? "width"]	= o_level.width_;
+_submap[? "height"]	= o_level.height_;
+ds_map_add_map(_map,"map_data",_submap);
 
 //saving player info
 with (o_player){
@@ -29,6 +30,7 @@ with (obj_chest){
 	ds_list_add(_sublist,_submap);
 	ds_list_mark_as_map(_sublist,ds_list_size(_sublist)-1);
 	
+	_submap[? "special"] = (object_get_name(object_index) == "obj_chest_special");
 	_submap[? "x"] = x;
 	_submap[? "y"] = y;
 	_submap[? "inventory"] = ds_grid_write(chest_inventory);

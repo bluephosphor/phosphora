@@ -5,7 +5,6 @@ add_dialog(-1,
 	[
 		"Go to another room?",
 		"CSV Test.",
-		"MAP Test.",
 		"Forest.",
 		"Dungeon.",
 		"Grove.",
@@ -14,7 +13,6 @@ add_dialog(-1,
 );
 
 add_dialog_branch([room_change,r_csv_test]);
-add_dialog_branch([room_change,r_map_test]);
 add_dialog_branch([room_change,r_outside]);
 add_dialog_branch([room_change,r_dungeon]);
 add_dialog_branch([room_change,r_deep_grove]);

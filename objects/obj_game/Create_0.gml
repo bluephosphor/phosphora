@@ -17,8 +17,9 @@ global.time_pause	= false;
 global.pause		= false;
 global.draw_outline = true;
 global.disable_outline = true;
-global.menu_color = c_fuchsia;
-global.show_grid = false;
+global.menu_color	= c_fuchsia;
+global.show_grid	= false;
+global.load_map		= false;
 
 global.view_width	= camera_get_view_width(view_camera[0]);
 global.view_height	= camera_get_view_height(view_camera[0]);

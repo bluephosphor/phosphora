@@ -18,25 +18,29 @@ entries = 16;
 loot_table = -1;
 ltc = 0;
 var list = room_data[# rm.special_loot,room];
-var len = array_length_1d(list)
-var i = 0; repeat(len){
-	var info = list[i];
-	loot_table_add(info[0],info[1]);
-	i++;
+if (list != -1){
+	var len = array_length_1d(list)
+	var i = 0; repeat(len){
+		var info = list[i];
+		loot_table_add(info[0],info[1]);
+		i++;
+	}
 }
 
 //init inv slots
 chest_inventory = ds_grid_create(2,entries);
 
-var i = 0; repeat(entries){
-	if (i < 15){
-		chest_inventory[# 0, i] = loot_item_add();
-	} else {
-		chest_inventory[# 0, i] = item.none;
+if (list != -1){
+	var i = 0; repeat(entries){
+		if (i < 15){
+			chest_inventory[# 0, i] = loot_item_add();
+		} else {
+			chest_inventory[# 0, i] = item.none;
+		}
+		if (chest_inventory[# 0, i] != item.none)	chest_inventory[# 1, i] = 1;
+		else										chest_inventory[# 1, i] = 0;
+		i++;
 	}
-	if (chest_inventory[# 0, i] != item.none)	chest_inventory[# 1, i] = 1;
-	else										chest_inventory[# 1, i] = 0;
-	i++;
 }
 
 pages = [chest_inventory,inventory];

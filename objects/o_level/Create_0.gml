@@ -10,5 +10,11 @@ temp_string = -1;
 
 depth -= 5000;
 
-script_execute(room_data[# rm.script,room]);
+if (global.load_map) {
+	generate_from_map();
+	global.load_map = false;
+} else {
+	script_execute(room_data[# rm.script,room]);
+}
+
 with (obj_game) event_perform(ev_other,ev_user0);

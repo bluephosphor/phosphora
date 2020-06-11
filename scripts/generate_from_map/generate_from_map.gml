@@ -1,9 +1,12 @@
 //get file
+var i, _submap, _sublist;
 var _json = load_json_from_file("lvltest.map");
 
 //room sizing
-width_ = _json[? "width"];
-height_ = _json[? "height"];
+_submap = -1;
+_submap = _json[? "map_data"];
+width_  = _submap[? "width"];
+height_ = _submap[? "height"];
 
 room_width = width_ * CELL_WIDTH;
 room_height = height_ * CELL_HEIGHT;
@@ -13,10 +16,10 @@ globalvar grid_;
 grid_ = ds_grid_create(width_,height_);
 
 //get map data
-ds_grid_read(grid_,_json[? "mapdata"]);
+ds_grid_read(grid_,_submap[? "grid"]);
 
-var i, _submap, _sublist;
 //get player info
+_submap = -1;
 _submap = _json[? "player_data"];
 var xx = _submap[? "x"];
 var yy = _submap[? "y"];
@@ -31,7 +34,9 @@ i = 0; repeat(ds_list_size(_sublist)){
 	_submap = _sublist[| i];
 	var xx = _submap[? "x"];
 	var yy = _submap[? "y"];
-	with (instance_create_layer(xx,yy,"Instances",obj_chest)){
+	var obj = obj_chest; 
+	if (_submap[? "special"]) obj = obj_chest_special;
+	with (instance_create_layer(xx,yy,"Instances",obj)){
 		o_level.chests[o_level.chest_index++] = id;
 		ds_grid_read(chest_inventory,_submap[? "inventory"]);
 	}

@@ -23,6 +23,9 @@ if (keyboard_check(vk_shift)){
 	if (keyboard_check_pressed(ord("R"))){
 		scr_room_change();
 	}
+	if (keyboard_check_pressed(ord("M"))){
+		scr_load_map();
+	}
 }
 
 if (room_transition){
