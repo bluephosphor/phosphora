@@ -6,7 +6,8 @@ audio_group_load(audiogroup_soundeffects);
 global.webmode = (!os_browser == browser_not_a_browser);
 
 //global vars
-globalvar playerstate, debug_log, cont_daycycle, cont_lighting, cont_audio, cont_menu, cont_inv, cont_weather, cont_textbox, cont_cutscene;
+globalvar playerstate, debug_log, cont_daycycle, cont_lighting, cont_audio, 
+			cont_menu, cont_inv, cont_weather, cont_textbox, cont_cutscene;
 global.actionable	= true;
 global.debug		= false;
 global.rift_count	= 0;
@@ -22,6 +23,8 @@ global.show_grid = false;
 global.view_width	= camera_get_view_width(view_camera[0]);
 global.view_height	= camera_get_view_height(view_camera[0]);
 display_set_gui_size(global.view_width,global.view_height);
+
+global.resolution = [window_get_width(), window_get_height()];
 
 //initialize data structures
 scr_player_data();

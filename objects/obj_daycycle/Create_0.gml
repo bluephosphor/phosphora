@@ -1,6 +1,6 @@
 depth = -2001
 
-var starting_hour = 0;
+var starting_hour = 7;
 
 seconds = (starting_hour * 60) * 60;
 minutes = 0;
@@ -9,7 +9,7 @@ hours = 0;
 globalvar day, season, year;
 
 day = 1;
-season = 1;
+season = 2;
 year = 1;
 
 time_increment = 1; //seconds per step

@@ -18,34 +18,15 @@ ds_grid_set_region(grid_, 0, 0, width_ - 1, height_ - 1, VOID);
 //init pathfinding grid
 path_grid = mp_grid_create(0,0,width_,height_,CELL_WIDTH,CELL_HEIGHT);
 
-//check file extension
-var len = string_length(filename);
-var substr = string_copy(filename, len - 2, 3);
-if (substr == "map"){
-	ds_grid_copy(grid_,file_grid);
-	show_debug_message(string(ds_grid_width(grid_)) + ":" + string(ds_grid_height(grid_)));
-	show_debug_message(string(ds_grid_width(file_grid)) + ":" + string(ds_grid_height(file_grid)));
-} else {
-	var gx = 0; repeat(ww){
-		var gy = 0; repeat(hh){
-	        import_cell_from_csv(gx,gy,1,1);
-			gy++;
-		}
-		gx++;
+var gx = 0; repeat(ww){
+	var gy = 0; repeat(hh){
+	    import_cell_from_csv(gx,gy,1,1);
+		gy++;
 	}
+	gx++;
 }
 
 if (!instance_exists(o_player)) spawn_player();
-
-
-//temp_string = "";
-//for (var yy = 0; yy < height_ - 2; yy++){
-//	for(var xx = 0; xx < width_ - 2; xx++){
-//		temp_string += string(grid_[# xx,yy]) + ",";
-//	}
-//	temp_string += "\n";
-//}
-//display_set_gui_size(window_get_width(),window_get_height());
 
 ds_grid_destroy(file_grid);
 file_grid = -1;

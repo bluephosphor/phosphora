@@ -487,6 +487,14 @@
             }
         },
         {
+            "Key": "3accdd5a-e2e8-41d6-911e-3af8debd25e3",
+            "Value": {
+                "id": "8013403c-d6d7-4740-8d78-f6e6baa0a495",
+                "resourcePath": "scripts\\generate_from_map\\generate_from_map.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "3d1c5b93-29d5-4893-8ee6-04ba4c57162c",
             "Value": {
                 "id": "a4b910b0-fd03-4850-8a7d-6778a514371b",
@@ -812,6 +820,14 @@
                 "id": "33ae5857-1e7e-449e-8cd6-e6aec6f7ebe2",
                 "resourcePath": "views\\5a2d52d1-f935-4e92-b511-2ef01bf93275.yy",
                 "resourceType": "GMFolder"
+            }
+        },
+        {
+            "Key": "5d0b985e-342f-4928-8ee7-4439ec947780",
+            "Value": {
+                "id": "5fc88ef3-c279-4a94-baac-44f2ae65d7ae",
+                "resourcePath": "rooms\\r_map_test\\r_map_test.yy",
+                "resourceType": "GMRoom"
             }
         },
         {
@@ -2412,6 +2428,7 @@
         "3f7f9659-51f5-4780-b894-2b72b689635f",
         "3aa4d99b-8d73-442b-ac50-a2b99463ca96",
         "957ee566-628a-4d23-a57d-7033376fe334",
+        "3accdd5a-e2e8-41d6-911e-3af8debd25e3",
         "9530b41c-2d0f-4e58-a02c-0952629d30e1",
         "c433a167-33de-4d03-affd-3395a9449da9",
         "90fedc3f-652a-42b7-b0f1-d79c2f390152",
