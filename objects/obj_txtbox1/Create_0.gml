@@ -22,6 +22,7 @@ textbox_dims	= -1;
 line_skipped	= false;
 autotype_spd	= 0.5;
 str_pause		= 0;
+pause_text		= true;
 
 state	= 0;
 

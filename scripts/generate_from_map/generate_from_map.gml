@@ -1,7 +1,5 @@
 //get file
-var _file = file_text_open_read("lvltest.map");
-var _str = file_text_read_string(_file);
-var _json = json_decode(_str);
+var _json = load_json_from_file("lvltest.map");
 
 //room sizing
 width_ = _json[? "width"];
@@ -17,36 +15,45 @@ grid_ = ds_grid_create(width_,height_);
 //get map data
 ds_grid_read(grid_,_json[? "mapdata"]);
 
-var i, _submap;
+var i, _submap, _sublist;
+//get player info
+_submap = _json[? "player_data"];
+var xx = _submap[? "x"];
+var yy = _submap[? "y"];
+with (instance_create_layer(xx,yy,"Instances",o_player)){
+	image_xscale = _submap[? "image_xscale"];
+}
+
 //get chest info
-i = 0; repeat(_json[? "chest_count"]){
+_sublist = _json[? "chest_list"];
+i = 0; repeat(ds_list_size(_sublist)){
 	_submap = -1;
-	_submap = json_decode(_json[? "chest_" + string(i)]);
+	_submap = _sublist[| i];
 	var xx = _submap[? "x"];
 	var yy = _submap[? "y"];
 	with (instance_create_layer(xx,yy,"Instances",obj_chest)){
 		o_level.chests[o_level.chest_index++] = id;
 		ds_grid_read(chest_inventory,_submap[? "inventory"]);
 	}
-	ds_map_destroy(_submap);
 	i++;
 }
 
-i = 0; repeat(_json[? "tree_count"]){
+_sublist = _json[? "tree_list"];
+i = 0; repeat(ds_list_size(_sublist)){
 	_submap = -1;
-	_submap = json_decode(_json[? "tree_" + string(i)]);
+	_submap = _sublist[| i];
 	var xx = _submap[? "x"];
 	var yy = _submap[? "y"];
 	with (instance_create_layer(xx,yy,"Instances",obj_tree)){
 		image_xscale = _submap[? "image_xscale"];
 	}
-	ds_map_destroy(_submap);
 	i++;
 }
 
-i = 0; repeat(_json[? "scenery_count"]){
+_sublist = _json[? "scenery_list"];
+i = 0; repeat(ds_list_size(_sublist)){
 	_submap = -1;
-	_submap = json_decode(_json[? "scenery_" + string(i)]);
+	_submap = _sublist[| i];
 	var xx = _submap[? "x"];
 	var yy = _submap[? "y"];
 	with (instance_create_layer(xx,yy,"Instances",obj_scenery_item)){
@@ -54,7 +61,6 @@ i = 0; repeat(_json[? "scenery_count"]){
 		facing = _submap[? "facing"];
 		if (color != -1) image_blend = color;
 	}
-	ds_map_destroy(_submap);
 	i++;
 }
 

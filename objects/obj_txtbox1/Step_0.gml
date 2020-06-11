@@ -8,7 +8,7 @@ state = scribble_autotype_get(scribble_line);
 
 if (str_pause > 0){
 	str_pause--;
-} else {
+} else if (pause_text){
 	if (scribble_autotype_is_paused(scribble_line)){
 		scribble_autotype_set_pause(scribble_line, false);
 	} else {
