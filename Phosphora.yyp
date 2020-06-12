@@ -455,6 +455,14 @@
             }
         },
         {
+            "Key": "372ba8c1-97e0-445d-af04-1248d57ec414",
+            "Value": {
+                "id": "18126479-2ba5-47ac-974e-8e8996860641",
+                "resourcePath": "sprites\\s_wall_tiles_template\\s_wall_tiles_template.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "375e7330-6e30-4902-8a42-dbc8ad380c16",
             "Value": {
                 "id": "fd149b70-6a82-47fd-af0c-e67b35dd9351",
@@ -748,6 +756,14 @@
                 "id": "0c5e6b2e-c24f-4f7b-b680-19c8f2b9ee55",
                 "resourcePath": "sprites\\spr_ef_6\\spr_ef_6.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "53214392-84f5-4fc2-b9ed-cd7271cbd893",
+            "Value": {
+                "id": "a517fe61-a906-467b-867d-70ba8e227748",
+                "resourcePath": "tilesets\\t_water_cavern\\t_water_cavern.yy",
+                "resourceType": "GMTileSet"
             }
         },
         {
@@ -1580,6 +1596,14 @@
                 "id": "9d3edc61-da84-4870-aad0-63ab9fb040b3",
                 "resourcePath": "views\\9edbbed4-4820-4bf1-b1e0-b63f09bc0977.yy",
                 "resourceType": "GMFolder"
+            }
+        },
+        {
+            "Key": "9f4e1dc9-d060-4eeb-9aa6-46e98f7104e1",
+            "Value": {
+                "id": "4afb4abc-5b6d-4543-a062-0945b21b3342",
+                "resourcePath": "sprites\\s_water_cavern\\s_water_cavern.yy",
+                "resourceType": "GMSprite"
             }
         },
         {

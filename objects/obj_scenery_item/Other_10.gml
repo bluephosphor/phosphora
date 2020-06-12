@@ -20,8 +20,8 @@ if (room_data[# rm.scenery_glow, room] == true){
 		case 0:  
 		case 12: size = 4; strength = 0.9; y_offset = 16; break;
 		case 4:  size = 1; strength = 0.5; break;
-		case 5: size = 1; strength = 0.4; y_offset = 16; break;
-		case 11: size = 3; strength = 0.6; y_offset = 16;
+		case 5:  size = 1; strength = 0.4; y_offset = 16; break;
+		case 11: size = 3; strength = 0.6; y_offset = 16; break;
 		default: size = 1; strength = 0.4; break;
 	}
 	with (instance_create_layer(x,y - y_offset,layer,mc_lightsource)){

@@ -121,12 +121,11 @@ item_info[# COLOR,item.ears]		= c_teal;
 item_info[# COLOR,item.rubellite]	= c_fuchsia;
 
 var str = "", i = 0; repeat(ds_grid_height(item_info)){
-	str += string(item_info[# ITEM,i]) + ",";
-	str += string(item_info[# INFO,i]) + ",";
-	str += string(item_info[# SCRIPT,i]) + ",";
-	str += string(item_info[# STACK_LIMIT,i]) + ",";
-	str += string(item_info[# COLOR,i]) + ",";
-	str += "\n";
+	str += string(item_info[# ITEM,i]) + ";";
+	str += string(item_info[# INFO,i]) + ";";
+	str += string(item_info[# SCRIPT,i]) + ";";
+	str += string(item_info[# STACK_LIMIT,i]) + ";";
+	str += string(item_info[# COLOR,i]) + "\n";
 	i++;
 }
 var file = file_text_open_write("item_info.csv");

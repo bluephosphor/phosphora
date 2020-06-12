@@ -7,18 +7,20 @@ if (!surface_exists(light_surf)) {
 	
 	with(mc_lightsource){
 		gpu_set_blendmode(bm_src_color);
+		var sscale = other.surf_scale;
+		var spr_scale = light_size * sscale / 4;
 		draw_sprite_ext(
 			spr_glow,0,
-			x*other.surf_scale,
-			y*other.surf_scale,
-			light_size*other.surf_scale,
-			light_size*other.surf_scale,
+			x*sscale,
+			y*sscale,
+			spr_scale,
+			spr_scale,
 			0,c_white,draw_strength
 		);
 		gpu_set_blendmode(bm_normal);
 	}
 	surface_reset_target();
-	var alpha_reduction = o_player.hitlag * 0.01;
+	var alpha_reduction = o_player.hitlag * 0.02;
 	draw_surface_ext(light_surf,0,0,1/surf_scale,1/surf_scale,0,c_white,dark_lev - alpha_reduction);
 }
 

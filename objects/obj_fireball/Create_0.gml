@@ -4,7 +4,7 @@ follow = o_player;
 target = noone;
 
 frequency = 0.05;
-amplitude = sprite_get_width(o_player) / 2;
+amplitude = sprite_get_width(s_player) / 2;
 timer = 0;
 
 x_prev = x;
