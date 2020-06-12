@@ -26,6 +26,8 @@ if (hitlag > 0){
 	c = c_white;
 	if (playerstate == p_state.hitstun) c = c_red;
 	draw_set_alpha(hitlag * 0.01);
+	gpu_set_blendmode(bm_add);
 	draw_rectangle_color(0,0,global.view_width,global.view_height,c,c,c,c,false);
+	gpu_set_blendmode(bm_normal);
 	draw_set_alpha(1);
 }

@@ -77,21 +77,21 @@ cont_weather	= instance_create_layer(0,0,layer,obj_weather);
 cont_textbox = noone;
 cont_cutscene = noone;
 
-var scene = [
-	[cs_add_dialog,-1,"...",tag.no_box],
-	[cs_add_dialog,-1,"Oh dear!"],
-	[cs_add_dialog,-1,"What do we have here?"],
-	[cs_add_dialog,-1,"It seems another lost child has wandered into my forest."],
-	[cs_add_dialog,-1,"Little friend... Are you lost?"],
-	[cs_end_dialog],
-	[cs_wait,2],
-	[cs_add_dialog,-1,"Please, do not despair... I am here now.",false],
-	[cs_add_dialog,-1,"You will be safe in this place..."],
-	[cs_add_dialog,-1,"With [c_red][sound,secret]me.[/c]"],
-	[cs_end_dialog]
-];
+//var scene = [
+//	[cs_add_dialog,-1,"...",tag.no_box],
+//	[cs_add_dialog,-1,"Oh dear!"],
+//	[cs_add_dialog,-1,"What do we have here?"],
+//	[cs_add_dialog,-1,"It seems another lost child has wandered into my forest."],
+//	[cs_add_dialog,-1,"Little friend... Are you lost?"],
+//	[cs_end_dialog],
+//	[cs_wait,2],
+//	[cs_add_dialog,-1,"Please, do not despair... I am here now.",false],
+//	[cs_add_dialog,-1,"You will be safe in this place..."],
+//	[cs_add_dialog,-1,"With [c_red][sound,secret]me.[/c]"],
+//	[cs_end_dialog]
+//];
 
-new_cutscene(scene);
+//new_cutscene(scene);
 
 if (audio_group_is_loaded(audiogroup_music)) {
 	room_goto_next();

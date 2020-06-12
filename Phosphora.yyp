@@ -834,7 +834,7 @@
             "Key": "5d0b985e-342f-4928-8ee7-4439ec947780",
             "Value": {
                 "id": "5fc88ef3-c279-4a94-baac-44f2ae65d7ae",
-                "resourcePath": "rooms\\r_map_test\\r_map_test.yy",
+                "resourcePath": "rooms\\r_cavern\\r_cavern.yy",
                 "resourceType": "GMRoom"
             }
         },
@@ -1767,6 +1767,14 @@
             }
         },
         {
+            "Key": "b22ce32e-3845-4263-8090-b85cf453a33c",
+            "Value": {
+                "id": "4561c283-dd47-4eca-8f5c-8a6b7cdb9733",
+                "resourcePath": "tilesets\\t_walls3\\t_walls3.yy",
+                "resourceType": "GMTileSet"
+            }
+        },
+        {
             "Key": "b3138e5a-27ac-4e57-8f6e-b0d1b84faaf7",
             "Value": {
                 "id": "0b7b153d-b597-41dc-b488-bdc7d0c2d699",
@@ -2023,6 +2031,14 @@
             }
         },
         {
+            "Key": "cc2c9d2a-3701-440f-a310-fec1d7dae4ef",
+            "Value": {
+                "id": "f728fc2a-9dea-4f07-8803-55d5a99899ac",
+                "resourcePath": "sprites\\s_wall_tiles_cavern\\s_wall_tiles_cavern.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "cc98d028-7bdd-4680-85f3-c87a7baa481e",
             "Value": {
                 "id": "a7ec78f2-a1b4-4dcf-ba0c-bf7c27ce906d",
@@ -2100,6 +2116,14 @@
                 "id": "879ec769-fc52-442f-b04f-9c10f893fea7",
                 "resourcePath": "sprites\\spr_fish_small\\spr_fish_small.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "d7de78e8-642b-4b95-9380-b485d626b853",
+            "Value": {
+                "id": "c71cf03b-8432-4584-8e24-89b7ad86e6ad",
+                "resourcePath": "scripts\\generate_cavern\\generate_cavern.yy",
+                "resourceType": "GMScript"
             }
         },
         {
@@ -2458,6 +2482,7 @@
         "12089e9b-f70f-481e-ad86-49dac9515834",
         "eccf851a-e20f-4c0f-8304-5dac3493449d",
         "3f7f9659-51f5-4780-b894-2b72b689635f",
+        "d7de78e8-642b-4b95-9380-b485d626b853",
         "3aa4d99b-8d73-442b-ac50-a2b99463ca96",
         "957ee566-628a-4d23-a57d-7033376fe334",
         "3accdd5a-e2e8-41d6-911e-3af8debd25e3",

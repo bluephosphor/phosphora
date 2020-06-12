@@ -18,7 +18,8 @@ if (!surface_exists(light_surf)) {
 		gpu_set_blendmode(bm_normal);
 	}
 	surface_reset_target();
-	draw_surface_ext(light_surf,0,0,1/surf_scale,1/surf_scale,0,c_white,dark_lev);
+	var alpha_reduction = o_player.hitlag * 0.01;
+	draw_surface_ext(light_surf,0,0,1/surf_scale,1/surf_scale,0,c_white,dark_lev - alpha_reduction);
 }
 
 if (outside) dark_lev = cont_daycycle.darkness;

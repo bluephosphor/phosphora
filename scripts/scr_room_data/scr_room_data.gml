@@ -168,31 +168,30 @@ room_data[# rm.special_loot,	r_csv_test] = [
 	[item.rubellite,	25],
 ];
 
-//----------------------------------------MAPTEST--------------------------------------------------//
-room_data[# rm.name,			r_map_test] = "map_test";
-room_data[# rm.script,			r_map_test] = generate_from_map;
-room_data[# rm.mob_cap,			r_map_test]	= 3;
-room_data[# rm.mob_types,		r_map_test]	= [mob.fish];
-room_data[# rm.bgm,				r_map_test] = snd_forest;
-room_data[# rm.bgm2,			r_map_test]	= snd_forest_night;
-room_data[# rm.draw_daylight,	r_map_test]	= true;
-room_data[# rm.day_outline,		r_map_test]	= false;
-room_data[# rm.land_scenery_f,	r_map_test]	= [0,1,2,3,4];
-room_data[# rm.water_scenery_f,	r_map_test]	= [5,6];
-room_data[# rm.scenery_c,		r_map_test] = c_shadow;
-room_data[# rm.tree_overcast,	r_map_test]	= true;
+//----------------------------------------CAVERN--------------------------------------------------//
+room_data[# rm.name,			r_cavern]	= "cavern";
+room_data[# rm.script,			r_cavern]	= generate_cavern;
+room_data[# rm.mob_cap,			r_cavern]	= 8;
+room_data[# rm.mob_types,		r_cavern]	= [mob.fish,mob.minky];
+room_data[# rm.bgm,				r_cavern]	= snd_forest_night;
+room_data[# rm.draw_daylight,	r_cavern]	= false;
+room_data[# rm.day_outline,		r_cavern]	= false;
+room_data[# rm.dark_level,		r_cavern]	= 0.9;
+room_data[# rm.land_scenery_f,	r_cavern]	= [0,3,4,11,12,13];
+room_data[# rm.water_scenery_f,	r_cavern]	= [6];
+room_data[# rm.scenery_c,		r_cavern]	= c_fuchsia;
+room_data[# rm.scenery_glow,	r_cavern]	= true;
+room_data[# rm.tree_overcast,	r_cavern]	= false;
 
            //chest loot table//
 //--Item----------------Chance(in percent)//
-room_data[# rm.chest_loot,		r_map_test] = [
-	[item.apple,		75],
-	[item.r_potion,		50],
-	[item.b_potion,		30],
-	[item.note,			20],
+room_data[# rm.chest_loot,		r_cavern] = [
+	[item.apple,		50],
+	[item.r_potion,		30],
+	[item.note,			25],
 	[item.rod,			10],
-	[item.card,			6],
 	[item.ps_gust,		5],
-	[item.ps_fire,		4],
+	[item.ps_fire,		10],
 	[item.ps_thunder,	3],
 	[item.ears,			1],
 	[item.rubellite,	0.05],
@@ -200,8 +199,8 @@ room_data[# rm.chest_loot,		r_map_test] = [
 
       //special loot table//
 //--Item----------------Chance(in percent)//
-room_data[# rm.special_loot,	r_map_test] = [
-	[item.diamond,		75],
-	[item.iqueur,		50],
-	[item.rubellite,	25],
+room_data[# rm.special_loot,	r_cavern] = [
+	[item.diamond,		10],
+	[item.iqueur,		5],
+	[item.rubellite,	0.05],
 ];
