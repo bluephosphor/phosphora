@@ -1,0 +1,1 @@
+if (ds_exists(chest_inventory,ds_type_grid)) {ds_grid_destroy(chest_inventory);}
