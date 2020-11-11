@@ -18,7 +18,7 @@ global.time_pause	= false;
 global.pause		= false;
 global.draw_outline = true;
 global.disable_outline = true;
-global.menu_color	= c_fuchsia;
+global.menu_color	= merge_color(c_white,c_blue,0.3);
 global.show_grid	= false;
 global.load_map		= false;
 

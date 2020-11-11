@@ -5,6 +5,7 @@ function change_menu_col(argument0) {
 		case 2: global.menu_color = c_blue; break;
 		case 3: global.menu_color = c_aqua; break;
 		case 4: global.menu_color = c_fuchsia; break;
+		case 5: global.menu_color = merge_color(c_white,c_blue,0.3);
 	}
 
 	inputting_c = global.menu_color;

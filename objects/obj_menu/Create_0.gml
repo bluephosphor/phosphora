@@ -60,7 +60,7 @@ ds_menu_difficulty = create_menu_page(
 ds_menu_graphics = create_menu_page(
 	["RESOLUTION",	menu_element_type.shift,			change_resolution,		2,		["1x","2x","3x"]],
 	["WINDOW MODE",	menu_element_type.toggle,			change_window_mode,		0,		["WINDOWED","FULLSCREEN"]],
-	["MENU COLOR",	menu_element_type.shift,			change_menu_col,		4,		["RED","GREEN","BLUE","AQUA","FUCHSIA"]],
+	["MENU COLOR",	menu_element_type.shift,			change_menu_col,		5,		["RED","GREEN","BLUE","AQUA","FUCHSIA","ICE"]],
 	["BACK",		menu_element_type.page_transfer,	menu_page.settings],
 );
 
