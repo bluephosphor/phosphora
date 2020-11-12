@@ -16,7 +16,7 @@ if (!isOpen) {
 	if (keyboard_check_pressed(vk_escape)) {
 		isOpen = false;
 		closeFunction();
-	} else if (self.keyboardCheckDelay(vk_backspace)) {
+	} else if (self.keyboardCheckDelay(vk_backspace)){
 		consoleString = string_delete(consoleString, cursorPos - 1, 1);
 		cursorPos = max(1, cursorPos - 1);
 	} else if (self.keyboardCheckDelay(vk_delete)) {

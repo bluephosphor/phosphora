@@ -75,7 +75,7 @@ function keyComboPressed() {
 			return false;
 		}
 	}
-	if (keyboard_check_pressed(ord(string_upper(openKey)))) {
+	if (keyboard_check_pressed(openKey)) {
 		return true;
 	}
 }
