@@ -6,7 +6,7 @@
     "path": "folders/Scripts/declarations.yy",
   },
   "resourceVersion": "1.0",
-  "name": "scr_char_data",
+  "name": "CHARACTER_DATA",
   "tags": [],
   "resourceType": "GMScript",
 }

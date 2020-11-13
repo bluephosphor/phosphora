@@ -3,6 +3,7 @@
 function change_window_mode(argument0) {
 
 	global.fullscreen = argument0;
+	
 	window_set_fullscreen(global.fullscreen);
 
 	var res = global.fullscreen ? [display_get_width(),display_get_height()] : global.resolution;

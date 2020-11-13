@@ -32,7 +32,7 @@ if (throw_){
 	
 	if (launch){
 		var _x_input = keyboard_check(vk_right) - keyboard_check(vk_left);
-		var _y_input = keyboard_check(vk_down) - keyboard_check(vk_up);
+		var _y_input = keyboard_check(vk_down)  - keyboard_check(vk_up);
 		if (_x_input == 0) and (_y_input == 0){
 			_x_input = o_player.image_xscale;
 		}

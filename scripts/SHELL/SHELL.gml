@@ -55,6 +55,11 @@ function sh_goto(args){
 	return "did not find room named: " + args[1] + "...";
 }
 
+function sh_reload(args){
+	room_change(room);
+	return "regenerating current room...";
+}
+
 function sh_give(args){
 	var str = args[1];
 	var first_letter = string_upper(string_copy(str,1,1));
