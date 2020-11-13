@@ -31,11 +31,17 @@ if (show_hp){
 	draw_color = c_white;
 }
 
-var inst = instance_place(x,y,obj_item_entity);
-if (inst != noone) with (inst){
-	var value = coin_data[# 0, coin_type];
-	global.player_coins += value;
-	instance_destroy();
+var _num  = instance_place_list(x,y,obj_item_entity,item_list,true);
+if (_num > 0) {
+		var i = 0; repeat(_num){
+		with (item_list[| i]){
+			var value = coin_data[# 0, coin_type];
+			global.player_coins += value;
+			instance_destroy();
+		}
+		i++;
+	}
+	ds_list_clear(item_list);
 }
 
 update_target();

@@ -34,11 +34,10 @@ if (question){
 }
 
 raw_str = string_read(line_to_draw);
+var _wrapped = string_wrap(raw_str,text_max_width);
 
-if (!draw_box) {
-	x_origin = (global.view_width / 2) - (string_width(raw_str) / 2);
-	y_origin = (global.view_height / 2) - (string_height(raw_str) / 2);
-}
+				x_origin = (global.view_width / 2)  - (string_width(_wrapped) / 2);
+if (!draw_box)  y_origin = (global.view_height / 2) - (string_height(raw_str) / 2);
 
 scribble_line = scribble_draw(x_origin,y_origin,line_to_draw);
 textbox_dims = scribble_get_bbox(scribble_line,x_origin,y_origin,8,8,8,8);

@@ -16,6 +16,7 @@ draw_alpha = 0;
 draw_color = c_white;
 
 hitlag = 0;
+item_list = ds_list_create();
 
 interact_range = 20;
 

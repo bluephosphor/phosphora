@@ -54,3 +54,21 @@ function sh_goto(args){
 	}
 	return "did not find room named: " + args[1] + "...";
 }
+
+function sh_give(args){
+	var str = args[1];
+	var first_letter = string_upper(string_copy(str,1,1));
+	var str = first_letter + string_copy(str,2,string_length(str) - 1);
+	var quant = 1; 
+	var s = "";
+	if (array_length(args) > 2) {quant = args[2]; s = "s";}
+	var i = 0; repeat (ds_grid_height(item_info)){
+		if (item_info[# ITEM, i] == str){
+			add_item(inventory,i,quant);
+			return "gave " + string(quant) + " " + args[1] + s + " to " + player_data[? stat.name] + ".";
+			break;
+		}
+		i++;
+	}
+	return "did not find item named: " + args[1] + "...";
+}
