@@ -2,8 +2,8 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Scripts",
-    "path": "folders/Scripts.yy",
+    "name": "save_load",
+    "path": "folders/Scripts/save_load.yy",
   },
   "resourceVersion": "1.0",
   "name": "save_room_data",

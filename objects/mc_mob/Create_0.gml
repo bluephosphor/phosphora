@@ -8,6 +8,7 @@ in_cell = grid_[# grid_x, grid_y];
 
 passive = false;
 watertype = false;
+nocturnal = false;
 hitlag = 0;
 
 x_speed_ = 0;
@@ -34,3 +35,4 @@ hitbox_active = true;
 static_attack = false;
 
 alarm[10] = anim_speed;
+alarm[11] = room_speed;

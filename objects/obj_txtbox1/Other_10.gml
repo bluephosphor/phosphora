@@ -13,6 +13,8 @@ if (line_index == lines){
 	exit;
 }
 
+if (reset_state) gamestate = DIALOGUE;
+
 question = is_array(dialog[line_index, 1]);
 
 if (question){

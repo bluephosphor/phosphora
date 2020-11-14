@@ -50,8 +50,8 @@
   ],
   "overriddenProperties": [],
   "parent": {
-    "name": "meta",
-    "path": "folders/Objects/meta.yy",
+    "name": "gui",
+    "path": "folders/Objects/gui.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_shell",

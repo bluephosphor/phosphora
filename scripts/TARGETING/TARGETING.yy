@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "text",
-    "path": "folders/Scripts/text.yy",
+    "name": "targeting",
+    "path": "folders/Scripts/targeting.yy",
   },
   "resourceVersion": "1.0",
-  "name": "add_dialog",
+  "name": "TARGETING",
   "tags": [],
   "resourceType": "GMScript",
 }

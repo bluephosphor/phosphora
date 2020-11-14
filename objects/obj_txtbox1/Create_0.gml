@@ -1,5 +1,3 @@
-gamestate = DIALOGUE;
-
 tb_width	= global.view_width - 32;
 tb_height	= 32;
 x_origin	= 24;

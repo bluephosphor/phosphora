@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "text",
-    "path": "folders/Scripts/text.yy",
+    "name": "tree_cover",
+    "path": "folders/Scripts/tree_cover.yy",
   },
   "resourceVersion": "1.0",
-  "name": "add_dialog_branch",
+  "name": "TREE_COVER",
   "tags": [],
   "resourceType": "GMScript",
 }

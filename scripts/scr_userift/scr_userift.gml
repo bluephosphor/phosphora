@@ -8,16 +8,11 @@ function scr_userift() {
 	}
 
 	if (global.rift_count >= 3){
-		cont_inv.show_inventory = false;
 		global.rift_count = 0;
 		var i = 0; repeat (3){
 			has_rift[i] = false;
 			i++;
 		}
-		with(obj_game){
-			room_transition = true;
-		}
+		room_change(room);
 	}
-
-
 }

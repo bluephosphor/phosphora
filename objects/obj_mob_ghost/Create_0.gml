@@ -2,6 +2,7 @@ event_inherited();
 mob_id = mob.ghost;
 hp = mob_data[# mob_id,stat.hp];
 passive = true;
+nocturnal = true;
 
 max_speed_ = 0.5;
 acceleration_ = 0.01;
