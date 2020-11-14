@@ -7,6 +7,7 @@ function scr_item_info() {
 	var _width = 2;
 	var _height = coin.height;
 	coin_data = ds_grid_create(_width,_height);
+	ds_collector_add(coin_data);
 	ds_grid_set_region(coin_data,0,0,_width,_height,-1);
 	//coin values
 	coin_data[# 0, coin.gold]   = 10;
@@ -42,6 +43,7 @@ function scr_item_info() {
 	var _width = 5;
 	var _height = item.height;
 	item_info = ds_grid_create(_width,_height);
+	ds_collector_add(item_info);
 	ds_grid_set_region(item_info,0,0,_width,_height,-1);
 
 #macro ITEM 0

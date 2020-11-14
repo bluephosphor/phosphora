@@ -1,5 +1,5 @@
-var put_away_item	= keyboard_check_pressed(input[? key.held]);
-var use_item		= keyboard_check_pressed(input[? key.action]);
+var put_away_item	= keyboard_check_pressed(input[| key.held]);
+var use_item		= keyboard_check_pressed(input[| key.action]);
 
 x = user.x;
 y = user.y;

@@ -1,7 +1,7 @@
 if (scribble_line == -1) exit;
 
-var in = keyboard_check_pressed(input[? key.action]);
-var vinput = keyboard_check_pressed(input[? key.down]) - keyboard_check_pressed(input[? key.up]);
+var in = keyboard_check_pressed(input[| key.action]);
+var vinput = keyboard_check_pressed(input[| key.down]) - keyboard_check_pressed(input[| key.up]);
 
 state = scribble_autotype_get(scribble_line);
 //pausing

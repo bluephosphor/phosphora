@@ -4,9 +4,9 @@ show_menu ^= toggle;
 
 if (!show_menu) exit;
 
-var hinput = keyboard_check_pressed(input[? key.right]) - keyboard_check_pressed(input[? key.left]);
-var vinput = keyboard_check_pressed(input[? key.down])  - keyboard_check_pressed(input[? key.up]);
-var sinput = keyboard_check_pressed(input[? key.action]);
+var hinput = keyboard_check_pressed(input[| key.right]) - keyboard_check_pressed(input[| key.left]);
+var vinput = keyboard_check_pressed(input[| key.down])  - keyboard_check_pressed(input[| key.up]);
+var sinput = keyboard_check_pressed(input[| key.action]);
 
 if (keyboard_check(vk_shift)){
 	var len = 2;

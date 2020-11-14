@@ -1,9 +1,11 @@
 function scr_init_particles() {
 	global.p_system		= part_system_create();
+	ds_collector_add(global.p_system);
 
 	part_system_depth(global.p_system,-room_height - 1);
 
 	global.p_spinpixel	= part_type_create();
+	ds_collector_add(global.p_spinpixel);
 
 	part_type_color1	(global.p_spinpixel,c_white);
 	part_type_alpha2	(global.p_spinpixel,0.5,0);
@@ -12,6 +14,7 @@ function scr_init_particles() {
 	part_type_speed		(global.p_spinpixel,0.1,0.3,0,0);
 
 	global.p_gust = part_type_create();
+	ds_collector_add(global.p_gust);
 
 	var len = sprite_get_number(spr_ef_3) * 2;
 	part_type_life		(global.p_gust,len,len);
@@ -19,6 +22,7 @@ function scr_init_particles() {
 	part_type_alpha1	(global.p_gust,0.2);
 
 	global.p_water_ring = part_type_create();
+	ds_collector_add(global.p_water_ring);
 
 	var len = sprite_get_number(spr_ef_6) * 5;
 	part_type_life		(global.p_water_ring,len,len);
@@ -26,6 +30,7 @@ function scr_init_particles() {
 	part_type_alpha1	(global.p_water_ring,0.5);
 
 	global.p_forestspirit = part_type_create();
+	ds_collector_add(global.p_forestspirit);
 
 	part_type_sprite	(global.p_forestspirit,spr_forest_spirit,1,1,0);
 	part_type_alpha2	(global.p_forestspirit,0.5,0);
@@ -34,6 +39,7 @@ function scr_init_particles() {
 	part_type_speed		(global.p_forestspirit,0.1,0.2,0,0);
 
 	global.p_enemy_death = part_type_create();
+	ds_collector_add(global.p_enemy_death);
 
 	part_type_sprite	(global.p_enemy_death,spr_enemypart,1,1,0);
 	part_type_alpha2	(global.p_enemy_death,1,0);
@@ -42,6 +48,7 @@ function scr_init_particles() {
 	part_type_speed		(global.p_enemy_death,1,1,0,0);
 
 	global.p_fog = part_type_create();
+	ds_collector_add(global.p_fog);
 
 	part_type_sprite	(global.p_fog,spr_fog,0,0,0);
 	part_type_alpha3	(global.p_fog,0,1,0);

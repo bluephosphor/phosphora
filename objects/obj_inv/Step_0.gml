@@ -13,10 +13,10 @@ switch(gamestate){
 switch(state){
 	case inv_state.inv:///INVENTORY STATE
 		//get input
-		var hinput   = keyboard_check_pressed(input[? key.right]) - keyboard_check_pressed(input[? key.left]);
-		var vinput   = keyboard_check_pressed(input[? key.down])  - keyboard_check_pressed(input[? key.up]);
-		var in_use   = keyboard_check_pressed(input[? key.action]);
-		var in_equip = keyboard_check_pressed(input[? key.held]);
+		var hinput   = keyboard_check_pressed(input[| key.right]) - keyboard_check_pressed(input[| key.left]);
+		var vinput   = keyboard_check_pressed(input[| key.down])  - keyboard_check_pressed(input[| key.up]);
+		var in_use   = keyboard_check_pressed(input[| key.action]);
+		var in_equip = keyboard_check_pressed(input[| key.held]);
 		
 		selected_item = inventory[# 0, menu_index];
 		
@@ -57,9 +57,9 @@ switch(state){
 		break;
 	case inv_state.chest: ///CHEST STATE
 		//get input
-		var hinput = keyboard_check_pressed(input[? key.right]) - keyboard_check_pressed(input[? key.left]);
-		var vinput = keyboard_check_pressed(input[? key.down]) - keyboard_check_pressed(input[? key.up]);
-		var in_trade = keyboard_check_pressed(input[? key.action]);
+		var hinput = keyboard_check_pressed(input[| key.right]) - keyboard_check_pressed(input[| key.left]);
+		var vinput = keyboard_check_pressed(input[| key.down]) - keyboard_check_pressed(input[| key.up]);
+		var in_trade = keyboard_check_pressed(input[| key.action]);
 		
 		selected_item = selecting_grid[# 0, menu_index];
 		
@@ -106,9 +106,9 @@ switch(state){
 		}
 		break;
 	case inv_state.hotbar:///HOTBAR STATE
-		var hinput = keyboard_check_pressed(input[? key.hb_right]) - keyboard_check_pressed(input[? key.hb_left]);
-		var in_use = keyboard_check_pressed(input[? key.hb_use]);
-		var in_equip = keyboard_check_pressed(input[? key.held]);
+		var hinput = keyboard_check_pressed(input[| key.hb_right]) - keyboard_check_pressed(input[| key.hb_left]);
+		var in_use = keyboard_check_pressed(input[| key.hb_use]);
+		var in_equip = keyboard_check_pressed(input[| key.held]);
 
 		if (in_use) and (item_info[# 2,selected_item] != -1){
 			script_execute(item_info[# 2,selected_item]);

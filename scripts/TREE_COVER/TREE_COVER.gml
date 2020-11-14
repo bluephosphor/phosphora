@@ -42,6 +42,7 @@ function init_tree_patterns() {
 	}
 
 	pattern_grid = ds_grid_create(ww,hh);
+	ds_collector_add(pattern_grid);
 	for (var _y = 1; _y < hh-1; _y++) {
 		for (var _x = 1; _x < ww-1; _x++) {
 			if (grid_[# _x, _y] == VOID) pattern_grid[# _x,_y] = irandom(pattern_ct);

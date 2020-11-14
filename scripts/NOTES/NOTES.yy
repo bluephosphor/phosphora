@@ -6,7 +6,7 @@
     "path": "folders/Scripts/declarations.yy",
   },
   "resourceVersion": "1.0",
-  "name": "scr_note_table",
+  "name": "NOTES",
   "tags": [],
   "resourceType": "GMScript",
 }

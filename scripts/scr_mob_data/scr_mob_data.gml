@@ -18,6 +18,7 @@ function scr_mob_data() {
 	var _width = mob.enum_length;
 	var _height = stat.enum_height;
 	mob_data = ds_grid_create(_width,_height);
+	ds_collector_add(mob_data);
 	ds_grid_set_region(mob_data,0,0,_width,_height,-1);
 
 	//Minky

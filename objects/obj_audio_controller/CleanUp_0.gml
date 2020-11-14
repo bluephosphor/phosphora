@@ -1,1 +1,0 @@
-if (ds_exists(music_data,ds_type_grid)) ds_grid_destroy(music_data);

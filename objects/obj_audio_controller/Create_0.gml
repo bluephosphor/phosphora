@@ -9,6 +9,7 @@ var _height = track.height;
 
 globalvar music_data;
 music_data = ds_grid_create(_width,_height);
+ds_collector_add(music_data);
 ds_grid_set_region(music_data,0,0,_width,_height,-1);
 
 music_data[# snd_forest,	track.intro_length] = 5.168;

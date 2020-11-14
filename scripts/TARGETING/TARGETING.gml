@@ -15,7 +15,7 @@ function init_target() {
 function update_target() {
 	switch (target_state){
 		case TARGET_DORMANT:////////////////////////////////////////////
-		if (keyboard_check_pressed(input[? key.target])) and (playerstate == p_state.normal) {
+		if (keyboard_check_pressed(input[| key.target])) and (playerstate == p_state.normal) {
 			target_state = TARGET_SET;
 			debug_log_add("Target set.");
 		}
@@ -59,7 +59,7 @@ function update_target() {
 				tar_x = current_target.x;
 				tar_y = current_target.y;
 			}
-			if (keyboard_check_pressed(input[? key.target])) {
+			if (keyboard_check_pressed(input[| key.target])) {
 				target_state = TARGET_DISMISS;
 				debug_log_add("Target dismissed");
 			}

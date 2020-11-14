@@ -1,5 +1,5 @@
 /// @description spin step
-var _spin = keyboard_check_pressed(input[? key.action]);
+var _spin = keyboard_check_pressed(input[| key.action]);
 
 
 image_speed = 2;
@@ -9,8 +9,8 @@ var _y_input = 0;
 
 //calculate movement
 if (gamestate == INGAME){
-	_x_input = keyboard_check(input[? key.right]) - keyboard_check(input[? key.left]);
-	_y_input = keyboard_check(input[? key.down]) - keyboard_check(input[? key.up]);
+	_x_input = keyboard_check(input[| key.right]) - keyboard_check(input[| key.left]);
+	_y_input = keyboard_check(input[| key.down]) - keyboard_check(input[| key.up]);
 	
 	x_speed_ += _x_input * spin_accel;
 	y_speed_ += _y_input * spin_accel;

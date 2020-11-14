@@ -2,7 +2,7 @@
 function calc_player_damage(argument0) {
 	var attacker		= argument0;
 	var attack_power	= mob_data[# attacker.mob_id, stat.attack];
-	var defense_power	= player_data[? stat.defense];
+	var defense_power	= player_data[| stat.defense];
 	var damage;
 
 	damage = ceil(attack_power) - ceil(defense_power);

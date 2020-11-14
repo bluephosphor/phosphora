@@ -30,6 +30,7 @@ function scr_room_data() {
 	var _width = rm.width;
 	var _height = room_counter;
 	room_data = ds_grid_create(_width,_height);
+	ds_collector_add(room_data);
 	ds_grid_set_region(room_data,0,0,_width,_height,-1);
 
 

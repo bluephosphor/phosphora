@@ -1,6 +1,6 @@
 if (draw_alpha > 0){
 	var max_healthbar_length = 64;
-	var max_hp = player_data[? stat.hp];
+	var max_hp = player_data[| stat.hp];
 	var hp_length = max_healthbar_length * player_health / max_hp;
 	var hp_height = 3;
 	var x_origin = 4;

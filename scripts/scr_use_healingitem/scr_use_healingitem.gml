@@ -9,7 +9,7 @@ function scr_use_healingitem() {
 		default:			var heal_amt = 5; break;
 	}
 
-	var max_hp = player_data[? stat.hp];
+	var max_hp = player_data[| stat.hp];
 
 	with (o_player){
 		player_health += heal_amt;

@@ -33,7 +33,6 @@ scr_player_data();
 scr_mob_data();
 scr_item_info();
 scr_room_data();
-scr_note_table();
 scr_init_inputs();
 scr_init_particles();
 
@@ -53,6 +52,7 @@ tree_overcast = false;
 pattern_grid = -1;
 
 debug_log = ds_list_create();
+ds_collector_add(debug_log);
 debug_log_w = global.view_width / 2;
 debug_log_h = global.view_height / 2;
 debug_log_x = global.view_width / 2;

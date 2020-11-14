@@ -2,8 +2,8 @@
 
 var _x_input = 0; 
 var _y_input = 0;
-var _inv = keyboard_check_pressed(input[? key.select]);
-var _spin = keyboard_check_pressed(input[? key.action]);
+var _inv = keyboard_check_pressed(input[| key.select]);
+var _spin = keyboard_check_pressed(input[| key.action]);
 var _boost = keyboard_check(vk_shift);
 var speed_reduction = 0; 
 
@@ -17,8 +17,8 @@ var ms = max_speed_ - speed_reduction;
 
 //calculate movement
 if (gamestate == INGAME){
-	_x_input = keyboard_check(input[? key.right]) - keyboard_check(input[? key.left]);
-	_y_input = keyboard_check(input[? key.down]) - keyboard_check(input[? key.up]);
+	_x_input = keyboard_check(input[| key.right]) - keyboard_check(input[| key.left]);
+	_y_input = keyboard_check(input[| key.down]) - keyboard_check(input[| key.up]);
 	
 	x_speed_ += _x_input * acceleration_;
 	y_speed_ += _y_input * acceleration_;
@@ -140,7 +140,7 @@ if (inst != noone) and (!inst.passive) and (inst.hitbox_active) and (recovery_fr
 		alarm[0] = velocity * 10;
 		image_blend = c_red;
 		player_health -= calc_player_damage(inst);
-		player_health = clamp(player_health,0,player_data[? stat.hp]);
+		player_health = clamp(player_health,0,player_data[| stat.hp]);
 		sprite_index = s_player_hitstun;
 		playerstate = p_state.hitstun;
 		hitlag = velocity * 5;
@@ -150,7 +150,7 @@ if (inst != noone) and (!inst.passive) and (inst.hitbox_active) and (recovery_fr
 		alarm[0] = 30;
 		image_blend = c_red;
 		player_health -= calc_player_damage(inst);
-		player_health = clamp(player_health,0,player_data[? stat.hp]);
+		player_health = clamp(player_health,0,player_data[| stat.hp]);
 		sprite_index = s_player_hitstun;
 		playerstate = p_state.hitstun;
 		hitlag = 30;

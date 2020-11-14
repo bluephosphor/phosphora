@@ -1,14 +1,1 @@
-part_type_destroy(global.p_spinpixel);
-part_type_destroy(global.p_gust);
-part_type_destroy(global.p_water_ring);
-part_type_destroy(global.p_forestspirit);
-part_type_destroy(global.p_enemy_death);
-part_type_destroy(global.p_fog);
-part_system_destroy(global.p_system);
-if (ds_exists(room_data,ds_type_grid))		ds_grid_destroy(room_data);
-if (ds_exists(mob_data,ds_type_grid))		ds_grid_destroy(mob_data);
-if (ds_exists(item_info,ds_type_grid))		ds_grid_destroy(item_info);
-if (ds_exists(coin_data,ds_type_grid))		ds_grid_destroy(coin_data);
-if (ds_exists(player_data,ds_type_map))		ds_map_destroy(player_data);
-if (ds_exists(pattern_grid,ds_type_grid))	ds_grid_destroy(pattern_grid);
-if (ds_exists(debug_log,ds_type_list))		ds_list_destroy(debug_log);
+ds_clean();
