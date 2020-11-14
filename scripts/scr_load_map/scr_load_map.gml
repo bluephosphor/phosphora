@@ -21,6 +21,4 @@ function scr_load_map() {
 			[-1,"Suit youself."],
 		]
 	);
-
-
 }

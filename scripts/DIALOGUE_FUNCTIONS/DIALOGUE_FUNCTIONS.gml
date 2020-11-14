@@ -15,9 +15,9 @@ function add_dialog() {
 			dialog[lines++, 1] = argument[1]; //dialog
 			if (argument_count > 2){
 				switch(argument[2]){
-					case tag.no_box: draw_box = false; break;
-					case tag.no_pause: pause_text = false; break;
-					case tag.no_reset: reset_state = false;
+					case tag.no_box:	draw_box	= false; break;
+					case tag.no_pause:	pause_text	= false; break;
+					case tag.no_reset:	reset_state = false; break;
 				}
 			}
 			event_perform(ev_other,ev_user0);

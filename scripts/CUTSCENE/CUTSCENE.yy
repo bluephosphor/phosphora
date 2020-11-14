@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "cutscene",
-    "path": "folders/Scripts/cutscene.yy",
+    "name": "Scripts",
+    "path": "folders/Scripts.yy",
   },
   "resourceVersion": "1.0",
-  "name": "cs_end_action",
+  "name": "CUTSCENE",
   "tags": [],
   "resourceType": "GMScript",
 }
