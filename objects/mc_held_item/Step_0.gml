@@ -12,7 +12,7 @@ if (draw_behind) depth = o_player.depth + 1;
 switch(item_index){
 	case item.rod:
 		if (using){
-			global.actionable = false;
+			global.gamestate = FISHING;
 			lure_hsp = lerp(lure_hsp,0,0.05);
 			lure_vsp = lerp(lure_vsp,2,0.05);
 			if (lure_hsp != 0)	{lure_x += lure_hsp;}
@@ -24,7 +24,7 @@ switch(item_index){
 				if (in_cell == WATER) at_rest = true;
 				if (!at_rest) or (use_item){
 					using = false;
-					global.actionable = true;
+					global.gamestate = INGAME;
 				}
 			}
 		} else {

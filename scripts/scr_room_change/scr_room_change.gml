@@ -1,6 +1,4 @@
 function scr_room_change() {
-	show_inventory = false;
-	global.actionable = false;
 
 	add_dialog(-1,
 		[

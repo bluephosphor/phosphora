@@ -8,8 +8,8 @@ global.webmode = (!os_browser == browser_not_a_browser);
 //global vars
 globalvar playerstate, debug_log, cont_daycycle, cont_lighting, cont_audio, 
 			cont_menu, cont_inv, cont_weather, cont_textbox, cont_cutscene,
-			shell;
-global.actionable	= true;
+			shell, input_buffer;
+
 global.debug		= false;
 global.rift_count	= 0;
 global.fullscreen	= false;

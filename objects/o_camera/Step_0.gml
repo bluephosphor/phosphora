@@ -27,9 +27,9 @@ camera_set_view_pos(view_camera[0], x-width_/2, y-height_/2);
 if (global.debug){
 	if (keyboard_check_pressed(ord("C"))) and (keyboard_check(vk_shift)){
 		global.freecam = !global.freecam;
-		global.actionable = !global.freecam;
+		
 	}
 } else if (global.freecam) {
 	global.freecam = false;
-	global.actionable = true;
+	
 }

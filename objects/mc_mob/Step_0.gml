@@ -11,7 +11,7 @@ if (show_hp){
 	draw_color = c_white;
 }
 
-if(global.pause) or (hitlag > 0) {alarm[10] = anim_speed; exit;}
+if(global.time_pause) or (hitlag > 0) {alarm[10] = anim_speed; exit;}
 
 switch(mystate){
 	case mobstate.passive:

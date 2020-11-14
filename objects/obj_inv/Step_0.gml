@@ -1,4 +1,14 @@
-if (!obj_shell.isOpen and !show_inventory) state = inv_state.hotbar;
+switch(gamestate){
+	case INGAME:
+		state = inv_state.hotbar;
+		break;
+	case INV: 
+		//let player object handle this
+		break;
+	default:
+		state = inv_state.inactive;
+		break;
+}
 
 switch(state){
 	case inv_state.inv:///INVENTORY STATE
@@ -41,8 +51,7 @@ switch(state){
 				if (inventory[# 1, menu_index] == 0){
 					inventory[# 0, menu_index] = item.none;
 				}
-				show_inventory = false;
-				global.actionable = true;
+				gamestate = INGAME;
 			}
 		}
 		break;

@@ -3,7 +3,7 @@ grid_x = x div CELL_WIDTH;
 grid_y = y div CELL_HEIGHT;
 in_cell = grid_[# grid_x, grid_y];
 
-if (global.pause) exit;
+if (global.time_pause) exit;
 
 switch(interact_state){
 	case NOT_INTERACTABLE: 

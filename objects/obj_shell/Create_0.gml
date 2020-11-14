@@ -131,11 +131,9 @@ function string_split(input, delimiter) {
 /////it's just me after here
 
 openFunction = function(){
-	global.actionable = false;
-	with (obj_inv) state = inv_state.inactive;
+
 }
 
 closeFunction = function(){
-	global.actionable = true;
-	with (obj_inv) state = inv_state.hotbar;
+	input_buffer = 2;
 }

@@ -11,5 +11,4 @@ function save_string_to_file(argument0, argument1) {
 	buffer_save(_buffer, _filename);
 	buffer_delete(_buffer);
 
-
 }

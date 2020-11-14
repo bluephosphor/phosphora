@@ -1,6 +1,4 @@
 function scr_load_map() {
-	show_inventory = false;
-	global.actionable = false;
 
 	add_dialog(-1,
 		[

@@ -10,4 +10,4 @@ if (frame_index > len){
 
 image_index = current_anim[frame_index];
 
-if (!global.pause) alarm[10] = anim_speed;
+if (!global.time_pause) alarm[10] = anim_speed;

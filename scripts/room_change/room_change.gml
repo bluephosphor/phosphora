@@ -6,7 +6,7 @@ function room_change() {
 
 	var t_room = argument[0];
 
-	global.actionable = false;
+	gamestate = TRANSITION;
 	if (argument_count > 1) global.load_map = argument[1];
 	check_inv(inventory,item.rift_a,true);
 	check_inv(inventory,item.rift_b,true);

@@ -4,17 +4,17 @@ if (!surface_exists(shellSurface)) {
 	shellSurface = surface_create(width, height);
 }
 
-if (!isOpen) {
+if (gamestate = INGAME) {
 	if (self.keyComboPressed()) {
-		isOpen = true;
+		gamestate = SHELL;
 		keyboard_string = "";
-		openFunction();
+		//openFunction();
 	}
-} else {
+} else if (gamestate == SHELL){
 	var prevConsoleString = consoleString;
 	
 	if (keyboard_check_pressed(vk_escape)) {
-		isOpen = false;
+		gamestate =	INGAME;
 		closeFunction();
 	} else if (self.keyboardCheckDelay(vk_backspace)){
 		consoleString = string_delete(consoleString, cursorPos - 1, 1);

@@ -8,7 +8,7 @@ if (line_index == lines){
 	///if we have no more lines, finish up and exit
 	cont_textbox = noone;
 	instance_destroy(self);
-	global.actionable = true;
+	if (reset_state) gamestate = INGAME;
 	if (instance_exists(o_player)) o_player.spin_cooldown = 1;
 	exit;
 }

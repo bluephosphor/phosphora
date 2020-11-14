@@ -1,9 +1,6 @@
 function scr_test_question() {
 
 
-	show_inventory = false;
-	global.actionable = false;
-
 	add_dialog(-1,
 		[
 			"What's your favorite color?",

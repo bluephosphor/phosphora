@@ -11,5 +11,4 @@ function load_json_from_file(argument0) {
 	var _json = json_decode(_string);
 	return _json;
 
-
 }

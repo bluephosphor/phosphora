@@ -8,7 +8,7 @@ var _x_input = 0;
 var _y_input = 0;
 
 //calculate movement
-if (global.actionable){
+if (gamestate == INGAME){
 	_x_input = keyboard_check(input[? key.right]) - keyboard_check(input[? key.left]);
 	_y_input = keyboard_check(input[? key.down]) - keyboard_check(input[? key.up]);
 	

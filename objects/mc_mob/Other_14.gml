@@ -2,7 +2,6 @@
 
 switch(interact_state){
 	case INTERACTABLE:
-		global.actionable = false;
 		var i = 0, curr_line;
 		repeat(array_length_1d(mytext)){
 			curr_line = mytext[i];

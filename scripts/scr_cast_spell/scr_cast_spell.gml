@@ -6,8 +6,5 @@ function scr_cast_spell() {
 		spelltype = num;
 	}
 	o_player.spin_cooldown = 5;
-	show_inventory = false;
-	global.actionable = true;
-
-
+	gamestate = INGAME;
 }

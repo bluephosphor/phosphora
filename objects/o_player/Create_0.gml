@@ -8,7 +8,7 @@ acceleration_ = .5;
 recovery_frames = 0;
 _visible = true;
 water_buff = 10;
-inv_buffer = 10;
+input_buffer = 10;
 
 show_hp = false;
 hp_change = 0;

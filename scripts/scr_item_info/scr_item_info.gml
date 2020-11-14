@@ -66,9 +66,9 @@ function scr_item_info() {
 	item_info[# ITEM,z++] = "Rubellite";
 	item_info[# ITEM,z++] = "Fishing Rod";
 	item_info[# ITEM,z++] = "Business Card";
-	item_info[# ITEM,z++] = "PS - Fire";
-	item_info[# ITEM,z++] = "PS - Thunder";
-	item_info[# ITEM,z++] = "PS - Gust";
+	item_info[# ITEM,z++] = "PS Fire";
+	item_info[# ITEM,z++] = "PS Thunder";
+	item_info[# ITEM,z++] = "PS Gust";
 	item_info[# ITEM,z++] = "Diamond";
 	item_info[# ITEM,z++] = "Phosphora Berries";
 	item_info[# ITEM,z++] = "Phosphora Leaf";

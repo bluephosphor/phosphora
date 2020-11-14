@@ -1,11 +1,10 @@
 event_inherited();
 
-if (!global.actionable) exit;
+if (gamestate != INGAME) exit;
 
 if (interact_state == INTERACTING){
 	open = check_inv(inventory,item.key,true);
 	if (!open){
-		global.actionable = false;
 		add_dialog(-1,"You do not have a [c_fuchsia]key[/c] for this door.");
 	}
 	interact_state = INTERACTABLE;

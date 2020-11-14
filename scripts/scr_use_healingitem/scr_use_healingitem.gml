@@ -1,6 +1,5 @@
 function scr_use_healingitem() {
-	show_inventory = false;
-	global.actionable = true;
+	gamestate = INGAME;
 
 	switch(selected_item){
 		case item.r_potion: var heal_amt = irandom_range(10,20); break;

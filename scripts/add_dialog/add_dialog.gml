@@ -1,13 +1,13 @@
 ///@description add_dialog(speaker,dialog,[tag])
 ///@arg speaker
 ///@arg dialog string
+enum tag {
+	no_box,
+	no_pause,
+	no_reset
+}
+
 function add_dialog() {
-
-	enum tag {
-		no_box,
-		no_pause
-	}
-
 	if (cont_textbox == noone){
 		with (instance_create_layer(0,0,"Instances", obj_txtbox1)){
 			cont_textbox = id;
@@ -17,6 +17,7 @@ function add_dialog() {
 				switch(argument[2]){
 					case tag.no_box: draw_box = false; break;
 					case tag.no_pause: pause_text = false; break;
+					case tag.no_reset: reset_state = false;
 				}
 			}
 			event_perform(ev_other,ev_user0);
@@ -27,8 +28,4 @@ function add_dialog() {
 			dialog[lines++, 1] = argument[1]; //dialog
 		}
 	}
-
-
-
-
 }

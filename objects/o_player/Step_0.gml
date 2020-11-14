@@ -2,7 +2,7 @@ event_inherited();
 
 if (hitlag != 0) hitlag = approach(hitlag, 0, 1);
 
-if(global.pause) or (hitlag > 0) {image_speed = 0; exit;}
+if(global.time_pause) or (hitlag > 0) {image_speed = 0; exit;}
 
 switch(playerstate){
 	case p_state.normal:

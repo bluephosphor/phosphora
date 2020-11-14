@@ -31,7 +31,6 @@ if (keyboard_check(vk_shift)){
 if (room_transition){
 	black_alpha = approach(black_alpha, 1, 0.01);
 	if (black_alpha >= 1){
-		if (!obj_shell.isOpen) global.actionable = true;
 		playerstate = p_state.normal;
 		var rm = target_room;
 		with(o_level){
@@ -42,10 +41,15 @@ if (room_transition){
 			} else { room_restart();}
 		}
 		room_transition = false;
+		gamestate = INGAME;
 	}
 } else if (black_alpha > 0){
 	black_alpha = approach(black_alpha,0,0.01);
 }
+
+if (input_buffer > 0){
+	input_buffer -=1;
+} 
 
 if (!global.debug) exit;
 

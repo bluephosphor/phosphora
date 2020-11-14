@@ -2,9 +2,9 @@
 
 var _x_input = 0; 
 var _y_input = 0;
-var _boost = keyboard_check(vk_shift);
 var _inv = keyboard_check_pressed(input[? key.select]);
 var _spin = keyboard_check_pressed(input[? key.action]);
+var _boost = keyboard_check(vk_shift);
 var speed_reduction = 0; 
 
 
@@ -13,12 +13,10 @@ if (playerstate == p_state.swimming){
 	_spin = false;
 }
 
-if (obj_shell.isOpen) _inv = false;
-
 var ms = max_speed_ - speed_reduction;
 
 //calculate movement
-if (global.actionable){
+if (gamestate == INGAME){
 	_x_input = keyboard_check(input[? key.right]) - keyboard_check(input[? key.left]);
 	_y_input = keyboard_check(input[? key.down]) - keyboard_check(input[? key.up]);
 	
@@ -100,26 +98,27 @@ if (current_target != noone){
 move_and_collide();
 
 //obj colisions
-if (_inv) and (inv_buffer <= 0){
-	var inst = instance_place(x,y,obj_chest)
-	if (inst != noone){
-		with (cont_inv){
-			show_inventory		= !show_inventory;
-			global.actionable	= !show_inventory;
-			inst.image_index	= show_inventory;
-			if (show_inventory){
-				state = inv_state.chest;
-				chest_inv = inst.chest_inventory;
-				selecting_grid = chest_inv;
-				menu_index = 0;
-			}
+if (_inv) and (input_buffer <= 0){
+	switch (gamestate){
+		case INGAME: gamestate = INV; break;
+		case INV:	 gamestate = INGAME; break;
+		default: break;
+	}
+	
+	var _chest = instance_place(x,y,obj_chest);
+
+	if (_chest != noone){
+		
+		_chest.image_index = (gamestate == INV);
+		
+		with (cont_inv) if (gamestate == INV){
+			state			= inv_state.chest;
+			chest_inv		= _chest.chest_inventory;
+			selecting_grid	= chest_inv;
+			menu_index		= 0;
 		}
 	} else {
-		with (cont_inv){
-			show_inventory		= !show_inventory;
-			global.actionable	= !show_inventory;
-			state = inv_state.inv;
-		}
+		with (cont_inv) if (gamestate == INV) state = inv_state.inv;
 	}
 }
 //enemy collision
@@ -161,9 +160,7 @@ if (inst != noone) and (!inst.passive) and (inst.hitbox_active) and (recovery_fr
 if (spin_cooldown > 0){
 	spin_cooldown -=1;
 } 
-if (inv_buffer > 0){
-	inv_buffer -=1;
-} 
+
 
 
 if (in_cell == WATER){

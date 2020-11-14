@@ -1,11 +1,19 @@
-if (obj_shell.isOpen) {
-	global.pause = false;
-	exit;
+var in_pause = keyboard_check_pressed(input[? key.pause]); 
+
+
+if (in_pause and input_buffer <= 0) switch (gamestate){
+	case INGAME: 
+		gamestate = PAUSE;
+		global.time_pause = true;
+		break;
+	case PAUSE: 
+		gamestate = INGAME;
+		global.time_pause = false;
+		break;
+	default: break;
 }
 
-var in_pause = keyboard_check_pressed(vk_enter); 
-global.pause ^= in_pause; global.time_pause = global.pause;
-if(!global.pause) exit;
+if(gamestate != PAUSE) exit;
 
 var in_up		= keyboard_check_pressed(input[? key.up]);
 var in_down		= keyboard_check_pressed(input[? key.down]);

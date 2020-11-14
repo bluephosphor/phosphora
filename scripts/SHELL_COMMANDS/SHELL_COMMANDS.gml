@@ -45,7 +45,7 @@ function sh_sethour(args){
 
 function sh_goto(args){
 	var i = 0; repeat(ds_grid_height(room_data)){
-		if (room_data[# rm.name, i] == args[1]){
+		if (string_lower(room_data[# rm.name, i]) == args[1]){
 			room_change(i);
 			return "going to: " + args[1] + "...";
 			break;
@@ -61,14 +61,12 @@ function sh_reload(args){
 }
 
 function sh_give(args){
-	var str = args[1];
-	var first_letter = string_upper(string_copy(str,1,1));
-	var str = first_letter + string_copy(str,2,string_length(str) - 1);
+	var str = string_replace_all(args[1],"_"," ");
 	var quant = 1; 
 	var s = "";
 	if (array_length(args) > 2) {quant = args[2]; s = "s";}
 	var i = 0; repeat (ds_grid_height(item_info)){
-		if (item_info[# ITEM, i] == str){
+		if (string_lower(item_info[# ITEM, i]) == str){
 			add_item(inventory,i,quant);
 			return "gave " + string(quant) + " " + args[1] + s + " to " + player_data[? stat.name] + ".";
 			break;
