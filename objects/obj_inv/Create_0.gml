@@ -36,7 +36,7 @@ last_page		= 0;
 
 entries		= max_items;
 pages		= ["Inventory"];
-max_pages	= array_length_1d(pages);
+max_pages	= array_length(pages);
 
 //init inv slots
 globalvar inventory;
@@ -60,6 +60,15 @@ cell_count	 = 8;
 total_length = (cell_size + x_buffer) * cell_count;
 x_origin	 = (global.view_width / 2) - (total_length / 2);
 y_origin	 = global.view_height - cell_size;
+
+hotbar_autoselect = function(){
+	repeat(cell_count){
+		if (selected_item != item.none) break;
+		menu_index += 1;
+		if (menu_index > cell_count - 1) menu_index = 0;
+		selected_item = inventory[# 0, menu_index];
+	}
+}
 
 selecting_grid = inventory;
 selected_item  = inventory[# 0, menu_index];

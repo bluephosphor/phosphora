@@ -97,11 +97,16 @@ if (current_target != noone){
 
 move_and_collide();
 
-//obj colisions
+//toggle inventory and also chest logic
 if (_inv) and (input_buffer <= 0){
 	switch (gamestate){
-		case INGAME: gamestate = INV; break;
-		case INV:	 gamestate = INGAME; break;
+		case INGAME: 
+			gamestate = INV; 
+			break;
+		case INV:	 
+			gamestate = INGAME; 
+			cont_inv.hotbar_autoselect();
+			break;
 		default: break;
 	}
 	

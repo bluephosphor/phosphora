@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "main menu",
-    "path": "folders/Scripts/main menu.yy",
+    "name": "numbers",
+    "path": "folders/Scripts/numbers.yy",
   },
   "resourceVersion": "1.0",
-  "name": "change_difficulty",
+  "name": "DAMAGE",
   "tags": [],
   "resourceType": "GMScript",
 }

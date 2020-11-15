@@ -33,8 +33,5 @@ function generate_lake() {
 		yo += irandom_range(-1,1);
 		i++;
 	}
-
-	debug_log_add("Spawned a lake!");
-
-
+	debug_log_add("Generated a lake at grid_x:" + string(spawn_x) + " grid_y: " + string(spawn_y) + ".");
 }

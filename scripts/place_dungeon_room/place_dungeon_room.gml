@@ -74,6 +74,4 @@ function place_dungeon_room(argument0) {
 	room_count ++;
 
 	debug_log_add("Placed " + file + " at x:" + string(xx) + " y:" + string(yy) + ".");
-
-
 }

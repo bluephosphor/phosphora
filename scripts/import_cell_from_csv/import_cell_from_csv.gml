@@ -64,7 +64,4 @@ function import_cell_from_csv(argument0, argument1, argument2, argument3) {
 			grid_[# xx,yy] = curr_cell;
 			break;
 	}
-
-
-
 }

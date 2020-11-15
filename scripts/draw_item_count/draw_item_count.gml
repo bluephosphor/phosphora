@@ -18,5 +18,4 @@ function draw_item_count(argument0, argument1, argument2) {
 	draw_set_alpha(1);
 	draw_text(t_xo+two_didget,t_yo,str);
 
-
 }

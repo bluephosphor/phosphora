@@ -1,5 +1,0 @@
-function change_difficulty() {
-
-
-
-}

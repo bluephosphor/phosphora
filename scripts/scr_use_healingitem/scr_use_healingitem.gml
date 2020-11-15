@@ -19,5 +19,4 @@ function scr_use_healingitem() {
 		alarm[1] = room_speed;
 	}
 
-
 }

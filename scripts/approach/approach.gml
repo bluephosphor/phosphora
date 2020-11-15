@@ -24,6 +24,4 @@ function approach(argument0, argument1, argument2) {
 	        return argument1;
 	}
 	return argument0
-
-
 }

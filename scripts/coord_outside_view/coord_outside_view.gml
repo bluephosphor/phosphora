@@ -24,5 +24,4 @@ function coord_outside_view() {
 
 	return flag;
 
-
 }

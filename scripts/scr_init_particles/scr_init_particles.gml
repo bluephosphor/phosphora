@@ -55,5 +55,4 @@ function scr_init_particles() {
 	part_type_life		(global.p_fog,room_speed * 4,room_speed * 5);
 	part_type_blend		(global.p_fog,true);
 
-
 }
