@@ -5,8 +5,8 @@ x = user.x;
 y = user.y;
 facing = user.image_xscale;
 
-depth = o_player.depth - 1;
-if (draw_behind) depth = o_player.depth + 1;
+depth = obj_player.depth - 1;
+if (draw_behind) depth = obj_player.depth + 1;
 
 
 switch(item_index){

@@ -5,6 +5,6 @@ function cast_spell() {
 	with instance_create_layer(0,0,"Instances",obj_ps_controller){
 		spelltype = num;
 	}
-	o_player.spin_cooldown = 5;
+	obj_player.spin_cooldown = 5;
 	gamestate = INGAME;
 }

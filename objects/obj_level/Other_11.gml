@@ -9,7 +9,7 @@ var chest_num	= array_length_1d(chests),
 i = 0; repeat(chest_num){
 	curr_chest = chests[i];
 	with (curr_chest){
-		var mydist = abs(point_distance(o_player.x,o_player.y,x,y));
+		var mydist = abs(point_distance(obj_player.x,obj_player.y,x,y));
 		if (mydist > dist){
 			dist = mydist
 			furthest_chest = id;

@@ -1,5 +1,5 @@
 function update_tiles() {
-	with (o_level){
+	with (obj_level){
 		// Get the tile layer map id
 		if (layer_exists("WallTiles")) var _wall_map_id = layer_tilemap_get_id("WallTiles");
 		if (layer_exists("waterTiles")) var _water_map_id = layer_tilemap_get_id("WaterTiles");

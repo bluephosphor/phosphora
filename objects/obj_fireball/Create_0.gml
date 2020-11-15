@@ -1,6 +1,6 @@
 event_inherited();
 
-follow = o_player;
+follow = obj_player;
 target = noone;
 
 frequency = 0.05;

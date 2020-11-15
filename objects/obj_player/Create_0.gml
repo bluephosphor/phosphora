@@ -24,6 +24,6 @@ spin_duration = room_speed / 2;
 spin_cooldown = 0;
 spin_speed = 4;
 spin_accel = .2;
-instance_create_layer(x, y, "Instances", o_camera);
+instance_create_layer(x, y, "Instances", obj_camera);
 
 init_target();

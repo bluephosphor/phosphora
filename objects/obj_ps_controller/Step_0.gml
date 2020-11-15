@@ -1,16 +1,16 @@
-depth = o_player.depth - 1;
+depth = obj_player.depth - 1;
 
 switch(spelltype){
 	case item.ps_thunder:
 		if (light_inst == -1){
 			light_inst = instance_create_layer(x,y,layer,mc_lightsource);
 			with (light_inst){
-				follow = o_player;
+				follow = obj_player;
 				light_strength = 0;
 			}
 		}
 		if (cast){
-			with(o_camera){
+			with(obj_camera){
 				var _list = ds_list_create();
 				var _num = instance_place_list(x, y, mc_mob, _list, false);
 				var _success = 0;

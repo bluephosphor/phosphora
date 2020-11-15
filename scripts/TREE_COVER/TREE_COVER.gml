@@ -1,6 +1,6 @@
 function init_tree_patterns() {
-	var ww = o_level.width_;
-	var hh = o_level.height_;
+	var ww = obj_level.width_;
+	var hh = obj_level.height_;
 
 	overcast_surface = noone;
 
@@ -58,8 +58,8 @@ function draw_trees() {
 		surface_set_target(overcast_surface);
 		draw_clear_alpha(c_black, 0);
 	
-		var ww = o_level.width_;
-		var hh = o_level.height_;
+		var ww = obj_level.width_;
+		var hh = obj_level.height_;
 	
 		for (var _y = 1; _y < hh-1; _y++) {
 			for (var _x = 1; _x < ww-1; _x++) {

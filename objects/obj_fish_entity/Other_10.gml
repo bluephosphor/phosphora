@@ -2,7 +2,7 @@
 if (update_movement) {
 	if (init_attack) {
 		alarm[0] = room_speed;
-		attack_direction = point_direction(x,y,o_player.x,o_player.y);
+		attack_direction = point_direction(x,y,obj_player.x,obj_player.y);
 		current_anim = aggro_frames;
 		anim_speed = 10;
 		alarm[10] = 1;

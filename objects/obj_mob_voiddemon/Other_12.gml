@@ -2,19 +2,19 @@
 switch(player_at){
 	case dir.up: 
 		image_angle = 90;
-		x = lerp(x,o_player.x,0.1);
+		x = lerp(x,obj_player.x,0.1);
 	break;
 	case dir.right: 
 		image_angle = 0;
-		y = lerp(y,o_player.y-4,0.1);
+		y = lerp(y,obj_player.y-4,0.1);
 	break;
 	case dir.down: 
 		image_angle = 270;
-		x = lerp(x,o_player.x,0.1);
+		x = lerp(x,obj_player.x,0.1);
 	break;
 	case dir.left: 
 		image_angle = 180;
-		y = lerp(y,o_player.y-4,0.1);
+		y = lerp(y,obj_player.y-4,0.1);
 	break;
 }
 

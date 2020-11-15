@@ -1,5 +1,5 @@
 item_index	= item.none;
-user		= o_player;
+user		= obj_player;
 facing		= user.image_xscale;
 draw_behind = false;
 

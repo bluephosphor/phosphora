@@ -2,7 +2,7 @@ switch(item_index){
 	case item.none: break;
 	case item.rod:
 		draw_behind = true;
-		var frame = o_player.image_index;
+		var frame = obj_player.image_index;
 		var offset = 0;
 		if (using) {
 			frame = 4;

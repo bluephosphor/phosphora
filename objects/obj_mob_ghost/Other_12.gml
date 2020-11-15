@@ -11,7 +11,7 @@ if (_speed > maxsp) {
 	y_speed_ = lengthdir_y(maxsp, _direction);
 }
 
-var px = o_player.x;
+var px = obj_player.x;
 
 if (px > x) image_xscale = 1;
 else		image_xscale = -1;

@@ -15,7 +15,7 @@ function coord_outside_view() {
 		yrad += argument[2];
 	} 
 
-	with (o_camera) {
+	with (obj_camera) {
 		if (xx > x + xrad) flag = true;
 		if (xx < x - xrad) flag = true;
 		if (yy > y + yrad) flag = true;

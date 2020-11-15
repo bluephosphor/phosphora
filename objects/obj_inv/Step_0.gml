@@ -41,10 +41,10 @@ switch(state){
 			}
 		}
 		//equip items
-		if (in_equip) and (instance_exists(o_player)) and (!instance_exists(mc_held_item)){
+		if (in_equip) and (instance_exists(obj_player)) and (!instance_exists(mc_held_item)){
 			var num = selected_item;
 			if (num != item.none){
-				with (instance_create_layer(o_player.x,o_player.y,"Instances",mc_held_item)){
+				with (instance_create_layer(obj_player.x,obj_player.y,"Instances",mc_held_item)){
 					item_index = num;
 				}
 				inventory[# 1, menu_index] -= 1;
@@ -128,10 +128,10 @@ switch(state){
 			}
 		}
 		//equip items
-		if (in_equip) and (instance_exists(o_player)) and (!instance_exists(mc_held_item)){
+		if (in_equip) and (instance_exists(obj_player)) and (!instance_exists(mc_held_item)){
 			var num = selected_item;
 			if (num != item.none){
-				with (instance_create_layer(o_player.x,o_player.y,"Instances",mc_held_item)){
+				with (instance_create_layer(obj_player.x,obj_player.y,"Instances",mc_held_item)){
 					item_index = num;
 				}
 				inventory[# 1, menu_index] -= 1;

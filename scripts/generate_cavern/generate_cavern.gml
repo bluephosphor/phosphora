@@ -24,7 +24,7 @@ function generate_cavern() {
 	//spawn the player
 	var _player_start_x = _controller_x * CELL_WIDTH + CELL_WIDTH/2;
 	var _player_start_y = _controller_y * CELL_HEIGHT + CELL_HEIGHT/2;
-	instance_create_layer(_player_start_x, _player_start_y, "Instances", o_player);
+	instance_create_layer(_player_start_x, _player_start_y, "Instances", obj_player);
 
 
 	// Choose the direction change odds

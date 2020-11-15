@@ -24,7 +24,7 @@ function generate_from_map() {
 	_submap = _json[? "player_data"];
 	var xx = _submap[? "x"];
 	var yy = _submap[? "y"];
-	with (instance_create_layer(xx,yy,"Instances",o_player)){
+	with (instance_create_layer(xx,yy,"Instances",obj_player)){
 		image_xscale = _submap[? "image_xscale"];
 	}
 
@@ -38,7 +38,7 @@ function generate_from_map() {
 		var obj = obj_chest; 
 		if (_submap[? "special"]) obj = obj_chest_special;
 		with (instance_create_layer(xx,yy,"Instances",obj)){
-			o_level.chests[o_level.chest_index++] = id;
+			obj_level.chests[obj_level.chest_index++] = id;
 			ds_grid_read(chest_inventory,_submap[? "inventory"]);
 		}
 		i++;
@@ -75,7 +75,7 @@ function generate_from_map() {
 	//init pathfinding grid
 	path_grid = mp_grid_create(0,0,width_,height_,CELL_WIDTH,CELL_HEIGHT);
 
-	if (!instance_exists(o_player)) spawn_player();
+	if (!instance_exists(obj_player)) spawn_player();
 
 	if (layer_exists("Pebbles")){
 	var _pebble_map_id = layer_tilemap_get_id("Pebbles");

@@ -13,7 +13,7 @@ witching_hour = false;
 if (hours > 0 and hours < 3) {
 	witching_hour = true;
 	var spawnpart = (seconds mod 6) == 0;
-	with (o_camera){
+	with (obj_camera){
 		var xx = irandom_range(x - (width_ / 2), x + (width_ / 2));
 		var yy = irandom_range(y - (height_ / 2), y + (height_ / 2));
 		var gx = xx div CELL_WIDTH;

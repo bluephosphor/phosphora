@@ -1,7 +1,7 @@
 event_inherited();
 
-var px = o_player.x;
-var pf = o_player.image_xscale;
+var px = obj_player.x;
+var pf = obj_player.image_xscale;
 //var charm = instance_exists(mc_held_item) and mc_held_item.ghost_charm == true;
 
 var charm = true;

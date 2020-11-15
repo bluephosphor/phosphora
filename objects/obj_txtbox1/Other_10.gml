@@ -9,7 +9,7 @@ if (line_index == lines){
 	cont_textbox = noone;
 	instance_destroy(self);
 	if (reset_state) gamestate = INGAME;
-	if (instance_exists(o_player)) o_player.spin_cooldown = 1;
+	if (instance_exists(obj_player)) obj_player.spin_cooldown = 1;
 	exit;
 }
 

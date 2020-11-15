@@ -27,7 +27,7 @@ function generate_from_csv() {
 		gx++;
 	}
 
-	if (!instance_exists(o_player)) spawn_player();
+	if (!instance_exists(obj_player)) spawn_player();
 
 	ds_grid_destroy(file_grid);
 	file_grid = -1;

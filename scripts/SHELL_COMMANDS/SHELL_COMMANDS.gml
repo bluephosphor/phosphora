@@ -25,7 +25,7 @@ function sh_setglobal(args){
 }
 
 function sh_setplayer(args){
-	var _id = o_player.id;
+	var _id = obj_player.id;
 	var value = string_value(args[2])
 	variable_instance_set(_id,args[1],value);
 	return "player." + args[1] + " set to: " + args[2];

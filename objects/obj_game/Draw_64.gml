@@ -18,20 +18,20 @@ switch(playerstate){
 	case p_state.hitstun: str = "hitstun"; break;
 	case p_state.swimming: str = "swimming"; break;
 }
-draw_text(live_vars_x,4+y_off,"x:" + string(o_player.x) + ". y:" + string(o_player.y));
-draw_text(live_vars_x,12+y_off,"grid_x:" + string(o_player.grid_x) + ". grid_y:" + string(o_player.grid_y));
+draw_text(live_vars_x,4+y_off,"x:" + string(obj_player.x) + ". y:" + string(obj_player.y));
+draw_text(live_vars_x,12+y_off,"grid_x:" + string(obj_player.grid_x) + ". grid_y:" + string(obj_player.grid_y));
 var c = c_white;
-if (o_player.spin_cooldown > 0) {
+if (obj_player.spin_cooldown > 0) {
 	c = c_red;
-	str += (". cooldown: " + string(o_player.spin_cooldown));
+	str += (". cooldown: " + string(obj_player.spin_cooldown));
 }
-if (o_player.water_buff != 10) {
+if (obj_player.water_buff != 10) {
 	c = c_red;
-	str += (". water_buff: " + string(o_player.water_buff));
+	str += (". water_buff: " + string(obj_player.water_buff));
 }
 draw_text_color(live_vars_x,20+y_off,"p_state." + str,c,c,c,c,1);
 str = "";
-switch(o_player.in_cell){
+switch(obj_player.in_cell){
 	case FLOOR: str = "FLOOR "; break;
 	case WATER: str = "WATER "; break;
 	case VOID: str = "VOID " ; break;

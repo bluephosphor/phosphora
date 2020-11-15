@@ -11,7 +11,7 @@ function use_healingitem() {
 
 	var max_hp = player_data[| stat.hp];
 
-	with (o_player){
+	with (obj_player){
 		player_health += heal_amt;
 		player_health = clamp(player_health,0,max_hp);
 		hp_change = heal_amt;

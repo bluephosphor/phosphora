@@ -6,13 +6,13 @@ if (update_movement){
 	var west_cell	= grid_[# grid_x - 1,grid_y];
 	
 	var north_free	= (north_cell == VOID) and ((grid_y - 1) > 2);
-	var east_free	= (east_cell  == VOID) and ((grid_x + 1) < (o_level.width_ - 2));
-	var south_free	= (south_cell == VOID) and ((grid_y + 1) < (o_level.height_ - 2));
+	var east_free	= (east_cell  == VOID) and ((grid_x + 1) < (obj_level.width_ - 2));
+	var south_free	= (south_cell == VOID) and ((grid_y + 1) < (obj_level.height_ - 2));
 	var west_free	= (west_cell  == VOID) and ((grid_x - 1) > 2);
 	
 	//look for player
-	var px = o_player.grid_x;
-	var py = o_player.grid_y;
+	var px = obj_player.grid_x;
+	var py = obj_player.grid_y;
 	
 	if ((grid_y - 1) == py and grid_x == px) player_at = dir.up;
 	if ((grid_x + 1) == px and grid_y == py) player_at = dir.right;

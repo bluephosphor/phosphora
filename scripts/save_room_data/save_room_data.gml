@@ -8,12 +8,12 @@ function save_room_data() {
 	_submap = -1;
 	_submap = ds_map_create();
 	_submap[? "grid"]	= ds_grid_write(grid_);
-	_submap[? "width"]	= o_level.width_;
-	_submap[? "height"]	= o_level.height_;
+	_submap[? "width"]	= obj_level.width_;
+	_submap[? "height"]	= obj_level.height_;
 	ds_map_add_map(_map,"map_data",_submap);
 
 	//saving player info
-	with (o_player){
+	with (obj_player){
 		_submap = -1;
 		_submap = ds_map_create();
 	
@@ -72,7 +72,7 @@ function save_room_data() {
 	ds_map_destroy(_map);
 
 	gamestate = INGAME;
-	o_player.spin_cooldown = 1;
+	obj_player.spin_cooldown = 1;
 
 	add_dialog(-1, "file '" + _filename + "' saved.",tag.no_pause);
 

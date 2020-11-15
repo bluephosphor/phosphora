@@ -1,8 +1,8 @@
 alarm[0] = fog_freq;
 
-if (instance_exists(o_camera)){
-	camera_x = o_camera.x;
-	camera_y = o_camera.y;
+if (instance_exists(obj_camera)){
+	camera_x = obj_camera.x;
+	camera_y = obj_camera.y;
 }
 
 if (draw_fog){

@@ -26,7 +26,7 @@ function update_target() {
 			t_anim_rot = 0;
 			var _following = current_target;
 			var _success = false;
-			with(o_camera){
+			with(obj_camera){
 				var _list = ds_list_create();
 				var _num = instance_place_list(x, y, mc_mob, _list, true);
 				if (_num > 0){
