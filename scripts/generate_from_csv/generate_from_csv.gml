@@ -45,5 +45,5 @@ function generate_from_csv() {
 			}
 		}
 	}
-	scr_update_tiles();
+	update_tiles();
 }

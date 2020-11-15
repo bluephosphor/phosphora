@@ -21,10 +21,10 @@ if (keyboard_check(vk_shift)){
 	}
 	
 	if (keyboard_check_pressed(ord("R"))){
-		scr_room_change();
+		room_change();
 	}
 	if (keyboard_check_pressed(ord("M"))){
-		scr_load_map();
+		load_map();
 	}
 }
 
@@ -63,7 +63,7 @@ if (keyboard_check(vk_shift)){
 		var xx = o_player.grid_x;
 		var yy = o_player.grid_y;
 		grid_[# xx,yy] = WATER;
-		scr_update_tiles();
+		update_tiles();
 	} else if (in_t){
 		var xx = o_player.x;
 		var yy = o_player.y;

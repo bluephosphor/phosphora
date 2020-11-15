@@ -1,4 +1,4 @@
-function scr_load_map() {
+function load_map() {
 
 	add_dialog(-1,
 		[
@@ -12,10 +12,10 @@ function scr_load_map() {
 		tag.no_pause
 	);
 
-	add_dialog_branch([room_change,r_outside,LOAD_MAP]);
-	add_dialog_branch([room_change,r_dungeon,LOAD_MAP]);
-	add_dialog_branch([room_change,r_deep_grove,LOAD_MAP]);
-	add_dialog_branch([room_change,r_cavern,LOAD_MAP]);
+	add_dialog_branch([room_trans,r_outside,LOAD_MAP]);
+	add_dialog_branch([room_trans,r_dungeon,LOAD_MAP]);
+	add_dialog_branch([room_trans,r_deep_grove,LOAD_MAP]);
+	add_dialog_branch([room_trans,r_cavern,LOAD_MAP]);
 	add_dialog_branch(
 		[
 			[-1,"Suit youself."],

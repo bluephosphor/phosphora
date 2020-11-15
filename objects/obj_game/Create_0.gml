@@ -28,13 +28,6 @@ display_set_gui_size(global.view_width,global.view_height);
 
 global.resolution = [window_get_width(), window_get_height()];
 
-//initialize data structures
-scr_player_data();
-scr_mob_data();
-scr_item_info();
-scr_room_data();
-scr_init_inputs();
-scr_init_particles();
 
 enum p_state {
 	normal,

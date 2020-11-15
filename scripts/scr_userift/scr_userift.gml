@@ -1,4 +1,4 @@
-function scr_userift() {
+function userift() {
 	global.rift_count ++;
 
 	switch(selected_item){
@@ -13,6 +13,6 @@ function scr_userift() {
 			has_rift[i] = false;
 			i++;
 		}
-		room_change(room);
+		room_trans(room);
 	}
 }

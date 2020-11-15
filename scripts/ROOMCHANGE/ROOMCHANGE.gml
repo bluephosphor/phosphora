@@ -1,8 +1,10 @@
-///@desc room_change(room,[LOAD_MAP])
-///@arg room
+
 #macro LOAD_MAP true
 
-function room_change() {
+///@desc room_trans(room,[LOAD_MAP])
+///@arg room
+
+function room_trans() {
 
 	var t_room = argument[0];
 

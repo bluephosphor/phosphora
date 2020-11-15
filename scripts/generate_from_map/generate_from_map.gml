@@ -91,7 +91,7 @@ function generate_from_map() {
 		}
 	}
 
-	scr_update_tiles();
+	update_tiles();
 
 
 }

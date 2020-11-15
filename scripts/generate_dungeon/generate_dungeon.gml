@@ -116,7 +116,7 @@ function generate_dungeon() {
 		event_perform(ev_other,ev_user0);
 	}
 
-	scr_update_tiles();
+	update_tiles();
 
 	debug_log_add("Generated a dungeon with Seed: " + string(global.seed) + "!");
 

@@ -1,4 +1,4 @@
-function scr_item_inst_create() {
+function item_inst_create() {
 	show_inventory = false;
 	var inst;
 	switch(selected_item){

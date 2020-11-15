@@ -1,4 +1,4 @@
-function scr_use_healingitem() {
+function use_healingitem() {
 	gamestate = INGAME;
 
 	switch(selected_item){

@@ -1,4 +1,4 @@
-function scr_cast_spell() {
+function cast_spell() {
 	if (instance_exists(obj_ps_controller)) exit;
 
 	var num = selected_item;

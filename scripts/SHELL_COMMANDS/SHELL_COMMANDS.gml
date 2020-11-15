@@ -46,7 +46,7 @@ function sh_sethour(args){
 function sh_goto(args){
 	var i = 0; repeat(ds_grid_height(room_data)){
 		if (string_lower(room_data[# rm.name, i]) == args[1]){
-			room_change(i);
+			room_trans(i);
 			return "going to: " + args[1] + "...";
 			break;
 		}
@@ -56,7 +56,7 @@ function sh_goto(args){
 }
 
 function sh_reload(args){
-	room_change(room);
+	room_trans(room);
 	return "regenerating current room...";
 }
 

@@ -1,4 +1,4 @@
-function scr_update_tiles() {
+function update_tiles() {
 	with (o_level){
 		// Get the tile layer map id
 		if (layer_exists("WallTiles")) var _wall_map_id = layer_tilemap_get_id("WallTiles");
@@ -47,6 +47,5 @@ function scr_update_tiles() {
 		}
 	}
 	debug_log_add("Updated Tiles!");
-
 
 }

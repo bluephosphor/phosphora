@@ -1,4 +1,4 @@
-function scr_usenote() {
+function usenote() {
 
 	var len = array_length_1d(notes) - 1;
 	var index = irandom(len)

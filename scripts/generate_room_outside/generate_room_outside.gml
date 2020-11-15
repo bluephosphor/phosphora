@@ -131,7 +131,7 @@ function generate_room_outside() {
 		event_perform(ev_other,ev_user0);
 	}
 
-	scr_update_tiles();
+	update_tiles();
 
 	debug_log_add("Generated a room with Seed: " + string(global.seed) + "!");
 

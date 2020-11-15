@@ -1,4 +1,4 @@
-function scr_test_question() {
+function test_question() {
 
 	add_dialog(-1,
 		[
@@ -16,7 +16,7 @@ function scr_test_question() {
 		]
 	);
 
-	add_dialog_branch(scr_test_answer1);
+	add_dialog_branch(test_answer1);
 
 	add_dialog_branch( 
 		[
@@ -27,7 +27,7 @@ function scr_test_question() {
 	);
 }
 
-function scr_test_answer1() {
+function test_answer1() {
 	add_dialog(-1,
 		[
 			"Are you sure?",
