@@ -11,6 +11,8 @@ function load_map() {
 		],
 		tag.no_pause
 	);
+	
+	obj_txtbox1.reset_state = false;
 
 	add_dialog_branch([room_trans,r_outside,LOAD_MAP]);
 	add_dialog_branch([room_trans,r_dungeon,LOAD_MAP]);

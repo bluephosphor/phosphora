@@ -39,13 +39,11 @@ function add_item(argument0, argument1, argument2) {
 
 		if (success){
 			with (cont_inv) selected_item = inventory[# 0, menu_index];
-			debug_log_add("Added a " + item_info[# 0, item_num]);
+			//debug_log_add("Added a " + item_info[# 0, item_num]);
 		} else {
 			debug_log_add("Inventory full!");
 		}
 	}
 
 	return success;
-
-
 }

@@ -5,7 +5,8 @@ function ds_collector_add(variable){
 		ds_collector = [];
 		ds_index = 0;
 	} 
-	ds_collector[ds_index++] = variable;
+	ds_collector[ds_index] = variable;
+	ds_index++;
 }
 
 function ds_clean(){

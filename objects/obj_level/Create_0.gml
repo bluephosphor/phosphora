@@ -7,8 +7,10 @@ mob_cap = room_data[# rm.mob_cap,room];
 alarm[0] = room_speed * 5;
 
 temp_string = -1;
+file_grid = -1;
 
 depth -= 5000;
+
 
 if (global.load_map) {
 	generate_from_map();

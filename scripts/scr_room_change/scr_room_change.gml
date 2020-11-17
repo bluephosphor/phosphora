@@ -11,6 +11,8 @@ function room_change() {
 			"No thanks.",
 		]
 	);
+	
+	obj_txtbox1.reset_state = false;
 
 	add_dialog_branch([room_trans,r_csv_test]);
 	add_dialog_branch([room_trans,r_outside]);

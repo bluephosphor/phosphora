@@ -1,8 +1,8 @@
 /// @description ds_grid_rotate(Grid id, Clockwise, Rotation)
-/// @param Grid id
+/// @param Grid_id
 /// @param  Clockwise
 /// @param  Rotation
-function ds_grid_rotate(argument0, argument1, argument2) {
+function ds_grid_rotate(grid, clockwise, nmb_rot) {
 	//Rotate the value on a grid Clockwise or Counterclockwise
 	//Set Clockwise to true. If false it's Counterclockwise.
 	//Rotation: Number of rotations: 1-2-3 (You can crank that number if you want, it will be 'moded'.)
@@ -34,10 +34,6 @@ function ds_grid_rotate(argument0, argument1, argument2) {
 	543
 	210
 	*/
-
-	var grid = argument0;
-	var clockwise = argument1;
-	var nmb_rot = argument2;
 
 	nmb_rot = nmb_rot mod 4; //To prevent a stack overflow error.
 

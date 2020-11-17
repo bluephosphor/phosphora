@@ -1,8 +1,8 @@
 ///@param level_file
-function place_dungeon_room(argument0) {
-	var file = argument0;
+function place_dungeon_room(file) {
+	
 	file_grid = load_csv(file);
-	ds_grid_rotate(file_grid,true,irandom_range(1,3));
+	repeat(irandom_range(1,3)) ds_grid_rotate(file_grid,true,1);
 	var ww = ds_grid_width(file_grid);
 	var hh = ds_grid_height(file_grid);
 

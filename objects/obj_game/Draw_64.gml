@@ -8,6 +8,7 @@ if (black_alpha > 0){
 	draw_set_alpha(1);
 }
 
+
 if (!global.debug) exit;
 //live variables
 var y_off = (global.view_height / 2);
