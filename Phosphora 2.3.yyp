@@ -167,7 +167,6 @@
     {"id":{"name":"nine_slice_box_s","path":"scripts/nine_slice_box_s/nine_slice_box_s.yy",},"order":13,},
     {"id":{"name":"draw_item_count","path":"scripts/draw_item_count/draw_item_count.yy",},"order":14,},
     {"id":{"name":"check_phase","path":"scripts/check_phase/check_phase.yy",},"order":15,},
-    {"id":{"name":"debug_log_add","path":"scripts/debug_log_add/debug_log_add.yy",},"order":16,},
     {"id":{"name":"ROOMCHANGE","path":"scripts/ROOMCHANGE/ROOMCHANGE.yy",},"order":17,},
     {"id":{"name":"obj_shell","path":"objects/obj_shell/obj_shell.yy",},"order":4,},
     {"id":{"name":"script_execute_alt","path":"scripts/script_execute_alt/script_execute_alt.yy",},"order":18,},

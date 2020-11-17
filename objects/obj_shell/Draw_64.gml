@@ -2,7 +2,7 @@ surface_set_target(shellSurface);
 	draw_clear_alpha(c_black, 0.0);
 	draw_set_color(consoleColor);
 	draw_set_alpha(consoleAlpha);
-	draw_roundrect_ext(0, 0, width, height, cornerRadius, cornerRadius, false);
+	draw_roundrect_ext(4, 4, width, height, cornerRadius, cornerRadius, false);
 	
 	draw_set_font(consoleFont);
 	var lineHeight = string_height(prompt);
@@ -34,13 +34,21 @@ surface_set_target(shellSurface);
 		var outputStr = ds_list_find_value(output, i - 1);
 		var xOffset = string_width(prompt);
 		var yOffset = height - (outputSize - i + 2) * lineHeight;
-		if (string_char_at(outputStr, 1) == ">") {
-			draw_set_color(fontColorSecondary);
-			draw_text(6, yOffset, prompt);
-			draw_text(10 + xOffset, yOffset, string_delete(outputStr, 1, 1));
-		} else {
-			draw_set_color(fontColor);
-			draw_text(10 + xOffset, yOffset, outputStr);
+		switch (string_char_at(outputStr, 1)) {
+			case "#":
+				draw_set_color(logColor);
+				draw_text(6, yOffset, "#");
+				draw_text(10 + xOffset, yOffset, string_delete(outputStr, 1, 1));
+				break;
+			case ">":
+				draw_set_color(fontColorSecondary);
+				draw_text(6, yOffset, prompt);
+				draw_text(10 + xOffset, yOffset, string_delete(outputStr, 1, 1));
+				break;
+			default:
+				draw_set_color(fontColor);
+				draw_text(10 + xOffset, yOffset, outputStr);
+				break;
 		}
 	}
 	draw_set_alpha(1);

@@ -44,17 +44,7 @@ target_room = -1;
 tree_overcast = false;
 pattern_grid = -1;
 
-debug_log = ds_list_create();
-ds_collector_add(debug_log);
-debug_log_w = global.view_width / 2;
-debug_log_h = global.view_height / 2;
-debug_log_x = global.view_width / 2;
-debug_log_y = 0;
-debug_log_size = 0;
-debug_log_entries = 15;
-debug_log_index = 0;
-
-live_vars_x = (global.view_width / 2) + 72;
+live_vars_x = 0
 
 if (!variable_global_exists("__scribble_global_count")){
     scribble_init("","font_main",false);

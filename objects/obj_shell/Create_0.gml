@@ -13,6 +13,8 @@ output = ds_list_create();
 filteredFunctions = ds_list_create();
 suggestionIndex = 0;
 
+logColor = merge_color(c_fuchsia,c_gray,0.5);
+
 // If another instance of rt-shell already exists, destroy ourself
 // Must do after initializing surface and lists so our clean-up step succeeds 
 if (instance_number(obj_shell) > 1) {
@@ -129,6 +131,8 @@ function string_split(input, delimiter) {
 }
 
 /////it's just me after here
+
+///@arg str
 
 openFunction = function(){
 

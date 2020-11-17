@@ -36,6 +36,11 @@ function ds_clean(){
 	}
 }
 
+function debug_log_add(str) {
+	ds_list_add(shell.output,"#" + str);
+	show_debug_message(str);
+}
+
 //MACROS//
 //dimensions
 #macro CELL_WIDTH 32
