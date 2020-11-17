@@ -58,7 +58,7 @@ switch(spelltype){
 		}
 		if (cast){
 			ds_list_sort(fireball,false);
-			with (fireball[| 0]) launch = true;
+			with (fireball[| 0]) state = FIREBALL_LAUNCH;
 			ds_list_set(fireball,0,noone);
 		}
 		cast = false;

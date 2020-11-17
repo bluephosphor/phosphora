@@ -1,5 +1,11 @@
 event_inherited();
 
+#macro FIREBALL_DORMANT 0
+#macro FIREBALL_THROW 1
+#macro FIREBALL_LAUNCH 2
+
+state = FIREBALL_DORMANT;
+
 follow = obj_player;
 target = noone;
 
