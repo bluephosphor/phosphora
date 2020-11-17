@@ -57,6 +57,7 @@ function sh_goto(args){
 
 function sh_reload(args){
 	room_trans(room);
+	gamestate = SHELL;
 	return "regenerating current room...";
 }
 
@@ -74,4 +75,49 @@ function sh_give(args){
 		i++;
 	}
 	return "did not find item named: " + args[1] + "...";
+}
+
+function sh_spawn(args){
+	var _spawn = string_replace_all(args[2],"_"," ");
+	switch(args[1]){
+		case "mob":
+			var i = 0, curr_name; repeat(ds_grid_height(mob_data)){
+				curr_name = mob_data[# i, stat.name];
+				if ((is_string(curr_name)) and (string_lower(curr_name) == _spawn)){
+					instance_create_layer(
+						obj_player.x + (CELL_WIDTH * obj_player.image_xscale),
+						obj_player.y,
+						"Instances",
+						mob_data[# i, stat.object]
+					);
+					return "spawned a " + args[2];
+					break;
+				}
+				i++;
+			}
+			return "did not find mob named: " + args[2] + "...";
+			break;
+		case "item":
+			var i = 0; repeat(ds_grid_height(item_info)){
+				if (string_lower(item_info[# ITEM, i]) == _spawn){
+					with (instance_create_layer(
+						obj_player.x + (CELL_WIDTH * obj_player.image_xscale),
+						obj_player.y,
+						"Instances",
+						obj_item_entity)){
+						item_num = i;
+						x_speed_ = random_range(-1,1);
+						y_speed_ = random_range(-1,1);
+					}
+					return "spawned a " + args[2];
+					break;
+				}
+				i++;
+			}
+			return "did not find item named: " + args[2] + "...";
+			break;
+		default:
+			return "invalid type";
+			break;
+	}
 }

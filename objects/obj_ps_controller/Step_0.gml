@@ -1,7 +1,7 @@
 depth = obj_player.depth - 1;
 
 switch(spelltype){
-	case item.ps_thunder:
+	case item.ps_thunder://///////////////////////
 		if (light_inst == -1){
 			light_inst = instance_create_layer(x,y,layer,mc_lightsource);
 			with (light_inst){
@@ -45,7 +45,7 @@ switch(spelltype){
 			instance_destroy();
 		}
 		break;
-	case item.ps_fire:
+	case item.ps_fire:////////////////////////////////
 		if (timer > 0) timer -=1;
 		if (timer <= 0){
 			if (spawncount < 3){

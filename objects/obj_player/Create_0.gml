@@ -34,8 +34,12 @@ player_check_collisions = function(){
 	if (_num > 0) {
 			var i = 0; repeat(_num){
 			with (item_list[| i]){
-				var value = coin_data[# 0, coin_type];
-				global.player_coins += value;
+				if (item_num == -1){
+					var value = coin_data[# 0, coin_type];
+					global.player_coins += value;
+				} else {
+					add_item(inventory,item_num,1);
+				}
 				instance_destroy();
 			}
 			i++;

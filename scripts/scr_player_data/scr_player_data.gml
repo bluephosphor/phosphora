@@ -12,6 +12,7 @@ enum stat{
 	defense,
 	sp_attack,
 	spawn_cell,
+	loot,
 	enum_height,
 }
 
