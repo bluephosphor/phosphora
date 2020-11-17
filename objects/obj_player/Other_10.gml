@@ -1,19 +1,22 @@
 /// @description normal step
 
+//get inputs
 var _x_input = 0; 
 var _y_input = 0;
 var _inv = keyboard_check_pressed(input[| key.select]);
 var _spin = keyboard_check_pressed(input[| key.action]);
 var _boost = keyboard_check(vk_shift);
-var speed_reduction = 0; 
+var _speed_reduction = 0; 
 
 
+//behold, the swimming state
 if (playerstate == p_state.swimming){
-	speed_reduction = 1.5;
+	_speed_reduction = 1.5;
 	_spin = false;
 }
 
-var ms = max_speed_ - speed_reduction;
+//and here's our 'final' speed
+var ms = max_speed_ - _speed_reduction;
 
 //calculate movement
 if (gamestate == INGAME){
@@ -71,6 +74,7 @@ if (gamestate == INGAME){
 	}
 }
 
+//animate sprite if we're moving
 if (_x_input == 0 && _y_input == 0) {
 	image_speed = 0;
 	image_index = 0;
@@ -80,6 +84,7 @@ if (_x_input == 0 && _y_input == 0) {
 	image_speed = .7;
 }
 
+//friction when not moving
 if (_x_input == 0) {
 	x_speed_ = lerp(x_speed_, 0, .3);
 }
@@ -87,6 +92,7 @@ if (_y_input == 0) {
 	y_speed_ = lerp(y_speed_, 0, .3);
 }
 
+//set facing depending on target
 if (current_target != noone){
 	image_xscale = sign(current_target.x - x);
 } else if (x_speed_ > 0) {

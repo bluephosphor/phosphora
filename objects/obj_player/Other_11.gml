@@ -1,7 +1,6 @@
 /// @description spin step
 var _spin = keyboard_check_pressed(input[| key.action]);
 
-
 image_speed = 2;
 
 var _x_input = 0; 

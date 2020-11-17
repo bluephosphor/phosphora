@@ -4,6 +4,7 @@ if (hitlag != 0) hitlag = approach(hitlag, 0, 1);
 
 if(global.time_pause) or (hitlag > 0) {image_speed = 0; exit;}
 
+///player state machine
 switch(playerstate){
 	case p_state.normal:
 	case p_state.swimming:
@@ -17,11 +18,13 @@ switch(playerstate){
 		break;
 }
 
+///flash if we're in hitstun
 if (recovery_frames > 0){
 	recovery_frames -=1;
 	_visible = recovery_frames mod 4;
 } else if (!_visible) _visible = true;
 
+///update healthbar
 if (show_hp){
 	draw_alpha = approach(draw_alpha,1,0.1);
 } else if (draw_alpha > 0) {
@@ -31,17 +34,6 @@ if (show_hp){
 	draw_color = c_white;
 }
 
-var _num  = instance_place_list(x,y,obj_item_entity,item_list,true);
-if (_num > 0) {
-		var i = 0; repeat(_num){
-		with (item_list[| i]){
-			var value = coin_data[# 0, coin_type];
-			global.player_coins += value;
-			instance_destroy();
-		}
-		i++;
-	}
-	ds_list_clear(item_list);
-}
+player_check_collisions();
 
 update_target();
