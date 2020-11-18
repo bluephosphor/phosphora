@@ -5,4 +5,3 @@ if (watertype){
 	draw_self();
 	if (in_cell == WATER) draw_sprite(spr_minky,5 + frame_index,x,y+1);
 }
-

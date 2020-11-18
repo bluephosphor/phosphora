@@ -18,9 +18,5 @@ function load_map() {
 	add_dialog_branch([room_trans,r_dungeon,LOAD_MAP]);
 	add_dialog_branch([room_trans,r_deep_grove,LOAD_MAP]);
 	add_dialog_branch([room_trans,r_cavern,LOAD_MAP]);
-	add_dialog_branch(
-		[
-			[-1,"Suit youself."],
-		]
-	);
+	add_dialog_branch([[-1,"Suit youself."]]);
 }

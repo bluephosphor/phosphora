@@ -41,6 +41,11 @@ function debug_log_add(str) {
 	show_debug_message(str);
 }
 
+function vec2(x,y) constructor{
+	self.x = x;
+	self.y = y;
+}
+
 //MACROS//
 //dimensions
 #macro CELL_WIDTH 32

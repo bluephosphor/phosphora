@@ -29,6 +29,14 @@ mob_data[# mob.minky, stat.attack]		= 5;
 mob_data[# mob.minky, stat.defense]		= 1;
 mob_data[# mob.minky, stat.sp_attack]	= 0;
 mob_data[# mob.minky, stat.spawn_cell]	= FLOOR;
+mob_data[# mob.minky, stat.loot]		= [
+	//item              //chance in percent
+	[item.apple,		30],
+	[item.r_potion,		15],
+	[item.b_potion,		3],
+	[item.note,			1],
+	[item.rubellite,	0.05]
+];
 
 //Chest Demon
 mob_data[# mob.chest_demon, stat.object]		= obj_chest_demon;
@@ -39,6 +47,15 @@ mob_data[# mob.chest_demon, stat.attack]		= 10;
 mob_data[# mob.chest_demon, stat.defense]		= 3;
 mob_data[# mob.chest_demon, stat.sp_attack]		= 0;
 mob_data[# mob.chest_demon, stat.spawn_cell]	= FLOOR;
+mob_data[# mob.chest_demon, stat.loot]			= [
+	//item              //chance in percent
+	[item.r_potion,		25],
+	[item.b_potion,		15],
+	[item.ps_fire,		2],
+	[item.ps_gust,		1],
+	[item.note,			1],
+	[item.rubellite,	0.05]
+];
 
 //Void Demon
 mob_data[# mob.void_demon, stat.object]			= obj_mob_voiddemon;
@@ -49,6 +66,11 @@ mob_data[# mob.void_demon, stat.attack]			= 100;
 mob_data[# mob.void_demon, stat.defense]		= 0;
 mob_data[# mob.void_demon, stat.sp_attack]		= 0;
 mob_data[# mob.void_demon, stat.spawn_cell]		= VOID;
+mob_data[# mob.void_demon, stat.loot]			= [
+	//item              //chance in percent
+	[item.diamond,		25],
+	[item.ps_thunder,	5]
+];
 
 //Fish (passive)
 mob_data[# mob.fish, stat.object]			= obj_fish_entity;

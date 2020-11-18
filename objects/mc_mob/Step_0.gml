@@ -24,7 +24,12 @@ switch(mystate){
 			part_type_direction(global.p_enemy_death,0,0,0,0);
 			repeat(irandom(5)){
 				with (instance_create_layer(x,y,"Instances",obj_item_entity)){
-					coin_type = choose(coin.bronze,coin.silver,coin.gold);
+					var _item = item.none;
+					with (other){
+						if (loot_table != -1) _item = loot_item_add();
+					}
+					if (_item == item.none) coin_type = choose(coin.bronze,coin.silver,coin.gold);
+					else item_num = _item;
 					x_speed_ = random_range(-1,1);
 					y_speed_ = random_range(-1,1);
 				}

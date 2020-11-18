@@ -19,11 +19,5 @@ function room_change() {
 	add_dialog_branch([room_trans,r_dungeon]);
 	add_dialog_branch([room_trans,r_deep_grove]);
 	add_dialog_branch([room_trans,r_cavern]);
-	add_dialog_branch(
-		[
-			[-1,"Suit youself."],	
-		]
-	);
-
-
+	add_dialog_branch([[-1,"Suit youself."]]);
 }

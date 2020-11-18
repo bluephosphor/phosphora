@@ -17,3 +17,5 @@ hitstun_frames = [4];
 current_anim = passive_frames;
 
 image_speed = 0;
+
+set_mob_loot();

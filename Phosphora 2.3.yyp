@@ -8,6 +8,7 @@
     {"id":{"name":"spr_ef_thunder","path":"sprites/spr_ef_thunder/spr_ef_thunder.yy",},"order":0,},
     {"id":{"name":"spr_ef_5","path":"sprites/spr_ef_5/spr_ef_5.yy",},"order":1,},
     {"id":{"name":"spr_ef_4","path":"sprites/spr_ef_4/spr_ef_4.yy",},"order":2,},
+    {"id":{"name":"spr_onepixel","path":"sprites/spr_onepixel/spr_onepixel.yy",},"order":9,},
     {"id":{"name":"spr_ef_3","path":"sprites/spr_ef_3/spr_ef_3.yy",},"order":3,},
     {"id":{"name":"spr_ef_2","path":"sprites/spr_ef_2/spr_ef_2.yy",},"order":4,},
     {"id":{"name":"spr_ef_1","path":"sprites/spr_ef_1/spr_ef_1.yy",},"order":5,},

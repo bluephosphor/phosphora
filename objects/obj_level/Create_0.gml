@@ -19,4 +19,11 @@ if (global.load_map) {
 	script_execute(room_data[# rm.script,room]);
 }
 
+draw_map = true;
+map_scale = 1;
+map = new vec2(
+	global.view_width - (width_ * map_scale), 
+	global.view_height - (height_ * map_scale)
+);
+
 with (obj_game) event_perform(ev_other,ev_user0);

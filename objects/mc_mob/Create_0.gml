@@ -16,6 +16,9 @@ y_speed_ = 0;
 mystate = mobstate.passive;
 mob_id = -1;
 
+loot_table = -1;
+ltc = 0;
+
 hp = 100;
 show_hp = false;
 hp_change = 0;
@@ -36,3 +39,15 @@ static_attack = false;
 
 alarm[10] = anim_speed;
 alarm[11] = room_speed;
+
+function set_mob_loot(){
+	var list = mob_data[# mob_id,stat.loot];
+	if (list != -1){
+		var len = array_length(list);
+		var i = 0; repeat(len){
+			var info = list[i];
+			loot_table_add(info[0],info[1]);
+			i++;
+		}
+	}
+}
