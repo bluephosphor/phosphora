@@ -5,6 +5,7 @@
 #macro SHELL	4
 #macro FISHING	5
 #macro TRANSITION 6
+#macro CUTSCENE 7
 
 globalvar gamestate;
 gamestate = INGAME;

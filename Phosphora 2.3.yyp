@@ -158,7 +158,7 @@
     {"id":{"name":"scr_load_map","path":"scripts/scr_load_map/scr_load_map.yy",},"order":3,},
     {"id":{"name":"TREE_COVER","path":"scripts/TREE_COVER/TREE_COVER.yy",},"order":23,},
     {"id":{"name":"TARGETING","path":"scripts/TARGETING/TARGETING.yy",},"order":24,},
-    {"id":{"name":"CUTSCENE","path":"scripts/CUTSCENE/CUTSCENE.yy",},"order":25,},
+    {"id":{"name":"CUTSCENE_FUNCTIONS","path":"scripts/CUTSCENE_FUNCTIONS/CUTSCENE_FUNCTIONS.yy",},"order":25,},
     {"id":{"name":"save_string_to_file","path":"scripts/save_string_to_file/save_string_to_file.yy",},"order":0,},
     {"id":{"name":"load_json_from_file","path":"scripts/load_json_from_file/load_json_from_file.yy",},"order":1,},
     {"id":{"name":"spawn_mob","path":"scripts/spawn_mob/spawn_mob.yy",},"order":9,},
