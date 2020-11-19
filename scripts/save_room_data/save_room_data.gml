@@ -71,9 +71,8 @@ function save_room_data() {
 	save_string_to_file(_filename,_json);
 	ds_map_destroy(_map);
 
-	gamestate = INGAME;
-	obj_player.spin_cooldown = 1;
+	//gamestate = INGAME;
+	//obj_player.spin_cooldown = 1;
 
 	add_dialog(-1, "file '" + _filename + "' saved.",tag.no_pause);
-
 }

@@ -22,6 +22,10 @@ global.menu_color	= merge_color(c_white,c_blue,0.3);
 global.show_grid	= false;
 global.load_map		= false;
 
+global.screen_shake = true;
+global.flash_effect = true;
+global.content_warn = false;
+
 global.view_width	= camera_get_view_width(view_camera[0]);
 global.view_height	= camera_get_view_height(view_camera[0]);
 display_set_gui_size(global.view_width,global.view_height);

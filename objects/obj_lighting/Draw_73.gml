@@ -20,7 +20,12 @@ if (!surface_exists(light_surf)) {
 		gpu_set_blendmode(bm_normal);
 	}
 	surface_reset_target();
-	var alpha_reduction = obj_player.hitlag * 0.02;
+	var alpha_reduction = 0;
+	if (global.flash_effect) {
+		if (instance_exists(obj_thunderbolt)){
+			alpha_reduction = obj_thunderbolt.image_alpha;
+		} else alpha_reduction = obj_player.hitlag * 0.02;
+	}
 	draw_surface_ext(light_surf,0,0,1/surf_scale,1/surf_scale,0,c_white,dark_lev - alpha_reduction);
 }
 

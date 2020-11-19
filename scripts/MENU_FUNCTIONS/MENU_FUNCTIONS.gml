@@ -24,27 +24,33 @@ function create_menu_page() {
 	return ds_grid_id;
 }
 
-function change_menu_col(argument0) {
-	switch(argument0){
-		case 0: global.menu_color = merge_color(c_white,c_red,0.8); break;
-		case 1: global.menu_color = merge_color(c_white,c_green,0.8); break;
-		case 2: global.menu_color = merge_color(c_white,c_blue,0.8); break;
-		case 3: global.menu_color = merge_color(c_white,c_aqua,0.8); break;
-		case 4: global.menu_color = merge_color(c_white,c_fuchsia,0.8); break;
-		case 5: global.menu_color = merge_color(c_white,c_blue,0.3);
+function change_menu_col(val) {
+	switch(val){
+		case 0: global.menu_color = merge_color(c_white,c_fuchsia,0.8);		break; //FUSCHIA
+		case 1: global.menu_color = merge_color(c_white,c_green,0.8);		break; //MOSS
+		case 2: global.menu_color = merge_color(c_gray,c_blue,0.7);			break; //COBALT
+		case 3: global.menu_color = merge_color(c_white,c_aqua,0.8);		break; //TEAL
+		case 4: global.menu_color = merge_color(c_red,c_purple,0.5);		break; //MAROON
+		case 5: global.menu_color = merge_color(c_white,c_blue,0.3);		break; //ICE
+		case 6: global.menu_color = c_autumn;								break; //AMBER
+		case 7: global.menu_color = c_brown;								break; //COFFEE
 	}
 
 	inputting_c = global.menu_color;
 }
 
-function change_difficulty() {
-
-
-
+function change_accessibility(val) {
+	var ds_grid = pages[page];
+	switch (ds_grid[# 0, menu_option[page]]){
+		case "DIFFICULTY":										break;	
+		case "SCREENSHAKE":			global.screen_shake = val;	break;	
+		case "FLASH EFFECT":		global.flash_effect = val;	break;	
+		case "CONTENT WARNINGS":	global.content_warn = val;	break;	
+	}
 }
 
-function change_resolution(argument0) {
-	switch(argument0){
+function change_resolution(val) {
+	switch(val){
 		case 0: global.resolution = [320,180]; break;
 		case 1: global.resolution = [640,360]; break;
 		case 2: global.resolution = [960,540]; break;
@@ -57,33 +63,37 @@ function change_resolution(argument0) {
 }
 
 
-function change_volume(argument0) {
+function change_volume(val) {
 	var type = menu_option[page];
 
 	switch(type){
-		case 0: audio_master_gain(argument0); break;
-		case 1: audio_group_set_gain(audiogroup_music, argument0, 0); break;
-		case 2: audio_group_set_gain(audiogroup_soundeffects, argument0, 0); break;
+		case 0: audio_master_gain(val); break;
+		case 1: audio_group_set_gain(audiogroup_music, val, 0); break;
+		case 2: audio_group_set_gain(audiogroup_soundeffects, val, 0); break;
 	}
 }
 
 ///@description change_window_mode
-///@param value
-function change_window_mode(argument0) {
-
-	global.fullscreen = argument0;
+function change_window_mode(arg) {
+	global.fullscreen = arg;
 	
 	window_set_fullscreen(global.fullscreen);
 
-	var res = global.fullscreen ? [display_get_width(),round((display_get_width()/16)*9)] : global.resolution;
+	var max_dim = max(display_get_width(),display_get_height());
 	
+	var res = global.fullscreen ? [max_dim,round((max_dim/16)*9)] : global.resolution;
 	
-
 	surface_resize(application_surface,res[0],res[1]);
 }
 
 function close_game() {
-	game_end();
+	add_dialog(-1,[
+		"Exit game? Unsaved changes may be lost.",
+		"Exit game.",
+		"Resume game."
+	],tag.no_pause);
+	add_dialog_branch(game_end);
+	add_dialog_branch(resume_game);
 }
 
 function resume_game() {

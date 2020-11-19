@@ -66,6 +66,7 @@ function vec2(x,y) constructor{
 #macro c_autumn make_color_rgb(235, 94, 52)
 #macro c_winter make_color_rgb(153, 192, 255)
 #macro c_pink   make_color_rgb(255, 171, 217)
+#macro c_brown  make_color_rgb(100,50,20)
 //target states
 #macro TARGET_DORMANT 0
 #macro TARGET_SET 1

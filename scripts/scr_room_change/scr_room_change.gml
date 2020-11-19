@@ -7,7 +7,7 @@ function room_change() {
 			"Forest.",
 			"Dungeon.",
 			"Grove.",
-			"Cavern",
+			"Cavern.",
 			"No thanks.",
 		]
 	);

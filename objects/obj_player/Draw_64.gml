@@ -22,7 +22,7 @@ if (draw_alpha > 0){
 	draw_set_alpha(1);
 }
 
-if (hitlag > 0){
+if (global.flash_effect and hitlag > 0){
 	c = c_white;
 	if (playerstate == p_state.hitstun) c = c_red;
 	draw_set_alpha(hitlag * 0.01);
