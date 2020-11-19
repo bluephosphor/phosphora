@@ -27,7 +27,6 @@ menu_y = 16;
 text_xo = menu_x + 16;
 text_yo = menu_y + 32;
 
-show_menu = false;
-gamestate = INGAME;
+gamestate = DIALOGUE;
 
 test_string = "Hello! this is a sample string! I [c_red]sure[/c] hope all of this [wave]works[/wave] when I'm done!"

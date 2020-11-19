@@ -1,5 +1,3 @@
-if (!show_menu) exit;
-
 ///draw bg
 nine_slice_box_s(spr_9slice1,menu_x,menu_y,menu_x + menu_width, menu_y + menu_height,global.menu_color);
 
@@ -10,7 +8,7 @@ switch(state){
 		
 		current_alphabet = alphabet[page];
 		var len = array_length_1d(current_alphabet);
-		var i = 0; var xx = 0; var yy = 0; repeat(len){
+		var i = 0, xx = 0, yy = 0, c; repeat(len){
 			
 			//draw letters?
 			var tx = text_xo + (24 * xx);

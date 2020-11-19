@@ -18,13 +18,12 @@ if (keyboard_check(vk_shift)){
 		show_debug_overlay(global.debug);
 		
 		if (!global.debug) global.show_grid = false;
-	}
-	
-	if (keyboard_check_pressed(ord("R"))){
+	} else if (keyboard_check_pressed(ord("R"))){
 		room_change();
-	}
-	if (keyboard_check_pressed(ord("M"))){
+	} else if (keyboard_check_pressed(ord("M"))){
 		load_map();
+	} else if (keyboard_check_pressed(ord("N"))){
+		if (!instance_exists(obj_name_entry)) instance_create_layer(0,0,"Instances",obj_name_entry);
 	}
 }
 

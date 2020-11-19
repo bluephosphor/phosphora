@@ -24,7 +24,7 @@ if (!surface_exists(light_surf)) {
 	if (global.flash_effect) {
 		if (instance_exists(obj_thunderbolt)){
 			alpha_reduction = obj_thunderbolt.image_alpha;
-		} else alpha_reduction = obj_player.hitlag * 0.02;
+		} else if (instance_exists(obj_player)) alpha_reduction = obj_player.hitlag * 0.02;
 	}
 	draw_surface_ext(light_surf,0,0,1/surf_scale,1/surf_scale,0,c_white,dark_lev - alpha_reduction);
 }

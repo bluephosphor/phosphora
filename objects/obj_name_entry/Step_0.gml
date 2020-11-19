@@ -1,8 +1,6 @@
 var toggle = (keyboard_check_pressed(ord("N"))) and (keyboard_check(vk_shift));
 
-show_menu ^= toggle;
-
-if (!show_menu) exit;
+if (toggle){gamestate = INGAME; instance_destroy();}
 
 var hinput = keyboard_check_pressed(input[| key.right]) - keyboard_check_pressed(input[| key.left]);
 var vinput = keyboard_check_pressed(input[| key.down])  - keyboard_check_pressed(input[| key.up]);

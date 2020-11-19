@@ -25,6 +25,4 @@ y_speed_ = 0;
 stunpower = 30;
 damage_mod = 2;
 
-with (instance_create_layer(x,y,layer,mc_lightsource)){
-	follow = other.id;
-}
+with (instance_create_layer(x,y,layer,mc_lightsource)) follow = other.id;
