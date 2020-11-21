@@ -1,7 +1,8 @@
 function generate_from_map() {
 	//get file
 	var i, _submap, _sublist;
-	var _json = load_json_from_file("lvltest.map");
+	var _string = load_json_from_file("lvltest.map");
+	var _json = json_decode(_string);
 
 	//room sizing
 	_submap = -1;
@@ -12,7 +13,7 @@ function generate_from_map() {
 	room_width = width_ * CELL_WIDTH;
 	room_height = height_ * CELL_HEIGHT;
 
-	// Set up the grid
+	//set up the grid
 	globalvar grid_;
 	grid_ = ds_grid_create(width_,height_);
 

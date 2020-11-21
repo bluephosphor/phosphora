@@ -6,7 +6,7 @@
     "path": "folders/Scripts/save_load.yy",
   },
   "resourceVersion": "1.0",
-  "name": "load_json_from_file",
+  "name": "BUFFER_SAVE_LOAD",
   "tags": [],
   "resourceType": "GMScript",
 }
