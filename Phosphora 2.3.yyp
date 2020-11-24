@@ -237,13 +237,13 @@
     "name": "Default",
     "children": [],
   },
-  "RoomOrder": [
-    {"name":"r_init","path":"rooms/r_init/r_init.yy",},
-    {"name":"r_outside","path":"rooms/r_outside/r_outside.yy",},
-    {"name":"r_deep_grove","path":"rooms/r_deep_grove/r_deep_grove.yy",},
-    {"name":"r_dungeon","path":"rooms/r_dungeon/r_dungeon.yy",},
-    {"name":"r_csv_test","path":"rooms/r_csv_test/r_csv_test.yy",},
-    {"name":"r_cavern","path":"rooms/r_cavern/r_cavern.yy",},
+  "RoomOrderNodes": [
+    {"roomId":{"name":"r_init","path":"rooms/r_init/r_init.yy",},},
+    {"roomId":{"name":"r_outside","path":"rooms/r_outside/r_outside.yy",},},
+    {"roomId":{"name":"r_deep_grove","path":"rooms/r_deep_grove/r_deep_grove.yy",},},
+    {"roomId":{"name":"r_dungeon","path":"rooms/r_dungeon/r_dungeon.yy",},},
+    {"roomId":{"name":"r_csv_test","path":"rooms/r_csv_test/r_csv_test.yy",},},
+    {"roomId":{"name":"r_cavern","path":"rooms/r_cavern/r_cavern.yy",},},
   ],
   "Folders": [
     {"folderPath":"folders/Sprites.yy","order":0,"resourceVersion":"1.0","name":"Sprites","tags":[],"resourceType":"GMFolder",},
@@ -297,8 +297,8 @@
     {"targets":461609314234257646,"resourceVersion":"1.0","name":"audiogroup_soundeffects","resourceType":"GMAudioGroup",},
   ],
   "TextureGroups": [
-    {"isScaled":true,"autocrop":true,"border":2,"mipsToGenerate":0,"targets":461609314234257646,"resourceVersion":"1.0","name":"Default","resourceType":"GMTextureGroup",},
-    {"isScaled":true,"autocrop":false,"border":2,"mipsToGenerate":0,"targets":461609314234257646,"resourceVersion":"1.0","name":"Outline","resourceType":"GMTextureGroup",},
+    {"isScaled":true,"autocrop":true,"border":2,"mipsToGenerate":0,"groupParent":null,"targets":461609314234257646,"resourceVersion":"1.0","name":"Default","resourceType":"GMTextureGroup",},
+    {"isScaled":true,"autocrop":false,"border":2,"mipsToGenerate":0,"groupParent":null,"targets":461609314234257646,"resourceVersion":"1.0","name":"Outline","resourceType":"GMTextureGroup",},
   ],
   "IncludedFiles": [
     {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"ROOM1.csv","resourceType":"GMIncludedFile",},
@@ -310,9 +310,9 @@
     {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"ROOM5.csv","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
-    "IDEVersion": "2.3.0.529",
+    "IDEVersion": "2.3.1.536",
   },
-  "resourceVersion": "1.3",
+  "resourceVersion": "1.4",
   "name": "Phosphora 2.3",
   "tags": [],
   "resourceType": "GMProject",

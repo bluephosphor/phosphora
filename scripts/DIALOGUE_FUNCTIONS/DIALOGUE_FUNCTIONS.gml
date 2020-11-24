@@ -14,10 +14,13 @@ function add_dialog() {
 			dialog[lines, 0]   = argument[0]; //speaker
 			dialog[lines++, 1] = argument[1]; //dialog
 			if (argument_count > 2){
-				switch(argument[2]){
-					case tag.no_box:	draw_box	= false; break;
-					case tag.no_pause:	pause_text	= false; break;
-					case tag.no_reset:	reset_state = false; break;
+				var i = 2; repeat(argument_count - i){
+					switch(argument[i]){
+						case tag.no_box:	draw_box	= false; break;
+						case tag.no_pause:	pause_text	= false; break;
+						case tag.no_reset:	reset_state = false; break;
+					}
+					i++;
 				}
 			}
 			event_perform(ev_other,ev_user0);

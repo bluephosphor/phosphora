@@ -91,7 +91,7 @@ function close_game() {
 		"Exit game? Unsaved changes may be lost.",
 		"Exit game.",
 		"Resume game."
-	],tag.no_pause);
+	],tag.no_box,tag.no_pause);
 	add_dialog_branch(game_end);
 	add_dialog_branch(resume_game);
 }

@@ -22,10 +22,10 @@ if (question){
 	entries = array_length_1d(line_array) - 1;
 	line_to_draw = line_array[0];
 	///get the longest line
-	var i = 0, str, wid; repeat(entries){
-		str = string_read(line_array[i + 1]);
-		wid[i] = string_width(str);
-		longest_line = max(longest_line,wid[i]);
+	var i = 0, _str, _width; repeat(entries){
+		_str = string_read(line_array[i + 1]);
+		_width[i] = string_width(_str);
+		longest_line = max(longest_line,_width[i]);
 		i++;
 	}
 } else {
