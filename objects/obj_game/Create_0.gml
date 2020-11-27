@@ -13,7 +13,7 @@ globalvar playerstate, debug_log, cont_daycycle, cont_lighting, cont_audio,
 global.debug		= false;
 global.rift_count	= 0;
 global.fullscreen	= false;
-global.playmusic	= false;
+global.playmusic	= true;
 global.time_pause	= false;
 global.pause		= false;
 global.draw_outline = true;
@@ -77,8 +77,7 @@ cont_cutscene = noone;
 //	[cs_end_dialog],
 //	[cs_wait,2],
 //	[cs_add_dialog,-1,"Please, do not despair... I am here now.",false],
-//	[cs_add_dialog,-1,"You will be safe in this place..."],
-//	[cs_add_dialog,-1,"With [c_red][sound,secret]me.[/c]"],
+//	[cs_add_dialog,-1,"You will be safe in this place... With me."],
 //	[cs_end_dialog]
 //];
 

@@ -7,6 +7,7 @@ function init_tree_patterns() {
 	tree_overcast = room_data[# rm.tree_overcast,room]; if (!tree_overcast) exit;
 	spr = spr_tree;
 
+	//here we're gonna pick a color array depending on the season, or if we have special colors for the room
 	if (room_data[# rm.tree_col_sp,room] == -1){
 		var autumn_colors = [c_shadow,c_autumn,c_orange,c_yellow];
 		var summer_colors = [c_shadow,c_teal,c_dkteal];
@@ -18,29 +19,35 @@ function init_tree_patterns() {
 		colors = room_data[# rm.tree_col_sp,room];
 	}
 
+	//lord forgive me for this was all done pre 2.3.........
+	//first we procedurally create (pattern_ct) number of leaf patterns
 	pattern_ct = 16;
+	//now we loop and loop
 	var i = 0; repeat(pattern_ct) + 1{
 		var list = -1, steps = 64, 
-		c_len = array_length_1d(colors) - 1,
+		c_len = array_length(colors) - 1,
 		cc, c1, c2, o = 0; repeat(steps){
-			//set colors
-			cc		= o / steps * c_len
+			//working out where we are in our colors array relative how far into our subloop we are!
+			cc		= o / steps * c_len 
 			c1		= colors[floor(cc)];
 			c2		= colors[ceil (cc)];
 		
+			//generating some numbers and storing all of this info inside of nested arrays bc again, pre 2.3
 			list[o] = [
 				irandom(CELL_WIDTH),				// x
 				irandom(CELL_HEIGHT),				// y
 				choose(0,90,180,270),				// angle
 				choose(1,2),						// frame
-				merge_color(c1,c2, cc - floor(cc))  // color
+				merge_color(c1,c2, cc - floor(cc))  // color (blending colors together depending on the c1, c2 values we worked out earler. brain!)
 			];
 			o++;
 		}
+		//save each individual pattern array in this here array (lol)
 		pattern[i] = list;
 		i++;
 	}
 
+	//now we make a grid, compare it to our level, and randomly assign a pattern from the list if it's a void cell
 	pattern_grid = ds_grid_create(ww,hh);
 	ds_collector_add(pattern_grid);
 	for (var _y = 1; _y < hh-1; _y++) {
@@ -52,8 +59,11 @@ function init_tree_patterns() {
 }
 
 function draw_trees() {
+	// pulling all of that lovely nested tree data out and drawing it to a surface, 
+	// saving that surface and then simply drawing it once it exists!
+	
 	if (tree_overcast) and (!surface_exists(overcast_surface)) {
-		// Create the tree cover surface
+		
 		overcast_surface = surface_create(room_width, room_height);
 		surface_set_target(overcast_surface);
 		draw_clear_alpha(c_black, 0);
@@ -66,7 +76,7 @@ function draw_trees() {
 				if (pattern_grid[# _x,_y] != -1){
 					var num = pattern_grid[# _x,_y];
 					var curr_array = pattern[num];
-					var len = array_length_1d(curr_array) - 1;
+					var len = array_length(curr_array) - 1;
 					var i = 0, list, draw_x, draw_y, angle, frame, c; 
 					repeat(len){
 						list	  = curr_array[i];
@@ -91,5 +101,5 @@ function draw_trees() {
 		}
 		surface_reset_target();
 		debug_log_add("tree surface created");
-	} else {draw_surface(overcast_surface, 0, 0);}
+	} else draw_surface(overcast_surface, 0, 0);
 }

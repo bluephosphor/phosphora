@@ -1,5 +1,6 @@
 global.seed = randomise();
 
+
 chest_index = 0;
 room_chest_index = 0;
 room_count = 0;
@@ -12,6 +13,8 @@ file_grid = -1;
 depth -= 5000;
 
 
+
+
 if (global.load_map) {
 	generate_from_map();
 	global.load_map = false;
@@ -19,11 +22,7 @@ if (global.load_map) {
 	script_execute(room_data[# rm.script,room]);
 }
 
-draw_map = true;
-map_scale = 1;
-map = new vec2(
-	global.view_width - (width_ * map_scale), 
-	global.view_height - (height_ * map_scale)
-);
+grid_surface = noone;
+minimap_init();
 
 with (obj_game) event_perform(ev_other,ev_user0);

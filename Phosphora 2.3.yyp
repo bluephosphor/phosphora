@@ -42,6 +42,7 @@
     {"id":{"name":"spr_void_demon_debug","path":"sprites/spr_void_demon_debug/spr_void_demon_debug.yy",},"order":4,},
     {"id":{"name":"s_waterring","path":"sprites/s_waterring/s_waterring.yy",},"order":5,},
     {"id":{"name":"spr_enemypart","path":"sprites/spr_enemypart/spr_enemypart.yy",},"order":6,},
+    {"id":{"name":"MINIMAP","path":"scripts/MINIMAP/MINIMAP.yy",},"order":27,},
     {"id":{"name":"spr_fish_small","path":"sprites/spr_fish_small/spr_fish_small.yy",},"order":7,},
     {"id":{"name":"spr_chars","path":"sprites/spr_chars/spr_chars.yy",},"order":0,},
     {"id":{"name":"spr_items","path":"sprites/spr_items/spr_items.yy",},"order":1,},
