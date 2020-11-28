@@ -13,8 +13,6 @@ file_grid = -1;
 depth -= 5000;
 
 
-
-
 if (global.load_map) {
 	generate_from_map();
 	global.load_map = false;
