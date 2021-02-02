@@ -69,7 +69,7 @@ if (gamestate == INGAME){
 			part_particles_create(global.p_system,x,y,global.p_gust,1);
 			sprite_index = s_player_spin;
 			playerstate = p_state.spin;
-			if (instance_exists(obj_ps_controller)) obj_ps_controller.cast = true;
+			//if (instance_exists(obj_ps_controller)) obj_ps_controller.cast = true;
 		}
 	}
 }

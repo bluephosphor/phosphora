@@ -31,5 +31,4 @@ if (global.debug){
 	}
 } else if (global.freecam) {
 	global.freecam = false;
-	
 }
