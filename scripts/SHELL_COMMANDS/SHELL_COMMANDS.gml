@@ -1,16 +1,18 @@
 function string_value(value){
 	var _log = undefined;
-	
-	if (value == "true") return true;
-	else if (value == "false") return false;
-	else {
-		try {
-			value = real(value);
-		} catch(_log) {
-			debug_log_add(_log.message);
-			return undefined;
-		}
-		if (_log == undefined) return value;
+	switch (value){
+		case "true":
+			return true;
+		case "false":
+			return false;
+		default:
+			try {
+				value = real(value);
+			} catch(_log) {
+				debug_log_add(_log.message);
+				return undefined;
+			}
+			if (_log == undefined) return value;
 	}
 }
 
@@ -32,9 +34,9 @@ function sh_setplayer(args){
 }
 
 function sh_fullscreen(args){
-	global.fullscreen = string_value(args[1]);
+	global.fullscreen = (array_length(args) <= 1) ? !global.fullscreen : string_value(args[1]);
 	change_window_mode(global.fullscreen);
-	return "fullscreen mode set to: " + args[1];
+	return "fullscreen mode toggled";
 }
 
 function sh_sethour(args){
