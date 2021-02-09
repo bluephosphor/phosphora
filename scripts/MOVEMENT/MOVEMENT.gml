@@ -15,6 +15,23 @@ function grid_place_meeting(argument0, argument1, argument2) {
 }
 
 
+function move_commit(){
+	x_speed_ += xmove * acceleration_;
+	y_speed_ += ymove * acceleration_;
+	var _speed = point_distance(0, 0, x_speed_, y_speed_);
+	var _direction = point_direction(0, 0, x_speed_, y_speed_);
+	if (_speed > max_speed_) {
+		x_speed_ = lengthdir_x(max_speed_, _direction);
+		y_speed_ = lengthdir_y(max_speed_, _direction);
+	}
+	if (xmove == 0) {
+		x_speed_ = lerp(x_speed_, 0, .3);
+	}
+	if (ymove == 0) {
+		y_speed_ = lerp(y_speed_, 0, .3);
+	}
+}
+
 function move_and_collide() {
 	// Move horizontally
 	x += x_speed_;

@@ -5,8 +5,8 @@ else draw_strength = lerp(draw_strength,resting_strength,0.3);
 
 if (follow != -1){
 	if (instance_exists(follow)){
-		x = follow.x;
-		y = follow.y;
+		x = follow.x + light_offset.x;
+		y = follow.y + light_offset.y;
 	} else {
 		instance_destroy();
 	}

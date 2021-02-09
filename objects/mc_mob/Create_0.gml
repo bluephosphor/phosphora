@@ -36,6 +36,8 @@ init_attack = false;
 
 hitbox_active = true;
 static_attack = false;
+targeted = noone;
+animation_ended = false;
 
 alarm[10] = anim_speed;
 alarm[11] = room_speed;

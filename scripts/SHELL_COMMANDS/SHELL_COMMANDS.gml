@@ -123,3 +123,7 @@ function sh_spawn(args){
 			break;
 	}
 }
+
+function sh_fps(args) {
+	room_speed = string_value(args[1]);
+}

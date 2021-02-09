@@ -6,6 +6,7 @@ enum mob{
 	void_demon,
 	fish,
 	ghost,
+	ent_knight,
 	enum_length,
 }
 
@@ -91,3 +92,17 @@ mob_data[# mob.ghost, stat.attack]			= 15;
 mob_data[# mob.ghost, stat.defense]			= 0;
 mob_data[# mob.ghost, stat.sp_attack]		= 10;
 mob_data[# mob.ghost, stat.spawn_cell]		= FLOOR;
+
+//ent_knight
+mob_data[# mob.ent_knight, stat.object]		= obj_mob_boss1;
+mob_data[# mob.ent_knight, stat.name]		= "Knight";
+mob_data[# mob.ent_knight, stat.info]		= "";
+mob_data[# mob.ent_knight, stat.hp]			= 100;
+mob_data[# mob.ent_knight, stat.attack]		= 20;
+mob_data[# mob.ent_knight, stat.defense]	= 3;
+mob_data[# mob.ent_knight, stat.sp_attack]	= 0;
+mob_data[# mob.ent_knight, stat.spawn_cell]	= FLOOR;
+mob_data[# mob.ent_knight, stat.loot]		= [
+	//item              //chance in percent
+	[item.diamond,		100],
+];

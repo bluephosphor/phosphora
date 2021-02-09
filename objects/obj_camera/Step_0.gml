@@ -1,15 +1,35 @@
-if (global.freecam){
-	//freecam
-	var _x_input = keyboard_check(vk_right) - keyboard_check(vk_left);
-	var _y_input = keyboard_check(vk_down) - keyboard_check(vk_up);
-	var boost = keyboard_check(vk_shift) + 1;
-	x += _x_input * 4 * boost;
-	y += _y_input * 4 * boost;
-} else if (instance_exists(target_)){
-	//follow player
-	x = lerp(x, target_.x, .1);
-	y = lerp(y, target_.y-8, .1);
+switch (state) {
+    case cam.free:
+        var _x_input = keyboard_check(vk_right) - keyboard_check(vk_left);
+		var _y_input = keyboard_check(vk_down) - keyboard_check(vk_up);
+		var boost = keyboard_check(vk_shift) * 2;
+		x += _x_input * 4 * boost;
+		y += _y_input * 4 * boost;
+        break;
+    case cam.follow_player:
+        if (instance_exists(target_)){
+			x = lerp(x, target_.x, .1);
+			y = lerp(y, target_.y-8, .1);
+		}
+        break;
+	case cam.follow_two:
+        if (instance_exists(target_) and instance_exists(target_2)){
+			var _dist = point_distance (target_.x,target_.y,target_2.x,target_2.y);
+			var _dir  = point_direction(target_.x,target_.y,target_2.x,target_2.y);
+			var _x_to = target_.x;
+			var _y_to = target_.y;
+			if (_dist < global.view_height){
+				_x_to = target_.x + lengthdir_x(_dist / 2, _dir);
+				_y_to = target_.y + lengthdir_y(_dist / 2, _dir);
+			}
+			x = lerp(x, _x_to, .1);
+			y = lerp(y, _y_to, .1);
+		} else {
+			state = cam.follow_player;
+		}
+        break;
 }
+
 //rounding and clamp
 x = round_n(x, scale_);
 y = round_n(y, scale_);
