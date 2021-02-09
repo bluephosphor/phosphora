@@ -1,11 +1,11 @@
 /// @description normal step
 
 //get inputs
-var _x_input = 0; 
-var _y_input = 0;
+x_input = 0; 
+y_input = 0;
 var _inv = keyboard_check_pressed(input[| key.select]);
 var _spin = keyboard_check_pressed(input[| key.action]);
-var _boost = keyboard_check(vk_shift);
+var _boost = keyboard_check(vk_shift) * 0.5;
 var _speed_reduction = 0; 
 
 
@@ -20,11 +20,11 @@ var ms = max_speed_ - _speed_reduction;
 
 //calculate movement
 if (gamestate == INGAME){
-	_x_input = keyboard_check(input[| key.right]) - keyboard_check(input[| key.left]);
-	_y_input = keyboard_check(input[| key.down]) - keyboard_check(input[| key.up]);
+	x_input = keyboard_check(input[| key.right]) - keyboard_check(input[| key.left]);
+	y_input = keyboard_check(input[| key.down]) - keyboard_check(input[| key.up]);
 	
-	x_speed_ += _x_input * acceleration_;
-	y_speed_ += _y_input * acceleration_;
+	x_speed_ += x_input * acceleration_;
+	y_speed_ += y_input * acceleration_;
 	var _speed = point_distance(0, 0, x_speed_, y_speed_);
 	var _direction = point_direction(0, 0, x_speed_, y_speed_);
 	if (_speed > ms + _boost) {
@@ -75,7 +75,7 @@ if (gamestate == INGAME){
 }
 
 //animate sprite if we're moving
-if (_x_input == 0 && _y_input == 0) {
+if (x_input == 0 && y_input == 0) {
 	image_speed = 0;
 	image_index = 0;
 } else if (_boost){
@@ -85,10 +85,10 @@ if (_x_input == 0 && _y_input == 0) {
 }
 
 //friction when not moving
-if (_x_input == 0) {
+if (x_input == 0) {
 	x_speed_ = lerp(x_speed_, 0, .3);
 }
-if (_y_input == 0) {
+if (y_input == 0) {
 	y_speed_ = lerp(y_speed_, 0, .3);
 }
 

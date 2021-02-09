@@ -8,7 +8,7 @@
 */
 
 switch(substate){
-	case 0: //walking aimless
+	case 0: //walking aimless////////////////////////////////////////////////////////////////////////////
 		if (update_movement) {
 			if (irandom(4) == 4) {
 				xmove = random_range(-0.2,0.2);
@@ -17,7 +17,14 @@ switch(substate){
 			} else {
 				current_anim = passive_frames;
 			}
-			if (!coord_outside_view(x,y)) substate = 1;
+			if (!coord_outside_view(x,y) and instance_exists(obj_player)) {
+				with (obj_camera){
+					target_2 = other.id;
+					state = cam.follow_two;
+				}
+				targeted = obj_player;
+				substate = 1;
+			}
 			alarm[0] = 30;
 			update_movement = false;
 		} else {
@@ -25,7 +32,7 @@ switch(substate){
 			move_and_collide();
 		}
 		break;
-	case 1: //approaching
+	case 1: //approaching////////////////////////////////////////////////////////////////////////////
 		if (targeted == noone) substate = 0;
 		
 		var _tx = targeted.x;
@@ -33,40 +40,50 @@ switch(substate){
 		
 		var _dir = point_direction(x,y,_tx,_ty);
 		var _dist = point_distance(x,y,_tx,_ty);
-		var _approach_speed = 2;
 		
-		var _approach_speed = clamp(2 * _dist / (global.view_height div 2),0.5,2);
+		var _approach_speed = clamp(3 * _dist / (global.view_height div 2),0.5,5);
 		
-		x_speed_ = lengthdir_x(_approach_speed,_dir);
-		y_speed_ = lengthdir_y(_approach_speed,_dir);
+		x_speed_ = approach(x_speed_,lengthdir_x(_approach_speed,_dir),acceleration_);
+		y_speed_ = approach(y_speed_,lengthdir_y(_approach_speed,_dir),acceleration_);
 		anim_speed = 10 - clamp(_approach_speed * 3,0,9);
 		
-		if (y > _ty){
-			var _pys = abs(obj_player.y_speed_) + 0.5;
-			y_speed_ = -_pys;
+		if (y > _ty){ //jump away if we spin fast
+			var _pys = abs(obj_player.y_speed_) + 1;
+			y_speed_ = approach(y_speed_,-_pys,0.5);
 			anim_speed = 6 - clamp(_pys,0,5);
+			if (y_speed_ < -3){
+				frame_index = 0;
+				image_index = jump_frames[0] - 1;
+				current_anim = jump_frames;
+				y_speed_ -= 1;
+				anim_speed = 2;
+				substate = 3;
+				event_perform(ev_alarm,10);
+				exit;
+			}
 		}
 		
 		current_anim = (sign(y_speed_) == 1) ? walking_frames : retreating_frames;
 		
 		if (attack_cooldown > 0){
 			attack_cooldown--;
-		} else if (collision_rectangle(
-			x-(detection_radius/2),
-			y,
-			x+(detection_radius/2),
-			y+ detection_radius,
-			obj_player,
-			false,
-			false )) {
-				anim_speed = 5;
-				current_anim = charge_frames[0];
-				charge = 25;
-				substate = 2;
+		} else if (collision_rectangle (x-(detection_radius/2),
+										y,
+										x+(detection_radius/2),
+										y+ detection_radius,
+										obj_player,
+										false,
+										false )) 								
+		{
+			anim_speed = 5;
+			current_anim = charge_frames[0];
+			charge = 25;
+			y_speed_ = (obj_player.y_input == -1) ? -4 : 2;
+			substate = 2;
 		}
 		move_and_collide();
 		break;
-	case 2: //attack
+	case 2: //attack////////////////////////////////////////////////////////////////////////////
 		
 		x_speed_ = lerp(x_speed_, 0, .1);
 		y_speed_ = lerp(y_speed_, 0, .1);
@@ -95,5 +112,16 @@ switch(substate){
 			}
 		} 
 		
+		break;
+	case 3: //jump away////////////////////////////////////////////////////////////////////////////
+		if (animation_ended) {
+			current_anim = walking_frames;
+			substate = 1;
+			frame_index = 0;
+			event_perform(ev_alarm,10);
+		} else if (image_index > 29){
+			x_speed_ = 0; y_speed_ = 0;
+		} 
+		move_and_collide();
 		break;
 }

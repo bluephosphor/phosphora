@@ -1,4 +1,4 @@
-draw_sprite_ext(s_player_shadow,0,x,y,2,1,0,c_white,0.5);
+draw_sprite_ext(s_player_shadow,0,x,y+6,2,1,0,c_white,0.5);
 draw_sprite_ext(
 	sprite_index,
 	image_index,

@@ -243,10 +243,10 @@
   },
   "RoomOrderNodes": [
     {"roomId":{"name":"r_init","path":"rooms/r_init/r_init.yy",},},
+    {"roomId":{"name":"r_csv_test","path":"rooms/r_csv_test/r_csv_test.yy",},},
     {"roomId":{"name":"r_outside","path":"rooms/r_outside/r_outside.yy",},},
     {"roomId":{"name":"r_deep_grove","path":"rooms/r_deep_grove/r_deep_grove.yy",},},
     {"roomId":{"name":"r_dungeon","path":"rooms/r_dungeon/r_dungeon.yy",},},
-    {"roomId":{"name":"r_csv_test","path":"rooms/r_csv_test/r_csv_test.yy",},},
     {"roomId":{"name":"r_cavern","path":"rooms/r_cavern/r_cavern.yy",},},
   ],
   "Folders": [
@@ -311,9 +311,9 @@
     {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"ROOM2.csv","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"ROOM3.csv","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"ROOM4.csv","resourceType":"GMIncludedFile",},
-    {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"LEVEL.csv","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"font_main.yy","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"ROOM5.csv","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"LEVEL.csv","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
     "IDEVersion": "2.3.1.542",
