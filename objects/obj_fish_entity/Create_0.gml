@@ -5,6 +5,9 @@ hp = mob_data[# mob_id,stat.hp];
 passive = true;
 watertype = true;
 
+attack_type			= PASSIVE;
+tangibility_type	= NEVER;
+
 max_speed_ = 0.5;
 acceleration_ = 0.1;
 update_movement = true;

@@ -6,7 +6,7 @@
     "path": "folders/Scripts/items.yy",
   },
   "resourceVersion": "1.0",
-  "name": "scr_item_inst_create",
+  "name": "ITEM_USE_FUNCTIONS",
   "tags": [],
   "resourceType": "GMScript",
 }

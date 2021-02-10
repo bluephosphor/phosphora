@@ -53,7 +53,7 @@ if (inst != noone){
 				break_out = true;
 				break;
 				case frametype.block: 
-				attack_blocked = true;
+				if (!inst.block_override) attack_blocked = true;
 				case frametype.vulnerable:
 			}
 			if (break_out) break;

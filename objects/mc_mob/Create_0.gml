@@ -51,6 +51,8 @@ enum frametype {
 	attack
 }
 
+block_override = false;
+
 hitbox_active	= true;
 targeted		= noone;
 animation_ended = false;

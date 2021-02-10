@@ -1,4 +1,8 @@
 ///@description reset state
+if (hp <= 0) {
+	mystate = mobstate.passive; exit;
+}
+
 switch (mystate){
 	case mobstate.block:
 		mystate = mobstate.aggro;

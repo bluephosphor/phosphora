@@ -7,6 +7,8 @@
 	3 = jump
 */
 
+block_override = (obj_player.y < y);
+
 switch(substate){
 	case 0: //walking aimless////////////////////////////////////////////////////////////////////////////
 		if (update_movement) {
@@ -94,15 +96,7 @@ switch(substate){
 				attack_cooldown = irandom_range(60,120);
 				event_perform(ev_alarm,0);
 			}
-			if (image_index == 11){
-				//hitbox_active = true;
-				//static_attack = true;
-				mask_index = spr_boss1hitbox1;
-			} else if (image_index >= 12){
-				//hitbox_active = false;
-				//static_attack = false;
-				mask_index = sprite_index;
-			}
+			mask_index = (image_index == 11) ? spr_boss1hitbox1 : sprite_index;
 		} 
 		
 		break;

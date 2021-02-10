@@ -34,10 +34,12 @@ switch(state){
 	 
 		//use items
 		if (in_use) and (item_info[# 2,selected_item] != -1){
-			script_execute(item_info[# 2,selected_item]);
-			inventory[# 1, menu_index] -= 1;
-			if (inventory[# 1, menu_index] == 0){
-				inventory[# 0, menu_index] = item.none;
+			var _item_consumed = script_execute(item_info[# 2,selected_item]);
+			if (_item_consumed){
+				inventory[# 1, menu_index] -= 1;
+				if (inventory[# 1, menu_index] == 0){
+					inventory[# 0, menu_index] = item.none;
+				}
 			}
 		}
 		//equip items
@@ -111,11 +113,13 @@ switch(state){
 		var in_equip = keyboard_check_pressed(input[| key.held]);
 
 		if (in_use) and (item_info[# 2,selected_item] != -1){
-			script_execute(item_info[# 2,selected_item]);
-			inventory[# 1, menu_index] -= 1;
-			if (inventory[# 1, menu_index] == 0){
-				inventory[# 0, menu_index] = item.none;
-				hinput = 1;
+			var _item_consumed = script_execute(item_info[# 2,selected_item]);
+			if (_item_consumed){
+				inventory[# 1, menu_index] -= 1;
+				if (inventory[# 1, menu_index] == 0){
+					inventory[# 0, menu_index] = item.none;
+					hinput = 1;
+				}
 			}
 		}
 		if (hinput != 0){

@@ -2,8 +2,8 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Scripts",
-    "path": "folders/Scripts.yy",
+    "name": "items",
+    "path": "folders/Scripts/items.yy",
   },
   "resourceVersion": "1.0",
   "name": "draw_item_count",
