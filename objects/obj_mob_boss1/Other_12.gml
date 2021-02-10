@@ -77,7 +77,7 @@ switch(substate){
 		{
 			anim_speed = 5;
 			current_anim = charge_frames[0];
-			charge = 25;
+			charge = irandom_range(15,30);
 			y_speed_ = (obj_player.y_input == -1) ? -4 : 2;
 			substate = 2;
 		}
@@ -98,7 +98,7 @@ switch(substate){
 		} else {
 			if (animation_ended) {
 				substate = 0; 
-				attack_cooldown = 60;
+				attack_cooldown = irandom_range(40,60);
 				event_perform(ev_alarm,0);
 			}
 			if (image_index == 11){

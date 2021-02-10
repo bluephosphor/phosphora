@@ -20,7 +20,7 @@ hitstun_frames = [11];
 
 hitbox_active = false;
 player_at = -1;
-static_attack = true;
+attack_type = STATIC;
 
 current_anim = passive_frames;
 

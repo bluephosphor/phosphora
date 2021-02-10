@@ -34,8 +34,11 @@ anim_speed = 25;
 frame_index = 0;
 init_attack = false;
 
+#macro VELOCITY 0
+#macro STATIC 1
+
 hitbox_active = true;
-static_attack = false;
+attack_type = VELOCITY;
 targeted = noone;
 animation_ended = false;
 

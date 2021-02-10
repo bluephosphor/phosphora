@@ -9,6 +9,7 @@ update_movement = true;
 xmove = 0;
 ymove = 0;
 detection_radius = 32;
+attack_type = STATIC;
 attack_direction = new vec2(0,5);
 hitbox_active = false;
 targeted = noone;

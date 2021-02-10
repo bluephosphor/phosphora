@@ -136,35 +136,42 @@ if (_inv) and (input_buffer <= 0){
 
 var inst = (instance_place(x,y,mc_mob)); 
 if (inst != noone) and (!inst.passive) and (inst.hitbox_active) and (recovery_frames <= 0){
-	with(inst){
-		var velocity = max(abs(x_speed_),abs(y_speed_));
-		if (velocity >= 1){
-			var vsp = y_speed_, hsp = x_speed_;
-			x_speed_ = -hsp;
-			y_speed_ = -vsp;
-			hitlag = velocity * 5;
-		}
-	}
-	if (velocity >= 1){
-		x_speed_ = hsp * 2;
-		y_speed_ = vsp * 2;
-		alarm[0] = velocity * 10;
-		image_blend = c_red;
-		player_health -= calc_player_damage(inst);
-		player_health = clamp(player_health,0,player_data[| stat.hp]);
-		sprite_index = s_player_hitstun;
-		playerstate = p_state.hitstun;
-		hitlag = velocity * 5;
-	} else if (inst.static_attack){
-		x_speed_ = random_range(-1,1);
-		y_speed_ = random_range(-1,1);
-		alarm[0] = 30;
-		image_blend = c_red;
-		player_health -= calc_player_damage(inst);
-		player_health = clamp(player_health,0,player_data[| stat.hp]);
-		sprite_index = s_player_hitstun;
-		playerstate = p_state.hitstun;
-		hitlag = 30;
+	switch(inst.attack_type){
+		case VELOCITY:
+			with(inst){
+				var velocity = max(abs(x_speed_),abs(y_speed_));
+				if (velocity >= 1){
+					var vsp = y_speed_, hsp = x_speed_;
+					x_speed_ = -hsp;
+					y_speed_ = -vsp;
+					hitlag = velocity * 5;
+				}
+			}
+			if (velocity >= 1){
+				x_speed_ = hsp * 2;
+				y_speed_ = vsp * 2;
+				alarm[0] = velocity * 10;
+				image_blend = c_red;
+				player_health -= calc_player_damage(inst);
+				player_health = clamp(player_health,0,player_data[| stat.hp]);
+				sprite_index = s_player_hitstun;
+				playerstate = p_state.hitstun;
+				hitlag = velocity * 5;
+			}
+			break;
+		case STATIC:
+			var _dir = point_direction(x,y,inst.x,inst.y);
+			var _len = mob_data[# inst.mob_id,stat.attack];
+			x_speed_ -= lengthdir_x(_len,_dir);
+			y_speed_ -= lengthdir_y(_len,_dir);
+			alarm[0] = 30;
+			image_blend = c_red;
+			player_health -= calc_player_damage(inst);
+			player_health = clamp(player_health,0,player_data[| stat.hp]);
+			sprite_index = s_player_hitstun;
+			playerstate = p_state.hitstun;
+			hitlag = _len;
+			break;
 	}
 }
 
