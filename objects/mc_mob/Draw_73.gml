@@ -1,5 +1,5 @@
 if (draw_alpha > 0){
-	var str = string(hp_change);
+	var str = (is_string(hp_change)) ? hp_change : string(hp_change);
 	var c = draw_color;
 	var x_origin = x - (string_width(str) / 2);
 	var y_origin = y - 48;

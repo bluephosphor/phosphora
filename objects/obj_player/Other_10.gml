@@ -16,7 +16,7 @@ if (playerstate == p_state.swimming){
 }
 
 //and here's our 'final' speed
-var ms = max_speed_ - _speed_reduction;
+var ms = max_speed_ - _speed_reduction + _boost;
 
 //calculate movement
 if (gamestate == INGAME){
@@ -25,11 +25,11 @@ if (gamestate == INGAME){
 	
 	x_speed_ += x_input * acceleration_;
 	y_speed_ += y_input * acceleration_;
-	var _speed = point_distance(0, 0, x_speed_, y_speed_);
-	var _direction = point_direction(0, 0, x_speed_, y_speed_);
-	if (_speed > ms + _boost) {
-		x_speed_ = lengthdir_x(ms + _boost, _direction);
-		y_speed_ = lengthdir_y(ms + _boost, _direction);
+	var _speed		= point_distance (0, 0, x_speed_, y_speed_);
+	var _direction	= point_direction(0, 0, x_speed_, y_speed_);
+	if (_speed > ms) {
+		x_speed_ = lengthdir_x(ms, _direction);
+		y_speed_ = lengthdir_y(ms, _direction);
 	}
 	
 	if (_spin){
@@ -135,44 +135,63 @@ if (_inv) and (input_buffer <= 0){
 //enemy collision
 
 var inst = (instance_place(x,y,mc_mob)); 
-if (inst != noone) and (!inst.passive) and (inst.hitbox_active) and (recovery_frames <= 0){
-	switch(inst.attack_type){
-		case VELOCITY:
-			with(inst){
-				var velocity = max(abs(x_speed_),abs(y_speed_));
+if (inst != noone) and (recovery_frames <= 0){
+	var break_out = false;
+	switch (inst.tangibility_type){
+		case NEVER: break;
+		case PER_FRAME:
+			switch (inst.frame_type[inst.image_index]){
+				case frametype.intangible:
+				case frametype.block:
+				case frametype.vulnerable: 
+					break_out = true;
+					break;
+				case frametype.attack:
+			}
+			if (break_out) break;
+		case ALWAYS:
+			switch(inst.attack_type){
+			case PASSIVE: break;
+			case VELOCITY:
+				with(inst){
+					var velocity = max(abs(x_speed_),abs(y_speed_));
+					if (velocity >= 1){
+						var vsp = y_speed_, hsp = x_speed_;
+						x_speed_ = -hsp;
+						y_speed_ = -vsp;
+						hitlag = velocity * 5;
+					}
+				}
 				if (velocity >= 1){
-					var vsp = y_speed_, hsp = x_speed_;
-					x_speed_ = -hsp;
-					y_speed_ = -vsp;
+					x_speed_ = hsp * 2;
+					y_speed_ = vsp * 2;
+					alarm[0] = velocity * 10;
+					image_blend = c_red;
+					player_health -= calc_player_damage(inst);
+					player_health = clamp(player_health,0,player_data[| stat.hp]);
+					sprite_index = s_player_hitstun;
+					playerstate = p_state.hitstun;
 					hitlag = velocity * 5;
 				}
-			}
-			if (velocity >= 1){
-				x_speed_ = hsp * 2;
-				y_speed_ = vsp * 2;
-				alarm[0] = velocity * 10;
+				break;
+			case STATIC:
+				var _dir = point_direction(x,y,inst.x,inst.y);
+				var _len = mob_data[# inst.mob_id,stat.attack] / 2;
+				x_speed_ -= lengthdir_x(_len,_dir);
+				y_speed_ -= lengthdir_y(_len,_dir);
+				alarm[0] = 30;
 				image_blend = c_red;
 				player_health -= calc_player_damage(inst);
 				player_health = clamp(player_health,0,player_data[| stat.hp]);
 				sprite_index = s_player_hitstun;
 				playerstate = p_state.hitstun;
-				hitlag = velocity * 5;
-			}
-			break;
-		case STATIC:
-			var _dir = point_direction(x,y,inst.x,inst.y);
-			var _len = mob_data[# inst.mob_id,stat.attack];
-			x_speed_ -= lengthdir_x(_len,_dir);
-			y_speed_ -= lengthdir_y(_len,_dir);
-			alarm[0] = 30;
-			image_blend = c_red;
-			player_health -= calc_player_damage(inst);
-			player_health = clamp(player_health,0,player_data[| stat.hp]);
-			sprite_index = s_player_hitstun;
-			playerstate = p_state.hitstun;
-			hitlag = _len;
-			break;
+				hitlag = _len;
+				break;
+		}
+		break;
 	}
+	
+	
 }
 
 if (spin_cooldown > 0){

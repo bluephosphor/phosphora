@@ -12,7 +12,7 @@ enum mob{
 
 enum dir {up,right,down,left}
 
-enum mobstate {passive,alert,aggro,hitstun,interact}
+enum mobstate {passive,alert,aggro,hitstun,interact,block}
 
 
 var _width = mob.enum_length;

@@ -6,40 +6,53 @@ grid_x = x div CELL_WIDTH;
 grid_y = y div CELL_HEIGHT;
 in_cell = grid_[# grid_x, grid_y];
 
-passive = false;
-watertype = false;
-nocturnal = false;
-hitlag = 0;
+passive		= false;
+watertype	= false;
+nocturnal	= false;
+hitlag		= 0;
 
-x_speed_ = 0;
-y_speed_ = 0;
-mystate = mobstate.passive;
-mob_id = -1;
+x_speed_	= 0;
+y_speed_	= 0;
+mystate		= mobstate.passive;
+mob_id		= -1;
 
-loot_table = -1;
-ltc = 0;
+loot_table	= -1;
+ltc			= 0;
 
-hp = 100;
-show_hp = false;
-hp_change = 0;
-draw_alpha = 0;
-draw_color = c_white;
+hp			= 100;
+show_hp		= false;
+hp_change	= 0;
+draw_alpha	= 0;
+draw_color	= c_white;
 draw_length = 24;
 
-passive_frames = -1;
-aggro_frames = -1;
-hitstun_frames = -1;
-current_anim = passive_frames;
-anim_speed = 25;
-frame_index = 0;
-init_attack = false;
+passive_frames	= -1;
+aggro_frames	= -1;
+hitstun_frames	= -1;
+current_anim	= passive_frames;
+anim_speed		= 25;
+frame_index		= 0;
+init_attack		= false;
 
 #macro VELOCITY 0
-#macro STATIC 1
+#macro STATIC	1
+#macro PASSIVE  2
+attack_type     = VELOCITY;
 
-hitbox_active = true;
-attack_type = VELOCITY;
-targeted = noone;
+#macro ALWAYS	 0
+#macro NEVER	 1
+#macro PER_FRAME 2
+tangibility_type = ALWAYS;
+
+enum frametype {
+	intangible,
+	block,
+	vulnerable,
+	attack
+}
+
+hitbox_active	= true;
+targeted		= noone;
 animation_ended = false;
 
 alarm[10] = anim_speed;

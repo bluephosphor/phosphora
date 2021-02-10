@@ -67,14 +67,7 @@ switch(substate){
 		
 		if (attack_cooldown > 0){
 			attack_cooldown--;
-		} else if (collision_rectangle (x-(detection_radius/2),
-										y,
-										x+(detection_radius/2),
-										y+ detection_radius,
-										obj_player,
-										false,
-										false )) 								
-		{
+		} else if (collision_rectangle(x-(detection_radius/2),y,x+(detection_radius/2),y+detection_radius,obj_player,false,false)){
 			anim_speed = 5;
 			current_anim = charge_frames[0];
 			charge = irandom_range(15,30);
@@ -98,16 +91,16 @@ switch(substate){
 		} else {
 			if (animation_ended) {
 				substate = 0; 
-				attack_cooldown = irandom_range(40,60);
+				attack_cooldown = irandom_range(60,120);
 				event_perform(ev_alarm,0);
 			}
 			if (image_index == 11){
-				hitbox_active = true;
-				static_attack = true;
+				//hitbox_active = true;
+				//static_attack = true;
 				mask_index = spr_boss1hitbox1;
 			} else if (image_index >= 12){
-				hitbox_active = false;
-				static_attack = false;
+				//hitbox_active = false;
+				//static_attack = false;
 				mask_index = sprite_index;
 			}
 		} 
@@ -122,6 +115,6 @@ switch(substate){
 		} else if (image_index > 29){
 			x_speed_ = 0; y_speed_ = 0;
 		} 
-		move_and_collide();
+		if (image_index > 17) move_and_collide();
 		break;
 }

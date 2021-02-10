@@ -39,27 +39,53 @@ var inst = (instance_place(x,y,obj_chest_demon)); if (inst != noone){
 	}
 }
 
-var inst = (instance_place(x,y,mc_mob)); if (inst != noone) and (!inst.passive) and (inst.hitbox_active){
-	var velocity = max(abs(x_speed_),abs(y_speed_));
-	if (velocity >= 1){
-		var vsp = y_speed_, hsp = x_speed_;
-		with(inst){
-			if (mystate != mobstate.hitstun){
-				x_speed_ = hsp * 2;
-				y_speed_ = vsp * 2;
-				alarm[0] = 5 * velocity;
-				alarm[10] = 1;
-				hp -= calc_mob_damage(velocity,false);
-				current_anim = hitstun_frames;
-				mystate = mobstate.hitstun;
-				image_blend = c_red;
+var inst = (instance_place(x,y,mc_mob)); 
+
+if (inst != noone){
+	var break_out = false;
+	var attack_blocked = false;
+	switch(inst.tangibility_type){
+		case NEVER: break;
+		case PER_FRAME:
+			switch (inst.frame_type[inst.image_index]){
+				case frametype.attack:
+				case frametype.intangible:
+				break_out = true;
+				break;
+				case frametype.block: 
+				attack_blocked = true;
+				case frametype.vulnerable:
+			}
+			if (break_out) break;
+		case ALWAYS:
+			var velocity = max(abs(x_speed_),abs(y_speed_));
+			if (velocity >= 1){
+				var vsp = y_speed_, hsp = x_speed_;
+				with(inst){
+					if (mystate != mobstate.hitstun){
+						x_speed_		= hsp * 2;
+						y_speed_		= vsp * 2;
+						alarm[0]		= (attack_blocked) ? 2 * velocity   : 5 * velocity;
+						alarm[10]		= 1;
+						if (attack_blocked) {
+							playerstate = p_state.normal;
+							hp_change	= "Parried!";
+							show_hp		= true;
+							alarm[1]	= room_speed;
+						} else hp      -= calc_mob_damage(velocity,false);
+						current_anim	= (attack_blocked) ? block_frames   : hitstun_frames;
+						mystate			= (attack_blocked) ? mobstate.block : mobstate.hitstun;
+						image_blend		= (attack_blocked) ? c_green: c_red;
+						hitlag			= velocity * 3;
+					}
+				}
+				x_speed_ = -x_speed_;
+				y_speed_ = -y_speed_;
 				hitlag = velocity * 3;
 			}
-		}
-		x_speed_ = -x_speed_;
-		y_speed_ = -y_speed_;
-		hitlag = velocity * 3;
+			break;
 	}
+	
 }
 
 if (_spin){
