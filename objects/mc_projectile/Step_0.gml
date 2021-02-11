@@ -28,10 +28,11 @@ if (inst != noone){
 					if (mystate != mobstate.hitstun){
 						x_speed_		= xvel
 						y_speed_		= yvel
-						alarm[0]		= (attack_blocked) ? stun div 2 : stun;
+						alarm[0]		= stun;
 						alarm[10]		= 1;
 						current_anim	= (attack_blocked) ? block_frames : hitstun_frames;
 						if (attack_blocked) {
+							screen_shake(10,4);
 							hp_change	= "Blocked!";
 							show_hp		= true;
 							alarm[1]	= room_speed;
