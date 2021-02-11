@@ -109,6 +109,7 @@ switch(substate){
 		} else if (image_index > 29){
 			x_speed_ = 0; y_speed_ = 0;
 		} 
-		if (image_index > 17) move_and_collide();
+		//if (image_index > 17) 
+		move_and_collide();
 		break;
 }
