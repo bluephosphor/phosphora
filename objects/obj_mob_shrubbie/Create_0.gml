@@ -28,6 +28,20 @@ ideal_dist		 = 96;
 
 //shader colors
 
+color = function(r,g,b) constructor{
+	red	  = r;
+	green = g;
+	blue  = b;
+	
+	static to_shader_value = function(value) {
+		return value / 255;
+	}
+}
+
+sh_handle_range   = shader_get_uniform(sh_replace_colors, "range");
+sh_handle_match   = shader_get_uniform(sh_replace_colors, "color_match");
+sh_handle_replace = shader_get_uniform(sh_replace_colors, "color_replace");
+
 var _len	= array_length    (colors) - 1;
 
 var red1	= color_get_red	  (colors[0]);
@@ -42,13 +56,11 @@ var red3	= color_get_red	  (colors[_len]);
 var green3	= color_get_green (colors[_len]);
 var blue3	= color_get_blue  (colors[_len]);
 
-shader_set_uniform_f(shader_get_uniform(sh_replace_colors, "rep1"), 50, 60, 57);
-shader_set_uniform_f(shader_get_uniform(sh_replace_colors, "new1"), red1, green1, blue1);
-										
-shader_set_uniform_f(shader_get_uniform(sh_replace_colors, "rep2"), 75, 105, 47);
-shader_set_uniform_f(shader_get_uniform(sh_replace_colors, "new2"), red2, green2, blue2);
-										
-shader_set_uniform_f(shader_get_uniform(sh_replace_colors, "rep3"), 106, 190, 48);
-shader_set_uniform_f(shader_get_uniform(sh_replace_colors, "new3"), red3, green3, blue3);
+color_replace_1 = new color(red1,green1,blue1);
+color_replace_2 = new color(red2,green2,blue2);
+color_replace_3 = new color(red3,green3,blue3);
+color_match_1	= new color(50, 60, 57);
+color_match_2	= new color(75, 105, 47);
+color_match_3	= new color(106, 190, 48);
 
 set_mob_loot();

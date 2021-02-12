@@ -1,39 +1,25 @@
 //
-// Simple passthrough fragment shader
+// color replacement fragment shader
 //
 varying vec2 v_vTexcoord;
 varying vec4 v_vColour;
 
-uniform vec3 rep1;
-uniform vec3 rep2;
-uniform vec3 rep3;
-
-uniform vec3 new1;
-uniform vec3 new2;
-uniform vec3 new3;
-
+uniform float range;
+uniform vec4  color_match;
+uniform vec4  color_replace;
 
 void main(){
-	//Sample the original pixel
-	gl_FragColor = v_vColour * texture2D( gm_BaseTexture, v_vTexcoord );
+	vec4  pixel_color = v_vColour * texture2D(gm_BaseTexture,v_vTexcoord);
+	float new_range = range / 255.0;
+	
+	if (abs(pixel_color.r - color_match.r) <= new_range) {
+		if (abs(pixel_color.g - color_match.g) <= new_range) {
+			if (abs(pixel_color.b - color_match.b) <= new_range) {
+				pixel_color.rgb = color_replace.rgb;
+			}
+		}
+	}
+	
+	gl_FragColor = pixel_color;
 
-	//Make it easier to compare (out of 255 instead of 1)
-	vec3 test = vec3(
-	    gl_FragColor.r * 255.0,
-	    gl_FragColor.g * 255.0,
-	    gl_FragColor.b * 255.0
-	);
-
-	//Check if it needs to be replaced
-	if (test == rep1) {test = new1;}
-	if (test == rep2) {test = new2;}
-	if (test == rep3) {test = new3;}
-
-	//return the result in the original format
-	gl_FragColor = vec4(
-	    test.r / 255.0,
-	    test.g / 255.0,
-	    test.b / 255.0,
-	    gl_FragColor.a
-	);
 }
