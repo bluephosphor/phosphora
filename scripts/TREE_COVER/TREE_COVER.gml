@@ -1,3 +1,5 @@
+globalvar colors;
+
 function init_tree_patterns() {
 	var ww = obj_level.width_;
 	var hh = obj_level.height_;

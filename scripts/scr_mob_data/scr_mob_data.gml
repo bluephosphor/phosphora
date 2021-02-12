@@ -7,6 +7,7 @@ enum mob{
 	fish,
 	ghost,
 	ent_knight,
+	shrubbie,
 	enum_length,
 }
 
@@ -105,4 +106,18 @@ mob_data[# mob.ent_knight, stat.spawn_cell]	= FLOOR;
 mob_data[# mob.ent_knight, stat.loot]		= [
 	//item              //chance in percent
 	[item.diamond,		100],
+];
+
+//shrubbie
+mob_data[# mob.shrubbie, stat.object]		= obj_mob_shrubbie;
+mob_data[# mob.shrubbie, stat.name]			= "Shrubbie";
+mob_data[# mob.shrubbie, stat.info]			= "";
+mob_data[# mob.shrubbie, stat.hp]			= 30;
+mob_data[# mob.shrubbie, stat.attack]		= 5;
+mob_data[# mob.shrubbie, stat.defense]		= 3;
+mob_data[# mob.shrubbie, stat.sp_attack]	= 0;
+mob_data[# mob.shrubbie, stat.spawn_cell]	= FLOOR;
+mob_data[# mob.shrubbie, stat.loot]			= [
+	//item              //chance in percent
+	[item.p_leaf,		25],
 ];

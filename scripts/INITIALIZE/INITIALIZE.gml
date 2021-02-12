@@ -46,6 +46,16 @@ function vec2(x,y) constructor{
 	self.y = y;
 }
 
+function array_range(min,max){
+	var _arr = [];
+	var i = 0;
+	while(min < max) {
+		_arr[i++] = min;
+		min++;
+	}
+	return _arr;
+}
+
 //MACROS//
 //dimensions
 #macro CELL_WIDTH 32

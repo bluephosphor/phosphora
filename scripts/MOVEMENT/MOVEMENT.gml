@@ -14,6 +14,10 @@ function grid_place_meeting(argument0, argument1, argument2) {
 	return _top_right || _top_left || _bottom_right || _bottom_left;
 }
 
+function grid_collision_point(grid,celltype,x,y) {
+	 return (grid[# x div CELL_WIDTH, y div CELL_HEIGHT] == celltype);
+}
+
 
 function move_commit(){
 	x_speed_ += xmove * acceleration_;

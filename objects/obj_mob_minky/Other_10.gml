@@ -37,23 +37,27 @@ if (ymove == 0) {
 	y_speed_ = lerp(y_speed_, 0, .3);
 }
 
-//mobsight
-if (!coord_outside_view(x,y)){
-	var mob = id;
-	var d = point_direction(
-		x,y, x+detection_radius * image_xscale, 
-		irandom_range(y-detection_radius,y+detection_radius)
-	); 
-	with (instance_create_layer(x,y,"Instances",obj_mobsight)){
-		my_mob = mob;
-		if (irandom(100) < 80) {
-			direction = d;
-			alarm[0] = 15;
-		} else {
-			direction = choose(90,270);
-			alarm[0] = 10;
-		}
-		speed = 7
-	}
-}
+
+var _checkdir = (image_xscale == 1) ? {mn: 0-detection_radius, mx: 0+detection_radius} : {mn: 180-detection_radius, mx: 180+detection_radius};
+if (!coord_outside_view(x,y) and check_sight(x,y-4,_checkdir.mn,_checkdir.mx,10)) init_attack = true;
+
+//old mobsight
+//if (!coord_outside_view(x,y)){
+//	var mob = id;
+//	var d = point_direction(
+//		x,y, x+detection_radius * image_xscale, 
+//		irandom_range(y-detection_radius,y+detection_radius)
+//	); 
+//	with (instance_create_layer(x,y,"Instances",obj_mobsight)){
+//		my_mob = mob;
+//		if (irandom(100) < 80) {
+//			direction = d;
+//			alarm[0] = 15;
+//		} else {
+//			direction = choose(90,270);
+//			alarm[0] = 10;
+//		}
+//		speed = 7
+//	}
+//}
 move_and_collide();

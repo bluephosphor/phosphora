@@ -30,7 +30,7 @@ function import_cell_from_csv(argument0, argument1, argument2, argument3) {
 			break;
 		case "BOSS": 
 			grid_[# xx,yy] = FLOOR;
-			instance_create_layer(place_x,place_y,"Instances",obj_mob_boss1);
+			instance_create_layer(place_x,place_y,"Instances",obj_mob_shrubbie);
 			break;
 		case "TREE": 
 			grid_[# xx,yy] = FLOOR;
