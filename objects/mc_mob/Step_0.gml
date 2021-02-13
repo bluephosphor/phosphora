@@ -15,28 +15,7 @@ if(global.time_pause) or (hitlag > 0) {alarm[10] = anim_speed; exit;}
 
 switch(mystate){
 	case mobstate.passive:
-		if (hp <= 0){
-			var i = 0; repeat(18){
-				part_type_direction(global.p_enemy_death,i,i,0,0);
-				part_particles_create(global.p_system,x,y,global.p_enemy_death,1);
-				i += 20;
-			}
-			part_type_direction(global.p_enemy_death,0,0,0,0);
-			repeat(irandom(5)){
-				with (instance_create_layer(x,y,"Instances",obj_item_entity)){
-					var _item = item.none;
-					with (other){
-						if (loot_table != -1) _item = loot_item_add();
-					}
-					if (_item == item.none) coin_type = choose(coin.bronze,coin.silver,coin.gold);
-					else item_num = _item;
-					x_speed_ = random_range(-1,1);
-					y_speed_ = random_range(-1,1);
-				}
-			}
-			instance_destroy();
-			break;
-		}
+		check_death();
 		event_perform(ev_other,ev_user0);
 		break;
 	case mobstate.alert:

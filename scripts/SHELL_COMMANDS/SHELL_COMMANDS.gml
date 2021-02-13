@@ -39,10 +39,75 @@ function sh_fullscreen(args){
 	return "fullscreen mode toggled";
 }
 
-function sh_sethour(args){
-	var hour = string_value(args[1]);
-	obj_daycycle.seconds = (hour * 60) * 60;
-	return "set hour of the day to: " + args[1];
+function sh_time(args){
+	switch(args[1]){
+		case "set":
+			var hour = 0;
+			switch(args[2]){
+				case "day":
+					hour = 12;
+					break;
+				case "night":
+					hour = 0;
+					break;
+				case "morning":
+					hour = 7;
+					break;
+				case "evening":
+					hour = 16;
+					break;
+				case "dusk":
+					hour = 18;
+					break;
+				default:
+					hour = string_value(args[2]);
+					break;
+				
+			}
+			if (!is_real(hour)){
+				return args[2] + " is not a valid subcommand.";
+			}
+			obj_daycycle.seconds = (hour * 60) * 60;
+			return "set hour of the day to: " + args[2];
+			break;
+		default:
+			return args[1] + " is not a valid subcommand.";
+	}
+	
+}
+
+function sh_season(args){
+	var set = -1;
+	switch(args[1]){
+		case "summer":
+			set = SUMMER;
+			break;
+		case "fall":
+			set = AUTUMN;
+			break;
+		case "autumn":
+			set = AUTUMN;
+			break;
+		case "winter":
+			set = WINTER;
+			break;
+		case "spring":
+			set = SPRING;
+			break;
+	}
+	if (set != -1){
+		season = set;
+		with (obj_game) {
+			if (room_data[# rm.tree_overcast, room]) init_tree_patterns();
+		}
+		if (instance_exists(obj_mob_shrubbie)) with (obj_mob_shrubbie) set_colors();
+		if (instance_exists(obj_tree)) with (obj_tree) {
+			if (surface_exists(my_surface)) surface_free(my_surface);
+			event_perform(ev_create,0);
+		}
+	} else {
+		return args[1] + " is not a valid subcommand.";
+	}
 }
 
 function sh_goto(args){

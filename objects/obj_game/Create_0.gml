@@ -13,7 +13,7 @@ globalvar playerstate, debug_log, cont_daycycle, cont_lighting, cont_audio,
 global.debug		= false;
 global.rift_count	= 0;
 global.fullscreen	= false;
-global.playmusic	= false;
+global.playmusic	= true;
 global.time_pause	= false;
 global.pause		= false;
 global.draw_outline = true;
@@ -46,6 +46,7 @@ room_transition = false;
 black_alpha = 1;
 target_room = -1;
 tree_overcast = false;
+overcast_surface = noone;
 pattern_grid = -1;
 
 live_vars_x = 0

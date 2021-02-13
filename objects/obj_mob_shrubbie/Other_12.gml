@@ -16,10 +16,19 @@ switch(substate){
 		
 		var _p_dist = point_distance(x,y,obj_player.x,obj_player.y);
 		
-		if (animation_ended) {
+		if (coord_outside_view(x,y-24,32)) {
+			if (alarm_get(0) == -1) alarm[0] = room_speed;
+			//next_anim	= passive_frames;
+			//substate	= 0;
+			//mystate		= mobstate.passive;
+		} else if (animation_ended) {
+			if (in_cell == WATER) part_particles_create(global.p_system,x,y,global.p_water_ring,1);
 			image_xscale = (obj_player.x > x) ? 1 : -1;
 			animation_ended = false;
-			if (_p_dist < 80) substate = 0;
+			if (_p_dist < ideal_dist - dist_range or _p_dist > ideal_dist + dist_range) {
+				if (alarm_get(0) != -1) alarm[0] = -1;
+				substate = 0;
+			}
 		}
 		
 		var _tx = target_cell.x * CELL_WIDTH + 16;
@@ -32,13 +41,8 @@ switch(substate){
 		
 		x_speed_ = approach(x_speed_,lengthdir_x(_approach_speed,_dir),acceleration_);
 		y_speed_ = approach(y_speed_,lengthdir_y(_approach_speed,_dir),acceleration_);
-		anim_speed = 8 - clamp(_approach_speed * 3,2,6);
+		anim_speed = 8 - clamp(_approach_speed * 3,4,6);
 		
-		if (coord_outside_view(x,y)) {
-			next_anim	= passive_frames;
-			substate	= 0;
-			mystate		= mobstate.passive;
-		}
 		
 		//move_commit();
 		move_and_collide();

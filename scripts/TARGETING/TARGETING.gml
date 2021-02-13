@@ -42,6 +42,8 @@ function update_target() {
 				ds_list_destroy(_list);
 			}
 			if (_success) {
+				obj_camera.target_2 = _following;
+				obj_camera.state = cam.follow_two;
 				current_target = _following;
 				target_state = TARGET_FOLLOW;
 				debug_log_add("Target followed. Current target is " + mob_data[# current_target.mob_id, stat.name]);
@@ -74,11 +76,11 @@ function update_target() {
 					tar_y = current_target.y;
 				}
 			} else {
+				obj_camera.target_2 = noone
+				obj_camera.state = cam.follow_player;
 				target_state = TARGET_SET;
 				debug_log_add("Target reset.");
 			}
 		break;
 	}
-
-
 }

@@ -21,7 +21,7 @@ if (!surface_exists(my_surface)) {
 		frame [i] = choose(1,2);
 	
 		//set color
-		var c_len	= array_length_1d(colors) - 1;
+		var c_len	= array_length(colors) - 1;
 		var cc		= (i/_steps) * c_len;
 		var c1		= colors[floor(cc)];
 		var c2		= colors[ceil (cc)];

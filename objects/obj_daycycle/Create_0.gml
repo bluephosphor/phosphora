@@ -1,15 +1,20 @@
 depth = -2001
 
-var starting_hour = 5;
+var starting_hour = 7;
 
 seconds = (starting_hour * 60) * 60;
 minutes = 0;
 hours = 0;
 
+#macro SUMMER 1
+#macro AUTUMN 2
+#macro WINTER 3
+#macro SPRING 4
+
 globalvar day, season, year;
 
 day = 1;
-season = 1;
+season = SPRING;
 year = 1;
 
 time_increment = 1; //seconds per step

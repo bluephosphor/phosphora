@@ -38,7 +38,7 @@ ds_grid_set_region(room_data,0,0,_width,_height,-1);
 room_data[# rm.name,			r_outside] = "forest";
 room_data[# rm.script,			r_outside] = generate_room_outside;
 room_data[# rm.mob_cap,			r_outside] = 7;
-room_data[# rm.mob_types,		r_outside] = [mob.fish,mob.minky,mob.ghost];
+room_data[# rm.mob_types,		r_outside] = [mob.fish,mob.minky,mob.ghost,mob.shrubbie];
 room_data[# rm.bgm,				r_outside] = snd_forest;
 room_data[# rm.bgm2,			r_outside] = snd_forest_night;
 room_data[# rm.draw_daylight,	r_outside] = true;
@@ -66,8 +66,8 @@ room_data[# rm.chest_loot,		r_outside] = [
 //----------------------------------------DEEP_GROVE--------------------------------------------------//
 room_data[# rm.name,			r_deep_grove] = "grove";
 room_data[# rm.script,			r_deep_grove] = generate_grove;
-room_data[# rm.mob_cap,			r_deep_grove] = 5;
-room_data[# rm.mob_types,		r_deep_grove] = [mob.ghost];
+room_data[# rm.mob_cap,			r_deep_grove] = 7;
+room_data[# rm.mob_types,		r_deep_grove] = [mob.ghost,mob.shrubbie];
 room_data[# rm.bgm,				r_deep_grove] = snd_time;
 room_data[# rm.draw_daylight,	r_deep_grove] = false;
 room_data[# rm.day_outline,		r_deep_grove] = false;

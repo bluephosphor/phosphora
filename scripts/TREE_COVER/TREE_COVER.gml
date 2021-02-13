@@ -4,6 +4,7 @@ function init_tree_patterns() {
 	var ww = obj_level.width_;
 	var hh = obj_level.height_;
 
+	if (surface_exists(overcast_surface)) surface_free(overcast_surface);
 	overcast_surface = noone;
 
 	tree_overcast = room_data[# rm.tree_overcast,room]; if (!tree_overcast) exit;

@@ -1,5 +1,11 @@
 ///@description reset passive
-if (mystate != mobstate.passive){ 
+check_death();
+
+if (mystate != mobstate.aggro){ 
+	next_anim = aggro_frames;
+	anim_speed = 4;
+	mystate = mobstate.aggro;
+} else {
 	next_anim = passive_frames;
 	anim_speed = 4;
 	mystate = mobstate.passive;
