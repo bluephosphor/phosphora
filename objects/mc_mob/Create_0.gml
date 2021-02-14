@@ -21,6 +21,7 @@ ltc			= 0;
 
 hp			= 100;
 show_hp		= false;
+hb_offset	= 48;
 hp_change	= 0;
 draw_alpha	= 0;
 draw_color	= c_white;

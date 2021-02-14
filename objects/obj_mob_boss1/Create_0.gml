@@ -1,6 +1,7 @@
 event_inherited();
 mob_id = mob.ent_knight;
 hp = mob_data[# mob_id,stat.hp];
+hb_offset = 72;
 z = 0;
 
 max_speed_ = 1;

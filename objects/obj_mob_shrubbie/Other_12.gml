@@ -1,5 +1,12 @@
 /// @description aggro state
 
+/*
+	SUBSTATES
+	0 = look for cell
+	1 = run to targetc cell
+	2 = shoot projectile
+*/
+
 switch(substate){
 	case 0: // look for cell
 		var _ww = obj_level.width_;
@@ -18,9 +25,6 @@ switch(substate){
 		
 		if (coord_outside_view(x,y-24,32)) {
 			if (alarm_get(0) == -1) alarm[0] = room_speed;
-			//next_anim	= passive_frames;
-			//substate	= 0;
-			//mystate		= mobstate.passive;
 		} else if (animation_ended) {
 			if (in_cell == WATER) part_particles_create(global.p_system,x,y,global.p_water_ring,1);
 			image_xscale = (obj_player.x > x) ? 1 : -1;
@@ -43,7 +47,63 @@ switch(substate){
 		y_speed_ = approach(y_speed_,lengthdir_y(_approach_speed,_dir),acceleration_);
 		anim_speed = 8 - clamp(_approach_speed * 3,4,6);
 		
+		if (_dist < (CELL_WIDTH / 2)) {
+			anim_speed = 8;
+			next_anim  = attack_frames;
+			substate   = 2;
+		}
 		
-		//move_commit();
 		move_and_collide();
+		break;
+	case 2: //shoot projectile
+		if (current_anim == attack_frames){
+			switch(image_index){
+				case 36:
+					next_anim = aggro_frames;
+					substate = 0;
+			}
+		} else {
+			//end animation early so it's transition is smooth
+			var len = array_length(current_anim) - 3;
+			if (frame_index > len){
+				frame_index = 0;
+				animation_ended = true;
+				current_anim = next_anim; 
+				alarm[10] = anim_speed;
+				var _list = ds_list_create();
+				ds_list_add(_list,0,72,144,216,288);
+				ds_list_shuffle(_list);
+				var i = 0; repeat(irandom_range(3,5)){
+					var _dir = _list[| i++];
+					var _xx = x + lengthdir_x(16,_dir);
+					var _yy = y + lengthdir_y(16,_dir);
+					var _self = id;
+					with (instance_create_layer(_xx,_yy,"Instances",obj_shrub_bullet)){
+						my_mob = _self;
+					}
+				}
+				ds_list_destroy(_list);
+			}
+		}
+		image_xscale = (obj_player.x > x) ? 1 : -1;
+		//parts
+		var xx = x + irandom_range(-16,16); 
+		var yy = y + irandom_range(-32,8);
+		part_particles_create(global.p_system,xx,yy,global.p_spinpixel,1);
+		break;
 }
+
+if (!global.debug) exit;
+var c = c_white;
+switch(substate){
+	case 1:
+		c = c_red;
+		break;
+		
+	case 2:
+		c = c_aqua;
+		break;
+	
+}
+
+image_blend = c;

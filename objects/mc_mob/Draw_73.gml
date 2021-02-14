@@ -2,7 +2,7 @@ if (draw_alpha > 0){
 	var str = (is_string(hp_change)) ? hp_change : string(hp_change);
 	var c = draw_color;
 	var x_origin = x - (string_width(str) / 2);
-	var y_origin = y - 48;
+	var y_origin = y - hb_offset;
 	draw_text_color(x_origin,y_origin,str,c,c,c,c,draw_alpha);
 
 	var max_healthbar_length = 24;
@@ -10,7 +10,7 @@ if (draw_alpha > 0){
 	var hp_length = max_healthbar_length * hp / max_hp;
 	var hp_height = 3;
 	var x_origin = x - (max_healthbar_length / 2);
-	var y_origin = y - 28;
+	    y_origin += 20;
 	
 	hp_length = clamp(hp_length,0,max_healthbar_length);
 	c = c_white; 

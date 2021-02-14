@@ -1,4 +1,4 @@
-function wave(argument0, argument1, argument2, argument3) {
+function wave(from, to, duration, offset) {
 	//@description wave
 	//@arg from
 	//@arg to
@@ -14,6 +14,6 @@ function wave(argument0, argument1, argument2, argument3) {
 	//      image_xscale = Wave(0.5, 2.0, 1.0, 0.0)
 	//      image_yscale = Wave(2.0, 0.5, 1.0, 0.0)
  
-	var a4 = (argument1 - argument0) * 0.5;
-	return argument0 + a4 + sin((((current_time * 0.001) + argument2 * argument3) / argument2) * (pi*2)) * a4;
+	var a4 = (to - from) * 0.5;
+	return from + a4 + sin((((current_time * 0.001) + duration * offset) / duration) * (pi*2)) * a4;
 }

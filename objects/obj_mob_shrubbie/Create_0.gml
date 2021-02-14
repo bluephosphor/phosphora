@@ -3,6 +3,7 @@ event_inherited();
 image_speed		 = 0;
 mob_id			 = mob.shrubbie;
 hp				 = mob_data[# mob_id,stat.hp];
+hb_offset		 = 64;
 
 max_speed_		 = 3;
 acceleration_	 = 0.2;

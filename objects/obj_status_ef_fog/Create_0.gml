@@ -1,0 +1,9 @@
+depth = -y;
+status = effect.none;
+image_alpha = 0;
+image_xscale = choose(-1,1);
+state = 0;
+increment = 0.006;
+from_bullet = false;
+my_light = noone;
+hspeed = choose(0.05,-0.05);
