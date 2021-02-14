@@ -1,3 +1,5 @@
+if (global.time_pause) exit;
+
 var inst = (instance_place(x,y,obj_chest_demon)); if (inst != noone){
 	with (inst){
 		instance_create_layer(x,y,"Instances",obj_mob_chest);
@@ -20,14 +22,14 @@ if (inst != noone){
 			}
 		case ALWAYS:
 			if (inst != noone){
-				var xvel = x_speed_;
-				var yvel = y_speed_;
+				var xvel = xspeed;
+				var yvel = yspeed;
 				var stun = stunpower;
 				var d_mod = damage_mod;
 				with (inst){
 					if (mystate != mobstate.hitstun){
-						x_speed_		= xvel
-						y_speed_		= yvel
+						xspeed		= xvel
+						yspeed		= yvel
 						alarm[0]		= stun;
 						alarm[10]		= 1;
 						current_anim	= (attack_blocked) ? block_frames : hitstun_frames;

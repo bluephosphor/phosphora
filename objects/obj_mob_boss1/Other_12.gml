@@ -45,19 +45,19 @@ switch(substate){
 		
 		var _approach_speed = clamp(3 * _dist / (global.view_height div 2),0.5,5);
 		
-		x_speed_ = approach(x_speed_,lengthdir_x(_approach_speed,_dir),acceleration_);
-		y_speed_ = approach(y_speed_,lengthdir_y(_approach_speed,_dir),acceleration_);
+		xspeed = approach(xspeed,lengthdir_x(_approach_speed,_dir),acceleration);
+		yspeed = approach(yspeed,lengthdir_y(_approach_speed,_dir),acceleration);
 		anim_speed = 10 - clamp(_approach_speed * 3,0,9);
 		
 		if (y > _ty){ //jump away if we spin fast
-			var _pys = abs(obj_player.y_speed_) + 1;
-			y_speed_ = approach(y_speed_,-_pys,0.5);
+			var _pys = abs(obj_player.yspeed) + 1;
+			yspeed = approach(yspeed,-_pys,0.5);
 			anim_speed = 6 - clamp(_pys,0,5);
-			if (y_speed_ < -3){
+			if (yspeed < -3){
 				frame_index = 0;
 				image_index = jump_frames[0] - 1;
 				current_anim = jump_frames;
-				y_speed_ -= 1;
+				yspeed -= 1;
 				anim_speed = 2;
 				substate = 3;
 				event_perform(ev_alarm,10);
@@ -65,7 +65,7 @@ switch(substate){
 			}
 		}
 		
-		current_anim = (sign(y_speed_) == 1) ? walking_frames : retreating_frames;
+		current_anim = (sign(yspeed) == 1) ? walking_frames : retreating_frames;
 		
 		if (attack_cooldown > 0){
 			attack_cooldown--;
@@ -73,15 +73,15 @@ switch(substate){
 			anim_speed = 5;
 			current_anim = charge_frames[0];
 			charge = irandom_range(15,30);
-			y_speed_ = (obj_player.y_input == -1) ? -4 : 2;
+			yspeed = (obj_player.y_input == -1) ? -4 : 2;
 			substate = 2;
 		}
 		move_and_collide();
 		break;
 	case 2: //attack////////////////////////////////////////////////////////////////////////////
 		
-		x_speed_ = lerp(x_speed_, 0, .1);
-		y_speed_ = lerp(y_speed_, 0, .1);
+		xspeed = lerp(xspeed, 0, .1);
+		yspeed = lerp(yspeed, 0, .1);
 		
 		if (charge > 0){
 			charge--;
@@ -107,7 +107,7 @@ switch(substate){
 			frame_index = 0;
 			event_perform(ev_alarm,10);
 		} else if (image_index > 29){
-			x_speed_ = 0; y_speed_ = 0;
+			xspeed = 0; yspeed = 0;
 		} 
 		//if (image_index > 17) 
 		move_and_collide();

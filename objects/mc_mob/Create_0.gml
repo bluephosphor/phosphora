@@ -11,8 +11,9 @@ watertype	= false;
 nocturnal	= false;
 hitlag		= 0;
 
-x_speed_	= 0;
-y_speed_	= 0;
+xspeed	= 0;
+yspeed	= 0;
+frict	= 0.3
 mystate		= mobstate.passive;
 mob_id		= -1;
 
@@ -89,8 +90,8 @@ function check_death(){
 				}
 				if (_item == item.none) coin_type = choose(coin.bronze,coin.silver,coin.gold);
 				else item_num = _item;
-				x_speed_ = random_range(-1,1);
-				y_speed_ = random_range(-1,1);
+				xspeed = random_range(-1,1);
+				yspeed = random_range(-1,1);
 			}
 		}
 		instance_destroy();

@@ -20,100 +20,100 @@ function grid_collision_point(grid,celltype,x,y) {
 
 
 function move_commit(){
-	x_speed_ += xmove * acceleration_;
-	y_speed_ += ymove * acceleration_;
-	var _speed = point_distance(0, 0, x_speed_, y_speed_);
-	var _direction = point_direction(0, 0, x_speed_, y_speed_);
-	if (_speed > max_speed_) {
-		x_speed_ = lengthdir_x(max_speed_, _direction);
-		y_speed_ = lengthdir_y(max_speed_, _direction);
+	xspeed += xmove * acceleration;
+	yspeed += ymove * acceleration;
+	var _speed = point_distance(0, 0, xspeed, yspeed);
+	var _direction = point_direction(0, 0, xspeed, yspeed);
+	if (_speed > max_speed) {
+		xspeed = lengthdir_x(max_speed, _direction);
+		yspeed = lengthdir_y(max_speed, _direction);
 	}
 	if (xmove == 0) {
-		x_speed_ = lerp(x_speed_, 0, .3);
+		xspeed = lerp(xspeed, 0, frict);
 	}
 	if (ymove == 0) {
-		y_speed_ = lerp(y_speed_, 0, .3);
+		yspeed = lerp(yspeed, 0, frict);
 	}
 }
 
 function move_and_collide() {
 	// Move horizontally
-	x += x_speed_;
+	x += xspeed;
 
 	// Right collisions
-	if x_speed_ > 0 {
+	if xspeed > 0 {
 		if (grid_place_meeting(self, grid_,VOID)) {
 			x = bbox_right&~(CELL_WIDTH-1);
 			x -= bbox_right-x;
-			x_speed_ = 0;
+			xspeed = 0;
 		}
-	} else if x_speed_ < 0 {
+	} else if xspeed < 0 {
 		// Left collisions
 		if (grid_place_meeting(self, grid_,VOID)) {
 			x = bbox_left&~(CELL_WIDTH-1);
 			x += CELL_WIDTH+x-bbox_left;
-			x_speed_ = 0;
+			xspeed = 0;
 		}
 	}
 
 	// Move vertically
-	y += y_speed_;
+	y += yspeed;
 
 	// Vertical collisions
-	if y_speed_ > 0 {
+	if yspeed > 0 {
 		// Bottom collisions
 		if (grid_place_meeting(self, grid_,VOID)) {
 			y = bbox_bottom&~(CELL_HEIGHT-1);
 			y -= bbox_bottom-y;
-			y_speed_ = 0;
+			yspeed = 0;
 		}
-	} else if y_speed_ < 0 {
+	} else if yspeed < 0 {
 		// Top collisions
 		if (grid_place_meeting(self, grid_,VOID)) {
 			y = bbox_top&~(CELL_HEIGHT-1);
 			y += CELL_HEIGHT+y-bbox_top;
-			y_speed_ = 0;
+			yspeed = 0;
 		}
 	}
 }
 
 function move_and_collide_inwater() {
 	// Move horizontally
-	x += x_speed_;
+	x += xspeed;
 
 	// Right collisions
-	if x_speed_ > 0 {
+	if xspeed > 0 {
 		if (grid_place_meeting(self, grid_,VOID)) or (grid_place_meeting(self, grid_,FLOOR)){
 			x = bbox_right&~(CELL_WIDTH-1);
 			x -= bbox_right-x;
-			x_speed_ = 0;
+			xspeed = 0;
 		}
-	} else if x_speed_ < 0 {
+	} else if xspeed < 0 {
 		// Left collisions
 		if (grid_place_meeting(self, grid_,VOID)) or (grid_place_meeting(self, grid_,FLOOR)){
 			x = bbox_left&~(CELL_WIDTH-1);
 			x += CELL_WIDTH+x-bbox_left;
-			x_speed_ = 0;
+			xspeed = 0;
 		}
 	}
 
 	// Move vertically
-	y += y_speed_;
+	y += yspeed;
 
 	// Vertical collisions
-	if y_speed_ > 0 {
+	if yspeed > 0 {
 		// Bottom collisions
 		if (grid_place_meeting(self, grid_,VOID)) or (grid_place_meeting(self, grid_,FLOOR)){
 			y = bbox_bottom&~(CELL_HEIGHT-1);
 			y -= bbox_bottom-y;
-			y_speed_ = 0;
+			yspeed = 0;
 		}
-	} else if y_speed_ < 0 {
+	} else if yspeed < 0 {
 		// Top collisions
 		if (grid_place_meeting(self, grid_,VOID)) or (grid_place_meeting(self, grid_,FLOOR)){
 			y = bbox_top&~(CELL_HEIGHT-1);
 			y += CELL_HEIGHT+y-bbox_top;
-			y_speed_ = 0;
+			yspeed = 0;
 		}
 	}
 }
@@ -121,41 +121,41 @@ function move_and_collide_inwater() {
 
 function move_and_bounce() {
 	// Move horizontally
-	x += x_speed_;
+	x += xspeed;
 
 	// Right collisions
-	if x_speed_ > 0 {
+	if xspeed > 0 {
 		if (grid_place_meeting(self, grid_,VOID)) {
 			x = bbox_right&~(CELL_WIDTH-1);
 			x -= bbox_right-x;
-			x_speed_ = -x_speed_ * 0.5;
+			xspeed = -xspeed * 0.5;
 		}
-	} else if x_speed_ < 0 {
+	} else if xspeed < 0 {
 		// Left collisions
 		if (grid_place_meeting(self, grid_,VOID)) {
 			x = bbox_left&~(CELL_WIDTH-1);
 			x += CELL_WIDTH+x-bbox_left;
-			x_speed_ = -x_speed_ * 0.5;
+			xspeed = -xspeed * 0.5;
 		}
 	}
 
 	// Move vertically
-	y += y_speed_;
+	y += yspeed;
 
 	// Vertical collisions
-	if y_speed_ > 0 {
+	if yspeed > 0 {
 		// Bottom collisions
 		if (grid_place_meeting(self, grid_,VOID)) {
 			y = bbox_bottom&~(CELL_HEIGHT-1);
 			y -= bbox_bottom-y;
-			y_speed_ = -y_speed_ * 0.5;
+			yspeed = -yspeed * 0.5;
 		}
-	} else if y_speed_ < 0 {
+	} else if yspeed < 0 {
 		// Top collisions
 		if (grid_place_meeting(self, grid_,VOID)) {
 			y = bbox_top&~(CELL_HEIGHT-1);
 			y += CELL_HEIGHT+y-bbox_top;
-			y_speed_ = -y_speed_ * 0.5;
+			yspeed = -yspeed * 0.5;
 		}
 	}
 }

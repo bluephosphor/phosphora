@@ -7,8 +7,8 @@ image_xscale = choose(-1,1)
 target_x = -1;
 target_y = -1;
 
-x_speed_ = 0;
-y_speed_ = 0;
+xspeed = 0;
+yspeed = 0;
 max_sp = 4;
 accel = 0.1;
 total_dist = 0;

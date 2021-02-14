@@ -20,8 +20,8 @@ y_offset = 0;
 z_offset = -1;
 throw_ = false;
 launch = false;
-x_speed_ = 0;
-y_speed_ = 0;
+xspeed = 0;
+yspeed = 0;
 stunpower = 30;
 damage_mod = 2;
 

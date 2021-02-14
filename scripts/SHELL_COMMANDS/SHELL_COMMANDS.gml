@@ -173,8 +173,8 @@ function sh_spawn(args){
 						"Instances",
 						obj_item_entity)){
 						item_num = i;
-						x_speed_ = random_range(-1,1);
-						y_speed_ = random_range(-1,1);
+						xspeed = random_range(-1,1);
+						yspeed = random_range(-1,1);
 					}
 					return "spawned a " + args[2];
 					break;

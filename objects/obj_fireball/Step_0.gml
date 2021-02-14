@@ -1,3 +1,4 @@
+event_inherited();
 switch (state){
     case FIREBALL_DORMANT:
         timer ++;
@@ -18,16 +19,16 @@ switch (state){
         break;
     case FIREBALL_THROW:
         if(instance_exists(target)){
-            var xvel = abs(x_speed_);
-            var yvel = abs(y_speed_);
+            var xvel = abs(xspeed);
+            var yvel = abs(yspeed);
             if (xvel > yvel) {
                 y = lerp(y,target.y,0.1);
             } else {
                 x = lerp(x,target.x,0.1);
             }
         }
-        x += x_speed_;
-        y += y_speed_;
+        x += xspeed;
+        y += yspeed;
         var xx = irandom_range(-8,8);
         var yy = irandom_range(-8,8);
 	    part_particles_create(global.p_system,x+xx,y+yy,global.p_spinpixel,1);
@@ -46,11 +47,10 @@ switch (state){
 		if (_x_input == 0) and (_y_input == 0){
 			_x_input = obj_player.image_xscale;
 		}
-		x_speed_ = 5 * _x_input;
-		y_speed_ = 5 * _y_input;
+		xspeed = 5 * _x_input;
+		yspeed = 5 * _y_input;
 		alarm[0] = room_speed;
 		state = FIREBALL_THROW;
         break;
 }
 
-event_inherited();

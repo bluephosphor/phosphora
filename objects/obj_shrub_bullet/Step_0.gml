@@ -1,3 +1,5 @@
+event_inherited();
+
 depth = -y;
 grid_x = x div CELL_WIDTH;
 grid_y = y div CELL_HEIGHT;
@@ -33,10 +35,10 @@ switch(state){
 		y_offset = 20 - (20 * _dist / total_dist);
 		my_light.light_offset.y = -20 + y_offset;
 		
-		x_speed_ = lerp(x_speed_,lengthdir_x(max_sp,_dir),accel);
-		y_speed_ = lerp(y_speed_,lengthdir_y(max_sp,_dir),accel);
-		x += x_speed_;
-		y += y_speed_;
+		xspeed = lerp(xspeed,lengthdir_x(max_sp,_dir),accel);
+		yspeed = lerp(yspeed,lengthdir_y(max_sp,_dir),accel);
+		x += xspeed;
+		y += yspeed;
 		
 		if (_dist < 8) {
 			var i = 0; repeat(50){

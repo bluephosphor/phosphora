@@ -9,7 +9,7 @@ switch (mystate){
 		anim_speed = 5;
 		current_anim = charge_frames[0];
 		charge = 0;
-		y_speed_ = 2;
+		yspeed = 2;
 		substate = 2;
 	default:
 		if (mystate != mobstate.aggro){ 

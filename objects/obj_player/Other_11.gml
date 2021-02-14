@@ -11,21 +11,21 @@ if (gamestate == INGAME){
 	x_input = keyboard_check(input[| key.right]) - keyboard_check(input[| key.left]);
 	y_input = keyboard_check(input[| key.down]) - keyboard_check(input[| key.up]);
 	
-	x_speed_ += x_input * spin_accel;
-	y_speed_ += y_input * spin_accel;
-	var _speed = point_distance(0, 0, x_speed_, y_speed_);
-	var _direction = point_direction(0, 0, x_speed_, y_speed_);
+	xspeed += x_input * spin_accel;
+	yspeed += y_input * spin_accel;
+	var _speed = point_distance(0, 0, xspeed, yspeed);
+	var _direction = point_direction(0, 0, xspeed, yspeed);
 	if (_speed > spin_speed) {
-		x_speed_ = lengthdir_x(spin_speed, _direction);
-		y_speed_ = lengthdir_y(spin_speed, _direction);
+		xspeed = lengthdir_x(spin_speed, _direction);
+		yspeed = lengthdir_y(spin_speed, _direction);
 	}
 }
 
 if (x_input == 0) {
-	x_speed_ = lerp(x_speed_, 0, .01);
+	xspeed = lerp(xspeed, 0, .01);
 }
 if (y_input == 0) {
-	y_speed_ = lerp(y_speed_, 0, .01);
+	yspeed = lerp(yspeed, 0, .01);
 }
 
 move_and_collide();
@@ -58,13 +58,13 @@ if (inst != noone){
 			}
 			if (break_out) break;
 		case ALWAYS:
-			var velocity = max(abs(x_speed_),abs(y_speed_));
+			var velocity = max(abs(xspeed),abs(yspeed));
 			if (velocity >= 1){
-				var vsp = y_speed_, hsp = x_speed_;
+				var vsp = yspeed, hsp = xspeed;
 				with(inst){
 					if (mystate != mobstate.hitstun){
-						x_speed_		= hsp * 2;
-						y_speed_		= vsp * 2;
+						xspeed		= hsp * 2;
+						yspeed		= vsp * 2;
 						alarm[0]		= (attack_blocked) ? 2 * velocity   : 5 * velocity;
 						alarm[10]		= 1;
 						if (attack_blocked) {
@@ -79,8 +79,8 @@ if (inst != noone){
 						hitlag			= velocity * 3;
 					}
 				}
-				x_speed_ = -x_speed_;
-				y_speed_ = -y_speed_;
+				xspeed = -xspeed;
+				yspeed = -yspeed;
 				hitlag = velocity * 3;
 			}
 			break;

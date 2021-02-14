@@ -19,7 +19,7 @@ switch(playerstate){
 	case p_state.hitstun: str = "hitstun"; break;
 	case p_state.swimming: str = "swimming"; break;
 }
-draw_text(live_vars_x,4+y_off,"x:" + string(obj_player.x) + ". y:" + string(obj_player.y) + ". hsp:" + string(obj_player.x_speed_) + ". vsp:" + string(obj_player.y_speed_));
+draw_text(live_vars_x,4+y_off,"x:" + string(obj_player.x) + ". y:" + string(obj_player.y) + ". hsp:" + string(obj_player.xspeed) + ". vsp:" + string(obj_player.yspeed));
 draw_text(live_vars_x,12+y_off,"grid_x:" + string(obj_player.grid_x) + ". grid_y:" + string(obj_player.grid_y));
 var c = c_white;
 if (obj_player.spin_cooldown > 0) {

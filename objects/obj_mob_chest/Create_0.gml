@@ -4,8 +4,8 @@ mob_id = mob.chest_demon;
 hp = mob_data[# mob_id,stat.hp];
 
 attack = 5;
-max_speed_ = 1;
-acceleration_ = 0.2;
+max_speed = 1;
+acceleration = 0.2;
 update_movement = true;
 xmove = 0;
 ymove = 0;

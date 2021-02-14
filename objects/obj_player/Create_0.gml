@@ -1,9 +1,10 @@
 event_inherited();
 
-x_speed_ = 0;
-y_speed_ = 0;
-max_speed_ = 2;
-acceleration_ = .5;
+xspeed = 0;
+yspeed = 0;
+max_speed = 2;
+acceleration = .5;
+frict = 0.3;
 
 recovery_frames = 0;
 _visible = true;

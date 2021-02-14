@@ -2,8 +2,8 @@ event_inherited();
 mob_id = mob.minky;
 hp = mob_data[# mob_id,stat.hp];
 
-max_speed_ = 1;
-acceleration_ = 0.2;
+max_speed = 1;
+acceleration = 0.2;
 update_movement = true;
 xmove = 0;
 ymove = 0;

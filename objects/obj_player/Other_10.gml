@@ -16,20 +16,20 @@ if (playerstate == p_state.swimming){
 }
 
 //and here's our 'final' speed
-var ms = max_speed_ - _speed_reduction + _boost;
+var ms = max_speed - _speed_reduction + _boost;
 
 //calculate movement
 if (gamestate == INGAME){
 	x_input = keyboard_check(input[| key.right]) - keyboard_check(input[| key.left]);
 	y_input = keyboard_check(input[| key.down]) - keyboard_check(input[| key.up]);
 	
-	x_speed_ += x_input * acceleration_;
-	y_speed_ += y_input * acceleration_;
-	var _speed		= point_distance (0, 0, x_speed_, y_speed_);
-	var _direction	= point_direction(0, 0, x_speed_, y_speed_);
+	xspeed += x_input * acceleration;
+	yspeed += y_input * acceleration;
+	var _speed		= point_distance (0, 0, xspeed, yspeed);
+	var _direction	= point_direction(0, 0, xspeed, yspeed);
 	if (_speed > ms) {
-		x_speed_ = lengthdir_x(ms, _direction);
-		y_speed_ = lengthdir_y(ms, _direction);
+		xspeed = lengthdir_x(ms, _direction);
+		yspeed = lengthdir_y(ms, _direction);
 	}
 	
 	if (_spin){
@@ -44,8 +44,8 @@ if (gamestate == INGAME){
 					if (entity_type == "mob") {
 						xmove = 0;
 						ymove = 0;
-						x_speed_ = 0;
-						y_speed_ = 0;
+						xspeed = 0;
+						yspeed = 0;
 						update_movement = false;
 						
 						if (other.x > x) image_xscale = 1;
@@ -86,18 +86,18 @@ if (x_input == 0 && y_input == 0) {
 
 //friction when not moving
 if (x_input == 0) {
-	x_speed_ = lerp(x_speed_, 0, .3);
+	xspeed = lerp(xspeed, 0, frict);
 }
 if (y_input == 0) {
-	y_speed_ = lerp(y_speed_, 0, .3);
+	yspeed = lerp(yspeed, 0, frict);
 }
 
 //set facing depending on target
 if (current_target != noone){
 	image_xscale = sign(current_target.x - x);
-} else if (x_speed_ > 0) {
+} else if (xspeed > 0) {
 	image_xscale = 1;	
-} else if (x_speed_ < 0) {
+} else if (xspeed < 0) {
 	image_xscale = -1;	
 }
 
@@ -154,17 +154,17 @@ if (inst != noone) and (recovery_frames <= 0){
 			case PASSIVE: break;
 			case VELOCITY:
 				with(inst){
-					var velocity = max(abs(x_speed_),abs(y_speed_));
+					var velocity = max(abs(xspeed),abs(yspeed));
 					if (velocity >= 1){
-						var vsp = y_speed_, hsp = x_speed_;
-						x_speed_ = -hsp;
-						y_speed_ = -vsp;
+						var vsp = yspeed, hsp = xspeed;
+						xspeed = -hsp;
+						yspeed = -vsp;
 						hitlag = velocity * 5;
 					}
 				}
 				if (velocity >= 1){
-					x_speed_ = hsp * 2;
-					y_speed_ = vsp * 2;
+					xspeed = hsp * 2;
+					yspeed = vsp * 2;
 					alarm[0] = velocity * 10;
 					image_blend = c_red;
 					player_health -= calc_player_damage(inst);
@@ -177,8 +177,8 @@ if (inst != noone) and (recovery_frames <= 0){
 			case STATIC:
 				var _dir = point_direction(x,y,inst.x,inst.y);
 				var _len = mob_data[# inst.mob_id,stat.attack] / 2;
-				x_speed_ -= lengthdir_x(_len,_dir);
-				y_speed_ -= lengthdir_y(_len,_dir);
+				xspeed -= lengthdir_x(_len,_dir);
+				yspeed -= lengthdir_y(_len,_dir);
 				alarm[0] = 30;
 				image_blend = c_red;
 				player_health -= calc_player_damage(inst);

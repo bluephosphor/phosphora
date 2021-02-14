@@ -8,8 +8,8 @@ watertype = true;
 attack_type			= PASSIVE;
 tangibility_type	= NEVER;
 
-max_speed_ = 0.5;
-acceleration_ = 0.1;
+max_speed = 0.5;
+acceleration = 0.1;
 update_movement = true;
 xmove = 0;
 ymove = 0;

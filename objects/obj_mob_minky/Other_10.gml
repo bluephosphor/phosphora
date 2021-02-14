@@ -20,21 +20,21 @@ if (update_movement) {
 	}
 	update_movement = false;
 } else {
-	x_speed_ += xmove * acceleration_;
-	y_speed_ += ymove * acceleration_;
-	var _speed = point_distance(0, 0, x_speed_, y_speed_);
-	var _direction = point_direction(0, 0, x_speed_, y_speed_);
-	if (_speed > max_speed_) {
-		x_speed_ = lengthdir_x(max_speed_, _direction);
-		y_speed_ = lengthdir_y(max_speed_, _direction);
+	xspeed += xmove * acceleration;
+	yspeed += ymove * acceleration;
+	var _speed = point_distance(0, 0, xspeed, yspeed);
+	var _direction = point_direction(0, 0, xspeed, yspeed);
+	if (_speed > max_speed) {
+		xspeed = lengthdir_x(max_speed, _direction);
+		yspeed = lengthdir_y(max_speed, _direction);
 	}
 }
 
 if (xmove == 0) {
-	x_speed_ = lerp(x_speed_, 0, .3);
+	xspeed = lerp(xspeed, 0, .3);
 }
 if (ymove == 0) {
-	y_speed_ = lerp(y_speed_, 0, .3);
+	yspeed = lerp(yspeed, 0, .3);
 }
 
 

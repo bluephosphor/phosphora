@@ -13,8 +13,8 @@ if (strike){
 		for (var i = 0; i < _num; ++i;){
 				with(_list[| i]){
 					if (!passive) and (mystate != mobstate.hitstun){
-						x_speed_ = random_range(-2,2);
-						y_speed_ = random_range(-2,2);
+						xspeed = random_range(-2,2);
+						yspeed = random_range(-2,2);
 						alarm[0] = room_speed;
 						alarm[10] = 1;
 						current_anim = hitstun_frames;

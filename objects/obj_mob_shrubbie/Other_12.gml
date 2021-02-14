@@ -43,8 +43,8 @@ switch(substate){
 		
 		var _approach_speed = clamp(3 * _dist / ideal_dist, 0, 2.5);
 		
-		x_speed_ = approach(x_speed_,lengthdir_x(_approach_speed,_dir),acceleration_);
-		y_speed_ = approach(y_speed_,lengthdir_y(_approach_speed,_dir),acceleration_);
+		xspeed = approach(xspeed,lengthdir_x(_approach_speed,_dir),acceleration);
+		yspeed = approach(yspeed,lengthdir_y(_approach_speed,_dir),acceleration);
 		anim_speed = 8 - clamp(_approach_speed * 3,4,6);
 		
 		if (_dist < (CELL_WIDTH / 2)) {
