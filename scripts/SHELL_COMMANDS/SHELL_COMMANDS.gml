@@ -192,3 +192,15 @@ function sh_spawn(args){
 function sh_fps(args) {
 	room_speed = string_value(args[1]);
 }
+
+function sh_effect(args){
+	var _eff = string_replace_all(args[1],"_", " ");
+	var i = 0; repeat(array_length(effect_data)){
+		if (string_lower(effect_data[i].name) == _eff){
+			effect_apply(i,string_value(args[2]),player_inst,string_value(args[3]));
+			return "applied " + args[1] + " effect to player for " + args[3] + " seconds";
+		}
+		i++;
+	}
+	return "did not find effect named: " + args[1] + "...";
+}

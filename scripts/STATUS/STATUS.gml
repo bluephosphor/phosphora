@@ -35,23 +35,25 @@ effect_data[effect.glow]	= {
 			if (my_light != noone) return;
 			effect_light = instance_create_layer(x,y,"Instances",mc_lightsource);
 			with (effect_light){
-				light_strength = level / 3;
-				light_size = level / 2;
+				draw_strength = 0;
+				light_strength = clamp(level / 2,0.1,1);
+				light_size = level;
 				follow = id;
+				light_offset.y -= sprite_get_height(id.sprite_index) / 2;
 			}
 		}
 	},
 	
 	end_method: function(id){
 		with (id) {
-			instance_destroy(effect_light);
+			effect_light.state = light.fade;
 			effect_light = noone;
 		}
 	}
 	
 };
 
-effect_data[effect.slip]	= { name: "Slip",		  affects: [stat.accel,stat.fric]};
+effect_data[effect.slip]	= { name: "Slip",		  affects: [stat.fric]};
 
 effect_data[effect.buff]	= { name: "Buff",		  affects: [stat.attack,stat.defense]};
 
@@ -123,8 +125,7 @@ function effect_apply(index,level,entity,seconds){
 			defense -= level;
 			break;
 		case effect.slip:
-			acceleration  -= (level*0.1 );
-			frict		  -= (level*0.01);
+			frict = frict / (level+1);
 			break;
 		default:
 			var _obj = effect_data[index];
@@ -157,18 +158,18 @@ function effects_update(){
 	if (_change) affected = _array;
 }
 
-function dec_to_roman(argument0){
+function dec_to_roman(num){
 	//  Returns a string of Roman numerals representing the given integer.
 	//
-	//      num         positive integer less than 5000, real
+	//      num = positive integer less than 5000, real
 	//
 	/// GMLscripts.com/license
 	var roman;
-	if ((argument0 < 1) || (argument0 > 4999)) return "";
-	roman  = string_copy("    M   MM  MMM MMMM",4*(argument0 div 1000)+1,4);
-	roman += string_copy("    C   CC  CCC CD  D   DC  DCC DCCCCM  ",4*((argument0 mod 1000) div 100)+1,4);
-	roman += string_copy("    X   XX  XXX XL  L   LX  LXX LXXXXC  ",4*((argument0 mod 100) div 10)+1,4);
-	roman += string_copy("    I   II  III IV  V   VI  VII VIIIIX  ",4*(argument0 mod 10)+1,4);
+	if ((num < 1) || (num > 4999)) return "";
+	roman  = string_copy("    M   MM  MMM MMMM",4*(num div 1000)+1,4);
+	roman += string_copy("    C   CC  CCC CD  D   DC  DCC DCCCCM  ",4*((num mod 1000) div 100)+1,4);
+	roman += string_copy("    X   XX  XXX XL  L   LX  LXX LXXXXC  ",4*((num mod 100) div 10)+1,4);
+	roman += string_copy("    I   II  III IV  V   VI  VII VIIIIX  ",4*(num mod 10)+1,4);
 	roman  = string_replace_all(roman," ","");
 	return roman;
 }

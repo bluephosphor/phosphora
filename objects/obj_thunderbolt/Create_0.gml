@@ -9,4 +9,5 @@ with (instance_create_layer(x,y,layer,mc_lightsource)){
 	follow = other.id;
 	light_size = 6;
 	light_strength = 1;
+	state = light.flash;
 }

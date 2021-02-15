@@ -1,6 +1,6 @@
 depth = -y;
-status = effect.glow;
-status_lv = 4;
+status = effect.haste;
+status_lv = 3;
 image_alpha = 0;
 image_xscale = choose(-1,1);
 state = 0;

@@ -1,7 +1,18 @@
-var resting_strength = wave(light_strength - 0.2, light_strength + 0.2, timer_offset,0);
 
-if (draw_strength < light_strength + 0.2) draw_strength = light_strength;
-else draw_strength = lerp(draw_strength,resting_strength,0.3);
+
+switch(state){
+	case light.normal:
+		var resting_strength = wave(light_strength - 0.2, light_strength + 0.2, timer_offset,0);
+		draw_strength = lerp(draw_strength,resting_strength,0.3);
+		break;
+	case light.flash:
+		draw_strength = light_strength;
+		break;
+	case light.fade:
+		draw_strength -= 0.03;
+		if (draw_strength <= 0) instance_destroy();
+		break;
+}
 
 if (follow != -1){
 	if (instance_exists(follow)){
