@@ -5,8 +5,7 @@ mob_id			 = mob.shrubbie;
 hp				 = mob_data[# mob_id,stat.hp];
 hb_offset		 = 64;
 
-max_speed		 = 3;
-acceleration	 = 0.2;
+stats_reset();
 update_movement  = true;
 xmove			 = 0;
 ymove			 = 0;

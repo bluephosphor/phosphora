@@ -168,7 +168,7 @@ if (inst != noone) and (recovery_frames <= 0){
 					alarm[0] = velocity * 10;
 					image_blend = c_red;
 					player_health -= calc_player_damage(inst);
-					player_health = clamp(player_health,0,player_data[| stat.hp]);
+					player_health = clamp(player_health,0,mob_data[# mob.player, stat.hp]);
 					sprite_index = s_player_hitstun;
 					playerstate = p_state.hitstun;
 					hitlag = velocity * 5;
@@ -176,13 +176,13 @@ if (inst != noone) and (recovery_frames <= 0){
 				break;
 			case STATIC:
 				var _dir = point_direction(x,y,inst.x,inst.y);
-				var _len = mob_data[# inst.mob_id,stat.attack] / 2;
+				var _len = inst.attack / 2;
 				xspeed -= lengthdir_x(_len,_dir);
 				yspeed -= lengthdir_y(_len,_dir);
 				alarm[0] = 30;
 				image_blend = c_red;
 				player_health -= calc_player_damage(inst);
-				player_health = clamp(player_health,0,player_data[| stat.hp]);
+				player_health = clamp(player_health,0,mob_data[# mob.player, stat.hp]);
 				sprite_index = s_player_hitstun;
 				playerstate = p_state.hitstun;
 				hitlag = _len;

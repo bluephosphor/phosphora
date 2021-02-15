@@ -1,7 +1,8 @@
-globalvar player_data,
-		  player_health,
-		  player_coins,
-		  hp_draw_length;
+globalvar mob_data, player_health, player_coins, hp_draw_length;
+
+player_coins = 0;
+hp_draw_length = 64;
+
 
 enum stat{
 	object,
@@ -19,25 +20,8 @@ enum stat{
 	enum_height,
 }
 
-player_data = ds_list_create();
-ds_collector_add(player_data);
-
-player_data[| stat.name]		= "Taako";
-player_data[| stat.hp]			= 50;
-player_data[| stat.attack]		= 2;
-player_data[| stat.defense]		= 1;
-player_data[| stat.sp_attack]	= 10;
-player_data[| stat.max_spd]		= 2;
-player_data[| stat.fric]		= 0.3;
-player_data[| stat.accel]		= 0.5;
-
-player_health = player_data[| stat.hp];
-player_coins = 0;
-hp_draw_length = 64;
-
-globalvar mob_data;
-
 enum mob{
+	player,
 	minky,
 	chest_demon,
 	void_demon,
@@ -58,6 +42,19 @@ var _height = stat.enum_height;
 mob_data = ds_grid_create(_width,_height);
 ds_collector_add(mob_data);
 ds_grid_set_region(mob_data,0,0,_width,_height,-1);
+
+//player
+mob_data[# mob.player, stat.name]		= "Taako";
+mob_data[# mob.player, stat.hp]			= 50;
+mob_data[# mob.player, stat.attack]		= 2;
+mob_data[# mob.player, stat.defense]	= 1;
+mob_data[# mob.player, stat.sp_attack]	= 10;
+mob_data[# mob.player, stat.max_spd]	= 2;
+mob_data[# mob.player, stat.fric]		= 0.3;
+mob_data[# mob.player, stat.accel]		= 0.5;
+mob_data[# mob.player, stat.spawn_cell]	= FLOOR;
+
+player_health = mob_data[# mob.player, stat.hp];
 
 //Minky
 mob_data[# mob.minky, stat.object]		= obj_mob_minky;

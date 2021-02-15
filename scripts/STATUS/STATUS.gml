@@ -26,6 +26,26 @@ effect_data[effect.glow]	= { name: "Glow" };
 effect_data[effect.slip]	= { name: "Slip" };
 effect_data[effect.weak]	= { name: "Weak" };
 
+function effect_clear(entity,index){
+	if (index == all) {
+		entity.stats_reset();
+	} else {
+		var _arr = effect_data[index].affects;
+		with (entity) var i = 0; repeat(array_length(_arr)){
+			switch(_arr[i]){
+				case stat.attack:	 attack		  = mob_data[# mob_id, stat.attack];	break;
+				case stat.defense:	 defense	  = mob_data[# mob_id, stat.defense];	break;
+				case stat.sp_attack: sp_attack	  = mob_data[# mob_id, stat.sp_attack];	break;
+				case stat.max_spd:	 max_speed	  = mob_data[# mob_id, stat.max_spd];	break;
+				case stat.fric:		 frict		  = mob_data[# mob_id, stat.fric];		break;
+				case stat.accel:	 acceleration = mob_data[# mob_id, stat.accel];		break;
+			}
+			i++;
+		}
+	}
+}
+
+
 function timer(seconds) constructor{
 	total_frames = seconds * 60;
 	timer_string = "";

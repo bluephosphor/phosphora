@@ -136,7 +136,7 @@ function sh_give(args){
 	var i = 0; repeat (ds_grid_height(item_info)){
 		if (string_lower(item_info[# ITEM, i]) == str){
 			add_item(inventory,i,quant);
-			return "gave " + string(quant) + " " + args[1] + s + " to " + player_data[| stat.name] + ".";
+			return "gave " + string(quant) + " " + args[1] + s + " to " + mob_data[# mob.player, stat.name] + ".";
 			break;
 		}
 		i++;

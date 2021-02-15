@@ -5,9 +5,7 @@ passive = true;
 attack_type = PASSIVE;
 nocturnal = true;
 
-max_speed = 0.5;
-acceleration = 0.01;
-frict = 0.01;
+stats_reset();
 update_movement = true;
 xmove = 0;
 ymove = 0;

@@ -3,12 +3,12 @@
 function calc_mob_damage(argument0, argument1) {
 	var modifier		= argument0;
 	var magic_attack	= argument1;
-	var attack_power	= player_data[| stat.attack] * modifier;
-	var defense_power	= mob_data[# mob_id, stat.defense];
+	var attack_power	= player_inst.attack * modifier;
+	var defense_power	= defense;
 	var damage;
 
 	if (magic_attack) {
-		attack_power = player_data[| stat.sp_attack] * modifier;
+		attack_power = player_inst.sp_attack * modifier;
 		if (cont_daycycle.witching_hour) {
 			draw_color = c_fuchsia;
 			attack_power += attack_power;
@@ -32,8 +32,8 @@ function calc_mob_damage(argument0, argument1) {
 ///@param attacker
 function calc_player_damage(argument0) {
 	var attacker		= argument0;
-	var attack_power	= mob_data[# attacker.mob_id, stat.attack];
-	var defense_power	= player_data[| stat.defense];
+	var attack_power	= attacker.attack;
+	var defense_power	= player_inst.defense;
 	var damage;
 
 	damage = ceil(attack_power) - ceil(defense_power);

@@ -4,8 +4,7 @@ hp = mob_data[# mob_id,stat.hp];
 hb_offset = 72;
 z = 0;
 
-max_speed = 1;
-acceleration = 0.2;
+stats_reset();
 update_movement = true;
 xmove = 0;
 ymove = 0;

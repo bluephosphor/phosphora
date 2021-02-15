@@ -30,11 +30,11 @@ ds_menu_main =			create_menu_page(
 
 ds_menu_info =			create_menu_page(
 	["BACK",			menu_element_type.page_transfer,	menu_page.main],
-	["Name:",			menu_element_type.info,				player_data[| stat.name]],
-	["Max HP:",			menu_element_type.info,				player_data[| stat.hp]],
-	["Attack:",			menu_element_type.info,				player_data[| stat.attack]],
-	["Defense:",		menu_element_type.info,				player_data[| stat.defense]],
-	["Sp. Attack:",		menu_element_type.info,				player_data[| stat.sp_attack]],
+	["Name:",			menu_element_type.info,				mob_data[# mob.player, stat.name]],
+	["Max HP:",			menu_element_type.info,				mob_data[# mob.player, stat.hp]],
+	["Attack:",			menu_element_type.info,				mob_data[# mob.player, stat.attack]],
+	["Defense:",		menu_element_type.info,				mob_data[# mob.player, stat.defense]],
+	["Sp. Attack:",		menu_element_type.info,				mob_data[# mob.player, stat.sp_attack]],
 );
 
 ds_settings =			create_menu_page(

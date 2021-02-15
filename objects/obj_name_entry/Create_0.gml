@@ -18,7 +18,7 @@ state = 0;
 menu_index = 0;
 selecting_options = false;
 
-stored_string = player_data[| stat.name];
+stored_string = mob_data[# mob.player, stat.name];
 
 menu_width = global.view_width - 32;
 menu_height = global.view_height - 32;

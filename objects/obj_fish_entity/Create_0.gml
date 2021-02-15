@@ -8,9 +8,7 @@ watertype = true;
 attack_type			= PASSIVE;
 tangibility_type	= NEVER;
 
-max_speed = 0.5;
-acceleration = 0.1;
-frict = 0.1
+stats_reset();
 update_movement = true;
 xmove = 0;
 ymove = 0;

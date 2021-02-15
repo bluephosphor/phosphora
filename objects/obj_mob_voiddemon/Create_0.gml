@@ -2,8 +2,7 @@ event_inherited();
 mob_id = mob.void_demon;
 hp = mob_data[# mob_id,stat.hp];
 
-max_speed = 1;
-acceleration = 0.2;
+stats_reset();
 update_movement = true;
 change_direction = true;
 xmove = 0;

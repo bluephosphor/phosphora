@@ -1,3 +1,6 @@
+globalvar player_inst;
+player_inst = noone;
+
 function ds_collector_add(variable){
 	if (!variable_global_exists("ds_collector")){
 		globalvar ds_collector;

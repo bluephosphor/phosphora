@@ -51,7 +51,7 @@ switch(state){
 				i++;
 			}
 			//draw hp and coins
-			var str = "HP:" + string(player_health) + "/" + string(player_data[| stat.hp]) + "\nC:" + string(player_coins);
+			var str = "HP:" + string(player_health) + "/" + string(mob_data[# mob.player, stat.hp]) + "\nC:" + string(player_coins);
 			draw_text(info_width - (string_width(str) + 8), info_y + 8, str);
 			break;
 	case inv_state.chest: ///////////////CHEST STATE

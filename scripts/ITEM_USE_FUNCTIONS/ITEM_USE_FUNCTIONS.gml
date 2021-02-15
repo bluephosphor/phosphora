@@ -39,7 +39,7 @@ function use_healingitem() {
 		default:			var heal_amt = 5; break;
 	}
 
-	var max_hp = player_data[| stat.hp];
+	var max_hp = mob_data[# mob.player, stat.hp];
 
 	with (obj_player){
 		player_health += heal_amt;

@@ -3,9 +3,7 @@ event_inherited();
 mob_id = mob.chest_demon;
 hp = mob_data[# mob_id,stat.hp];
 
-attack = 5;
-max_speed = 1;
-acceleration = 0.2;
+stats_reset();
 update_movement = true;
 xmove = 0;
 ymove = 0;

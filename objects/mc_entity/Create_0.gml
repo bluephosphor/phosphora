@@ -4,6 +4,15 @@ mytext = [
 	[-1,"This is a test message."],
 ]
 
+stats_reset = function(){	
+	attack		  = mob_data[# mob_id, stat.attack];	
+	defense		  = mob_data[# mob_id, stat.defense];	
+	sp_attack	  = mob_data[# mob_id, stat.sp_attack];	
+	max_speed	  = mob_data[# mob_id, stat.max_spd];	
+	frict		  = mob_data[# mob_id, stat.fric];		
+	acceleration  = mob_data[# mob_id, stat.accel];		
+}
+
 upixel_h = shader_get_uniform(sh_outline,"pixel_h");
 upixel_w = shader_get_uniform(sh_outline,"pixel_w");
 texel_w = texture_get_texel_width(sprite_get_texture(sprite_index,0));
