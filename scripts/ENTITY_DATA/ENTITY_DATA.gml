@@ -1,3 +1,40 @@
+globalvar player_data,
+		  player_health,
+		  player_coins,
+		  hp_draw_length;
+
+enum stat{
+	object,
+	name,
+	info,
+	hp,
+	attack,
+	defense,
+	sp_attack,
+	max_spd,
+	fric,
+	accel,
+	spawn_cell,
+	loot,
+	enum_height,
+}
+
+player_data = ds_list_create();
+ds_collector_add(player_data);
+
+player_data[| stat.name]		= "Taako";
+player_data[| stat.hp]			= 50;
+player_data[| stat.attack]		= 2;
+player_data[| stat.defense]		= 1;
+player_data[| stat.sp_attack]	= 10;
+player_data[| stat.max_spd]		= 2;
+player_data[| stat.fric]		= 0.3;
+player_data[| stat.accel]		= 0.5;
+
+player_health = player_data[| stat.hp];
+player_coins = 0;
+hp_draw_length = 64;
+
 globalvar mob_data;
 
 enum mob{
@@ -30,6 +67,9 @@ mob_data[# mob.minky, stat.hp]			= 25;
 mob_data[# mob.minky, stat.attack]		= 5;
 mob_data[# mob.minky, stat.defense]		= 1;
 mob_data[# mob.minky, stat.sp_attack]	= 0;
+mob_data[# mob.minky, stat.max_spd]		= 1;
+mob_data[# mob.minky, stat.accel]		= 0.2;
+mob_data[# mob.minky, stat.fric]		= 0.3;
 mob_data[# mob.minky, stat.spawn_cell]	= FLOOR;
 mob_data[# mob.minky, stat.loot]		= [
 	//item              //chance in percent
@@ -40,6 +80,7 @@ mob_data[# mob.minky, stat.loot]		= [
 	[item.rubellite,	0.05]
 ];
 
+
 //Chest Demon
 mob_data[# mob.chest_demon, stat.object]		= obj_chest_demon;
 mob_data[# mob.chest_demon, stat.name]			= "Jinx";
@@ -48,6 +89,9 @@ mob_data[# mob.chest_demon, stat.hp]			= 30;
 mob_data[# mob.chest_demon, stat.attack]		= 10;
 mob_data[# mob.chest_demon, stat.defense]		= 3;
 mob_data[# mob.chest_demon, stat.sp_attack]		= 0;
+mob_data[# mob.chest_demon, stat.max_spd]		= 1;
+mob_data[# mob.chest_demon, stat.accel]			= 0.2;
+mob_data[# mob.chest_demon, stat.fric]			= 0.3;
 mob_data[# mob.chest_demon, stat.spawn_cell]	= FLOOR;
 mob_data[# mob.chest_demon, stat.loot]			= [
 	//item              //chance in percent
@@ -67,6 +111,9 @@ mob_data[# mob.void_demon, stat.hp]				= 1;
 mob_data[# mob.void_demon, stat.attack]			= 100;
 mob_data[# mob.void_demon, stat.defense]		= 0;
 mob_data[# mob.void_demon, stat.sp_attack]		= 0;
+mob_data[# mob.void_demon, stat.max_spd]		= 1;
+mob_data[# mob.void_demon, stat.accel]			= 0.2;
+mob_data[# mob.void_demon, stat.fric]			= 0.3;
 mob_data[# mob.void_demon, stat.spawn_cell]		= VOID;
 mob_data[# mob.void_demon, stat.loot]			= [
 	//item              //chance in percent
@@ -82,7 +129,11 @@ mob_data[# mob.fish, stat.hp]				= 10;
 mob_data[# mob.fish, stat.attack]			= 0;
 mob_data[# mob.fish, stat.defense]			= 0;
 mob_data[# mob.fish, stat.sp_attack]		= 0;
+mob_data[# mob.fish, stat.max_spd]			= 0.5;
+mob_data[# mob.fish, stat.accel]			= 0.1;
+mob_data[# mob.fish, stat.fric]				= 0.1;
 mob_data[# mob.fish, stat.spawn_cell]		= WATER;
+
 
 //ghost
 mob_data[# mob.ghost, stat.object]			= obj_mob_ghost;
@@ -92,7 +143,12 @@ mob_data[# mob.ghost, stat.hp]				= 50;
 mob_data[# mob.ghost, stat.attack]			= 15;
 mob_data[# mob.ghost, stat.defense]			= 0;
 mob_data[# mob.ghost, stat.sp_attack]		= 10;
+mob_data[# mob.ghost, stat.max_spd]			= 0.5;
+mob_data[# mob.ghost, stat.accel]			= 0.01;
+mob_data[# mob.ghost, stat.fric]			= 0.3;
 mob_data[# mob.ghost, stat.spawn_cell]		= FLOOR;
+
+
 
 //ent_knight
 mob_data[# mob.ent_knight, stat.object]		= obj_mob_boss1;
@@ -102,11 +158,15 @@ mob_data[# mob.ent_knight, stat.hp]			= 100;
 mob_data[# mob.ent_knight, stat.attack]		= 20;
 mob_data[# mob.ent_knight, stat.defense]	= 3;
 mob_data[# mob.ent_knight, stat.sp_attack]	= 0;
+mob_data[# mob.ent_knight, stat.max_spd]	= 1;
+mob_data[# mob.ent_knight, stat.accel]		= 0.2;
+mob_data[# mob.ent_knight, stat.fric]		= 0.3;
 mob_data[# mob.ent_knight, stat.spawn_cell]	= FLOOR;
 mob_data[# mob.ent_knight, stat.loot]		= [
 	//item              //chance in percent
-	[item.diamond,		100],
+	[item.diamond,		50],
 ];
+
 
 //shrubbie
 mob_data[# mob.shrubbie, stat.object]		= obj_mob_shrubbie;
@@ -116,6 +176,9 @@ mob_data[# mob.shrubbie, stat.hp]			= 30;
 mob_data[# mob.shrubbie, stat.attack]		= 5;
 mob_data[# mob.shrubbie, stat.defense]		= 3;
 mob_data[# mob.shrubbie, stat.sp_attack]	= 0;
+mob_data[# mob.shrubbie, stat.max_spd]		= 3;
+mob_data[# mob.shrubbie, stat.accel]		= 0.2;
+mob_data[# mob.shrubbie, stat.fric]			= 0.3;
 mob_data[# mob.shrubbie, stat.spawn_cell]	= FLOOR;
 mob_data[# mob.shrubbie, stat.loot]			= [
 	//item              //chance in percent

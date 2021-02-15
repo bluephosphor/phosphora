@@ -21,10 +21,10 @@ if (update_movement) {
 }
 
 if (xmove == 0) {
-	xspeed = lerp(xspeed, 0, .1);
+	xspeed = lerp(xspeed, 0, frict);
 }
 if (ymove == 0) {
-	yspeed = lerp(yspeed, 0, .1);
+	yspeed = lerp(yspeed, 0, frict);
 }
 
 move_and_collide();

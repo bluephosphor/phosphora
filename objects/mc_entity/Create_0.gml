@@ -1,4 +1,5 @@
 entity_type = -1;
+status = effect.none;
 mytext = [
 	[-1,"This is a test message."],
 ]

@@ -2,10 +2,10 @@ event_inherited();
 
 xspeed = 0;
 yspeed = 0;
-max_speed = 2;
-acceleration = .5;
-frict = 0.3;
 
+max_speed = 2;
+acceleration = 0.5;
+frict = 0.3;
 recovery_frames = 0;
 _visible = true;
 water_buff = 10;

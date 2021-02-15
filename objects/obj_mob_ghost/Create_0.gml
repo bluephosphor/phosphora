@@ -7,6 +7,7 @@ nocturnal = true;
 
 max_speed = 0.5;
 acceleration = 0.01;
+frict = 0.01;
 update_movement = true;
 xmove = 0;
 ymove = 0;
@@ -42,7 +43,7 @@ var message = choose(
 	["[shake][wave]Boooooooooo!!!![/wave][/shake]","Oh, well you're no fun, now are you?"]
 );
 
-var i = 0; repeat(array_length_1d(message)){
+var i = 0; repeat(array_length(message)){
 	mytext[i] = [-1,message[i]];
 	i++;
 }

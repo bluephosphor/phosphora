@@ -31,29 +31,10 @@ if (update_movement) {
 }
 
 if (xmove == 0) {
-	xspeed = lerp(xspeed, 0, .1);
+	xspeed = lerp(xspeed, 0, frict);
 }
 if (ymove == 0) {
-	yspeed = lerp(yspeed, 0, .1);
+	yspeed = lerp(yspeed, 0, frict);
 }
 
-//mobsight
-//if (!coord_outside_view(x,y)){
-//	var mob = id;
-//	var d = point_direction(
-//		x,y, x+detection_radius * image_xscale, 
-//		irandom_range(y-detection_radius,y+detection_radius)
-//	); 
-//	with (instance_create_layer(x,y,"Instances",obj_mobsight)){
-//		my_mob = mob;
-//		if (irandom(100) < 80) {
-//			direction = d;
-//			alarm[0] = 15;
-//		} else {
-//			direction = choose(90,270);
-//			alarm[0] = 10;
-//		}
-//		speed = 7
-//	}
-//}
 move_and_collide_inwater();
