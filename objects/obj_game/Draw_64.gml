@@ -1,3 +1,13 @@
+draw_set_font(font_status);
+
+//draw effects clock
+var i = 0; repeat(array_length(affected)){
+	var _obj = affected[i];
+	var _str = effect_data[_obj.effect].name + " " + dec_to_roman(_obj.lv) + " " + _obj.duration.timer_string;
+	draw_text(8,16 + (8*i),_str);
+	i++;
+}
+
 draw_set_font(font_main);
 
 //room transition fade

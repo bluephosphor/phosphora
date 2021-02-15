@@ -1,15 +1,12 @@
-//if (keyboard_check_pressed(vk_escape)){
-//	global.fullscreen = !global.fullscreen;
-//	window_set_fullscreen(global.fullscreen);
-	
-//	var res = global.fullscreen ? [display_get_width(),display_get_height()] : global.resolution;
-//	surface_resize(application_surface,res[0],res[1]);
-//}
-
 if (room == r_init){
 	if (cont_cutscene == noone) room_goto_next();
 	exit;
 }
+
+
+effects_update();
+
+
 
 if (keyboard_check(vk_shift)){
 	if (keyboard_check_pressed(ord("D"))){

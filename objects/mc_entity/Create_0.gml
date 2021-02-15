@@ -1,10 +1,10 @@
 entity_type = -1;
-status = effect.none;
 mytext = [
 	[-1,"This is a test message."],
 ]
 
 stats_reset = function(){	
+	status		  = effect.none;
 	attack		  = mob_data[# mob_id, stat.attack];	
 	defense		  = mob_data[# mob_id, stat.defense];	
 	sp_attack	  = mob_data[# mob_id, stat.sp_attack];	

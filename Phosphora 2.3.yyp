@@ -29,6 +29,7 @@
     {"id":{"name":"s_wall_tiles_indoor","path":"sprites/s_wall_tiles_indoor/s_wall_tiles_indoor.yy",},"order":5,},
     {"id":{"name":"s_water_tiles","path":"sprites/s_water_tiles/s_water_tiles.yy",},"order":6,},
     {"id":{"name":"s_water_grove","path":"sprites/s_water_grove/s_water_grove.yy",},"order":7,},
+    {"id":{"name":"font_status","path":"fonts/font_status/font_status.yy",},"order":3,},
     {"id":{"name":"s_water_cavern","path":"sprites/s_water_cavern/s_water_cavern.yy",},"order":8,},
     {"id":{"name":"s_floor_tile","path":"sprites/s_floor_tile/s_floor_tile.yy",},"order":9,},
     {"id":{"name":"s_floor_tile_dark","path":"sprites/s_floor_tile_dark/s_floor_tile_dark.yy",},"order":10,},

@@ -17,6 +17,7 @@ enum stat{
 	accel,
 	spawn_cell,
 	loot,
+	special,
 	enum_height,
 }
 

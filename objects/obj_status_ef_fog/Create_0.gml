@@ -1,5 +1,6 @@
 depth = -y;
-status = effect.none;
+status = effect.slow;
+status_lv = 2;
 image_alpha = 0;
 image_xscale = choose(-1,1);
 state = 0;

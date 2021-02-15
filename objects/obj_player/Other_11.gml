@@ -11,13 +11,15 @@ if (gamestate == INGAME){
 	x_input = keyboard_check(input[| key.right]) - keyboard_check(input[| key.left]);
 	y_input = keyboard_check(input[| key.down]) - keyboard_check(input[| key.up]);
 	
+	var _spin_speed = max_speed * 2;
+	
 	xspeed += x_input * spin_accel;
 	yspeed += y_input * spin_accel;
 	var _speed = point_distance(0, 0, xspeed, yspeed);
 	var _direction = point_direction(0, 0, xspeed, yspeed);
-	if (_speed > spin_speed) {
-		xspeed = lengthdir_x(spin_speed, _direction);
-		yspeed = lengthdir_y(spin_speed, _direction);
+	if (_speed > _spin_speed) {
+		xspeed = lengthdir_x(_spin_speed, _direction);
+		yspeed = lengthdir_y(_spin_speed, _direction);
 	}
 }
 
