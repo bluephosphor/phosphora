@@ -35,7 +35,8 @@ image_speed = 0;
 anim_speed = 5;
 attack_cooldown = 0;
 
-with (instance_create_layer(x,y,layer,mc_lightsource)){
+my_light = instance_create_layer(x,y,layer,mc_lightsource);
+with (my_light){
 	follow = other.id;
 	light_size = 1;
 	light_strength = 1;

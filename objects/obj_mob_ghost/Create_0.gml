@@ -26,7 +26,8 @@ anim_speed = 10;
 image_alpha = 0;
 image_speed = 0;
 
-with (instance_create_layer(x,y,layer,mc_lightsource)){
+my_light = instance_create_layer(x,y,layer,mc_lightsource);
+with (my_light){
 	follow = other.id;
 	light_strength = 1;
 }

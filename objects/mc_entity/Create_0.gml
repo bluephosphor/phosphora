@@ -1,4 +1,5 @@
 entity_type = -1;
+my_light = noone;
 mytext = [
 	[-1,"This is a test message."],
 ]

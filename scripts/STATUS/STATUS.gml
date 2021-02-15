@@ -19,19 +19,50 @@ effect_data[effect.none]	= { name: "None" };
 effect_data[effect.haste]	= { name: "Haste",		  affects: [stat.max_spd, stat.accel]};
 effect_data[effect.slow]	= { name: "Slow" ,		  affects: [stat.max_spd, stat.accel]};
 effect_data[effect.poison]	= { name: "Poison",		  affects: [stat.special]};
+
 effect_data[effect.regen]	= { name: "Regeneration", affects: [stat.special]};
+
 effect_data[effect.nvision] = { name: "Night Vision", affects: [stat.special]}; 
+
 effect_data[effect.dark]	= { name: "Darkness",	  affects: [stat.special]};
-effect_data[effect.glow]	= { name: "Glow",		  affects: [stat.special]};
+
+effect_data[effect.glow]	= { 
+	name: "Glow",		  
+	affects: [stat.special],
+	
+	start_method: function(id,level){
+		with (id) {
+			if (my_light != noone) return;
+			effect_light = instance_create_layer(x,y,"Instances",mc_lightsource);
+			with (effect_light){
+				light_strength = level / 3;
+				light_size = level / 2;
+				follow = id;
+			}
+		}
+	},
+	
+	end_method: function(id){
+		with (id) {
+			instance_destroy(effect_light);
+			effect_light = noone;
+		}
+	}
+	
+};
+
 effect_data[effect.slip]	= { name: "Slip",		  affects: [stat.accel,stat.fric]};
+
 effect_data[effect.buff]	= { name: "Buff",		  affects: [stat.attack,stat.defense]};
+
 effect_data[effect.weak]	= { name: "Weak",		  affects: [stat.attack,stat.defense]};
 
 function effects_clear(entity,index){
 	if (index == all) {
 		entity.stats_reset();
 	} else {
-		var _arr = effect_data[index].affects;
+		var _obj = effect_data[index]
+		var _arr = _obj.affects;
 		with (entity) var i = 0; repeat(array_length(_arr)){
 			switch(_arr[i]){
 				case stat.attack:	 attack		  = mob_data[# mob_id, stat.attack];	break;
@@ -40,7 +71,10 @@ function effects_clear(entity,index){
 				case stat.max_spd:	 max_speed	  = mob_data[# mob_id, stat.max_spd];	break;
 				case stat.fric:		 frict		  = mob_data[# mob_id, stat.fric];		break;
 				case stat.accel:	 acceleration = mob_data[# mob_id, stat.accel];		break;
-				case stat.special:	 status		  = effect.none;						break;
+				case stat.special:	 
+					status = effect.none;
+					if (variable_struct_exists(_obj,"end_method")) _obj.end_method(entity);
+					break;
 			}
 			i++;
 		}
@@ -72,9 +106,29 @@ function effect_apply(index,level,entity,seconds){
 	array_push(affected, {id: entity, effect: index, lv: level, duration: new timer(seconds)});
 	
 	with (entity) switch(index){
+		case effect.haste:
+			max_speed    += level;
+			acceleration += (level / 10);
+			break;
 		case effect.slow:
 			max_speed    = max_speed    / (level+1);
 			acceleration = acceleration / (level+1);
+			break;
+		case effect.buff:
+			attack  += level;
+			defense += level;
+			break;
+		case effect.weak:
+			attack  -= level;
+			defense -= level;
+			break;
+		case effect.slip:
+			acceleration  -= (level*0.1 );
+			frict		  -= (level*0.01);
+			break;
+		default:
+			var _obj = effect_data[index];
+			if (variable_struct_exists(_obj,"start_method")) _obj.start_method(entity,level);
 			break;
 	}
 }
@@ -83,6 +137,9 @@ function effects_update(){
 	var _change = false;
 	var _array = [];
 	var i = 0, j = 0; repeat(array_length(affected)){
+		
+		var _obj = effect_data[affected[i].effect];
+		if (variable_struct_exists(_obj,"update_method")) _obj.update_method(affected[i].id);
 		
 		var _finished = affected[i].duration.update();
 		
