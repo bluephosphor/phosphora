@@ -51,6 +51,7 @@ switch(state){
 			with (_cloud) from_bullet = true;
 			my_light.follow = _cloud;
 			_cloud.my_light = my_light;
+			_cloud.inflicts = inflicts;
 			instance_destroy();
 		}
 		break;

@@ -36,9 +36,9 @@ switch(state){
 		if (in_use) and (item_info[# 2,selected_item] != -1){
 			var _item_consumed = script_execute(item_info[# 2,selected_item]);
 			if (_item_consumed){
-				inventory[# 1, menu_index] -= 1;
-				if (inventory[# 1, menu_index] == 0){
-					inventory[# 0, menu_index] = item.none;
+				inventory[# COUNT, menu_index] -= 1;
+				if (inventory[# COUNT, menu_index] == 0){
+					inventory[# ITEM_ID, menu_index] = item.none;
 				}
 			}
 		}
@@ -49,9 +49,9 @@ switch(state){
 				with (instance_create_layer(obj_player.x,obj_player.y,"Instances",mc_held_item)){
 					item_index = num;
 				}
-				inventory[# 1, menu_index] -= 1;
-				if (inventory[# 1, menu_index] == 0){
-					inventory[# 0, menu_index] = item.none;
+				inventory[# COUNT, menu_index] -= 1;
+				if (inventory[# COUNT, menu_index] == 0){
+					inventory[# ITEM_ID, menu_index] = item.none;
 				}
 				gamestate = INGAME;
 			}
@@ -63,7 +63,7 @@ switch(state){
 		var vinput = keyboard_check_pressed(input[| key.down]) - keyboard_check_pressed(input[| key.up]);
 		var in_trade = keyboard_check_pressed(input[| key.action]);
 		
-		selected_item = selecting_grid[# 0, menu_index];
+		selected_item = selecting_grid[# ITEM_ID, menu_index];
 		
 		if (hinput != 0){
 			var _len = ds_grid_height(selecting_grid) - 1;
@@ -115,9 +115,9 @@ switch(state){
 		if (in_use) and (item_info[# 2,selected_item] != -1){
 			var _item_consumed = script_execute(item_info[# 2,selected_item]);
 			if (_item_consumed){
-				inventory[# 1, menu_index] -= 1;
-				if (inventory[# 1, menu_index] == 0){
-					inventory[# 0, menu_index] = item.none;
+				inventory[# COUNT, menu_index] -= 1;
+				if (inventory[# COUNT, menu_index] == 0){
+					inventory[# ITEM_ID, menu_index] = item.none;
 					hinput = 1;
 				}
 			}
@@ -138,9 +138,9 @@ switch(state){
 				with (instance_create_layer(obj_player.x,obj_player.y,"Instances",mc_held_item)){
 					item_index = num;
 				}
-				inventory[# 1, menu_index] -= 1;
-				if (inventory[# 1, menu_index] == 0){
-					inventory[# 0, menu_index] = item.none;
+				inventory[# COUNT, menu_index] -= 1;
+				if (inventory[# COUNT, menu_index] == 0){
+					inventory[# ITEM_ID, menu_index] = item.none;
 				}
 			}
 		}

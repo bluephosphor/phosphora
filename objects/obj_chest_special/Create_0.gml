@@ -28,7 +28,7 @@ if (list != -1){
 }
 
 //init inv slots
-chest_inventory = ds_grid_create(2,entries);
+chest_inventory = ds_grid_create(3,entries);
 
 if (list != -1){
 	var i = 0; repeat(entries){

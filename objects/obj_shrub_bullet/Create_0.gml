@@ -7,6 +7,8 @@ image_xscale = choose(-1,1)
 target_x = -1;
 target_y = -1;
 
+inflicts = {index: effect.slow, level: 2, duration: 10}
+
 xspeed = 0;
 yspeed = 0;
 max_sp = 4;

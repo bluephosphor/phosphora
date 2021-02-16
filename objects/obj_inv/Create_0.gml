@@ -40,12 +40,21 @@ max_pages	= array_length(pages);
 
 //init inv slots
 globalvar inventory;
-inventory = ds_grid_create(2,max_items);
+inventory = ds_grid_create(3,max_items);
 ds_collector_add(inventory);
 ds_grid_set_region(inventory,0,0,2,max_items,0);
 
-inventory[# 0,0] = item.ps_fire;
-inventory[# 1,0] = 10;
+#macro ITEM_ID 0
+#macro COUNT 1
+#macro PROPERTIES 2
+
+randomise();
+var i = 0; repeat(10){
+	inventory[# ITEM_ID,	i] = item.b_potion;
+	inventory[# COUNT,		i] = 1;
+	inventory[# PROPERTIES, i] = {inflicts: {index: irandom_range(1,effect.total-1), level: irandom_range(1,10), duration: choose(5,10,30,60,120,180)}};
+	i++;
+}
 
 enum inv_state {
 	inv,
@@ -68,6 +77,25 @@ hotbar_autoselect = function(){
 		if (menu_index > cell_count - 1) menu_index = 0;
 		selected_item = inventory[# 0, menu_index];
 	}
+}
+
+draw_item_effect_data = function(x,y){
+	var props = inventory[# PROPERTIES, menu_index];
+	if (!is_struct(props)) return;
+	draw_set_font(font_status);
+	
+	var _str =  "Effects:\n" 
+	+ effect_data[props.inflicts.index].name + " " 
+	+ dec_to_roman(props.inflicts.level) + "\n(" 
+	+ time_tostring(props.inflicts.duration) + ")";
+	var _ww = string_width(_str);
+	var _hh = string_height(_str);
+	var _buf = 4;
+	var _c = c_shadow; 
+	draw_rectangle_color(x,y,x + _ww + (_buf * 2), y + _hh + (_buf * 2),_c,_c,_c,_c,false);
+	_c = c_white;
+	draw_text_color(x+_buf,y+_buf,_str,_c,_c,_c,_c,1);
+	draw_set_font(font_main);
 }
 
 selecting_grid = inventory;

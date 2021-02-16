@@ -27,7 +27,7 @@ var i = 0; repeat(len){
 }
 
 //init inv slots
-chest_inventory = ds_grid_create(2,entries);
+chest_inventory = ds_grid_create(3,entries);
 
 var i = 0; repeat(entries){
 	if (i < 15){

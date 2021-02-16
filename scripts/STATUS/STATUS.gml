@@ -9,7 +9,8 @@ enum effect {
 	glow,
 	slip,
 	buff,
-	weak
+	weak,
+	total
 }
 
 globalvar effect_data, affected;
@@ -84,21 +85,27 @@ function effects_clear(entity,index){
 }
 
 
+function time_tostring(seconds){
+	var _minutes = ( seconds >= 60) ? floor( seconds / 60) : 0;
+	var _hours   = (_minutes >= 60) ? floor(_minutes / 60) : 0;
+	var _seczero = ( seconds mod 60 < 10) ? "0":"";
+	var _minzero = (_minutes mod 60 < 10) ? "0":"";
+	var _hours   = (_minutes > 60) ? string(_hours) + ":" : "" ;
+	
+	return _hours + _minzero + string(_minutes mod 60) + ":" + _seczero + string(seconds mod 60);
+}
+
 function timer(seconds) constructor{
 	total_frames = seconds * 60;
 	timer_string = "";
 	update = function(){
 		seconds = floor(total_frames / 60);
-		minutes = (seconds > 60) ? floor(seconds / 60) : 0;
-		hours   = (minutes > 60) ? floor(minutes / 60) : 0;
-		var _seczero = (seconds < 10) ? "0":"";
-		var _minzero = (minutes < 10) ? "0":"";
-		var _hours   = (minutes > 60) ? string(hours) + ":" : "" ;
-		timer_string = _hours + _minzero + string(minutes) + ":" + _seczero + string(seconds);
+		timer_string = time_tostring(seconds);
 		total_frames--;
 		return (total_frames <= 0);
 	}
 }
+
 
 function effect_apply(index,level,entity,seconds){
 	if (entity.status == index) return;

@@ -1,6 +1,5 @@
 depth = -y;
-status = effect.haste;
-status_lv = 3;
+inflicts = {index: effect.slow, level: 2, duration: 5};
 image_alpha = 0;
 image_xscale = choose(-1,1);
 state = 0;

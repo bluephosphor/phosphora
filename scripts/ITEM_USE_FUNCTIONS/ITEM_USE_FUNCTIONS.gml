@@ -18,7 +18,7 @@ function cast_spell() {
 }
 
 function item_inst_create() {
-	show_inventory = false;
+	gamestate = INGAME;
 	var inst;
 	switch(selected_item){
 		case item.card: inst = obj_buisnesscard; break;
@@ -51,12 +51,20 @@ function use_healingitem() {
 	return true;
 }
 
+function use_consumeable() {
+	gamestate = INGAME;
+	var _inflicts = inventory[# PROPERTIES, menu_index].inflicts;
+	effect_apply(_inflicts.index, _inflicts.level, player_inst, _inflicts.duration);
+	inventory[# PROPERTIES, menu_index] = 0;
+	return true;
+}
+
 function usenote() {
 
-	var len = array_length_1d(notes) - 1;
+	var len = array_length(notes) - 1;
 	var index = irandom(len)
 	var entry = notes[index];
-	var lines = array_length_1d(entry);
+	var lines = array_length(entry);
 
 	var i = 0; repeat(lines){
 		add_dialog(-1,entry[i]);

@@ -2,7 +2,7 @@ switch(state){
 	case 0:
 		var _inst = instance_place(x,y,obj_player);
 		if (_inst != noone) {
-			effect_apply(status,status_lv,_inst,5);
+			effect_apply(inflicts.index,inflicts.level,_inst,inflicts.duration);
 			state = 1;
 		}
 		
