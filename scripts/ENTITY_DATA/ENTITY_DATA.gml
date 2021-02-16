@@ -180,5 +180,5 @@ mob_data[# mob.shrubbie, stat.fric]			= 0.3;
 mob_data[# mob.shrubbie, stat.spawn_cell]	= FLOOR;
 mob_data[# mob.shrubbie, stat.loot]			= [
 	//item              //chance in percent
-	[item.p_leaf,		25],
+	[item.s_leaf,		25],
 ];

@@ -8,7 +8,7 @@ function add_item(argument0, argument1, argument2) {
 	repeat(count){
 		var recipient_grid	= argument0;
 		var item_num		= argument1;
-		var stack_limit		= item_info[# 3, item_num];
+		var stack_limit		= item_info[# STACK_LIMIT, item_num];
 
 		if (item_num == item.none) exit;
 
@@ -17,8 +17,8 @@ function add_item(argument0, argument1, argument2) {
 
 		var i = 0; repeat(height){
 			//check if we already have item
-			if (recipient_grid[# 0, i] == item_num) and (recipient_grid[# 1, i] < stack_limit){
-				recipient_grid[# 1, i] += 1;
+			if (recipient_grid[# ITEM_ID, i] == item_num) and (recipient_grid[# 1, i] < stack_limit){
+				recipient_grid[# COUNT, i] += 1;
 				success = true;
 				break;
 			}
@@ -27,9 +27,9 @@ function add_item(argument0, argument1, argument2) {
 		if (!success){
 			var i = 0; repeat(height){
 				//if not, see if there's an empty slot
-				if (recipient_grid[# 0, i] == item.none){
-					recipient_grid[# 0, i] = item_num;
-					recipient_grid[# 1, i] += 1;
+				if (recipient_grid[# ITEM_ID, i] == item.none){
+					recipient_grid[# ITEM_ID, i] = item_num;
+					recipient_grid[# COUNT, i] += 1;
 					success = true;
 					break;
 				}

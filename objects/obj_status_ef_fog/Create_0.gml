@@ -1,5 +1,5 @@
 depth = -y;
-inflicts = {index: effect.slow, level: 2, duration: 5};
+inflicts = {index: effect.dark, level: 1, duration: 5};
 image_alpha = 0;
 image_xscale = choose(-1,1);
 state = 0;

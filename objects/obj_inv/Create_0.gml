@@ -48,14 +48,6 @@ ds_grid_set_region(inventory,0,0,2,max_items,0);
 #macro COUNT 1
 #macro PROPERTIES 2
 
-randomise();
-var i = 0; repeat(10){
-	inventory[# ITEM_ID,	i] = item.b_potion;
-	inventory[# COUNT,		i] = 1;
-	inventory[# PROPERTIES, i] = {inflicts: {index: irandom_range(1,effect.total-1), level: irandom_range(1,10), duration: choose(5,10,30,60,120,180)}};
-	i++;
-}
-
 enum inv_state {
 	inv,
 	chest,
@@ -79,8 +71,8 @@ hotbar_autoselect = function(){
 	}
 }
 
-draw_item_effect_data = function(x,y){
-	var props = inventory[# PROPERTIES, menu_index];
+draw_item_effect_data = function(grid,x,y){
+	var props = grid[# PROPERTIES, menu_index];
 	if (!is_struct(props)) return;
 	draw_set_font(font_status);
 	
@@ -99,4 +91,4 @@ draw_item_effect_data = function(x,y){
 }
 
 selecting_grid = inventory;
-selected_item  = inventory[# 0, menu_index];
+selected_item  = inventory[# ITEM_ID, menu_index];

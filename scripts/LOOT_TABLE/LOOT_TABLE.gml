@@ -21,3 +21,19 @@ function loot_item_add() {
 		return item.none;
 	}
 }
+
+function loot_item_effect(list){
+	var _len = array_length(list) - 1;
+	var _index, _obj, _chance;
+	do {
+		
+		_index  = irandom(_len);
+		_obj    = list[_index];
+		_chance = _obj.rarity;
+		
+		if (irandom(_chance == _chance)){
+			return { index: _obj.index, level: irandom_range(1,_obj.max_lev), duration: choose(10,15,30,60,90,120) };
+		}
+		
+	} until (1 == 2); //lol
+}

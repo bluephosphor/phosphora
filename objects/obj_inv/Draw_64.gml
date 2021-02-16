@@ -57,7 +57,10 @@ switch(state){
 			var str = "HP:" + string(player_health) + "/" + string(mob_data[# mob.player, stat.hp]) + "\nC:" + string(player_coins);
 			draw_text(info_width - (string_width(str) + 8), info_y + 8, str);
 			
-			if (is_struct(eff_coords)) draw_item_effect_data(eff_coords.x,eff_coords.y);
+			if (is_struct(eff_coords)) {
+				draw_item_effect_data(inventory,eff_coords.x,eff_coords.y);
+				delete eff_coords;
+			}
 			break;
 	case inv_state.chest: ///////////////CHEST STATE
 		///inv bg
@@ -92,6 +95,7 @@ switch(state){
 			}
 		}
 		//chest inv box
+		var eff_coords_chest = -1;
 		var _yo = 24;
 		draw_text(18,desc_y+12,"Chest: [Z] to trade item.");
 		nine_slice_box_s(spr_9slice1,desc_x,desc_y+_yo,desc_x + inv_width,desc_height,global.menu_color);
@@ -107,11 +111,11 @@ switch(state){
 			if (i == menu_index and selecting_grid == chest_inv) c = c_red;
 			draw_sprite_ext(spr_items,0,dx,dy,1,1,0,c,1);
 			//draw counts
-			if (chest_inv[# 1,i] > 1) {
+			if (chest_inv[# COUNT,i] > 1) {
 				draw_item_count(dx,dy,chest_inv[# 1, i]);
 			}
 			//draw_effects_data
-			if (i == menu_index and selecting_grid == chest_inv) eff_coords = new vec2(dx,dy+cell_size);
+			if (i == menu_index and selecting_grid == chest_inv) eff_coords_chest = new vec2(dx,dy+cell_size);
 			i++;
 			xx++;
 			if (xx >= items_width){
@@ -133,7 +137,13 @@ switch(state){
 			c = c_white;
 			draw_text_ext_color(info_x + 8, info_y + 48,desc,10,110,c,c,c,c,1);
 		
-		if (is_struct(eff_coords)) draw_item_effect_data(eff_coords.x,eff_coords.y);
+		if (is_struct(eff_coords)) {
+			draw_item_effect_data(inventory,eff_coords.x,eff_coords.y);
+			delete eff_coords;
+		} else if (is_struct(eff_coords_chest)){
+			draw_item_effect_data(chest_inv,eff_coords_chest.x,eff_coords_chest.y);
+			delete eff_coords_chest;
+		}
 		break;
 	case inv_state.hotbar: ///////////////////HOTBAR STATE
 		var xx = 0; repeat(cell_count){

@@ -31,17 +31,26 @@ chest_inventory = ds_grid_create(3,entries);
 
 var i = 0; repeat(entries){
 	if (i < 15){
-		chest_inventory[# 0, i] = loot_item_add();
+		chest_inventory[# ITEM_ID, i] = loot_item_add();
 	} else {
-		chest_inventory[# 0, i] = item.none;
+		chest_inventory[# ITEM_ID, i] = item.none;
 	}
-	if (chest_inventory[# 0, i] != item.none)	chest_inventory[# 1, i] = 1;
-	else										chest_inventory[# 1, i] = 0;
+	if (chest_inventory[# ITEM_ID, i] != item.none)	{
+		chest_inventory[# COUNT, i] = 1;
+		var _item = chest_inventory[# ITEM_ID, i];
+		var _obj = item_info[# PROPS, _item];
+		if (is_struct(_obj)){
+			if (variable_struct_exists(_obj,"effect_table")) {
+				chest_inventory[# PROPERTIES, i] = {inflicts : loot_item_effect(_obj.effect_table)};
+			}
+		}
+	}
+	else chest_inventory[# COUNT, i] = 0;
 	i++;
 }
 
 pages = [chest_inventory,inventory];
 page = 0;
-max_pages = array_length_1d(pages);
+max_pages = array_length(pages);
 
 alarm[0] = 1;
