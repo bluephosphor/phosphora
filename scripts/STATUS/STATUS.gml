@@ -17,11 +17,82 @@ globalvar effect_data, affected;
 affected = [];
 
 effect_data[effect.none]	= { name: "None" };
-effect_data[effect.haste]	= { name: "Haste",		  affects: [stat.max_spd, stat.accel]};
-effect_data[effect.slow]	= { name: "Slow" ,		  affects: [stat.max_spd, stat.accel]};
-effect_data[effect.poison]	= { name: "Poison",		  affects: [stat.special]};
 
-effect_data[effect.regen]	= { name: "Regeneration", affects: [stat.special]};
+effect_data[effect.haste]	= { 
+	name: "Haste",		  
+	affects: [stat.max_spd, stat.accel],
+	overrides: [effect.slow]
+};
+
+effect_data[effect.slow]	= { 
+	name: "Slow" ,		  
+	affects: [stat.max_spd, stat.accel],
+	overrides: [effect.haste]
+};
+
+effect_data[effect.poison]	= { 
+	name: "Poison",		  
+	affects: [stat.special],
+	overrides: [effect.regen],
+	update_method: function(id,level){
+		with (id){
+			switch(object_index){
+				case obj_player:
+					var _last_hp = floor(player_health);
+					player_health = clamp(player_health - level * 0.01,0,mob_data[# mob_id, stat.hp]);
+					if (floor(player_health) != _last_hp){
+						if (sign(hp_change) == 1) hp_change = 0;
+						hp_change += floor(player_health) - _last_hp;
+						show_hp = true;
+						alarm[1] = room_speed;
+					}
+					break;
+				default:
+					var _last_hp = floor(hp);
+					hp = clamp(hp - level * 0.01,0,mob_data[# mob_id, stat.hp]);
+					if (floor(hp) != _last_hp){
+						if (sign(hp_change) == 1) hp_change = 0;
+						hp_change += floor(hp) - _last_hp;
+						show_hp = true;
+						alarm[1] = room_speed;
+					}
+					break;
+			}
+		}
+	}
+};
+
+effect_data[effect.regen]	= { 
+	name: "Regeneration", 
+	affects: [stat.special],
+	overrides: [effect.poison],
+	update_method: function(id,level){
+		with (id){
+			switch(object_index){
+				case obj_player:
+					var _last_hp = floor(player_health);
+					player_health = clamp(player_health + level * 0.01,0,mob_data[# mob_id, stat.hp]);
+					if (floor(player_health) != _last_hp){
+						if (sign(hp_change) == -1) hp_change = 0;
+						hp_change += floor(player_health) - _last_hp;
+						show_hp = true;
+						alarm[1] = room_speed;
+					}
+					break;
+				default:
+					var _last_hp = floor(hp);
+					hp = clamp(hp + level * 0.01,0,mob_data[# mob_id, stat.hp]);
+					if (floor(hp) != _last_hp){
+						if (sign(hp_change) == -1) hp_change = 0;
+						hp_change += floor(hp) - _last_hp;
+						show_hp = true;
+						alarm[1] = room_speed;
+					}
+					break;
+			}
+		}
+	}
+};
 
 effect_data[effect.nvision] = { name: "Night Vision", affects: [stat.special]}; 
 
@@ -101,7 +172,7 @@ function timer(seconds) constructor{
 	update = function(){
 		seconds = floor(total_frames / 60);
 		timer_string = time_tostring(seconds);
-		total_frames--;
+		 if (!global.time_pause) total_frames--;
 		return (total_frames <= 0);
 	}
 }
@@ -113,6 +184,29 @@ function effect_apply(index,level,entity,seconds){
 	entity.status = index;
 	//              ^ make this into an array of statuseus later, have each entity run their own clock!
 	array_push(affected, {id: entity, effect: index, lv: level, duration: new timer(seconds)});
+	var _obj = effect_data[index];
+	
+	//end effects that conflict/overrite
+	if (variable_struct_exists(_obj,"overrides")){
+		var _change;
+		var _array = [];
+		var i = 0, j = 0; repeat(array_length(affected)){
+			_change = false;
+			repeat(array_length(_obj.overrides)){
+				if (affected[i].effect == _obj.overrides[j]) {
+					_change = true;
+					with (affected[i].id){
+						status = effect.none;
+						effects_clear(entity,_obj.overrides[j]);
+					}
+				}
+				j++;
+			}
+			if (!_change) array_push(_array,affected[i]);
+			i++;
+		}
+		affected = _array;
+	}
 	
 	with (entity) switch(index){
 		case effect.haste:
@@ -135,7 +229,7 @@ function effect_apply(index,level,entity,seconds){
 			frict = frict / (level+1);
 			break;
 		default:
-			var _obj = effect_data[index];
+			
 			if (variable_struct_exists(_obj,"start_method")) _obj.start_method(entity,level);
 			break;
 	}
@@ -147,7 +241,7 @@ function effects_update(){
 	var i = 0, j = 0; repeat(array_length(affected)){
 		
 		var _obj = effect_data[affected[i].effect];
-		if (variable_struct_exists(_obj,"update_method")) _obj.update_method(affected[i].id);
+		if (variable_struct_exists(_obj,"update_method")) _obj.update_method(affected[i].id,affected[i].lv);
 		
 		var _finished = affected[i].duration.update();
 		

@@ -1,6 +1,7 @@
 ///@param modifier
 ///@param magic_attack?
 function calc_mob_damage(argument0, argument1) {
+	
 	var modifier		= argument0;
 	var magic_attack	= argument1;
 	var attack_power	= player_inst.attack * modifier;
@@ -22,7 +23,8 @@ function calc_mob_damage(argument0, argument1) {
 	var shake_dur = clamp(damage,2,60);
 	screen_shake(shake_dur,shake_mag);
 
-	hp_change = -damage;
+	if (sign(hp_change) == 1) hp_change = 0;
+	hp_change += -damage;
 	show_hp = true;
 	alarm[1] = room_speed;
 
@@ -31,6 +33,7 @@ function calc_mob_damage(argument0, argument1) {
 
 ///@param attacker
 function calc_player_damage(argument0) {
+	
 	var attacker		= argument0;
 	var attack_power	= attacker.attack;
 	var defense_power	= player_inst.defense;
@@ -43,7 +46,8 @@ function calc_player_damage(argument0) {
 	var shake_dur = clamp(damage,2,60);
 	screen_shake(shake_dur,shake_mag);
 
-	hp_change = -damage;
+	if (sign(hp_change) == 1) hp_change = 0;
+	hp_change += -damage;
 	show_hp = true;
 	alarm[1] = room_speed;
 

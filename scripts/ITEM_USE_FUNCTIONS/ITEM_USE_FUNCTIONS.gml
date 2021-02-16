@@ -53,9 +53,18 @@ function use_healingitem() {
 
 function use_consumeable() {
 	gamestate = INGAME;
-	var _inflicts = inventory[# PROPERTIES, menu_index].inflicts;
-	effect_apply(_inflicts.index, _inflicts.level, player_inst, _inflicts.duration);
-	inventory[# PROPERTIES, menu_index] = 0;
+	if (selected_item == item.iqueur){
+		effect_apply(
+			irandom_range(1,effect.total-1),
+			irandom_range(1,5),
+			player_inst,
+			choose(30,60,120,180)
+		);
+	} else {
+		var _inflicts = inventory[# PROPERTIES, menu_index].inflicts;
+		effect_apply(_inflicts.index, _inflicts.level, player_inst, _inflicts.duration);
+		inventory[# PROPERTIES, menu_index] = 0;
+	}
 	return true;
 }
 

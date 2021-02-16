@@ -32,8 +32,11 @@ if (target_state == TARGET_FOLLOW) or (target_state == TARGET_DISMISS){
 
 if (draw_alpha > 0){
 	var str = "";
-	if (sign(hp_change) == 1) {str = "+"}
-	str += string(hp_change);
+	if (hp_change == 0) str = "x";
+	else {
+		if (sign(hp_change) == 1) {str = "+"}
+		str += string(hp_change);
+	}
 	var c = draw_color;
 	var x_origin = x - (string_width(str) / 2);
 	var y_origin = y - 32;

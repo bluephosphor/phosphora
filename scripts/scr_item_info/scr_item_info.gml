@@ -110,7 +110,7 @@ function define_items(){
 	item_info[# SCRIPT,item.r_potion]	= use_healingitem;
 	item_info[# SCRIPT,item.b_potion]	= use_consumeable;
 	item_info[# SCRIPT,item.apple]		= use_healingitem;
-	item_info[# SCRIPT,item.iqueur]		= use_healingitem;
+	item_info[# SCRIPT,item.iqueur]		= use_consumeable;
 	item_info[# SCRIPT,item.p_shroom]	= use_healingitem;
 	item_info[# SCRIPT,item.note]		= usenote;
 	item_info[# SCRIPT,item.card]		= item_inst_create;

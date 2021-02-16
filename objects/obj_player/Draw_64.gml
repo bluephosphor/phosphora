@@ -1,7 +1,7 @@
 if (draw_alpha > 0){
 	var max_healthbar_length = 64;
 	var max_hp = mob_data[# mob.player, stat.hp];
-	var hp_length = max_healthbar_length * player_health / max_hp;
+	var hp_length = floor(max_healthbar_length * player_health / max_hp);
 	var hp_height = 3;
 	var x_origin = 4;
 	var y_origin = 4;
@@ -10,10 +10,10 @@ if (draw_alpha > 0){
 	var c = c_white; 
 	if (hp_draw_length > hp_length + 1){
 		c = c_red;
-		hp_draw_length = lerp(hp_draw_length,hp_length,0.1);
+		hp_draw_length = lerp(hp_draw_length,hp_length,0.05);
 	} else if (hp_draw_length < hp_length - 1) {
 		c = c_green;
-		hp_draw_length = lerp(hp_draw_length,hp_length,0.1);
+		hp_draw_length = lerp(hp_draw_length,hp_length,0.05);
 	}
 	
 	draw_set_alpha(draw_alpha);
