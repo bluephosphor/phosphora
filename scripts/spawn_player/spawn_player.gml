@@ -10,5 +10,8 @@ function spawn_player() {
 	var spawn_x = xx * CELL_WIDTH + 16;
 	var spawn_y = yy * CELL_WIDTH + 16;
 
-	instance_create_layer(spawn_x,spawn_y,"Instances",obj_player);
+	if (instance_exists(obj_player)) {
+		obj_player.x = spawn_x;
+		obj_player.y = spawn_y;
+	} else instance_create_layer(spawn_x, spawn_y, "Instances", obj_player);
 }

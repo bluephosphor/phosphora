@@ -26,7 +26,10 @@ function import_cell_from_csv(argument0, argument1, argument2, argument3) {
 			break;
 		case "PLAYER": 
 			grid_[# xx,yy] = FLOOR;
-			instance_create_layer(place_x,place_y,"Instances",obj_player);
+			if (instance_exists(obj_player)) {
+				obj_player.x = place_x
+				obj_player.y = place_y;
+			} else instance_create_layer(place_x, place_y, "Instances", obj_player);
 			break;
 		case "BOSS": 
 			grid_[# xx,yy] = FLOOR;

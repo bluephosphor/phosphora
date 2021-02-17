@@ -6,7 +6,7 @@
   "solid": false,
   "visible": true,
   "spriteMaskId": null,
-  "persistent": false,
+  "persistent": true,
   "parentObjectId": {
     "name": "mc_entity",
     "path": "objects/mc_entity/mc_entity.yy",
@@ -35,6 +35,7 @@
     {"isDnD":false,"eventNum":64,"eventType":8,"collisionObjectId":null,"parent":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
     {"isDnD":false,"eventNum":1,"eventType":2,"collisionObjectId":null,"parent":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
     {"isDnD":false,"eventNum":73,"eventType":8,"collisionObjectId":null,"parent":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":4,"eventType":7,"collisionObjectId":null,"parent":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
   ],
   "properties": [],
   "overriddenProperties": [],

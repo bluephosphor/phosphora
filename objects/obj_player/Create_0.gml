@@ -1,6 +1,5 @@
 event_inherited();
 
-player_inst = id;
 mob_id = mob.player;
 hp = player_health;
 

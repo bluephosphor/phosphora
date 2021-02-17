@@ -1,10 +1,5 @@
 alarm[0] = fog_freq;
 
-if (instance_exists(obj_camera)){
-	camera_x = obj_camera.x;
-	camera_y = obj_camera.y;
-}
-
 if (draw_fog){
 	var xrange = global.view_width;
 	var yrange = global.view_height;

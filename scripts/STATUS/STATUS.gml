@@ -21,13 +21,25 @@ effect_data[effect.none]	= { name: "None" };
 effect_data[effect.haste]	= { 
 	name: "Haste",		  
 	affects: [stat.max_spd, stat.accel],
-	overrides: [effect.slow]
+	overrides: [effect.slow],
+	start_method: function(id,level){
+		with(id){
+			max_speed    = mob_data[# mob_id, stat.max_spd] + level;
+			acceleration = mob_data[# mob_id, stat.accel]   + (level / 10);
+		}
+	}
 };
 
 effect_data[effect.slow]	= { 
 	name: "Slow" ,		  
 	affects: [stat.max_spd, stat.accel],
-	overrides: [effect.haste]
+	overrides: [effect.haste],
+	start_method: function(id,level){
+		with(id){
+			max_speed    = mob_data[# mob_id, stat.max_spd] / (level+1);
+			acceleration = mob_data[# mob_id, stat.accel]   / (level+1);
+		}
+	}
 };
 
 effect_data[effect.poison]	= { 
@@ -94,9 +106,15 @@ effect_data[effect.regen]	= {
 	}
 };
 
-effect_data[effect.nvision] = { name: "Night Vision", affects: [stat.special]}; 
+effect_data[effect.nvision] = { 
+	name: "Night Vision", 
+	affects: [stat.special],
+}; 
 
-effect_data[effect.dark]	= { name: "Darkness",	  affects: [stat.special]};
+effect_data[effect.dark]	= { 
+	name: "Darkness",	  
+	affects: [stat.special],
+};
 
 effect_data[effect.glow]	= { 
 	name: "Glow",		  
@@ -125,11 +143,39 @@ effect_data[effect.glow]	= {
 	
 };
 
-effect_data[effect.slip]	= { name: "Slip",		  affects: [stat.fric]};
+effect_data[effect.slip]	= { 
+	name: "Slip",		  
+	affects: [stat.fric],
+	start_method: function(id,level){
+		with(id){
+			frict = mob_data[# mob_id, stat.fric] / (level+1);
+		}
+	}
+};
 
-effect_data[effect.buff]	= { name: "Buff",		  affects: [stat.attack,stat.defense]};
+effect_data[effect.buff]	= { 
+	name: "Buff",		  
+	affects: [stat.attack,stat.defense],
+	overrides: [effect.weak],
+	start_method: function(id,level){
+		with(id){
+			attack  = mob_data[# mob_id, stat.attack]  + level;
+			defense = mob_data[# mob_id, stat.defense] + level;
+		}
+	}
+};
 
-effect_data[effect.weak]	= { name: "Weak",		  affects: [stat.attack,stat.defense]};
+effect_data[effect.weak]	= { 
+	name: "Weak",		  
+	affects: [stat.attack,stat.defense],
+	overrides: [effect.buff],
+	start_method: function(id,level){
+		with(id){
+			attack  = mob_data[# mob_id, stat.attack]  - level;
+			defense = mob_data[# mob_id, stat.defense] - level;
+		}
+	}
+};
 
 function effects_clear(entity,index){
 	if (index == all) {
@@ -166,7 +212,7 @@ function time_tostring(seconds){
 	return _hours + _minzero + string(_minutes mod 60) + ":" + _seczero + string(seconds mod 60);
 }
 
-function timer(seconds) constructor{
+function timer(seconds) constructor {
 	total_frames = seconds * 60;
 	timer_string = "";
 	update = function(){
@@ -208,30 +254,8 @@ function effect_apply(index,level,entity,seconds){
 		affected = _array;
 	}
 	
-	with (entity) switch(index){
-		case effect.haste:
-			max_speed    += level;
-			acceleration += (level / 10);
-			break;
-		case effect.slow:
-			max_speed    = max_speed    / (level+1);
-			acceleration = acceleration / (level+1);
-			break;
-		case effect.buff:
-			attack  += level;
-			defense += level;
-			break;
-		case effect.weak:
-			attack  -= level;
-			defense -= level;
-			break;
-		case effect.slip:
-			frict = frict / (level+1);
-			break;
-		default:
-			
-			if (variable_struct_exists(_obj,"start_method")) _obj.start_method(entity,level);
-			break;
+	with (entity) {
+		if (variable_struct_exists(_obj,"start_method")) _obj.start_method(entity,level);
 	}
 }
 
@@ -262,9 +286,9 @@ function effects_update(){
 function dec_to_roman(num){
 	//  Returns a string of Roman numerals representing the given integer.
 	//
-	//      num = positive integer less than 5000, real
+	//  num = positive integer less than 5000, real
 	//
-	/// GMLscripts.com/license
+	//  GMLscripts.com/license
 	var roman;
 	if ((num < 1) || (num > 4999)) return "";
 	roman  = string_copy("    M   MM  MMM MMMM",4*(num div 1000)+1,4);

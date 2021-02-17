@@ -36,6 +36,9 @@ y = round_n(y, scale_);
 x = clamp(x, width_/2 + CELL_WIDTH, room_width-width_/2 - CELL_WIDTH);
 y = clamp(y, height_/2 + CELL_HEIGHT, room_height-height_/2 - CELL_HEIGHT);
 
+camera_x = obj_camera.x;
+camera_y = obj_camera.y;
+
 //screenshake
 x += random_range(-shake_remain,shake_remain);
 y += random_range(-shake_remain,shake_remain);
