@@ -115,12 +115,14 @@ function pathfind_init(target_x,target_y){
 };
 
 function pathfind_draw_points(array){
+	draw_set_font(font_status);
 	var i = 0; repeat(array_length(array)){
 		var _str = string(i);
-		var _wh = string_width(_str) / 2;
-		var _hh = string_height(_str) / 2;
-		draw_rectangle_color(array[i].x-_wh,array[i].y-_hh,array[i].x+_wh,array[i].y+_hh,c_black,c_black,c_black,c_black,false)
+		var _wh = floor(string_width(_str) / 2);
+		var _hh = floor(string_height(_str) / 2);
+		draw_circle_color(array[i].x,array[i].y,5,c_black,c_black,false);
 		draw_text_color(array[i].x-_wh,array[i].y-_hh,_str,c_white,c_white,c_white,c_white,1);
 		i++;
 	}
+	draw_set_font(font_main);
 }

@@ -30,6 +30,7 @@
     {"isDnD":false,"eventNum":12,"eventType":7,"collisionObjectId":null,"parent":{"name":"obj_mob_pathfinder","path":"objects/obj_mob_pathfinder/obj_mob_pathfinder.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
     {"isDnD":false,"eventNum":13,"eventType":7,"collisionObjectId":null,"parent":{"name":"obj_mob_pathfinder","path":"objects/obj_mob_pathfinder/obj_mob_pathfinder.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
     {"isDnD":false,"eventNum":0,"eventType":8,"collisionObjectId":null,"parent":{"name":"obj_mob_pathfinder","path":"objects/obj_mob_pathfinder/obj_mob_pathfinder.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":73,"eventType":8,"collisionObjectId":null,"parent":{"name":"obj_mob_pathfinder","path":"objects/obj_mob_pathfinder/obj_mob_pathfinder.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
   ],
   "properties": [],
   "overriddenProperties": [],

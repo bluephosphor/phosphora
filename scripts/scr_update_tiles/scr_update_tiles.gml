@@ -47,5 +47,4 @@ function update_tiles() {
 		}
 	}
 	debug_log_add("Updated Tiles!");
-
 }
