@@ -1,6 +1,6 @@
 depth = -2001
 
-var starting_hour = 20;
+var starting_hour = 8;
 
 seconds = (starting_hour * 60) * 60;
 minutes = 0;

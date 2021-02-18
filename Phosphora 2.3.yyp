@@ -1,6 +1,6 @@
 {
   "resources": [
-    {"id":{"name":"s_player_shadow","path":"sprites/s_player_shadow/s_player_shadow.yy",},"order":0,},
+    {"id":{"name":"spr_entity_shadow","path":"sprites/spr_entity_shadow/spr_entity_shadow.yy",},"order":0,},
     {"id":{"name":"s_player_hitstun","path":"sprites/s_player_hitstun/s_player_hitstun.yy",},"order":1,},
     {"id":{"name":"s_player_spin","path":"sprites/s_player_spin/s_player_spin.yy",},"order":2,},
     {"id":{"name":"s_player","path":"sprites/s_player/s_player.yy",},"order":3,},

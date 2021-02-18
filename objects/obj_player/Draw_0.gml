@@ -12,7 +12,7 @@ if (_visible){
 		draw_sprite_part_ext(sprite_index,image_index,0,0,32,20,x+xo,y+yo,image_xscale,image_yscale,image_blend,1);
 		draw_sprite(s_waterring,image_index mod 2,x,y);
 	} else {
-		draw_sprite_ext(s_player_shadow, 0, x, y+1, 1, -.75, 0, c_white, .5);
+		draw_sprite_ext(spr_entity_shadow, 0, x, y+1, 1, -.75, 0, c_white, .5);
 		draw_self();
 	}
 }

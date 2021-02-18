@@ -15,7 +15,7 @@ if (global.draw_outline) and (_visible){
 		draw_sprite_part_ext(sprite_index,image_index,0,0,32,20,x+xo,y+yo,image_xscale,image_yscale,c_white,1);
 		shader_reset();
 	} else {
-		draw_sprite_ext(s_player_shadow, 0, x, y+1, 1, -.75, 0, c_white, .5);
+		draw_sprite_ext(spr_entity_shadow, 0, x, y+1, 1, -.75, 0, c_white, .5);
 		shader_set(sh_outline);
 		shader_set_uniform_f(upixel_w,texel_w);
 		shader_set_uniform_f(upixel_h,texel_h);

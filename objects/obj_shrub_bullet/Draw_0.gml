@@ -15,7 +15,7 @@ if (state == 0){
 	var _xo = 0;
 	var _yo = 0;
 	
-	draw_sprite_ext(s_player_shadow,0,x+_xo,y,0.5,1,0,c_white,0.5);
+	draw_sprite_ext(spr_entity_shadow,0,x+_xo,y,0.5,1,0,c_white,0.5);
 
 	draw_sprite_ext(
 		sprite_index,

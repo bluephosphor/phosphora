@@ -9,7 +9,7 @@ if (global.debug){
 	);
 }
 draw_set_alpha(1);
-draw_sprite_ext(s_player_shadow,0,x,y,1,1,0,c_white,0.5);
+draw_sprite_ext(spr_entity_shadow,0,x,y,1,1,0,c_white,0.5);
 
 shader_set(sh_replace_colors);
 
