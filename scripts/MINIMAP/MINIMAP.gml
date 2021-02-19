@@ -45,8 +45,8 @@ function minimap_draw(){
 		} else draw_surface(map.surface,map.x,map.y);
 		
 		//draw little dot for player :3
-		xx = map.x + (obj_player.x / CELL_WIDTH);
-		yy = map.y + (obj_player.y / CELL_HEIGHT);
+		xx = map.x + (obj_player.x / CELL_SIZE);
+		yy = map.y + (obj_player.y / CELL_SIZE);
 		c = c_red;
 		draw_circle_color(xx,yy,1,c,c,false);
 	}

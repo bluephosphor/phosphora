@@ -1,6 +1,6 @@
 depth = -bbox_bottom;
-grid_x = x div CELL_WIDTH;
-grid_y = y div CELL_HEIGHT;
+grid_x = x div CELL_SIZE;
+grid_y = y div CELL_SIZE;
 in_cell = grid_[# grid_x, grid_y];
 
 if (global.time_pause) exit;

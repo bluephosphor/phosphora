@@ -60,6 +60,6 @@ if (update_movement){
 		} else {change_direction = true;}
 	}
 } else {
-	x = lerp(x,(x_to * CELL_WIDTH)  + 16,0.2);
-	y = lerp(y,(y_to * CELL_HEIGHT) + 16,0.2);
+	x = lerp(x,(x_to * CELL_SIZE)  + 16,0.2);
+	y = lerp(y,(y_to * CELL_SIZE) + 16,0.2);
 }

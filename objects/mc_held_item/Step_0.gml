@@ -18,8 +18,8 @@ switch(item_index){
 			if (lure_hsp != 0)	{lure_x += lure_hsp;}
 			if (lure_y <= y)	{lure_y += lure_vsp;}
 			else {
-				var grid_x  = lure_x div CELL_WIDTH;
-				var grid_y  = lure_y div CELL_HEIGHT;
+				var grid_x  = lure_x div CELL_SIZE;
+				var grid_y  = lure_y div CELL_SIZE;
 				var in_cell = grid_[# grid_x,grid_y];
 				if (in_cell == WATER) at_rest = true;
 				if (!at_rest) or (use_item){

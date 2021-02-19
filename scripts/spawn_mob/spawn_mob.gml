@@ -15,8 +15,8 @@ function spawn_mob(argument0) {
 		var xx = irandom_range(2, width_ - 2);
 		var yy = irandom_range(2, height_ - 2);
 		if (grid_[# xx,yy] == celltype){
-			var spawn_x = xx * CELL_WIDTH + 16;
-			var spawn_y = yy * CELL_WIDTH + 16;
+			var spawn_x = xx * CELL_SIZE + 16;
+			var spawn_y = yy * CELL_SIZE + 16;
 			flag = (coord_outside_view(spawn_x,spawn_y));
 			if (flag == true) break;
 		}

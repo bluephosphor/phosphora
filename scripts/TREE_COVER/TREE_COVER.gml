@@ -37,8 +37,8 @@ function init_tree_patterns() {
 		
 			//generating some numbers and storing all of this info inside of nested arrays bc again, pre 2.3
 			list[o] = [
-				irandom(CELL_WIDTH),				// x
-				irandom(CELL_HEIGHT),				// y
+				irandom(CELL_SIZE),				// x
+				irandom(CELL_SIZE),				// y
 				choose(0,90,180,270),				// angle
 				choose(1,2),						// frame
 				merge_color(c1,c2, cc - floor(cc))  // color (blending colors together depending on the c1, c2 values we worked out earler. brain!)
@@ -84,8 +84,8 @@ function draw_trees() {
 					repeat(len){
 						list	  = curr_array[i];
 						//get pattern data from array
-						draw_x	  = _x * CELL_WIDTH  + list[0];
-						draw_y	  = _y * CELL_HEIGHT + list[1] - 16;
+						draw_x	  = _x * CELL_SIZE  + list[0];
+						draw_y	  = _y * CELL_SIZE + list[1] - 16;
 						angle	  =	list[2];
 						frame	  = list[3];
 						c		  = list[4];

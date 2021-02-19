@@ -35,6 +35,9 @@ image_speed = 0;
 anim_speed = 5;
 attack_cooldown = 0;
 
+path = path_add();
+path_array = [];
+
 my_light = instance_create_layer(x,y,layer,mc_lightsource);
 with (my_light){
 	follow = other.id;

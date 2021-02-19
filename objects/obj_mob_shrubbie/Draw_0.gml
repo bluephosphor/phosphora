@@ -1,10 +1,10 @@
 if (global.debug){
 	draw_set_alpha(0.3);
 	draw_rectangle(
-		cell_candidate.x * CELL_WIDTH, 
-		cell_candidate.y * CELL_HEIGHT,
-		cell_candidate.x * CELL_WIDTH + CELL_WIDTH, 
-		cell_candidate.y * CELL_HEIGHT + CELL_HEIGHT,
+		cell_candidate.x * CELL_SIZE, 
+		cell_candidate.y * CELL_SIZE,
+		cell_candidate.x * CELL_SIZE + CELL_SIZE, 
+		cell_candidate.y * CELL_SIZE + CELL_SIZE,
 		false
 	);
 }

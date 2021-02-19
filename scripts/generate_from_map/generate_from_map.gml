@@ -10,8 +10,8 @@ function generate_from_map() {
 	width_  = _submap[? "width"];
 	height_ = _submap[? "height"];
 
-	room_width = width_ * CELL_WIDTH;
-	room_height = height_ * CELL_HEIGHT;
+	room_width = width_ * CELL_SIZE;
+	room_height = height_ * CELL_SIZE;
 
 	//set up the grid
 	globalvar grid_;
@@ -74,7 +74,7 @@ function generate_from_map() {
 	ds_map_destroy(_json);
 
 	//init pathfinding grid
-	path_grid = mp_grid_create(0,0,width_,height_,CELL_WIDTH,CELL_HEIGHT);
+	path_grid = mp_grid_create(0,0,width_,height_,CELL_SIZE,CELL_SIZE);
 
 	if (!instance_exists(obj_player)) spawn_player();
 
@@ -84,8 +84,8 @@ function generate_from_map() {
 		repeat(num){
 			var xx = irandom(room_width);
 			var yy = irandom(room_height);
-			var grid_x = xx div CELL_WIDTH;
-			var grid_y = yy div CELL_HEIGHT;
+			var grid_x = xx div CELL_SIZE;
+			var grid_y = yy div CELL_SIZE;
 			if (grid_[# grid_x, grid_y] == FLOOR){
 				tilemap_set(_pebble_map_id,choose(1,2),xx div 8,yy div 8);
 			}

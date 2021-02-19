@@ -13,7 +13,7 @@ function generate_lake() {
 			{
 				var spawn_x = xx;
 				var spawn_y = yy;	
-				flag = (coord_outside_view(spawn_x * CELL_WIDTH + 16,spawn_y * CELL_WIDTH + 16));
+				flag = (coord_outside_view(spawn_x * CELL_SIZE + 16,spawn_y * CELL_SIZE + 16));
 			}
 	} until (flag == true);
 

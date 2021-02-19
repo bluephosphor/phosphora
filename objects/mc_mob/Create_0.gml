@@ -2,8 +2,8 @@ event_inherited();
 
 entity_type = "mob";
 
-grid_x = x div CELL_WIDTH;
-grid_y = y div CELL_HEIGHT;
+grid_x = x div CELL_SIZE;
+grid_y = y div CELL_SIZE;
 in_cell = grid_[# grid_x, grid_y];
 
 passive		= false;
@@ -95,5 +95,32 @@ function check_death(){
 			}
 		}
 		instance_destroy();
+	}
+}
+
+function pathfind_init(target_x,target_y){
+	mp_grid_path(path_grid,path,x,y,target_x,target_y,true);
+	var _array = [];
+	var _path_num = path_get_number(path);
+	var _path_i = 0;
+	var i = 0; repeat(_path_num){
+		_path_i = (1/_path_num) * i;
+		_array[i] = new vec2(
+			path_get_point_x(path,i),
+			path_get_point_y(path,i),
+		);
+		i++;
+	}
+	return _array;
+};
+
+function pathfind_draw_points(array){
+	var i = 0; repeat(array_length(array)){
+		var _str = string(i);
+		var _wh = string_width(_str) / 2;
+		var _hh = string_height(_str) / 2;
+		draw_rectangle_color(array[i].x-_wh,array[i].y-_hh,array[i].x+_wh,array[i].y+_hh,c_black,c_black,c_black,c_black,false)
+		draw_text_color(array[i].x-_wh,array[i].y-_hh,_str,c_white,c_white,c_white,c_white,1);
+		i++;
 	}
 }

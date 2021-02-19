@@ -1,8 +1,8 @@
 event_inherited();
 
 depth = -y;
-grid_x = x div CELL_WIDTH;
-grid_y = y div CELL_HEIGHT;
+grid_x = x div CELL_SIZE;
+grid_y = y div CELL_SIZE;
 in_cell = grid_[# grid_x, grid_y];
 
 my_light.light_strength = 1 * image_index / 11;

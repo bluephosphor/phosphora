@@ -1,4 +1,4 @@
-globalvar player_inst;
+globalvar player_inst,path_grid;
 player_inst = noone;
 
 function ds_collector_add(variable){
@@ -61,8 +61,7 @@ function array_range(min,max){
 
 //MACROS//
 //dimensions
-#macro CELL_WIDTH 32
-#macro CELL_HEIGHT 32
+#macro CELL_SIZE 32
 //floortypes
 #macro FLOOR -5
 #macro WATER -6

@@ -6,18 +6,18 @@ function generate_from_csv() {
 	//resize room
 	var ww = ds_grid_width(file_grid);
 	var hh = ds_grid_height(file_grid);
-	room_width  = max(CELL_WIDTH  * ww, global.view_width)  + CELL_WIDTH  * 2;
-	room_height = max(CELL_HEIGHT * hh, global.view_height) + CELL_HEIGHT * 2;
+	room_width  = max(CELL_SIZE  * ww, global.view_width)  + CELL_SIZE  * 2;
+	room_height = max(CELL_SIZE * hh, global.view_height) + CELL_SIZE * 2;
 
 	// Set up the grid
 	globalvar grid_;
-	width_  = room_width  div CELL_WIDTH;
-	height_ = room_height div CELL_HEIGHT;
+	width_  = room_width  div CELL_SIZE;
+	height_ = room_height div CELL_SIZE;
 	grid_ = ds_grid_create(width_, height_);
 	ds_grid_set_region(grid_, 0, 0, width_ - 1, height_ - 1, VOID);
 
 	//init pathfinding grid
-	path_grid = mp_grid_create(0,0,width_,height_,CELL_WIDTH,CELL_HEIGHT);
+	path_grid = mp_grid_create(0,0,width_,height_,CELL_SIZE,CELL_SIZE);
 
 	var gx = 0; repeat(ww){
 		var gy = 0; repeat(hh){
@@ -38,8 +38,8 @@ function generate_from_csv() {
 		repeat(num){
 			var xx = irandom(room_width);
 			var yy = irandom(room_height);
-			var grid_x = xx div CELL_WIDTH;
-			var grid_y = yy div CELL_HEIGHT;
+			var grid_x = xx div CELL_SIZE;
+			var grid_y = yy div CELL_SIZE;
 			if (grid_[# grid_x, grid_y] == FLOOR){
 				tilemap_set(_pebble_map_id,choose(1,2),xx div 8,yy div 8);
 			}

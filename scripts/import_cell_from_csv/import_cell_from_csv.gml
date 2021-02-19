@@ -9,8 +9,8 @@ function import_cell_from_csv(argument0, argument1, argument2, argument3) {
 	var y_offset = argument3; 
 	xx += x_offset; 
 	yy += y_offset;
-	var place_x = (xx * CELL_WIDTH) + 16;
-	var place_y = (yy * CELL_HEIGHT) + 16;
+	var place_x = (xx * CELL_SIZE) + 16;
+	var place_y = (yy * CELL_SIZE) + 16;
 
 
 	//custom level
@@ -33,7 +33,7 @@ function import_cell_from_csv(argument0, argument1, argument2, argument3) {
 			break;
 		case "BOSS": 
 			grid_[# xx,yy] = FLOOR;
-			instance_create_layer(place_x,place_y,"Instances",obj_mob_shrubbie);
+			instance_create_layer(place_x,place_y,"Instances",obj_mob_pathfinder);
 			break;
 		case "TREE": 
 			grid_[# xx,yy] = FLOOR;

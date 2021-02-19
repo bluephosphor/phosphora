@@ -42,29 +42,29 @@ function place_dungeon_room(file) {
     
 	if (left_exit){
 		//grid_[# xx,yy + y_half] = FLOOR;
-		door_x = xx * CELL_WIDTH;
-		door_y = (yy + y_half) * CELL_HEIGHT;
+		door_x = xx * CELL_SIZE;
+		door_y = (yy + y_half) * CELL_SIZE;
 		instance_create_layer(door_x,door_y,"Instances",obj_door);
 	}
 
 	if (right_exit){	
 		//grid_[# xx + ww - 1,yy + y_half] = FLOOR;
-		door_x = (xx + ww - 1) * CELL_WIDTH;
-		door_y = (yy + y_half) * CELL_HEIGHT;
+		door_x = (xx + ww - 1) * CELL_SIZE;
+		door_y = (yy + y_half) * CELL_SIZE;
 		instance_create_layer(door_x,door_y,"Instances",obj_door);
 	}
 
 	if (top_exit){
 		//grid_[# xx + x_half,yy] = FLOOR;
-		door_x = (xx + x_half) * CELL_WIDTH;
-		door_y = yy * CELL_HEIGHT;
+		door_x = (xx + x_half) * CELL_SIZE;
+		door_y = yy * CELL_SIZE;
 		instance_create_layer(door_x,door_y,"Instances",obj_door);
 	}
 
 	if (bottom_exit){
 		//grid_[# xx + x_half,yy + hh - 1] = FLOOR;
-		door_x = (xx + x_half) * CELL_WIDTH;
-		door_y = (yy + hh - 1) * CELL_HEIGHT;
+		door_x = (xx + x_half) * CELL_SIZE;
+		door_y = (yy + hh - 1) * CELL_SIZE;
 		instance_create_layer(door_x,door_y,"Instances",obj_door);
 	}
 

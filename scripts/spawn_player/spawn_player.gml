@@ -7,8 +7,8 @@ function spawn_player() {
 		var yy = irandom_range(2, height_ - 2);
 	}
 
-	var spawn_x = xx * CELL_WIDTH + 16;
-	var spawn_y = yy * CELL_WIDTH + 16;
+	var spawn_x = xx * CELL_SIZE + 16;
+	var spawn_y = yy * CELL_SIZE + 16;
 
 	if (instance_exists(obj_player)) {
 		obj_player.x = spawn_x;

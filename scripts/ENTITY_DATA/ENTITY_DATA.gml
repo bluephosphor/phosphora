@@ -30,6 +30,7 @@ enum mob{
 	ghost,
 	ent_knight,
 	shrubbie,
+	pathfinder,
 	enum_length,
 }
 
@@ -181,4 +182,25 @@ mob_data[# mob.shrubbie, stat.spawn_cell]	= FLOOR;
 mob_data[# mob.shrubbie, stat.loot]			= [
 	//item              //chance in percent
 	[item.s_leaf,		25],
+];
+
+//pathfinder
+mob_data[# mob.pathfinder, stat.object]		= obj_mob_pathfinder;
+mob_data[# mob.pathfinder, stat.name]		= "Pathfinder";
+mob_data[# mob.pathfinder, stat.info]		= "";
+mob_data[# mob.pathfinder, stat.hp]			= 25;
+mob_data[# mob.pathfinder, stat.attack]		= 5;
+mob_data[# mob.pathfinder, stat.defense]		= 1;
+mob_data[# mob.pathfinder, stat.sp_attack]	= 0;
+mob_data[# mob.pathfinder, stat.max_spd]		= 1;
+mob_data[# mob.pathfinder, stat.accel]		= 0.2;
+mob_data[# mob.pathfinder, stat.fric]		= 0.3;
+mob_data[# mob.pathfinder, stat.spawn_cell]	= FLOOR;
+mob_data[# mob.pathfinder, stat.loot]		= [
+	//item              //chance in percent
+	[item.apple,		30],
+	[item.r_potion,		15],
+	[item.b_potion,		3],
+	[item.note,			1],
+	[item.rubellite,	0.05]
 ];

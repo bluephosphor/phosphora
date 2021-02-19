@@ -33,8 +33,8 @@ switch (state) {
 //rounding and clamp
 x = round_n(x, scale_);
 y = round_n(y, scale_);
-x = clamp(x, width_/2 + CELL_WIDTH, room_width-width_/2 - CELL_WIDTH);
-y = clamp(y, height_/2 + CELL_HEIGHT, room_height-height_/2 - CELL_HEIGHT);
+x = clamp(x, width_/2 + CELL_SIZE, room_width-width_/2 - CELL_SIZE);
+y = clamp(y, height_/2 + CELL_SIZE, room_height-height_/2 - CELL_SIZE);
 
 camera_x = obj_camera.x;
 camera_y = obj_camera.y;

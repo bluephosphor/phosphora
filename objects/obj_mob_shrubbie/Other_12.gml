@@ -12,8 +12,8 @@ switch(substate){
 		var _ww = obj_level.width_;
 		var _hh = obj_level.height_;
 		var _dir = irandom(360);
-		cell_candidate.x = clamp((obj_player.x + lengthdir_x(ideal_dist,_dir)) div CELL_WIDTH, 1,_ww - 1);
-		cell_candidate.y = clamp((obj_player.y + lengthdir_y(ideal_dist,_dir)) div CELL_HEIGHT,1,_hh - 1);
+		cell_candidate.x = clamp((obj_player.x + lengthdir_x(ideal_dist,_dir)) div CELL_SIZE, 1,_ww - 1);
+		cell_candidate.y = clamp((obj_player.y + lengthdir_y(ideal_dist,_dir)) div CELL_SIZE,1,_hh - 1);
 		if (grid_[# cell_candidate.x,cell_candidate.y] == FLOOR) {
 			target_cell = cell_candidate;
 			substate = 1;
@@ -35,8 +35,8 @@ switch(substate){
 			}
 		}
 		
-		var _tx = target_cell.x * CELL_WIDTH + 16;
-		var _ty = target_cell.y * CELL_HEIGHT + 16;
+		var _tx = target_cell.x * CELL_SIZE + 16;
+		var _ty = target_cell.y * CELL_SIZE + 16;
 		
 		var _dir = point_direction(x,y,_tx,_ty);
 		var _dist = point_distance(x,y,_tx,_ty);
@@ -47,7 +47,7 @@ switch(substate){
 		yspeed = approach(yspeed,lengthdir_y(_approach_speed,_dir),acceleration);
 		anim_speed = 8 - clamp(_approach_speed * 3,4,6);
 		
-		if (_dist < (CELL_WIDTH / 2)) {
+		if (_dist < (CELL_SIZE / 2)) {
 			anim_speed = 8;
 			next_anim  = attack_frames;
 			substate   = 2;

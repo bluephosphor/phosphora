@@ -1,13 +1,13 @@
 function generate_grove() {
 	// Set up the grid
 	globalvar grid_;
-	width_ = room_width div CELL_WIDTH;
-	height_ = room_height div CELL_HEIGHT;
+	width_ = room_width div CELL_SIZE;
+	height_ = room_height div CELL_SIZE;
 	grid_ = ds_grid_create(width_, height_);
 	ds_grid_set_region(grid_, 0, 0, width_ - 1, height_ - 1, VOID);
 
 	//init pathfinding grid
-	path_grid = mp_grid_create(0,0,width_,height_,CELL_WIDTH,CELL_HEIGHT);
+	path_grid = mp_grid_create(0,0,width_,height_,CELL_SIZE,CELL_SIZE);
 
 	// Create the controller
 	var _controller_x = width_ div 2;
@@ -19,8 +19,8 @@ function generate_grove() {
 	var _max_exits = 3;
 	var _exit_count = 0;
 
-	var _player_start_x = _controller_x * CELL_WIDTH + CELL_WIDTH/2;
-	var _player_start_y = _controller_y * CELL_HEIGHT + CELL_HEIGHT/2;
+	var _player_start_x = _controller_x * CELL_SIZE + CELL_SIZE/2;
+	var _player_start_y = _controller_y * CELL_SIZE + CELL_SIZE/2;
 	if (instance_exists(obj_player)) {
 		obj_player.x = _player_start_x;
 		obj_player.y = _player_start_y;
@@ -34,8 +34,8 @@ function generate_grove() {
 	repeat (_steps) {
 		grid_[# _controller_x, _controller_y] = FLOOR;
 		//place_objects
-		var place_x = _controller_x * CELL_WIDTH + 16;
-		var place_y = _controller_y * CELL_HEIGHT + 16;
+		var place_x = _controller_x * CELL_SIZE + 16;
+		var place_y = _controller_y * CELL_SIZE + 16;
 	
 		if (irandom(_place_object_odds) == _place_object_odds) {
 			instance_create_layer(place_x,place_y,"Instances", obj_scenery_item);
@@ -63,8 +63,8 @@ function generate_grove() {
 		if (_controller_x < 2 || _controller_x >= width_ - 2) {
 			if (spawn_exit) {
 				grid_[# _controller_x,_controller_y] = FLOOR;
-				place_x = _controller_x * CELL_WIDTH + _x_direction;
-				place_y = _controller_y * CELL_HEIGHT;
+				place_x = _controller_x * CELL_SIZE + _x_direction;
+				place_y = _controller_y * CELL_SIZE;
 				instance_create_layer(place_x,place_y,"Instances", obj_exit);
 				debug_log_add("Spawned an exit!");
 				_exit_count ++;
@@ -75,8 +75,8 @@ function generate_grove() {
 		if (_controller_y < 2 || _controller_y >= height_ - 2) {
 			if (spawn_exit) {
 				grid_[# _controller_x,_controller_y] = FLOOR;
-				place_x = _controller_x * CELL_WIDTH;
-				place_y = _controller_y * CELL_HEIGHT + _y_direction;
+				place_x = _controller_x * CELL_SIZE;
+				place_y = _controller_y * CELL_SIZE + _y_direction;
 				instance_create_layer(place_x,place_y,"Instances", obj_exit);
 				debug_log_add("Spawned an exit!");
 				_exit_count++;
@@ -88,8 +88,8 @@ function generate_grove() {
 
 	///make sure we spawn at least one chest minimum
 	if (chest_index == 0) {
-		place_x = _controller_x * CELL_WIDTH + 16;
-		place_y = _controller_y * CELL_HEIGHT + 16;
+		place_x = _controller_x * CELL_SIZE + 16;
+		place_y = _controller_y * CELL_SIZE + 16;
 		chests[chest_index++] = instance_create_layer(place_x,place_y,"Instances", obj_chest);
 		debug_log_add("Lone chest. :(");
 	}

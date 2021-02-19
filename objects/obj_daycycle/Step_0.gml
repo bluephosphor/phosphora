@@ -16,8 +16,8 @@ if (hours > 0 and hours < 3) {
 	with (obj_camera){
 		var xx = irandom_range(x - (width_ / 2), x + (width_ / 2));
 		var yy = irandom_range(y - (height_ / 2), y + (height_ / 2));
-		var gx = xx div CELL_WIDTH;
-		var gy = yy div CELL_HEIGHT;
+		var gx = xx div CELL_SIZE;
+		var gy = yy div CELL_SIZE;
 		if (spawnpart) and (grid_[# gx,gy] != VOID){
 			part_particles_create(global.p_system,xx,yy,global.p_forestspirit,1);
 		}
