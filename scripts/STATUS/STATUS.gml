@@ -232,7 +232,7 @@ function effect_apply(index,level,entity,seconds){
 	array_push(affected, {id: entity, effect: index, lv: level, duration: new timer(seconds)});
 	var _obj = effect_data[index];
 	
-	//end effects that conflict/overrite
+	//end effects that conflict/overrite //LOOK AT THIS LATER
 	if (variable_struct_exists(_obj,"overrides")){
 		var _change;
 		var _array = [];
