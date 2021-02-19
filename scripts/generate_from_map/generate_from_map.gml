@@ -25,9 +25,15 @@ function generate_from_map() {
 	_submap = _json[? "player_data"];
 	var xx = _submap[? "x"];
 	var yy = _submap[? "y"];
-	with (instance_create_layer(xx,yy,"Instances",obj_player)){
-		image_xscale = _submap[? "image_xscale"];
-	}
+	var xs = _submap[? "image_xscale"];
+	if (instance_exists(obj_player)) {
+		obj_player.x = xx;
+		obj_player.y = yy;
+		image_xscale = xs;
+	} else with (instance_create_layer(xx, yy, "Instances", obj_player)){
+		player_inst = id;
+		image_xscale = xs;
+	};
 
 	//get chest info
 	_sublist = _json[? "chest_list"];

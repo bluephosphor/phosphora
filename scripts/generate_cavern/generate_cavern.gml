@@ -11,125 +11,73 @@ function generate_cavern() {
 
 	//init pathfinding grid
 	path_grid = mp_grid_create(0,0,width_,height_,CELL_SIZE,CELL_SIZE);
-
-	// Create the controller
-	var _controller_x = width_ div 2;
-	var _controller_y = height_ div 2;
-	var _controller_direction = irandom(3);
-	var _steps = 1200;
-	var _place_object_odds = 35;
-	var _max_exits = 3;
-	var _exit_count = 0;
-
-	//spawn the player
-	var _player_start_x = _controller_x * CELL_SIZE + CELL_SIZE/2;
-	var _player_start_y = _controller_y * CELL_SIZE + CELL_SIZE/2;
-	if (instance_exists(obj_player)) {
-		obj_player.x = _player_start_x;
-		obj_player.y = _player_start_y;
-	} else instance_create_layer(_player_start_x, _player_start_y, "Instances", obj_player);
-
-
-	// Choose the direction change odds
-	var _direction_change_odds = 2;
-
-	// Generate the level
-	repeat (_steps) {
-		grid_[# _controller_x, _controller_y] = FLOOR;
-		//place_objects
-		var place_x = _controller_x * CELL_SIZE + 16;
-		var place_y = _controller_y * CELL_SIZE + 16;
+	var _place_object_odds = 50;
 	
-		if (irandom(_place_object_odds) == _place_object_odds) {
-			instance_create_layer(place_x,place_y,"Instances", obj_scenery_item);
+	var _wall_percentage = 50,
+		_softness = 7;
+	//generate some noise
+	var _xx = 2; repeat(width_-3){
+		var _yy = 2; repeat(height_-3){
+			if (irandom(100) < _wall_percentage) grid_[# _xx,_yy] = FLOOR;
+			_yy++;
 		}
+		_xx++;
+	}
 	
-		// Rnadomize the direction, place objects
-		if (irandom(_direction_change_odds) == _direction_change_odds) {
-			_controller_direction = irandom(3);	
-			if (irandom(_place_object_odds) = _place_object_odds) and (!instance_position(place_x,place_y,obj_chest)){
-				var obj = obj_chest; if (irandom(25) == 25) obj = obj_chest_special;
-				chests[chest_index++] = instance_create_layer(place_x,place_y,"Instances", obj);
+	//soften the noise using cellular automata
+	var _void_count, _floor_count;
+	repeat(_softness){
+		var _xx = 2; repeat(width_-3){
+			var _yy = 2; repeat(height_-3){
+				_void_count = 0;
+				_floor_count = 0;
+				//checking neighbors
+				for (var _i = -1; _i <= 1; _i++){
+					for (var _j = -1; _j <= 1; _j++){
+						if (grid_[# _xx + _i, _yy + _j] == VOID  and grid_[# _xx,_yy] == FLOOR)  _void_count++;
+						if (grid_[# _xx + _i, _yy + _j] == FLOOR and grid_[# _xx,_yy] == VOID) _floor_count++;
+					}
+				}
+				if (_void_count  >= 5) grid_[# _xx,_yy] = VOID;
+				if (_floor_count >= 5) grid_[# _xx,_yy] = FLOOR;
+				_yy++;
 			}
-		}
-	
-		// Move the controller
-		var _x_direction = lengthdir_x(1, _controller_direction * 90);
-		var _y_direction = lengthdir_y(1, _controller_direction * 90);
-		_controller_x += _x_direction;
-		_controller_y += _y_direction;
-	
-		// Make sure we don't move outside the room
-		var spawn_exit = (irandom(50) == 50);
-		if (_exit_count > _max_exits) spawn_exit = false;
-		if (_controller_x < 2 || _controller_x >= width_ - 2) {
-			if (spawn_exit) {
-				grid_[# _controller_x,_controller_y] = FLOOR;
-				place_x = _controller_x * CELL_SIZE + _x_direction;
-				place_y = _controller_y * CELL_SIZE;
-				instance_create_layer(place_x,place_y,"Instances", obj_exit);
-				debug_log_add("Spawned an exit!");
-				_exit_count ++;
-				spawn_exit = false;
-			}
-			_controller_x += -_x_direction * 2;
-		}
-		if (_controller_y < 2 || _controller_y >= height_ - 2) {
-			if (spawn_exit) {
-				grid_[# _controller_x,_controller_y] = FLOOR;
-				place_x = _controller_x * CELL_SIZE;
-				place_y = _controller_y * CELL_SIZE + _y_direction;
-				instance_create_layer(place_x,place_y,"Instances", obj_exit);
-				debug_log_add("Spawned an exit!");
-				_exit_count++;
-				spawn_exit = false;
-			}
-			_controller_y += -_y_direction * 2;
-		}
-		//pebble tiles
-		repeat(2){
-			var xx = irandom(room_width / 8);
-			var yy = irandom(room_height / 8);
-			tilemap_set(_pebble_map_id,choose(1,2),xx,yy);
+			_xx++;
 		}
 	}
-
-	///make sure we spawn at least one chest minimum
-	if (chest_index == 0) {
-		place_x = _controller_x * CELL_SIZE + 16;
-		place_y = _controller_y * CELL_SIZE + 16;
-		chests[chest_index++] = instance_create_layer(place_x,place_y,"Instances", obj_chest);
-		debug_log_add("Lone chest. :(");
+	
+	//pebble tiles
+	repeat(room_width){
+		var xx = irandom(room_width / 8);
+		var yy = irandom(room_height / 8);
+		tilemap_set(_pebble_map_id,choose(1,2),xx,yy);
 	}
-
-	// remove isolated void cells
-	for (var _y = 1; _y < height_-1; _y++) {
-		for (var _x = 1; _x < width_-1; _x++) {
-			if (grid_[# _x, _y] != FLOOR) {
-				var _north_tile = grid_[# _x, _y-1] == VOID;
-				var _west_tile = grid_[# _x-1, _y] == VOID;
-				var _east_tile = grid_[# _x+1, _y] == VOID;
-				var _south_tile = grid_[# _x, _y+1] == VOID;
-		
-				var _tile_index = NORTH*_north_tile + WEST*_west_tile + EAST*_east_tile + SOUTH*_south_tile + 1;
-				if (_tile_index == 1) {
-					grid_[# _x, _y] = FLOOR;
+	
+	spawn_player();
+	
+	//generate lakes
+	repeat (irandom_range(5,10)) generate_lake();
+	
+	//populate the world
+	var _xx = 2; repeat(width_-3){
+		var _yy = 2; repeat(height_-3){
+			if (grid_[# _xx,_yy] == FLOOR){
+				var _place_x = _xx * CELL_SIZE + 16;
+				var _place_y = _yy * CELL_SIZE + 16;
+				if (place_free(_place_x,_place_y) and irandom(_place_object_odds) == _place_object_odds) {
+					var _inst = instance_create_layer(_place_x,_place_y,"Instances",obj_scenery_item);
+					with (_inst){
+						event_perform(ev_other,ev_user0);
+					}
 				}
 			}
+			_yy++;
 		}
-	}
-
-	//generate lakes
-	repeat(irandom_range(5,10)){generate_lake();}
-
-	//have scenery objects update their states according to cell position
-	if (instance_exists(obj_scenery_item)) with(obj_scenery_item){
-		event_perform(ev_other,ev_user0);
+		_xx++;
 	}
 
 	update_tiles();
 
 	debug_log_add("Generated a cavern with Seed: " + string(global.seed) + "!");
-
-
+	
 }
