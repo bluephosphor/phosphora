@@ -88,12 +88,7 @@ function generate_cavern() {
 		return _tempgrid;
 	}
 	
-	repeat(_softness) {
-		//var _newgrid = 
-		grid_ = do_simulation_step(grid_);
-		//ds_grid_destroy(_newgrid);
-	}
-	
+	repeat(_softness) grid_ = do_simulation_step(grid_);
 	
 	//pebble tiles
 	repeat(room_width div 2){
@@ -135,6 +130,5 @@ function generate_cavern() {
 
 	update_tiles();
 
-	debug_log_add("Generated a cavern with Seed: " + string(global.seed) + "!");
-	
+	debug_log_add("Generated a cavern with Seed: " + string(global.seed) + "!");	
 }
