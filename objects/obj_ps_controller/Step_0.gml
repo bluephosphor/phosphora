@@ -5,8 +5,10 @@ switch(spelltype){
 		if (light_inst == -1){
 			light_inst = instance_create_layer(x,y,layer,mc_lightsource);
 			with (light_inst){
+				state = light.flash;
 				follow = obj_player;
 				light_strength = 0;
+				light_size = 7;
 			}
 		}
 		if (cast){

@@ -6,7 +6,8 @@ switch(state){
 		draw_strength = lerp(draw_strength,resting_strength,0.3);
 		break;
 	case light.flash:
-		draw_strength = light_strength;
+		if (draw_strength > light_strength) draw_strength = lerp(draw_strength,light_strength,0.2);
+		else draw_strength = light_strength;
 		break;
 	case light.fade:
 		draw_strength -= 0.03;
