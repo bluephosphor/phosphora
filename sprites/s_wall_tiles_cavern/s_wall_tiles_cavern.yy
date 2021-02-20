@@ -24,9 +24,9 @@
   "gridX": 32,
   "gridY": 32,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"376f7ac0-6270-45c1-8e22-a4db4b0849df","path":"sprites/s_wall_tiles_cavern/s_wall_tiles_cavern.yy",},"LayerId":null,"resourceVersion":"1.0","name":"composite","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"376f7ac0-6270-45c1-8e22-a4db4b0849df","path":"sprites/s_wall_tiles_cavern/s_wall_tiles_cavern.yy",},"LayerId":{"name":"2300b86a-7207-493e-98e6-ee68835f166a","path":"sprites/s_wall_tiles_cavern/s_wall_tiles_cavern.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"s_wall_tiles_cavern","path":"sprites/s_wall_tiles_cavern/s_wall_tiles_cavern.yy",},"resourceVersion":"1.0","name":"376f7ac0-6270-45c1-8e22-a4db4b0849df","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"0eef4c10-5be5-4425-8545-174e53a36f9a","path":"sprites/s_wall_tiles_cavern/s_wall_tiles_cavern.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"0eef4c10-5be5-4425-8545-174e53a36f9a","path":"sprites/s_wall_tiles_cavern/s_wall_tiles_cavern.yy",},"LayerId":{"name":"02223135-1578-4062-9a1e-6e34c1fa28ef","path":"sprites/s_wall_tiles_cavern/s_wall_tiles_cavern.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"s_wall_tiles_cavern","path":"sprites/s_wall_tiles_cavern/s_wall_tiles_cavern.yy",},"resourceVersion":"1.0","name":"0eef4c10-5be5-4425-8545-174e53a36f9a","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
     "spriteId": {"name":"s_wall_tiles_cavern","path":"sprites/s_wall_tiles_cavern/s_wall_tiles_cavern.yy",},
@@ -41,10 +41,10 @@
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
       {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
-            {"id":"5700d120-c823-47a0-a8dc-021ddc388d82","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"376f7ac0-6270-45c1-8e22-a4db4b0849df","path":"sprites/s_wall_tiles_cavern/s_wall_tiles_cavern.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"d5bd813b-dc74-4269-a4cb-5a458e12fd28","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"0eef4c10-5be5-4425-8545-174e53a36f9a","path":"sprites/s_wall_tiles_cavern/s_wall_tiles_cavern.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
           ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"modifiers":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack",},
     ],
-    "visibleRange": {"x":0.0,"y":0.0,},
+    "visibleRange": null,
     "lockOrigin": false,
     "showBackdrop": true,
     "showBackdropImage": false,
@@ -65,7 +65,7 @@
     "resourceType": "GMSequence",
   },
   "layers": [
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"Layer 1","resourceVersion":"1.0","name":"2300b86a-7207-493e-98e6-ee68835f166a","tags":[],"resourceType":"GMImageLayer",},
+    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"02223135-1578-4062-9a1e-6e34c1fa28ef","tags":[],"resourceType":"GMImageLayer",},
   ],
   "parent": {
     "name": "tiles",
