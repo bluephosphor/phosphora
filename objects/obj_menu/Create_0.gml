@@ -82,6 +82,7 @@ pages = [ds_menu_main,ds_menu_info,ds_settings,ds_menu_audio,ds_menu_accessibili
 
 var i = 0, array_len = array_length(pages);
 repeat(array_len){
+	ds_collector_add(pages[i]);
 	menu_option[i] = 0;
 	i++;
 }

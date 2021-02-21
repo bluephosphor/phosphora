@@ -1,20 +1,24 @@
+//these should always return a bool. true if the item has been consumed, false otherwise.
+
 function cast_spell() {
-	var consumed_item = false;
-	var num = selected_item;
+	var _consumed_item = false;
+	var _num = selected_item;
+	
 	if (instance_exists(obj_ps_controller)) {
 		with (obj_ps_controller){
-			if (spelltype == num) cast = true;
-			
+			if (spelltype == _num) {
+				state = spell.cast;
+			}
 		}
-		exit;
+	} else with (instance_create_layer(0,0,"Instances",obj_ps_controller)){
+		spelltype = _num;
+		state = spell.init;
+		_consumed_item = true;
 	}
-
-	with instance_create_layer(0,0,"Instances",obj_ps_controller){
-		spelltype = num;
-	}
+	
 	obj_player.spin_cooldown = 5;
 	gamestate = INGAME;
-	return consumed_item;
+	return _consumed_item;
 }
 
 function item_inst_create() {

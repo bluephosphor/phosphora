@@ -5,13 +5,14 @@ event_inherited();
 #macro FIREBALL_LAUNCH 2
 
 state = FIREBALL_DORMANT;
+my_controller = noone;
 
 follow = obj_player;
 target = noone;
 
 frequency = 0.05;
 amplitude = sprite_get_width(s_player) / 2;
-timer = 0;
+time = 0;
 
 x_prev = x;
 

@@ -29,7 +29,7 @@ function generate_dungeon() {
 
 
 	// Choose the direction change odds
-	var _direction_change_odds = 3;
+	var _direction_change_countdown = 10;
 
 	// Generate the level
 	repeat (_steps) {
@@ -38,7 +38,8 @@ function generate_dungeon() {
 		var place_x = _controller_x * CELL_SIZE + 16;
 		var place_y = _controller_y * CELL_SIZE + 16;
 		// Rnadomize the direction, place objects
-		if (irandom(_direction_change_odds) == _direction_change_odds) {
+		_direction_change_countdown--;
+		if (_direction_change_countdown <= 0) {
 			_controller_direction = irandom(3);	
 			if (irandom(_place_object_odds) = _place_object_odds){
 				var chest = obj_chest;
@@ -47,6 +48,7 @@ function generate_dungeon() {
 					chests[chest_index++] = instance_create_layer(place_x,place_y,"Instances", chest);
 				}
 			}
+			_direction_change_countdown = irandom_range(5,20);
 		}
 	
 		// Move the controller

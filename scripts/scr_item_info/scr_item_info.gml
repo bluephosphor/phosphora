@@ -15,29 +15,30 @@ coin_data[# 0, coin.bronze] = 1;
 
 //init items enum
 enum item {
-	none		= 0,
-	r_potion	= 1,
-	b_potion	= 2, 
-	key			= 3,
-	iqueur		= 4,
-	note		= 5,
-	ears		= 6,
-	rift_a		= 7,
-	rift_b		= 8,
-	rift_c		= 9,
-	apple		= 10,
-	rubellite	= 11,
-	rod			= 12,
-	card		= 13,
-	ps_fire		= 14,
-	ps_thunder	= 15,
-	ps_gust		= 16,
-	diamond		= 17,
-	p_berries	= 18,
-	p_leaf		= 19,
-	p_shroom	= 20,
-	s_leaf		= 21,
-	height		= 22,
+	none,
+	r_potion,
+	b_potion, 
+	key,
+	iqueur,
+	note,
+	ears,
+	rift_a,
+	rift_b,
+	rift_c,
+	apple,
+	rubellite,
+	rod,
+	card,
+	ps_fire,
+	ps_thunder,
+	ps_gust,
+	diamond,
+	p_berries,
+	p_leaf,
+	p_shroom,
+	s_leaf,
+	k_shard,
+	height,
 }
 globalvar item_info;
 var _width = 6;
@@ -80,6 +81,7 @@ function define_items(){
 	item_info[# ITEM,z++] = "Phosphora Leaf";
 	item_info[# ITEM,z++] = "Phosphora Shroom";
 	item_info[# ITEM,z++] = "Shrubbie Leaf";
+	item_info[# ITEM,z++] = "Kunzite Shard";
 
 	//item info (descriptions)
 	z = 0;
@@ -104,7 +106,8 @@ function define_items(){
 	item_info[# INFO,z++] = "A forbidden delicacy from the Deep Grove. There isn't much information on these except for reports of... strange occurrences once consumed by non natives.";
 	item_info[# INFO,z++] = "A leaf from a Phosphora Tree. Many take these as souvenirs or as proof that they've seen the Sacred Deep Grove.";
 	item_info[# INFO,z++] = "These require special tools to be able to harvest safely from the Deep Grove. This requirement, along with the rarity of the grove's appearance, makes these a special find.";
-	item_info[# INFO,z++] = "Shrubbies sometimes drop these when defeated. In the right hands they can be harvested for their slowness effects."
+	item_info[# INFO,z++] = "Shrubbies sometimes drop these when defeated. In the right hands they can be harvested for their slowness effects.";
+	item_info[# INFO,z++] = "A piece of a Kunzite gem found in the cavenrs of Phosphora. A popular ingredient among apothecaries and blacksmiths.";
 
 	//item_script
 	item_info[# SCRIPT,item.r_potion]	= use_healingitem;

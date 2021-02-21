@@ -1,11 +1,11 @@
 event_inherited();
 switch (state){
     case FIREBALL_DORMANT:
-        timer ++;
+        time ++;
 	
-        x_offset = cos(timer*frequency) * amplitude;
+        x_offset = cos(time*frequency) * amplitude;
         z_offset = sign(x_prev - x_offset);
-        y_offset = cos(timer*frequency * 2) * amplitude / 4;
+        y_offset = cos(time*frequency * 2) * amplitude / 4;
         y_offset = y_offset * z_offset;
         y_offset -= 16;
         if (z_offset == -1) y_offset += 8;
@@ -18,7 +18,8 @@ switch (state){
         x_prev = x_offset;
         break;
     case FIREBALL_THROW:
-        if(instance_exists(target)){
+        depth = -y;
+		if(instance_exists(target)){
             var xvel = abs(xspeed);
             var yvel = abs(yspeed);
             if (xvel > yvel) {

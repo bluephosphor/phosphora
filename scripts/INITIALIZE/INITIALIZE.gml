@@ -50,6 +50,7 @@ function vec2(x,y) constructor{
 }
 
 function array_range(min,max){
+	//returns a new array filled with a range of numbers
 	var _arr = [];
 	var i = 0;
 	while(min < max) {
@@ -57,6 +58,20 @@ function array_range(min,max){
 		min++;
 	}
 	return _arr;
+}
+
+function array_pull(array,value){
+	//look for a specific value from an array, 
+	//return that value while removing it from the old array.
+	var _arr = [];
+	var _return_val = undefined;
+	var i = 0, j = 0; repeat(array_length(array)){
+		if (array[i] = value) _return_val = value;
+		else _arr[j++] = value;
+		i++;
+	}
+	array = _arr;
+	return _return_val;
 }
 
 //MACROS//

@@ -20,6 +20,14 @@ part_type_life		(global.p_gust,len,len);
 part_type_sprite	(global.p_gust,spr_ef_3,1,1,0);
 part_type_alpha1	(global.p_gust,0.2);
 
+global.p_wind = part_type_create();
+ds_collector_add(global.p_wind);
+
+var len = sprite_get_number(spr_ef_4) * 1.5;
+part_type_life		(global.p_wind,len,len);
+part_type_sprite	(global.p_wind,spr_ef_4,1,1,0);
+part_type_alpha1	(global.p_wind,0.7);
+
 global.p_water_ring = part_type_create();
 ds_collector_add(global.p_water_ring);
 

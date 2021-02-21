@@ -1,12 +1,14 @@
+enum spell {
+	init,
+	standby,
+	cast,
+	finish
+}
+
 spelltype = item.none;
 
-cast = false;
-
-fireball = ds_list_create();
-var i = 0; repeat(2){
-	fireball[| i] = noone;
-	i++;
-}
-timer = 50;
-spawncount = 0;
 light_inst = -1;
+state = spell.init;
+item_consume = false;
+
+show_debug_message("my instance_id is: " + string(id));
