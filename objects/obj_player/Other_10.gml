@@ -65,8 +65,9 @@ if (gamestate == INGAME){
 		} else if (spin_cooldown <= 0) {
 			//spin
 			alarm[0] = spin_duration;
+			part_system_depth(my_psystem,depth-1);
 			part_type_scale(global.p_gust,image_xscale,1);
-			part_particles_create(global.p_system,x,y,global.p_gust,1);
+			part_particles_create(my_psystem,x,y,global.p_gust,1);
 			sprite_index = s_player_spin;
 			playerstate = p_state.spin;
 		}

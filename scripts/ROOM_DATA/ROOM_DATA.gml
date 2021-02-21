@@ -54,9 +54,9 @@ room_data[# rm.chest_loot,		r_outside] = [
 	[item.apple,		75],
 	[item.r_potion,		50],
 	[item.b_potion,		30],
-	[item.note,			20],
+	[item.shroom,		20],
 	[item.rod,			10],
-	[item.card,			6],
+	[item.berries,		6],
 	[item.ps_gust,		5],
 	[item.ps_fire,		4],
 	[item.ps_thunder,	3],
@@ -83,12 +83,13 @@ room_data[# rm.tree_col_sp,		r_deep_grove] = [c_shadow,c_aqua];
 	        //chest loot table//
 //--Item----------------Chance(in percent)//
 room_data[# rm.chest_loot,		r_deep_grove] = [
-	[item.note,			8],
+	[item.berries,		8],
 	[item.p_leaf,		7],
 	[item.p_berries,	5],
 	[item.p_shroom,		3],
-	[item.r_potion,		2],
-	[item.b_potion,		1],
+	[item.r_potion,		3],
+	[item.b_potion,		3],
+	[item.note,			1],
 	[item.rubellite,	0.05],
 ];
 //----------------------------------------DUNGEON---------------------------------------------------//
@@ -109,11 +110,11 @@ room_data[# rm.tree_overcast,	r_dungeon] = false;
 room_data[# rm.chest_loot,		r_dungeon] = [
 	[item.r_potion,		75],
 	[item.b_potion,		75],
-	[item.note,			40],
 	[item.ps_gust,		40],
 	[item.ps_fire,		30],
 	[item.ps_thunder,	20],
 	[item.diamond,		10],
+	[item.note,			2],
 	[item.ears,			1],
 	[item.iqueur,		0.50],
 	[item.rubellite,	0.05],
@@ -164,15 +165,15 @@ room_data[# rm.chest_loot,		r_csv_test] = [
 	    //special loot table//
 //--Item----------------Chance(in percent)//
 room_data[# rm.special_loot,	r_csv_test] = [
-	[item.diamond,		75],
+	[item.diamond,		50],
 	[item.iqueur,		50],
-	[item.rubellite,	25],
+	[item.rubellite,	0.1],
 ];
 
 //----------------------------------------CAVERN--------------------------------------------------//
 room_data[# rm.name,			r_cavern]	= "cavern";
 room_data[# rm.script,			r_cavern]	= generate_cavern;
-room_data[# rm.mob_cap,			r_cavern]	= 8;
+room_data[# rm.mob_cap,			r_cavern]	= 16;
 room_data[# rm.mob_types,		r_cavern]	= [mob.fish,mob.minky];
 room_data[# rm.bgm,				r_cavern]	= snd_forest_night;
 room_data[# rm.draw_daylight,	r_cavern]	= false;
@@ -187,14 +188,17 @@ room_data[# rm.tree_overcast,	r_cavern]	= false;
 	        //chest loot table//
 //--Item----------------Chance(in percent)//
 room_data[# rm.chest_loot,		r_cavern] = [
-	[item.apple,		50],
 	[item.r_potion,		30],
-	[item.note,			25],
+	[item.b_potion,		20],
 	[item.rod,			10],
+	[item.apple,		7],
+	[item.c_shroom,		6],
 	[item.ps_gust,		5],
 	[item.ps_fire,		10],
 	[item.ps_thunder,	3],
+	[item.note,			2],
 	[item.ears,			1],
+	[item.k_shard,		1],
 	[item.rubellite,	0.05],
 ];
 

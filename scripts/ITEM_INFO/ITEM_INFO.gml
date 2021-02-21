@@ -38,6 +38,9 @@ enum item {
 	p_shroom,
 	s_leaf,
 	k_shard,
+	berries,
+	shroom,
+	c_shroom,
 	height,
 }
 globalvar item_info;
@@ -77,11 +80,14 @@ function define_items(){
 	item_info[# ITEM,z++] = "PS Thunder";
 	item_info[# ITEM,z++] = "PS Gust";
 	item_info[# ITEM,z++] = "Diamond";
-	item_info[# ITEM,z++] = "Phosphora Berries";
+	item_info[# ITEM,z++] = "Phosphoran Raniers";
 	item_info[# ITEM,z++] = "Phosphora Leaf";
-	item_info[# ITEM,z++] = "Phosphora Shroom";
+	item_info[# ITEM,z++] = "Glowshroom - Cyan";
 	item_info[# ITEM,z++] = "Shrubbie Leaf";
 	item_info[# ITEM,z++] = "Kunzite Shard";
+	item_info[# ITEM,z++] = "Cherries";
+	item_info[# ITEM,z++] = "Mushroom";
+	item_info[# ITEM,z++] = "Glowshroom - Magenta";
 
 	//item info (descriptions)
 	z = 0;
@@ -91,7 +97,7 @@ function define_items(){
 	item_info[# INFO,z++] = "A brightly colored key. It glows with a fantastical light. Will open regular doors once.";
 	item_info[# INFO,z++] = "A strange vile containing an unknown essence. Consumption is NOT recommended";
 	item_info[# INFO,z++] = "A piece of parchment with a message from unknown origin. If you read it, it will dissapear.";
-	item_info[# INFO,z++] = "These don't really have a use save for a very modest defense buff. Can you even be damaged yet? Anyways they're really cute.";
+	item_info[# INFO,z++] = "I mean they're cute.";
 	item_info[# INFO,z++] = "You need this to continue.";
 	item_info[# INFO,z++] = "This is important... Better make room for it.";
 	item_info[# INFO,z++] = "You were looking for this.";
@@ -103,11 +109,14 @@ function define_items(){
 	item_info[# INFO,z++] = "A thunderous Pocket Spell! Cast to strike up to 3 enemies within range with lightning!";
 	item_info[# INFO,z++] = "A windy Pocket Spell! Cast to summon a tornado in the direction you're facing. The ability stores in your Spin Attack when item is used.";
 	item_info[# INFO,z++] = "A treasure from dungeons that could be worth a pretty penny if sold!";
-	item_info[# INFO,z++] = "A forbidden delicacy from the Deep Grove. There isn't much information on these except for reports of... strange occurrences once consumed by non natives.";
+	item_info[# INFO,z++] = "A forbidden delicacy from the Deep Grove. Not much is known about their effects. It's rumored that these are a key ingredient to Forbidden Iqueur.";
 	item_info[# INFO,z++] = "A leaf from a Phosphora Tree. Many take these as souvenirs or as proof that they've seen the Sacred Deep Grove.";
-	item_info[# INFO,z++] = "These require special tools to be able to harvest safely from the Deep Grove. This requirement, along with the rarity of the grove's appearance, makes these a special find.";
+	item_info[# INFO,z++] = "The Phosphoran Cèpe is a rare treat. Harvesting these from the Sacred Grove, while maintaining the bioluminescence, is a skill that not many possess.";
 	item_info[# INFO,z++] = "Shrubbies sometimes drop these when defeated. In the right hands they can be harvested for their slowness effects.";
-	item_info[# INFO,z++] = "A piece of a Kunzite gem found in the cavenrs of Phosphora. A popular ingredient among apothecaries and blacksmiths.";
+	item_info[# INFO,z++] = "A piece of a Kunzite gem found in the Phosphoran Caverns. A popular ingredient among apothecaries and blacksmiths.";
+	item_info[# INFO,z++] = "Sweet and tart! These wild Bings are thought to offer a strength bost to those who snack on them.";
+	item_info[# INFO,z++] = "These wild Porcinos are a wildly popular cooking and brewing ingredient among the Sprites of the forest.";
+	item_info[# INFO,z++] = "Borowik Caverna. This variety of glowshroom is easier to harvest than others, making it a popular choice for home decor.";
 
 	//item_script
 	item_info[# SCRIPT,item.r_potion]	= use_healingitem;

@@ -97,8 +97,8 @@ if (_spin){
 //parts
 var xx = x + irandom_range(-16,16); 
 var yy = y + irandom_range(-32,8);
-part_particles_create(global.p_system,xx,yy,global.p_spinpixel,1);
+part_particles_create(my_psystem,xx,yy,global.p_spinpixel,1);
 
 if (in_cell == WATER){ 
-	if ((alarm[0] mod 4) == 0) part_particles_create(global.p_system,x,y,global.p_water_ring,1);
+	if ((alarm[0] mod 4) == 0) part_particles_create(my_psystem,x,y,global.p_water_ring,1);
 }

@@ -6,7 +6,7 @@
     "path": "folders/Scripts/declarations.yy",
   },
   "resourceVersion": "1.0",
-  "name": "scr_room_data",
+  "name": "ROOM_DATA",
   "tags": [],
   "resourceType": "GMScript",
 }

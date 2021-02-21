@@ -3,6 +3,8 @@ event_inherited();
 mob_id = mob.player;
 hp = player_health;
 
+my_psystem = part_system_create();
+
 xspeed = 0;
 yspeed = 0;
 
@@ -25,7 +27,6 @@ interact_range = 20;
 
 spin_duration = room_speed / 2;
 spin_cooldown = 0;
-spin_speed = 4;
 spin_accel = .2;
 instance_create_layer(x, y, "Instances", obj_camera);
 
