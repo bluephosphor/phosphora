@@ -30,6 +30,7 @@
     {"isDnD":false,"eventNum":0,"eventType":2,"collisionObjectId":null,"parent":{"name":"obj_mob_boss1","path":"objects/obj_mob_boss1/obj_mob_boss1.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
     {"isDnD":false,"eventNum":0,"eventType":8,"collisionObjectId":null,"parent":{"name":"obj_mob_boss1","path":"objects/obj_mob_boss1/obj_mob_boss1.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
     {"isDnD":false,"eventNum":15,"eventType":7,"collisionObjectId":null,"parent":{"name":"obj_mob_boss1","path":"objects/obj_mob_boss1/obj_mob_boss1.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":9,"eventType":2,"collisionObjectId":null,"parent":{"name":"obj_mob_boss1","path":"objects/obj_mob_boss1/obj_mob_boss1.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
   ],
   "properties": [],
   "overriddenProperties": [],

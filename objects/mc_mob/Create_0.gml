@@ -98,13 +98,11 @@ function check_death(){
 	}
 }
 
-function pathfind_init(target_x,target_y){
+function pathfind_init(path,target_x,target_y){
 	mp_grid_path(path_grid,path,x,y,target_x,target_y,true);
 	var _array = [];
 	var _path_num = path_get_number(path);
-	var _path_i = 0;
 	var i = 0; repeat(_path_num){
-		_path_i = (1/_path_num) * i;
 		_array[i] = new vec2(
 			path_get_point_x(path,i),
 			path_get_point_y(path,i),

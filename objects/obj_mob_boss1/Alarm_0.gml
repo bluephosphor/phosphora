@@ -21,6 +21,9 @@ switch (mystate){
 }
 
 
+path_array = [];
+curr_node = 0;
+pathfinding = false;
 image_blend = c_white;
 xmove = 0;
 ymove = 0;

@@ -13,3 +13,5 @@ draw_sprite_ext(
 if (!global.debug) exit;
 
 if (hitbox_active) draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,false);
+draw_path(path,x,y,true);
+pathfind_draw_points(path_array);

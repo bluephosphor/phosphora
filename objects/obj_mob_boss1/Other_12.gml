@@ -5,6 +5,7 @@
 	1 = approaching
 	2 = attack
 	3 = jump
+	4 = approaching(pathfind)
 */
 
 block_override = (obj_player.y < y);
@@ -37,13 +38,34 @@ switch(substate){
 	case 1: //approaching////////////////////////////////////////////////////////////////////////////
 		if (targeted == noone) substate = 0;
 		
-		var _tx = targeted.x;
-		var _ty = targeted.y - detection_radius;
+		if (pathfinding){
+			
+			var _tx = path_array[curr_node].x;
+			var _ty = path_array[curr_node].y;
+			
+			var _dir = point_direction(x,y,_tx,_ty);
+			var _dist = point_distance(x,y,_tx,_ty);
 		
-		var _dir = point_direction(x,y,_tx,_ty);
-		var _dist = point_distance(x,y,_tx,_ty);
+			var _approach_speed = max_speed;
+			
+			if (_dist < 8){
+				var _len = array_length(path_array);
+				curr_node++;
+				if (curr_node >= _len) {
+					path_array = [];
+					curr_node = 0;
+					pathfinding = false;
+				}
+			}
+		} else {
+			var _tx = targeted.x;
+			var _ty = targeted.y - detection_radius;
 		
-		var _approach_speed = clamp(3 * _dist / (global.view_height div 2),0.5,5);
+			var _dir = point_direction(x,y,_tx,_ty);
+			var _dist = point_distance(x,y,_tx,_ty);
+		
+			var _approach_speed = clamp(3 * _dist / (global.view_height div 2),0.5,5);
+		}
 		
 		xspeed = approach(xspeed,lengthdir_x(_approach_speed,_dir),acceleration);
 		yspeed = approach(yspeed,lengthdir_y(_approach_speed,_dir),acceleration);
@@ -54,6 +76,9 @@ switch(substate){
 			yspeed = approach(yspeed,-_pys,0.5);
 			anim_speed = 6 - clamp(_pys,0,5);
 			if (yspeed < -3){
+				path_array = [];
+				curr_node = 0;
+				pathfinding = false;
 				frame_index = 0;
 				image_index = jump_frames[0] - 1;
 				current_anim = jump_frames;
@@ -70,13 +95,22 @@ switch(substate){
 		if (attack_cooldown > 0){
 			attack_cooldown--;
 		} else if (collision_rectangle(x-(detection_radius/2),y,x+(detection_radius/2),y+detection_radius,obj_player,false,false)){
+			path_array = [];
+			curr_node = 0;
+			pathfinding = false;
 			anim_speed = 5;
 			current_anim = charge_frames[0];
 			charge = irandom_range(15,30);
 			yspeed = (obj_player.y_input == -1) ? -4 : 2;
 			substate = 2;
 		}
-		move_and_collide();
+		on_wall = move_and_collide();
+		
+		if (on_wall and !pathfinding and alarm_get(9) == -1) {
+			last_grid_x = grid_x;
+			last_grid_y = grid_y;
+			alarm[9] = 30;
+		}
 		break;
 	case 2: //attack////////////////////////////////////////////////////////////////////////////
 		

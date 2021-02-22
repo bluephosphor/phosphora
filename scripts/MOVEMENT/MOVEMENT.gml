@@ -37,6 +37,7 @@ function move_commit(){
 }
 
 function move_and_collide() {
+	var _collided = false;
 	// Move horizontally
 	x += xspeed;
 
@@ -46,6 +47,7 @@ function move_and_collide() {
 			x = bbox_right&~(CELL_SIZE-1);
 			x -= bbox_right-x;
 			xspeed = 0;
+			_collided = true;
 		}
 	} else if xspeed < 0 {
 		// Left collisions
@@ -53,6 +55,7 @@ function move_and_collide() {
 			x = bbox_left&~(CELL_SIZE-1);
 			x += CELL_SIZE+x-bbox_left;
 			xspeed = 0;
+			_collided = true;
 		}
 	}
 
@@ -66,6 +69,7 @@ function move_and_collide() {
 			y = bbox_bottom&~(CELL_SIZE-1);
 			y -= bbox_bottom-y;
 			yspeed = 0;
+			_collided = true;
 		}
 	} else if yspeed < 0 {
 		// Top collisions
@@ -73,8 +77,10 @@ function move_and_collide() {
 			y = bbox_top&~(CELL_SIZE-1);
 			y += CELL_SIZE+y-bbox_top;
 			yspeed = 0;
+			_collided = true;
 		}
 	}
+	return _collided;
 }
 
 function move_and_collide_inwater() {

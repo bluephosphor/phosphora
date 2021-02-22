@@ -37,6 +37,8 @@ attack_cooldown = 0;
 
 path = path_add();
 path_array = [];
+pathfinding = false;
+curr_node = 0;
 
 my_light = instance_create_layer(x,y,layer,mc_lightsource);
 with (my_light){
