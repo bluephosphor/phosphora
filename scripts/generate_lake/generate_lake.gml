@@ -1,5 +1,3 @@
-///@param x
-///@param y
 function generate_lake() {
 
 	var flag = false; do {
@@ -17,7 +15,7 @@ function generate_lake() {
 			}
 	} until (flag == true);
 
-	var steps = irandom(20);
+	var steps = (argument_count > 0) ? argument[0] : irandom(20);
 	var i = 0, xo = 0, yo = 0; repeat(steps){
 		var change_x = spawn_x + xo; 
 		var change_y = spawn_y + yo;

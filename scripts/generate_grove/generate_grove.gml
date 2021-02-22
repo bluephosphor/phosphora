@@ -112,7 +112,7 @@ function generate_grove() {
 	}
 
 	//generate lakes
-	repeat(irandom(3)){generate_lake();}
+	repeat(irandom_range(3,6)) generate_lake(irandom_range(30,50));
 
 	//have scenery objects update their states according to cell position
 	if (instance_exists(obj_scenery_item)) with(obj_scenery_item){
