@@ -14,18 +14,17 @@ function generate_cavern() {
 	var _place_object_odds = 50;
 	
 	//perameters
-	var _wall_percentage = 45;
 	var _softness = 4;
-	_birth_limit = 4;
-	_death_limit = 3;
 	
 	//generate some noise
-	var _xx = 2; repeat(width_-3){
-		var _yy = 2; repeat(height_-3){
-			if (irandom(100) < _wall_percentage) grid_[# _xx,_yy] = FLOOR;
-			_yy++;
+	noise_generate = function(grid,wall_percentage){
+		var _xx = 2; repeat(width_-3){
+			var _yy = 2; repeat(height_-3){
+				if (irandom(100) < wall_percentage) grid[# _xx,_yy] = FLOOR;
+				_yy++;
+			}
+			_xx++;
 		}
-		_xx++;
 	}
 	
 	//Returns the number of cells in a ring around (x,y) that are floors.
@@ -53,7 +52,7 @@ function generate_cavern() {
 	}
 	
 	//soften the noise using cellular automata
-	do_simulation_step = function(grid){
+	do_simulation_step = function(grid,birth_limit,death_limit){
 		var _tempgrid = ds_grid_create(width_,height_);
 		var _xx,_yy;
 		
@@ -64,18 +63,15 @@ function generate_cavern() {
 		        //The new value is based on our simulation rules
 		        //First, if a cell is a floor but has too few neighbours, kill it.
 		        if(grid[# _xx,_yy] == FLOOR){
-		            if(nbs < _death_limit){
+		            if(nbs < death_limit){
 		                _tempgrid[# _xx,_yy] = VOID;
-		            }
-		            else{
+		            } else {
 		                _tempgrid[# _xx,_yy] = FLOOR;
 		            }
-		        } //Otherwise, if the cell is dead now, check if it has the right number of neighbours to be 'born'
-		        else{
-		            if(nbs > _birth_limit){
+		        } else { //Otherwise, if the cell is dead now, check if it has the right number of neighbours to be 'born'
+		            if(nbs > birth_limit){
 		                _tempgrid[# _xx,_yy] = FLOOR;
-		            }
-		            else{
+		            } else {
 		                _tempgrid[# _xx,_yy] = VOID;
 		            }
 		        }
@@ -84,11 +80,11 @@ function generate_cavern() {
 			_xx++;
 		}
 		ds_grid_destroy(grid);
-		show_debug_message("did a step")
 		return _tempgrid;
 	}
 	
-	repeat(_softness) grid_ = do_simulation_step(grid_);
+	noise_generate(grid_,45);
+	repeat(_softness) grid_ = do_simulation_step(grid_,4,3);
 	
 	//pebble tiles
 	repeat(room_width div 2){
@@ -100,7 +96,7 @@ function generate_cavern() {
 	spawn_player();
 	
 	//generate lakes
-	repeat (irandom_range(5,10)) generate_lake();
+	repeat (irandom_range(5,15)) generate_lake(irandom_range(5,50));
 	
 	//populate the world
 	var _chest_threshhold = 3;

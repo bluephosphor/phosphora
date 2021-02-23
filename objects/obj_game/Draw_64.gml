@@ -10,6 +10,8 @@ var i = 0; repeat(array_length(affected)){
 
 draw_set_font(font_main);
 
+if (maze!= noone) maze.draw();
+
 //room transition fade
 if (black_alpha > 0){
 	var c = c_shadow;

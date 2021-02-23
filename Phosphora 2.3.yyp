@@ -70,6 +70,7 @@
     {"id":{"name":"spr_ghost_lantern","path":"sprites/spr_ghost_lantern/spr_ghost_lantern.yy",},"order":7,},
     {"id":{"name":"spr_target","path":"sprites/spr_target/spr_target.yy",},"order":8,},
     {"id":{"name":"t_walls","path":"tilesets/t_walls/t_walls.yy",},"order":0,},
+    {"id":{"name":"MAZE","path":"scripts/MAZE/MAZE.yy",},"order":8,},
     {"id":{"name":"t_walls2","path":"tilesets/t_walls2/t_walls2.yy",},"order":1,},
     {"id":{"name":"t_water_cavern","path":"tilesets/t_water_cavern/t_water_cavern.yy",},"order":2,},
     {"id":{"name":"t_walls3","path":"tilesets/t_walls3/t_walls3.yy",},"order":3,},

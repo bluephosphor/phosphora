@@ -41,6 +41,9 @@ enum item {
 	berries,
 	shroom,
 	c_shroom,
+	pickaxe,
+	hoe,
+	sword,
 	height,
 }
 globalvar item_info;
@@ -88,6 +91,9 @@ function define_items(){
 	item_info[# ITEM,z++] = "Cherries";
 	item_info[# ITEM,z++] = "Mushroom";
 	item_info[# ITEM,z++] = "Glowshroom - Magenta";
+	item_info[# ITEM,z++] = "Pickaxe";
+	item_info[# ITEM,z++] = "Hoe";
+	item_info[# ITEM,z++] = "Sword";
 
 	//item info (descriptions)
 	z = 0;
@@ -117,6 +123,9 @@ function define_items(){
 	item_info[# INFO,z++] = "Sweet and tart! These wild Bings are thought to offer a strength bost to those who snack on them.";
 	item_info[# INFO,z++] = "These wild Porcinos are a wildly popular cooking and brewing ingredient among the Sprites of the forest.";
 	item_info[# INFO,z++] = "Borowik Caverna. This variety of glowshroom is easier to harvest than others, making it a popular choice for home decor.";
+	item_info[# INFO,z++] = "Can be used to dig around in caves.";
+	item_info[# INFO,z++] = "Yee haw.";
+	item_info[# INFO,z++] = "Equip this to gain a simple melee attack!";
 
 	//item_script
 	item_info[# SCRIPT,item.r_potion]	= use_healingitem;

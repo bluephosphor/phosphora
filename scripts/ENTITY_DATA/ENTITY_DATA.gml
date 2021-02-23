@@ -34,8 +34,6 @@ enum mob{
 	enum_length,
 }
 
-enum dir {up,right,down,left}
-
 enum mobstate {passive,alert,aggro,hitstun,interact,block}
 
 
