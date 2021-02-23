@@ -95,7 +95,7 @@ room_data[# rm.chest_loot,		r_deep_grove] = [
 //----------------------------------------DUNGEON---------------------------------------------------//
 
 room_data[# rm.name,			r_dungeon] = "dungeon";
-room_data[# rm.script,			r_dungeon] = generate_dungeon;
+room_data[# rm.script,			r_dungeon] = generate_from_maze;
 room_data[# rm.mob_cap,			r_dungeon] = 7;
 room_data[# rm.mob_types,		r_dungeon] = [mob.void_demon,mob.minky,mob.chest_demon];
 room_data[# rm.bgm,				r_dungeon] = snd_dungeon1;

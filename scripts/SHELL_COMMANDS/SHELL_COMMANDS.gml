@@ -204,3 +204,19 @@ function sh_effect(args){
 	}
 	return "did not find effect named: " + args[1] + "...";
 }
+
+function sh_freecam(args){
+	with (obj_camera){
+		switch(state){
+			case cam.free:
+				state = laststate;
+				laststate = -1;
+				break;
+			default:
+				laststate = state;
+				state = cam.free;
+				break;
+		}
+	}
+	return "freecam toggled";
+}
