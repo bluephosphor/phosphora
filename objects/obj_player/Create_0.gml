@@ -28,6 +28,40 @@ interact_range = 20;
 spin_duration = room_speed / 2;
 spin_cooldown = 0;
 spin_accel = .2;
+spin_trails = ds_list_create();
+
+trail = function() constructor {
+	finished = false;
+	index = 0;
+	list  = [];
+	alpha = 0.5;
+	update = function() {
+		alpha -= 0.007;
+		if (!finished){
+			list[index++] = new vec2(player_inst.x,player_inst.y);
+			if (playerstate != p_state.spin) finished = true;
+		}
+	}
+	draw  = function(){
+		var j = 0; repeat(array_length(list)) {
+			if (j > 0) {
+				draw_set_alpha(alpha);
+				draw_line_width_color(
+					list[j].x,
+					list[j].y,
+					list[j-1].x,
+					list[j-1].y,
+					2,
+					c_shadow,
+					c_shadow,
+				);
+				draw_set_alpha(1);
+			}
+			j++;
+		}
+	}
+}
+
 instance_create_layer(x, y, "Instances", obj_camera);
 
 init_target();

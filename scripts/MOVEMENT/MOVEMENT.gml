@@ -1,15 +1,12 @@
 ///arg object
 ///arg grid
 ///arg celltype
-function grid_place_meeting(argument0, argument1, argument2) {
-	var _object = argument0;
-	var _grid = argument1;
-	var _celltype = argument2;
+function grid_place_meeting(_object, _grid, _celltype) {
 
-	var _top_right = _grid[# (_object.bbox_right-1) div CELL_SIZE, _object.bbox_top div CELL_SIZE] == _celltype;
-	var _top_left = _grid[# _object.bbox_left div CELL_SIZE, _object.bbox_top div CELL_SIZE] == _celltype;
-	var _bottom_right = _grid[# (_object.bbox_right-1) div CELL_SIZE, (_object.bbox_bottom-1) div CELL_SIZE] == _celltype;
-	var _bottom_left = _grid[# _object.bbox_left div CELL_SIZE, (_object.bbox_bottom-1) div CELL_SIZE] == _celltype;
+	var _top_right		= _grid[# (_object.bbox_right-1) div CELL_SIZE,  _object.bbox_top div CELL_SIZE] == _celltype;
+	var _top_left		= _grid[#  _object.bbox_left	 div CELL_SIZE,  _object.bbox_top div CELL_SIZE] == _celltype;
+	var _bottom_right	= _grid[# (_object.bbox_right-1) div CELL_SIZE, (_object.bbox_bottom-1) div CELL_SIZE] == _celltype;
+	var _bottom_left	= _grid[#  _object.bbox_left	 div CELL_SIZE, (_object.bbox_bottom-1) div CELL_SIZE] == _celltype;
 
 	return _top_right || _top_left || _bottom_right || _bottom_left;
 }
@@ -18,11 +15,10 @@ function grid_collision_point(grid,celltype,x,y) {
 	 return (grid[# x div CELL_SIZE, y div CELL_SIZE] == celltype);
 }
 
-
 function move_commit(){
 	xspeed += xmove * acceleration;
 	yspeed += ymove * acceleration;
-	var _speed = point_distance(0, 0, xspeed, yspeed);
+	var _speed	   = point_distance (0, 0, xspeed, yspeed);
 	var _direction = point_direction(0, 0, xspeed, yspeed);
 	if (_speed > max_speed) {
 		xspeed = lengthdir_x(max_speed, _direction);

@@ -36,4 +36,14 @@ if (show_hp){
 
 player_check_collisions();
 
+var i = 0; repeat(ds_list_size(spin_trails)){
+	spin_trails[| i].update();
+	if (spin_trails[| i].alpha <= 0) {
+		delete spin_trails[| i];
+		ds_list_delete(spin_trails,i);
+		i--;
+	}
+	i++;
+}
+
 update_target();

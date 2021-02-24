@@ -198,20 +198,21 @@ function generate_from_maze() {
 	var _unit_length = 2;
 	var ww = maze.x_units * _unit_length + 1;
 	var hh = maze.y_units * _unit_length + 1;
-	room_width  = max(CELL_SIZE  * ww, global.view_width)  + CELL_SIZE * 2;
-	room_height = max(CELL_SIZE  * hh, global.view_height) + CELL_SIZE * 2;
+	room_width  = max(CELL_SIZE * ww, global.view_width)  + CELL_SIZE * 2;
+	room_height = max(CELL_SIZE * hh, global.view_height) + CELL_SIZE * 2;
 
 	// Set up the grid
 	globalvar grid_;
 	width_  = room_width  div CELL_SIZE;
 	height_ = room_height div CELL_SIZE;
-	grid_ = ds_grid_create(width_, height_);
+	grid_   = ds_grid_create(width_, height_);
 	ds_grid_clear(grid_,VOID);
 	ds_grid_set_region(grid_,1,1,width_-2,height_-2,FLOOR);
 
 	//init pathfinding grid
 	path_grid = mp_grid_create(0,0,width_,height_,CELL_SIZE,CELL_SIZE);
 
+	//build room from maze data
 	var gx = 0; repeat(maze.x_units){
 		var gy = 0; repeat(maze.y_units){
 		    maze.grid[gx][gy].map_cell(1,1);
@@ -223,7 +224,6 @@ function generate_from_maze() {
 	delete maze;
 	maze = -1;
 
-	if (!instance_exists(obj_player)) spawn_player();
-
+	spawn_player();
 	update_tiles();
 }

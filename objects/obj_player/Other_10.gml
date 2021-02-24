@@ -64,6 +64,7 @@ if (gamestate == INGAME){
 			}
 		} else if (spin_cooldown <= 0) {
 			//spin
+			ds_list_add(spin_trails,new trail());
 			alarm[0] = spin_duration;
 			part_system_depth(my_psystem,depth-1);
 			part_type_scale(global.p_gust,image_xscale,1);

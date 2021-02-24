@@ -71,7 +71,7 @@
     "backdropXOffset": 0.0,
     "backdropYOffset": 0.0,
     "xorigin": 16,
-    "yorigin": 28,
+    "yorigin": 27,
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"s_player","path":"sprites/s_player/s_player.yy",},
