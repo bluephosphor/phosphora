@@ -53,3 +53,52 @@ function calc_player_damage(argument0) {
 
 	return damage;
 }
+
+function apply_damage(inst,strength){
+	with (player_inst){
+		var break_out = false;
+		var attack_blocked = false;
+		switch(inst.tangibility_type){
+			case NEVER: break;
+			case PER_FRAME:
+				switch (inst.frame_type[inst.image_index]){
+					case frametype.attack:
+					case frametype.intangible:
+					break_out = true;
+					break;
+					case frametype.block: 
+					if (!inst.block_override) attack_blocked = true;
+					case frametype.vulnerable:
+				}
+				if (break_out) break;
+			case ALWAYS:
+				var _dist = point_distance(x,y,inst.x,inst.y);
+				var _dir  = point_direction(x,y,inst.x,inst.y);
+				var _force = new vec2(
+					lengthdir_x(_dist/3,_dir),
+					lengthdir_y(_dist/3,_dir),
+				);
+				with(inst){
+					if (mystate != mobstate.hitstun){
+						xspeed		= _force.x
+						yspeed		= _force.y;
+						alarm[0]		= (attack_blocked) ? 2 * strength : 5 * strength
+						alarm[10]		= 1;
+						if (attack_blocked) {
+							playerstate = p_state.normal;
+							hp_change	= "Parried!";
+							show_hp		= true;
+							alarm[1]	= room_speed;
+						} else hp      -= calc_mob_damage(strength,false);
+						current_anim	= (attack_blocked) ? block_frames   : hitstun_frames;
+						mystate			= (attack_blocked) ? mobstate.block : mobstate.hitstun;
+						image_blend		= (attack_blocked) ? c_green: c_red;
+						hitlag			= strength * 3;
+					}
+				}
+				hitlag = strength * 3;
+			
+				break;
+		}
+	}
+}

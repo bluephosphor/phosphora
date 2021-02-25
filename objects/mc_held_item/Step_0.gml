@@ -41,7 +41,24 @@ switch(item_index){
 		break;
 	case item.pickaxe:
 		if (using){
-			var _box = create_hitbox(x + (5 * facing),y-16, 10 * facing, 16);
+			var _box = create_hitbox(x + (5 * facing),y-16, 10 * facing, 16,3);
+			
+			var _point = _box.grid_collision(grid_,VOID);
+			if (is_struct(_point)) {
+				grid_[# _point.x div CELL_SIZE, _point.y div CELL_SIZE] = FLOOR;
+				screen_shake(10,3);
+				update_tiles();
+			}
+			
+			var _info = _box.instance_check(mc_mob);
+			if (is_struct(_info)){
+				var i = 0; repeat(_info.count){
+					apply_damage(_info.list[| i],_box.strength);
+					i++;
+				}
+				ds_list_destroy(_info.list);
+			}
+			
 			using = false;
 		}
 		break;

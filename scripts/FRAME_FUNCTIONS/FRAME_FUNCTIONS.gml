@@ -6,11 +6,13 @@ function fill_frametype(arr,type) {
 	}
 }
 
-function hitbox(x,y,width,height) constructor{
+function hitbox(x,y,width,height,strength) constructor{
 	self.x = x;
 	self.y = y;
 	self.width  = x+width;
 	self.height = y+height;
+	self.strength = strength;
+	
 	self.point_check = function(x,y){
 		return (
 			x > self.x     and
@@ -19,23 +21,47 @@ function hitbox(x,y,width,height) constructor{
 			y < self.height
 		);
 	}
+	
+	self.instance_check = function(inst){
+		var _list = ds_list_create();
+		var _num  = collision_rectangle_list(x,y,width,height,inst,false,false,_list,true);
+		
+		if (_num <= 0) return noone;
+		else return {
+			count: _num,
+			list:  _list
+		}
+	}
+	
 	self.grid_collision = function(_grid, _celltype){
+		
+		if (_grid[# (width-1) div CELL_SIZE,  y div CELL_SIZE] == _celltype){
+			return new vec2(width,y);
+		}
+		
+		if (_grid[# x div CELL_SIZE,  y div CELL_SIZE] == _celltype) {
+			return new vec2(x,y);
+		}
+		
+		if (_grid[# (width-1) div CELL_SIZE, (height-1) div CELL_SIZE] == _celltype){
+			return new vec2(width-1,height-1);
+		}
+		
+		if (_grid[# x div CELL_SIZE, (height) div CELL_SIZE] == _celltype){
+			return new vec2(x,height);
+		}
 
-		var _top_right		= _grid[# (width-1) div CELL_SIZE,  y div CELL_SIZE] == _celltype;
-		var _top_left		= _grid[#  x	    div CELL_SIZE,  y div CELL_SIZE] == _celltype;
-		var _bottom_right	= _grid[# (width-1) div CELL_SIZE, (height-1) div CELL_SIZE] == _celltype;
-		var _bottom_left	= _grid[#  x	    div CELL_SIZE, (height)   div CELL_SIZE] == _celltype;
-
-		return _top_right || _top_left || _bottom_right || _bottom_left;
+		return undefined;
 
 	}
+	
 	self.draw = function(color){
 		draw_rectangle_color(x,y,width,height,color,color,color,color,false);
 	}
 }
 
-function create_hitbox(x,y,width,height){
-	var _box = new hitbox(x,y,width,height);
+function create_hitbox(x,y,width,height,strength){
+	var _box = new hitbox(x,y,width,height,strength);
 	
 	array_push(hitboxes,_box);
 	return _box;
