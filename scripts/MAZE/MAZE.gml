@@ -124,20 +124,20 @@ function create_maze(_x_units,_y_units) {
 	remove_walls = function(a,b){
 		var _x = a.unit_x - b.unit_x;
 		if (_x == 1){
-			a.walls[dir.left] = false;
+			a.walls[dir.left]  = false;
 			b.walls[dir.right] = false;
 		} else if (_x == -1){
 			a.walls[dir.right] = false;
-			b.walls[dir.left] = false;
+			b.walls[dir.left]  = false;
 		}
 		
 		var _y = a.unit_y - b.unit_y;
 		if (_y == 1){
-			a.walls[dir.up] = false;
+			a.walls[dir.up]	  = false;
 			b.walls[dir.down] = false;
 		} else if (_y == -1){
 			a.walls[dir.down] = false;
-			b.walls[dir.up] = false;
+			b.walls[dir.up]   = false;
 		}
 	}
 	
@@ -150,6 +150,7 @@ function create_maze(_x_units,_y_units) {
 			_count++;
 			    //STEP 1
 			var _next = check_neighbors(current_cell);
+			
 			if (_next != undefined){
 				_next.visited = true;
 				//STEP 2
