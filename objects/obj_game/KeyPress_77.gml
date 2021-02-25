@@ -1,1 +1,0 @@
-maze = create_maze(32,32);

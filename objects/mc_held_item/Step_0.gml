@@ -35,10 +35,16 @@ switch(item_index){
 			lure_vsp  = -4;
 			lure_grav = 0.5;
 		}
-	break;
+		break;
 	case item.b_potion:
 		ghost_charm = true;
-	break;
+		break;
+	case item.pickaxe:
+		if (using){
+			var _box = create_hitbox(x + (5 * facing),y-16, 10 * facing, 16);
+			using = false;
+		}
+		break;
 	default: using = false; break;
 }
 

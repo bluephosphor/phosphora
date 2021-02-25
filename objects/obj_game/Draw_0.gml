@@ -13,3 +13,5 @@ if (_len > 0){
 	lines_to_draw = [];
 	draw_set_alpha(1);
 }
+
+draw_hitboxes();

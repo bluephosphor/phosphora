@@ -8,16 +8,16 @@ global.webmode = (!os_browser == browser_not_a_browser);
 //global vars
 globalvar playerstate, debug_log, cont_daycycle, cont_lighting, cont_audio, 
 			cont_menu, cont_inv, cont_weather, cont_textbox, cont_cutscene,
-			shell, input_buffer;
+			shell, input_buffer, hitboxes;
 
 global.debug		= false;
 global.rift_count	= 0;
 global.fullscreen	= false;
-global.playmusic	= false;
+global.playmusic	= true;
 global.time_pause	= false;
 global.pause		= false;
-global.draw_outline = true;
-global.disable_outline = true;
+global.draw_outline		= true;
+global.disable_outline  = true;
 global.menu_color	= merge_color(c_white,c_blue,0.3);
 global.show_grid	= false;
 global.load_map		= false;
@@ -41,6 +41,7 @@ enum p_state {
 }
 
 playerstate = p_state.normal;
+hitboxes = [];
 
 room_transition = false;
 black_alpha = 1;
