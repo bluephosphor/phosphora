@@ -179,7 +179,7 @@
     {"id":{"name":"script_execute_alt","path":"scripts/script_execute_alt/script_execute_alt.yy",},"order":18,},
     {"id":{"name":"spr_boss1","path":"sprites/spr_boss1/spr_boss1.yy",},"order":0,},
     {"id":{"name":"save_room_data","path":"scripts/save_room_data/save_room_data.yy",},"order":2,},
-    {"id":{"name":"ds_grid_rotate","path":"scripts/ds_grid_rotate/ds_grid_rotate.yy",},"order":19,},
+    {"id":{"name":"BORROWED","path":"scripts/BORROWED/BORROWED.yy",},"order":19,},
     {"id":{"name":"sh_outline","path":"shaders/sh_outline/sh_outline.yy",},"order":0,},
     {"id":{"name":"sh_remove_alpha","path":"shaders/sh_remove_alpha/sh_remove_alpha.yy",},"order":1,},
     {"id":{"name":"shd_scribble","path":"shaders/shd_scribble/shd_scribble.yy",},"order":0,},
@@ -321,6 +321,7 @@
     {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"font_main.yy","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"ROOM5.csv","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"LEVEL.csv","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/text","resourceVersion":"1.0","name":"0.csv","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
     "IDEVersion": "2.3.1.542",

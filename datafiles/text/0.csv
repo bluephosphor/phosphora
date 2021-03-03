@@ -1,0 +1,41 @@
+﻿type,text,speaker,portrait,sound,function,ID
+dialogue,My child...,char.spirit,,,,0
+dialogue,Why are you weary?,char.spirit,,,,0
+dialogue,Do you not enjoy this time we spend together?,char.spirit,,,,0
+dialogue,I have given you everything you could have wanted.,char.spirit,,,,0
+dialogue,Shelter.,char.spirit,,,,0
+dialogue,Safety.,char.spirit,,,,0
+dialogue,Love.,char.spirit,,,,0
+dialogue,Yet you still wish to leave this paradise.,char.spirit,,,,0
+dialogue,You wish to throw everything away and for what?,char.spirit,,,,0
+dialogue,Freedom?,char.spirit,,,,0
+dialogue,To discover what is beyond? What is unknown?,char.spirit,,,,0
+dialogue,My child...,char.spirit,,,,0
+dialogue,Let me tell you... You will find no salvation beyond these trees.,char.spirit,,,,0
+dialogue,This place is secluded from the rest of the world for good reason.,char.spirit,,,,0
+dialogue,I only wanted what was best for you.,char.spirit,,,,0
+question,"Tell me, child, do you still want to try?",char.spirit,,,,0
+choice,Yes.,,,,,1
+choice,No.,,,,,2
+dialogue,Very well. ,char.spirit,,,,1
+dialogue,I suppose I can't stop you from trying.,char.spirit,,,,1
+dialogue,"However, I can certainly see to it that you do not succeed.",char.spirit,,,,1
+dialogue,You must understand… I can't have anyone thinking that escape is an option…,char.spirit,,,,1
+dialogue,It is for everyone's own good that I make an example of you.,char.spirit,,,,1
+dialogue,You've made it this far... So... Don't dissapoint me.,char.spirit,,,,1
+dialogue,"...",char.spirit,,,,2
+dialogue,"Then, why?",char.spirit,,,,2
+dialogue,Why go through all this trouble?,char.spirit,,,,2
+dialogue,I... can't understand,char.spirit,,,,2
+dialogue,Is this some sort of joke to you?,char.spirit,,,,2
+dialogue,Is this just… something you wanted to prove?,char.spirit,,,,2
+dialogue,"...",char.spirit,,,,2
+dialogue,No.,char.spirit,,,,2
+dialogue,"No, no no no no.",char.spirit,,,,2
+dialogue,This won't do at all.,char.spirit,,,,2
+dialogue,I'm sorry but I can't let you just walk away from this.,char.spirit,,,,2
+dialogue,"There's... an image to maintain, I'm sure you understand.",char.spirit,,,,2
+dialogue,"I'll just send you back, the fast way, one last time, and then we can forget about all of this and get on with our lives.",char.spirit,,,,2
+dialogue,"...",char.spirit,,,,2
+dialogue,"Well, come on, let's get this over with.",char.spirit,,,,2
+,,,,,,

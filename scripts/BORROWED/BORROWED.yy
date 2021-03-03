@@ -6,7 +6,7 @@
     "path": "folders/Scripts.yy",
   },
   "resourceVersion": "1.0",
-  "name": "ds_grid_rotate",
+  "name": "BORROWED",
   "tags": [],
   "resourceType": "GMScript",
 }
