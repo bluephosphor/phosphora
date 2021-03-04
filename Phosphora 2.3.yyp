@@ -321,6 +321,7 @@
     {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"font_main.yy","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"ROOM5.csv","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"LEVEL.csv","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/text","resourceVersion":"1.0","name":"0.~csv","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/text","resourceVersion":"1.0","name":"0.csv","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {

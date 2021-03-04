@@ -21,6 +21,8 @@ function generate_room_outside() {
 	var _place_tree_odds = 15;
 	var _max_exits = 3;
 	var _exit_count = 0;
+	
+	
 
 	//spawn the player
 	var _player_start_x = _controller_x * CELL_SIZE + CELL_SIZE/2;
@@ -124,7 +126,7 @@ function generate_room_outside() {
 	}
 
 	//generate lakes
-	repeat(irandom(5)){generate_lake();}
+	repeat(irandom(5)) generate_lake();
 
 	//have scenery objects update their states according to cell position
 	if (instance_exists(obj_scenery_item)) with(obj_scenery_item){

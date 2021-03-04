@@ -13,7 +13,7 @@ globalvar playerstate, debug_log, cont_daycycle, cont_lighting, cont_audio,
 global.debug		= false;
 global.rift_count	= 0;
 global.fullscreen	= false;
-global.playmusic	= true;
+global.playmusic	= false;
 global.time_pause	= false;
 global.pause		= false;
 global.draw_outline		= true;

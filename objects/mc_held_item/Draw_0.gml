@@ -28,7 +28,3 @@ switch(item_index){
 		draw_sprite_ext(spr_items,item_index,x+offset,y-16,facing,1,0,c_white,1);
 	break;
 }
-
-
-
-	
