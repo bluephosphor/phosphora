@@ -1,6 +1,9 @@
 globalvar player_inst,path_grid;
 player_inst = noone;
 
+var _data = load_json_from_file("world/testlevel.json");
+show_debug_message(_data);
+
 function ds_collector_add(variable){
 	if (!variable_global_exists("ds_collector")){
 		globalvar ds_collector;
@@ -78,10 +81,10 @@ function array_pull(array,value){
 //dimensions
 #macro CELL_SIZE 32
 //floortypes
-#macro FLOOR -5
-#macro WATER -6
-#macro VOID -7
-#macro FARM -8
+#macro FLOOR 0
+#macro VOID 1
+#macro WATER 2
+#macro FARM 3
 //directions
 #macro NORTH 1
 #macro WEST 2
