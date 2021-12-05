@@ -4,7 +4,7 @@ spelltype = item.none;
 
 fireballs = noone;
 
-light_inst = -1;
+light_inst = noone;
 state = spell.init;
 final = false;
 

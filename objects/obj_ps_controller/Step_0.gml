@@ -4,14 +4,21 @@ switch(spelltype){
 	case item.ps_thunder:///////////////////////////////////////////////////////////////////////////////////
 		switch(state){
 			case spell.init:
-				light_inst = instance_create_layer(x,y,layer,mc_lightsource);
+				if (light_inst == noone) light_inst = instance_create_layer(x,y,"Instances",mc_lightsource);
+				
 				final = true;
+				
 				with (light_inst){
 					state = light.flash;
 					follow = obj_player;
 					light_strength = 0;
 					light_size = 7;
 				}
+				
+				state = spell.standby;
+				break;
+			case spell.standby:
+				
 				break;
 			case spell.cast:
 				with(obj_camera){
@@ -43,8 +50,22 @@ switch(spelltype){
 						}
 					}
 					ds_list_destroy(_list);
+					
+					if (_success == 0) {
+						screen_shake(5,5);
+						instance_create_layer(x,y,"Instances",obj_thunderbolt);
+					}
 				}
-				if (instance_exists(light_inst)){instance_destroy(light_inst);}
+				if (light_inst != noone){
+					instance_destroy(light_inst);
+					light_inst = noone;
+				}
+				with (player_inst) {
+					alarm[0] = 15;
+					part_particles_create(global.p_system,x,y,global.p_wind,1);
+					sprite_index = s_player_spin;
+					playerstate = p_state.spin;
+				}
 				Spell = noone;
 				instance_destroy();
 				break;
@@ -110,11 +131,7 @@ switch(spelltype){
 					if (spawncount >= maxcount) {
 					
 						switch(truecount) {
-							case 1: 
-								//Spell.final = true;
-								break;
 							case 0: 
-								//Spell.final = true;
 								fireballs = noone;
 								Spell = noone;
 								instance_destroy(other);
