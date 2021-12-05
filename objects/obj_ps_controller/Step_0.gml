@@ -5,6 +5,7 @@ switch(spelltype){
 		switch(state){
 			case spell.init:
 				light_inst = instance_create_layer(x,y,layer,mc_lightsource);
+				final = true;
 				with (light_inst){
 					state = light.flash;
 					follow = obj_player;
@@ -44,6 +45,7 @@ switch(spelltype){
 					ds_list_destroy(_list);
 				}
 				if (instance_exists(light_inst)){instance_destroy(light_inst);}
+				Spell = noone;
 				instance_destroy();
 				break;
 		}
@@ -56,20 +58,24 @@ switch(spelltype){
 					time: 50,
 					maxcount: 3,
 					spawncount: 0,
-					truecount: 0
+					truecount: 0,
 				}
 				state = spell.standby;
 				break;
 			case spell.standby://----------------------------------------------------
 				with (fireballs){
-					if (time > 0) time -=1;
-					else {
+					if (time > 0) {
+						time -=1;
+						//Spell.final = false;
+					} else {
 						if (spawncount < maxcount){
 							var _inst = instance_create_layer(0,0,"Instances",obj_fireball);
 							_inst.my_controller = other.id;
 							array_push(ids,_inst);
+							truecount = array_length(ids); 
 							spawncount ++;
-							time = 50;
+							time = (spawncount == 3) ? -1 : 50;
+							Spell.final = (truecount == 1 and spawncount == maxcount);
 						} else {
 							time = -1;
 						}
@@ -79,10 +85,13 @@ switch(spelltype){
 			case spell.cast://------------------------------------------------------
 				var _launched = false;
 				with (fireballs){
-					if (array_length(ids) > 0){
+					if (truecount > 0){
 						var _inst = array_pop(ids);
+						truecount = array_length(ids); 
 						_inst.state = FIREBALL_LAUNCH;
 						_launched = true;
+						Spell.final = (truecount == 1 and spawncount == maxcount);
+
 					}
 				}
 				
@@ -96,12 +105,21 @@ switch(spelltype){
 				state = spell.finish;
 				break;
 			case spell.finish://----------------------------------------------------
-				with (fireballs) {
+				with (fireballs) { 
 					
-					truecount = array_length(ids); 
+					if (spawncount >= maxcount) {
 					
-					if (truecount <= 0){
-						if (time == -1 or spawncount == maxcount) instance_destroy(other);
+						switch(truecount) {
+							case 1: 
+								//Spell.final = true;
+								break;
+							case 0: 
+								//Spell.final = true;
+								fireballs = noone;
+								Spell = noone;
+								instance_destroy(other);
+								break;
+						}
 					}
 				}
 				

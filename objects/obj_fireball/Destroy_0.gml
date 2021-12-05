@@ -9,12 +9,17 @@ switch(state){
 	case FIREBALL_LAUNCH:
 		var _id = id;
 		with(my_controller){
-			var _arr = [];
-			var i = 0, j = 0; repeat(array_length(fireballs.ids)){
-				if (fireballs.ids[i] != _id) _arr[j++] = _id;
-				i++;
+			with (fireballs){
+				ids = array_remove(ids, _id);
+				truecount = array_length(ids);
+				Spell.final = (truecount == 1 and spawncount == maxcount);
+				
+				if (truecount == 0 and spawncount == maxcount){
+					check_inv(inventory, item.ps_fire, true);
+					instance_destroy(Spell);
+					Spell = noone;
+				}
 			}
-			fireballs.ids = _arr;
-			state = spell.finish;
 		}
+		break;
 }

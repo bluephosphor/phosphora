@@ -74,6 +74,16 @@ function array_pull(array,value){
 	return _return_val;
 }
 
+function array_remove(array,value){
+	//look for a value in an array and return the array without that value
+	var _arr = [];
+	var i = 0; repeat(array_length(array)){
+		if (array[i] != value) array_push(_arr, array[i]);
+		i++;
+	}
+	return _arr;
+}
+
 //MACROS//
 //dimensions
 #macro CELL_SIZE 32

@@ -8,6 +8,7 @@ var inst = (instance_place(x,y,obj_chest_demon)); if (inst != noone){
 }
 
 inst = instance_place(x,y,mc_mob);
+
 if (inst != noone){
 	var attack_blocked = false;
 	switch(inst.tangibility_type){

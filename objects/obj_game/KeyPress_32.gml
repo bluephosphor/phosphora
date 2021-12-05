@@ -1,1 +1,1 @@
-load_dialog("text/0.csv");
+//load_dialog("text/0.csv");

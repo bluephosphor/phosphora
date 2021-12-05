@@ -1,14 +1,11 @@
-enum spell {
-	init,
-	standby,
-	cast,
-	finish
-}
+
 
 spelltype = item.none;
 
+fireballs = noone;
+
 light_inst = -1;
 state = spell.init;
-item_consume = false;
+final = false;
 
-show_debug_message("my instance_id is: " + string(id));
+debug_log_add("my instance_id is: " + string(id));

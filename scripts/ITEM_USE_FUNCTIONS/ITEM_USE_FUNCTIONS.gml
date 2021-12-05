@@ -1,33 +1,13 @@
 //these should always return a bool. true if the item has been consumed, false otherwise.
 
-function cast_spell() {
-	var _consumed_item = false;
-	var _num = selected_item;
-	
-	if (instance_exists(obj_ps_controller)) {
-		with (obj_ps_controller){
-			if (spelltype == _num) {
-				state = spell.cast;
-			}
-		}
-	} else with (instance_create_layer(0,0,"Instances",obj_ps_controller)){
-		spelltype = _num;
-		state = spell.init;
-		_consumed_item = true;
-	}
-	
-	obj_player.spin_cooldown = 5;
-	gamestate = INGAME;
-	return _consumed_item;
-}
 
 function item_inst_create() {
 	gamestate = INGAME;
-	var inst;
+	var _inst, _pos = new vec2(0,0);
 	switch(selected_item){
-		case item.card: inst = obj_buisnesscard; break;
+		case item.card: _inst = obj_buisnesscard; break;
 	}
-	instance_create_layer(0,0,"Instances",inst);
+	instance_create_layer(_pos.x,_pos.y,"Instances",_inst);
 
 	return false;
 }
