@@ -13,6 +13,7 @@ last_page = 0;
 selected_item = 0;
 
 entries = 16;
+autogen = true;
 
 //loot_table
 loot_table = -1;
@@ -30,7 +31,7 @@ var i = 0; repeat(len){
 chest_inventory = ds_grid_create(3,entries);
 
 var i = 0; repeat(entries){
-	if (i < 15){
+	if (autogen and i < 15){
 		chest_inventory[# ITEM_ID, i] = loot_item_add();
 	} else {
 		chest_inventory[# ITEM_ID, i] = item.none;
@@ -48,6 +49,7 @@ var i = 0; repeat(entries){
 	else chest_inventory[# COUNT, i] = 0;
 	i++;
 }
+
 
 pages = [chest_inventory,inventory];
 page = 0;

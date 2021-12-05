@@ -14,7 +14,7 @@ depth -= 5000;
 
 
 if (global.load_map) {
-	generate_from_map();
+	generate_from_tiled();
 	global.load_map = false;
 } else {
 	script_execute(room_data[# rm.script,room]);

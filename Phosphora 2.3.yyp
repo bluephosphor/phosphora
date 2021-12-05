@@ -331,6 +331,8 @@
     {"CopyToMask":-1,"filePath":"datafiles/text/eng","resourceVersion":"1.0","name":".DS_Store","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/text","resourceVersion":"1.0","name":".DS_Store","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":".DS_Store","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/world","resourceVersion":"1.0","name":"testlevel.json","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/world","resourceVersion":"1.0","name":"testlevel.tmx","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
     "IDEVersion": "2.3.7.603",
