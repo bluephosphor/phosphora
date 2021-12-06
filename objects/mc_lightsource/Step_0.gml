@@ -15,11 +15,12 @@ switch(state){
 		break;
 }
 
-if (follow != -1){
+if (follow != noone){
 	if (instance_exists(follow)){
 		x = follow.x + light_offset.x;
 		y = follow.y + light_offset.y;
 	} else {
-		instance_destroy();
+		follow = noone;
+		state = light.fade;
 	}
 }

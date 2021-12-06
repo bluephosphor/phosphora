@@ -4,15 +4,26 @@ switch(spelltype){
 	case item.ps_thunder:///////////////////////////////////////////////////////////////////////////////////
 		switch(state){
 			case spell.init:
-				if (light_inst == noone) light_inst = instance_create_layer(x,y,"Instances",mc_lightsource);
+				if (light_inst == noone) {
+					
+					light_inst   = instance_create_layer(x,y,"Instances",mc_lightsource);
+					light_inst_2 = instance_create_layer(x,y,"Instances",mc_lightsource);
+					
+				}
 				
 				final = true;
 				
 				with (light_inst){
-					state = light.flash;
-					follow = obj_player;
-					light_strength = 0;
-					light_size = 7;
+					state			= light.flash;
+					follow			= player_inst;
+					light_strength	= 0;
+					light_size		= 7;
+				} with (light_inst_2) {
+					//another light for baseline glow
+					state			= light.normal;
+					follow			= player_inst;
+					light_strength	= 0.7;
+					light_size		= 3;
 				}
 				
 				state = spell.standby;
@@ -57,8 +68,11 @@ switch(spelltype){
 					}
 				}
 				if (light_inst != noone){
+					with (light_inst_2){
+						state	= light.fade;
+						follow	= noone;
+					} 
 					instance_destroy(light_inst);
-					light_inst = noone;
 				}
 				with (player_inst) {
 					alarm[0] = 15;

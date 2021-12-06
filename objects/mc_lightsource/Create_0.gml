@@ -4,7 +4,7 @@ enum light {
 	fade,
 }
 
-follow = -1;
+follow = noone;
 state = light.normal;
 light_size = 2;
 light_strength = 0.7;

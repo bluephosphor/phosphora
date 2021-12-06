@@ -10,17 +10,17 @@ globalvar playerstate, debug_log, cont_daycycle, cont_lighting, cont_audio,
 			cont_menu, cont_inv, cont_weather, cont_textbox, cont_cutscene,
 			shell, input_buffer, hitboxes;
 
-global.debug		= false;
-global.rift_count	= 0;
-global.fullscreen	= false;
-global.playmusic	= true;
-global.time_pause	= false;
-global.pause		= false;
+global.debug			= false;
+global.rift_count		= 0;
+global.fullscreen		= false;
+global.playmusic		= true;
+global.time_pause		= false;
+global.pause			= false;
 global.draw_outline		= true;
-global.disable_outline  = false;
-global.menu_color	= merge_color(c_white,c_blue,0.3);
-global.show_grid	= false;
-global.load_map		= false;
+global.disable_outline  = true;
+global.menu_color		= merge_color(c_white,c_blue,0.3);
+global.show_grid		= false;
+global.load_map			= false;
 
 global.screen_shake = true;
 global.flash_effect = true;

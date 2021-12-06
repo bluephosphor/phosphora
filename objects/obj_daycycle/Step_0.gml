@@ -51,7 +51,7 @@ if (draw_daylight){
 	//light color
 	if (pstart == phase.nighttime) {light_color = colors[0];}
 	else {
-		var cc = ((hours - pstart) / (pend - pstart))*(array_length_1d(colors)-1);
+		var cc = ((hours - pstart) / (pend - pstart))*(array_length(colors)-1);
 		var c1 = colors[floor(cc)];
 		var c2 = colors[ceil(cc)];
 		light_color = merge_color(c1,c2, cc - floor(cc));
@@ -59,7 +59,7 @@ if (draw_daylight){
 	//darkness
 	if (pstart == phase.nighttime) { darkness = darks[0];} 
 	else {
-		var dd = ((hours - pstart) / (pend - pstart))*(array_length_1d(darks)-1);
+		var dd = ((hours - pstart) / (pend - pstart))*(array_length(darks)-1);
 		var d1 = darks[floor(dd)];
 		var d2 = darks[ceil(dd)];
 		darkness = merge_number(d1,d2, dd - floor(dd));
