@@ -16,9 +16,9 @@ function loot_item_add() {
 		if (chance <= 5) {
 			debug_log_add("Spawned a " + item_info[# 0,itm] + "!");
 		}
-		return itm;
+		return {item: itm, count: 1};
 	} else {
-		return item.none;
+		return {item: item.none, count: 0};
 	}
 }
 

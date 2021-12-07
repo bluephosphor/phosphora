@@ -86,7 +86,7 @@ function check_death(){
 			with (instance_create_layer(x,y,"Instances",obj_item_entity)){
 				var _item = item.none;
 				with (other){
-					if (loot_table != -1) _item = loot_item_add();
+					if (loot_table != -1) _item = loot_item_add().item;
 				}
 				if (_item == item.none) coin_type = choose(coin.bronze,coin.silver,coin.gold);
 				else item_num = _item;

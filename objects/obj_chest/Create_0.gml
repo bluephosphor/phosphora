@@ -20,7 +20,7 @@ loot_table = -1;
 ltc = 0;
 
 var list = room_data[# rm.chest_loot,room];
-var len = array_length_1d(list);
+var len = array_length(list);
 var i = 0; repeat(len){
 	var info = list[i];
 	loot_table_add(info[0],info[1]);
@@ -29,26 +29,7 @@ var i = 0; repeat(len){
 
 //init inv slots
 chest_inventory = ds_grid_create(3,entries);
-
-var i = 0; repeat(entries){
-	if (autogen and i < 15){
-		chest_inventory[# ITEM_ID, i] = loot_item_add();
-	} else {
-		chest_inventory[# ITEM_ID, i] = item.none;
-	}
-	if (chest_inventory[# ITEM_ID, i] != item.none)	{
-		chest_inventory[# COUNT, i] = 1;
-		var _item = chest_inventory[# ITEM_ID, i];
-		var _obj = item_info[# PROPS, _item];
-		if (is_struct(_obj)){
-			if (variable_struct_exists(_obj,"effect_table")) {
-				chest_inventory[# PROPERTIES, i] = {inflicts : loot_item_effect(_obj.effect_table)};
-			}
-		}
-	}
-	else chest_inventory[# COUNT, i] = 0;
-	i++;
-}
+ds_grid_clear(chest_inventory,0);
 
 
 pages = [chest_inventory,inventory];

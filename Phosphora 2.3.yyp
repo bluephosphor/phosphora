@@ -158,6 +158,7 @@
     {"id":{"name":"scribble_autotype_set_pause","path":"scripts/scribble_autotype_set_pause/scribble_autotype_set_pause.yy",},"order":2,},
     {"id":{"name":"scribble_autotype_is_paused","path":"scripts/scribble_autotype_is_paused/scribble_autotype_is_paused.yy",},"order":3,},
     {"id":{"name":"scribble_page_set","path":"scripts/scribble_page_set/scribble_page_set.yy",},"order":0,},
+    {"id":{"name":"generate_from_tiled","path":"scripts/generate_from_tiled/generate_from_tiled.yy",},"order":9,},
     {"id":{"name":"scribble_page_get","path":"scripts/scribble_page_get/scribble_page_get.yy",},"order":1,},
     {"id":{"name":"scribble_page_count","path":"scripts/scribble_page_count/scribble_page_count.yy",},"order":2,},
     {"id":{"name":"scribble_page_on_last","path":"scripts/scribble_page_on_last/scribble_page_on_last.yy",},"order":3,},
@@ -333,6 +334,7 @@
     {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":".DS_Store","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/world","resourceVersion":"1.0","name":"testlevel.json","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/world","resourceVersion":"1.0","name":"testlevel.tmx","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/world","resourceVersion":"1.0","name":"main.tsx","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
     "IDEVersion": "2.3.7.603",

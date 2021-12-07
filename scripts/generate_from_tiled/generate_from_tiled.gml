@@ -6,18 +6,18 @@ function generate_from_tiled(){
 	width_  = _data.width;
 	height_ = _data.height;
 	
-	room_width  = (width_ + 4)  * CELL_SIZE;
-	room_height = (height_ + 4) * CELL_SIZE;
+	room_width  = (width_)  * CELL_SIZE;
+	room_height = (height_) * CELL_SIZE;
 	
 	//set up the grid
 	globalvar grid_;
-	grid_ = ds_grid_create(width_+4,height_+4);
+	grid_ = ds_grid_create(width_,height_);
 	ds_grid_clear(grid_,VOID);
 	var _list = _data.layers[0].data;
 	var i = 0; repeat(array_length(_list)){
 		var _gx = i mod width_;
 		var _gy = i div width_;
-		grid_[# _gx+1,_gy+1] = _list[i]-1;
+		grid_[# _gx,_gy] = _list[i]-1;
 		//show_debug_message("writing to " + string(grid_) + ": x: " + string(_gx+1) + " y: " + string(_gy+1));
 		i++;
 	}
@@ -35,17 +35,23 @@ function generate_from_tiled(){
 				} else instance_create_layer(_px, _py, "Instances", obj_player);
 				break;
 			case "CHEST": 
+				chests[chest_index] = instance_create_layer(_px,_py,"Instances", obj_chest);
+                chests[chest_index].autogen = false;
 				var _sublist = _list[i].properties;
 				var j = 0; repeat(array_length(_sublist)){
 						switch(_sublist[j].name){
 							case "inventory": 
-								var _inventory_data = _sublist[j].value; 
-								show_debug_message(_inventory_data);
+								var _inventory_data = json_parse(_sublist[j].value); 
+								var k = 0; repeat(array_length(_inventory_data)){
+                                    var _item_index = item_index_from_string(_inventory_data[k].item);
+                                    add_item(chests[chest_index].chest_inventory, _item_index, _inventory_data[k].count);
+                                    k++;
+                                }
 								break;
 						}
 					j++;
 				}
-				chests[chest_index++] = instance_create_layer(_px,_py,"Instances", obj_chest);
+				chest_index++;
 				break;
 		}
 		i++;

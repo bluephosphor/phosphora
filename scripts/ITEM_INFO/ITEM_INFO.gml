@@ -166,3 +166,12 @@ function define_items(){
 }
 
 define_items();
+
+function item_index_from_string(str){
+    var i = 0; repeat (ds_grid_height(item_info)){
+		if (string_lower(item_info[# ITEM, i]) == string_replace_all(str,"_"," ")){
+			return i;
+		}
+		i++;
+	}
+}
