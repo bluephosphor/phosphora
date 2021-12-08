@@ -14,7 +14,7 @@ function generate_grove() {
 	var _controller_y = height_ div 2;
 	var _controller_direction = irandom(3);
 	var _steps = 1600;
-	var _place_object_odds = 20;
+	var _place_object_odds = 50;
 	var _place_tree_odds = 50;
 	var _max_exits = 3;
 	var _exit_count = 0;
