@@ -21,27 +21,10 @@
          "objects":[
                 {
                  "height":32,
-                 "id":1,
-                 "name":"CHEST",
-                 "properties":[
-                        {
-                         "name":"inventory",
-                         "type":"string",
-                         "value":"[\n{\"item\": \"ps_fire\",  \"count\": 32},\n{\"item\": \"ps_thunder\",  \"count\": 32},\n]"
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":32,
-                 "x":384,
-                 "y":416
-                }, 
-                {
-                 "height":32,
                  "id":2,
                  "name":"PLAYER",
                  "rotation":0,
-                 "type":"",
+                 "type":"PLAYER",
                  "visible":true,
                  "width":32,
                  "x":128,
@@ -58,11 +41,28 @@
                          "value":"[\n{\"item\": \"forbidden_iqueur\",  \"count\": 1},\n]"
                         }],
                  "rotation":0,
-                 "type":"",
+                 "type":"CHEST",
                  "visible":true,
                  "width":32,
                  "x":704,
                  "y":352
+                }, 
+                {
+                 "height":32,
+                 "id":10,
+                 "name":"SIGN",
+                 "properties":[
+                        {
+                         "name":"text",
+                         "type":"string",
+                         "value":"[\n  \"Hello, this is a sign.\",\n  \"A sign that you need to stop reading signs!\",\n  \"Gotem!\"\n]"
+                        }],
+                 "rotation":0,
+                 "type":"SIGN",
+                 "visible":true,
+                 "width":32,
+                 "x":160,
+                 "y":288
                 }],
          "opacity":1,
          "properties":[
@@ -77,7 +77,7 @@
          "y":0
         }],
  "nextlayerid":3,
- "nextobjectid":5,
+ "nextobjectid":12,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.7.2",

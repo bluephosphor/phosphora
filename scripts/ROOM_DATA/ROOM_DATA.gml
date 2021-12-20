@@ -36,7 +36,7 @@ ds_grid_set_region(room_data,0,0,_width,_height,-1);
 
 //----------------------------------------OUTSIDE--------------------------------------------------//
 room_data[# rm.name,			r_outside] = "forest";
-room_data[# rm.script,			r_outside] = generate_from_tiled;
+room_data[# rm.script,			r_outside] = generate_room_outside;
 room_data[# rm.mob_cap,			r_outside] = 7;
 room_data[# rm.mob_types,		r_outside] = [mob.fish,mob.minky,mob.ghost,mob.shrubbie];
 room_data[# rm.bgm,				r_outside] = snd_forest;

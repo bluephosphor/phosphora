@@ -49,20 +49,4 @@ if (input_buffer > 0){
 
 if (!global.debug) exit;
 
-var in_w = keyboard_check_pressed(ord("W"));
-var in_t = keyboard_check_pressed(ord("T"));
-
 global.show_grid ^= keyboard_check_pressed(ord("G"));
-
-if (keyboard_check(vk_shift)){
-	if(in_w){
-		var xx = obj_player.grid_x;
-		var yy = obj_player.grid_y;
-		grid_[# xx,yy] = WATER;
-		update_tiles();
-	} else if (in_t){
-		var xx = obj_player.x;
-		var yy = obj_player.y;
-		instance_create_layer(xx,yy,"Instances",obj_tree);
-	} 
-}

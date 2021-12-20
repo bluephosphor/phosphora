@@ -27,7 +27,7 @@ function generate_from_tiled(){
 	var i = 0; repeat(array_length(_list)){
 		var _px = _list[i].x + CELL_SIZE + 16;
 		var _py = _list[i].y + CELL_SIZE + 16;
-		switch(_list[i].name){
+		switch(_list[i].type){
 			case "PLAYER": 
 				if (instance_exists(obj_player)) {
 					obj_player.x = _px;
@@ -52,6 +52,25 @@ function generate_from_tiled(){
 					j++;
 				}
 				chest_index++;
+				break;
+			case "SIGN":
+				with (instance_create_layer(_px,_py,"Instances",obj_sign)){
+					var _sublist = _list[i].properties;
+					var j = 0; repeat(array_length(_sublist)){
+							switch(_sublist[j].name){
+								case "text": 
+									var _li = json_parse(_sublist[j].value); 
+									var k = 0; repeat(array_length(_li)){
+										mytext[i] = [-1,_li[k]];
+										k++;
+									}
+									show_debug_message(mytext)
+									interact_state = INTERACTABLE;
+									break;
+							}
+						j++;
+					}
+				}
 				break;
 		}
 		i++;

@@ -1,4 +1,5 @@
 {
+  "conversionMode": 0,
   "compression": 0,
   "volume": 1.0,
   "preload": false,
@@ -10,8 +11,8 @@
     "name": "audiogroup_music",
     "path": "audiogroups/audiogroup_music",
   },
-  "soundFile": "snd_forest_night",
-  "duration": 176.005,
+  "soundFile": "snd_forest_night.wav",
+  "duration": 197.914536,
   "parent": {
     "name": "Sounds",
     "path": "folders/Sounds.yy",

@@ -48,8 +48,8 @@ effect_data[effect.poison]	= {
 	overrides: [effect.regen],
 	update_method: function(id,level){
 		with (id){
-			switch(object_index){
-				case obj_player:
+			switch(mob_id){
+				case mob.player:
 					var _last_hp = floor(player_health);
 					player_health = clamp(player_health - level * 0.01,0,mob_data[# mob_id, stat.hp]);
 					if (floor(player_health) != _last_hp){
