@@ -1,17 +1,13 @@
-### Technologies used: <span style="color:green">GML</span> | <span style="color:gray">GLSL</span> 
-
-<a class="source-link" target="_blank" href="https://github.com/bluephosphor/phosphora-2-3">[Source]</a>
-
 ![Phosphora](https://bluephosphor.github.io/portfolio/asset/img/projects/phos_header.gif)
 
 My main Game Maker project! I've been working on this on and off for a few years now when I have the time. Some key technical features I've built for this include.
 
 #### Procedural level generation
 
-- Several level generation algorithms were written for use in various areas, including Drunken Walk, Cellular Automata, and even a custom Maze generator using a Recursive Backtracking algorithm.
+- Several level generation algorithms were written for use in various areas, including Drunken Walk, Cellular Automata, and even a custom Maze generator using an iterative Depth-First-Search algorithm.
 
 ![Some generated-maps](https://bluephosphor.github.io/portfolio/asset/img/projects/phos_maps.png)
-<div class="img-footer">Ordered: Cellular Automata, Drunken Walk, Recursive Backtracking Maze</div>
+<div class="img-footer">Ordered: Cellular Automata, Drunken Walk, Depth-First-Search Maze</div>
 
 #### State Machines and Enemy AI
 
