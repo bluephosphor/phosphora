@@ -53,7 +53,7 @@ switch(substate){
 			substate   = 2;
 		}
 		
-		move_and_collide();
+		move_collide();
 		break;
 	case 2: //shoot projectile
 		if (current_anim == attack_frames){

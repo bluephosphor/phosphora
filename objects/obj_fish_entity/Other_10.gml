@@ -37,4 +37,4 @@ if (ymove == 0) {
 	yspeed = lerp(yspeed, 0, frict);
 }
 
-move_and_collide_inwater();
+move_collide_inwater();

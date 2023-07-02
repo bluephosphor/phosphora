@@ -102,7 +102,7 @@ if (current_target != noone){
 	image_xscale = -1;	
 }
 
-move_and_collide();
+move_collide();
 
 //toggle inventory and also chest logic
 if (_inv) and (input_buffer <= 0){

@@ -42,4 +42,4 @@ if (!coord_outside_view(x,y)){
 		speed = 7
 	}
 }
-move_and_collide();
+move_collide();

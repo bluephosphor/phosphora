@@ -1,11 +1,10 @@
 {
-  "type": 1,
+  "resourceType": "GMShader",
+  "resourceVersion": "1.0",
+  "name": "shd_scribble",
   "parent": {
     "name": "Scribble",
     "path": "folders/Shaders/Scribble.yy",
   },
-  "resourceVersion": "1.0",
-  "name": "shd_scribble",
-  "tags": [],
-  "resourceType": "GMShader",
+  "type": 1,
 }

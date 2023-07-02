@@ -3,4 +3,4 @@
 xspeed = lerp(xspeed, 0, .2);
 yspeed = lerp(yspeed, 0, .2);
 
-move_and_collide();
+move_collide();

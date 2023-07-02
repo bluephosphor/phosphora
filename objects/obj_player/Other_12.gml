@@ -8,4 +8,4 @@ if (gamestate != INGAME) {
 xspeed = lerp(xspeed, 0, .1);
 yspeed = lerp(yspeed, 0, .1);
 
-move_and_collide();
+move_collide();

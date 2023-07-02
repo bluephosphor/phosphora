@@ -60,4 +60,4 @@ if (!coord_outside_view(x,y) and check_sight(x,y-4,_checkdir.mn,_checkdir.mx,10)
 //		speed = 7
 //	}
 //}
-move_and_collide();
+move_collide();

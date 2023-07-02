@@ -16,4 +16,4 @@ if (frame_index > 2 and !coord_outside_view(x,y)){
 }
 
 move_commit();
-move_and_collide();
+move_collide();

@@ -32,7 +32,7 @@ switch(substate){
 			update_movement = false;
 		} else {
 			move_commit();
-			move_and_collide();
+			move_collide();
 		}
 		break;
 	case 1: //approaching////////////////////////////////////////////////////////////////////////////
@@ -104,7 +104,7 @@ switch(substate){
 			yspeed = (obj_player.y_input == -1) ? -4 : 2;
 			substate = 2;
 		}
-		on_wall = move_and_collide();
+		on_wall = move_collide();
 		
 		if (on_wall and !pathfinding and alarm_get(9) == -1) {
 			last_grid_x = grid_x;
@@ -119,7 +119,7 @@ switch(substate){
 		
 		if (charge > 0){
 			charge--;
-			move_and_collide();
+			move_collide();
 		} else if (current_anim != attack_frames[0]){
 			current_anim = attack_frames[0];
 			frame_index = 0;
@@ -144,6 +144,6 @@ switch(substate){
 			xspeed = 0; yspeed = 0;
 		} 
 		//if (image_index > 17) 
-		move_and_collide();
+		move_collide();
 		break;
 }

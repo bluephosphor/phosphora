@@ -1,12 +1,11 @@
 {
-  "isDnD": false,
+  "resourceType": "GMScript",
+  "resourceVersion": "1.0",
+  "name": "generate_grove",
   "isCompatibility": false,
+  "isDnD": false,
   "parent": {
     "name": "room generation",
     "path": "folders/Scripts/room generation.yy",
   },
-  "resourceVersion": "1.0",
-  "name": "generate_grove",
-  "tags": [],
-  "resourceType": "GMScript",
 }

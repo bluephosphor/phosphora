@@ -27,4 +27,4 @@ if (ymove == 0) {
 	yspeed = lerp(yspeed, 0, frict);
 }
 
-move_and_collide();
+move_collide();

@@ -30,7 +30,7 @@ if (y_input == 0) {
 	yspeed = lerp(yspeed, 0, .01);
 }
 
-move_and_collide();
+move_collide();
 
 //enemy collision
 

@@ -32,7 +32,7 @@ function move_commit(){
 	}
 }
 
-function move_and_collide() {
+function move_collide() {
 	var _collided = false;
 	// Move horizontally
 	x += xspeed;
@@ -79,7 +79,7 @@ function move_and_collide() {
 	return _collided;
 }
 
-function move_and_collide_inwater() {
+function move_collide_inwater() {
 	// Move horizontally
 	x += xspeed;
 
