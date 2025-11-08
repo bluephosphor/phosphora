@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "add_item",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "items",
-    "path": "folders/Scripts/items.yy",
+  "$GMScript":"v1",
+  "%Name":"add_item",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"add_item",
+  "parent":{
+    "name":"items",
+    "path":"folders/Scripts/items.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

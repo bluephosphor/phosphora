@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "string_read",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "text",
-    "path": "folders/Scripts/text.yy",
+  "$GMScript":"v1",
+  "%Name":"string_read",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"string_read",
+  "parent":{
+    "name":"text",
+    "path":"folders/Scripts/text.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

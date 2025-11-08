@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "ROOM_DATA",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "declarations",
-    "path": "folders/Scripts/declarations.yy",
+  "$GMScript":"v1",
+  "%Name":"ROOM_DATA",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"ROOM_DATA",
+  "parent":{
+    "name":"declarations",
+    "path":"folders/Scripts/declarations.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

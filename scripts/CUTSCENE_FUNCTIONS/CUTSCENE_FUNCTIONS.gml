@@ -182,10 +182,10 @@ function cs_play_sound(argument0, argument1, argument2) {
 ///@arg seconds
 function cs_wait(argument0) {
 
-	timer++;
+	cs_timer++;
 
-	if(timer >= argument0 * room_speed){
-		timer = 0;
+	if(cs_timer >= argument0 * room_speed){
+		cs_timer = 0;
 		cs_end_action();
 	}
 }

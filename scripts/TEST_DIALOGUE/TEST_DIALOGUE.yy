@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "TEST_DIALOGUE",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Dialogue",
-    "path": "folders/Scripts/Dialogue.yy",
+  "$GMScript":"v1",
+  "%Name":"TEST_DIALOGUE",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"TEST_DIALOGUE",
+  "parent":{
+    "name":"Dialogue",
+    "path":"folders/Scripts/Dialogue.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }
