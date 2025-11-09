@@ -23,7 +23,7 @@ function calc_mob_damage(argument0, argument1) {
 	var shake_dur = clamp(damage,2,60);
 	screen_shake(shake_dur,shake_mag);
 
-	if (sign(hp_change) == 1) hp_change = 0;
+	if (sign(real(hp_change)) == 1) hp_change = 0;
 	hp_change += -damage;
 	show_hp = true;
 	alarm[1] = room_speed;
@@ -46,7 +46,7 @@ function calc_player_damage(argument0) {
 	var shake_dur = clamp(damage,2,60);
 	screen_shake(shake_dur,shake_mag);
 
-	if (sign(hp_change) == 1) hp_change = 0;
+	if (sign(real(hp_change)) == 1) hp_change = 0;
 	hp_change += -damage;
 	show_hp = true;
 	alarm[1] = room_speed;

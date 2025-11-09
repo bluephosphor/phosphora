@@ -71,7 +71,7 @@ if (inst != noone){
 						alarm[10]		= 1;
 						if (attack_blocked) {
 							playerstate = p_state.normal;
-							hp_change	= "Parried!";
+							hp_change	= 0;
 							show_hp		= true;
 							alarm[1]	= room_speed;
 						} else hp      -= calc_mob_damage(velocity,false);
