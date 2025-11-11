@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_wall_tiles_indoor",
   "bboxMode":0,
   "bbox_bottom":127,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"de8fe515-7583-487c-89c7-95a53dbd1bc3","name":"de8fe515-7583-487c-89c7-95a53dbd1bc3","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"de8fe515-7583-487c-89c7-95a53dbd1bc3","name":"de8fe515-7583-487c-89c7-95a53dbd1bc3","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":32,
   "gridY":32,

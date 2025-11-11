@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_wall_tiles_stumps",
   "bboxMode":0,
   "bbox_bottom":63,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"fd8a1bce-cec3-49df-b061-37b5d2216ca8","name":"fd8a1bce-cec3-49df-b061-37b5d2216ca8","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"fd8a1bce-cec3-49df-b061-37b5d2216ca8","name":"fd8a1bce-cec3-49df-b061-37b5d2216ca8","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":32,
   "gridY":32,

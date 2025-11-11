@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_waterring",
   "bboxMode":0,
   "bbox_bottom":20,
@@ -12,8 +12,8 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"ec17d8d0-f86d-435d-b182-0714c233a53f","name":"ec17d8d0-f86d-435d-b182-0714c233a53f","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"5423539d-d9c7-43fb-bd80-454f7aa76156","name":"5423539d-d9c7-43fb-bd80-454f7aa76156","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"ec17d8d0-f86d-435d-b182-0714c233a53f","name":"ec17d8d0-f86d-435d-b182-0714c233a53f","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"5423539d-d9c7-43fb-bd80-454f7aa76156","name":"5423539d-d9c7-43fb-bd80-454f7aa76156","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
