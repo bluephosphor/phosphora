@@ -14,8 +14,8 @@ function set_colors(){
 		var summer_colors = [c_shadow,c_teal,c];
 		var spring_colors = [c_shadow,c_pink,c_white,c];
 		var winter_colors = [c_shadow,c_winter,c_white];
-		var array = [summer_colors,autumn_colors,winter_colors,spring_colors]
-		colors = array[season - 1];
+		var c_options = [summer_colors,autumn_colors,winter_colors,spring_colors]
+		colors = c_options[season - 1];
 	} else {
 		colors = room_data[# rm.tree_col_sp,room];
 	}
