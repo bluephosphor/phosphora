@@ -66,8 +66,8 @@ function scribble_autotype_add_event(argument0, argument1) {
 
 	if (!is_real(_script))
 	{
-	    show_error("Scribble:\nScripts should be numerical script indices e.g. scribble_add_event(\"example\", your_script);\n(Input to script was \"" + string(_name) + "\")\n ", false);
-	    exit;
+	    //show_error("Scribble:\nScripts should be numerical script indices e.g. scribble_add_event(\"example\", your_script);\n(Input to script was \"" + string(_name) + "\")\n ", false);
+	    //exit;
 	}
 
 	if (!script_exists(_script))

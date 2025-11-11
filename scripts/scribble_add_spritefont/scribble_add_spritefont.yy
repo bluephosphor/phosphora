@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "scribble_add_spritefont",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Initialisation",
-    "path": "folders/Scripts/Scribble/Initialisation.yy",
+  "$GMScript":"v1",
+  "%Name":"scribble_add_spritefont",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scribble_add_spritefont",
+  "parent":{
+    "name":"Initialisation",
+    "path":"folders/Scripts/Scribble/Initialisation.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

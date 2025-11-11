@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "BUFFER_SAVE_LOAD",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "save_load",
-    "path": "folders/Scripts/save_load.yy",
+  "$GMScript":"v1",
+  "%Name":"BUFFER_SAVE_LOAD",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BUFFER_SAVE_LOAD",
+  "parent":{
+    "name":"save_load",
+    "path":"folders/Scripts/save_load.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

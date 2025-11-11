@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "ENTITY_DATA",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "declarations",
-    "path": "folders/Scripts/declarations.yy",
+  "$GMScript":"v1",
+  "%Name":"ENTITY_DATA",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"ENTITY_DATA",
+  "parent":{
+    "name":"declarations",
+    "path":"folders/Scripts/declarations.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

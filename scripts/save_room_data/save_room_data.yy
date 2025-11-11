@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "save_room_data",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "save_load",
-    "path": "folders/Scripts/save_load.yy",
+  "$GMScript":"v1",
+  "%Name":"save_room_data",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"save_room_data",
+  "parent":{
+    "name":"save_load",
+    "path":"folders/Scripts/save_load.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

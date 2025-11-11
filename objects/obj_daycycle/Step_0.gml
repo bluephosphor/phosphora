@@ -25,35 +25,35 @@ if (hours > 0 and hours < 3) {
 }
 
 if (draw_daylight){
-	var darks, colors, pstart, pend;
+	var darks, _colors, pstart, pend;
 	
 	if (hours > phase.sunrise and hours <= phase.daytime){			//sunrise
 		darks	= [max_darkness,0.2];
-		colors	= [night_color, c_orange];
+		_colors	= [night_color, c_orange];
 		pstart	= phase.sunrise;
 		pend	= phase.daytime;
 	} else if (hours > phase.daytime and hours <= phase.sunset) {	//day
 		darks	= [0.2,0.1,0,0.1,0.2];
-		colors	= [c_orange,c_olive,c_green,c_green,c_green,c_fuchsia,c_red];
+		_colors	= [c_orange,c_olive,c_green,c_green,c_green,c_fuchsia,c_red];
 		pstart	= phase.daytime;
 		pend	= phase.sunset;
 	} else if (hours > phase.sunset and hours <= phase.nighttime) {	//sunset
 		darks	= [0.2,max_darkness];
-		colors	= [c_red,c_navy,night_color];
+		_colors	= [c_red,c_navy,night_color];
 		pstart	= phase.sunset;
 		pend	= phase.nighttime;
 	} else {														//night
 		darks	= [max_darkness];
-		colors	= [night_color];
+		_colors	= [night_color];
 		pstart	= phase.nighttime;
 		pend	= phase.sunrise;
 	}
 	//light color
-	if (pstart == phase.nighttime) {light_color = colors[0];}
+	if (pstart == phase.nighttime) {light_color = _colors[0];}
 	else {
-		var cc = ((hours - pstart) / (pend - pstart))*(array_length(colors)-1);
-		var c1 = colors[floor(cc)];
-		var c2 = colors[ceil(cc)];
+		var cc = ((hours - pstart) / (pend - pstart))*(array_length(_colors)-1);
+		var c1 = _colors[floor(cc)];
+		var c2 = _colors[ceil(cc)];
 		light_color = merge_color(c1,c2, cc - floor(cc));
 	}
 	//darkness

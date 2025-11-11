@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "check_inv",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "items",
-    "path": "folders/Scripts/items.yy",
+  "$GMScript":"v1",
+  "%Name":"check_inv",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"check_inv",
+  "parent":{
+    "name":"items",
+    "path":"folders/Scripts/items.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

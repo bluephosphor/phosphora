@@ -1,5 +1,19 @@
 globalvar colors;
 
+function set_tree_colors(){
+	if (room_data[# rm.tree_col_sp,room] == -1){
+		var autumn_colors = [c_shadow,c_autumn,c_orange,c_yellow];
+		var summer_colors = [c_shadow,c_teal,c_dkteal];
+		var spring_colors = [c_shadow,c_pink,c_white];
+		var winter_colors = [c_shadow,c_winter,c_white];
+		var array = [summer_colors,autumn_colors,winter_colors,spring_colors]
+		colors = array[season - 1];
+		
+	} else {
+		colors = room_data[# rm.tree_col_sp,room];
+	}
+}
+
 function init_tree_patterns() {
 	var ww = obj_level.width_;
 	var hh = obj_level.height_;
@@ -11,16 +25,7 @@ function init_tree_patterns() {
 	spr = spr_tree;
 
 	//here we're gonna pick a color array depending on the season, or if we have special colors for the room
-	if (room_data[# rm.tree_col_sp,room] == -1){
-		var autumn_colors = [c_shadow,c_autumn,c_orange,c_yellow];
-		var summer_colors = [c_shadow,c_teal,c_dkteal];
-		var spring_colors = [c_shadow,c_pink,c_white];
-		var winter_colors = [c_shadow,c_winter,c_white];
-		var array = [summer_colors,autumn_colors,winter_colors,spring_colors]
-		colors = array[season - 1];
-	} else {
-		colors = room_data[# rm.tree_col_sp,room];
-	}
+	set_tree_colors()
 
 	//lord forgive me for this was all done pre 2.3.........
 	//first we procedurally create (pattern_ct) number of leaf patterns

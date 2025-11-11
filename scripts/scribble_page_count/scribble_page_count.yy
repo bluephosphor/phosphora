@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "scribble_page_count",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Pages",
-    "path": "folders/Scripts/Scribble/Extras/Pages.yy",
+  "$GMScript":"v1",
+  "%Name":"scribble_page_count",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scribble_page_count",
+  "parent":{
+    "name":"Pages",
+    "path":"folders/Scripts/Scribble/Extras/Pages.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

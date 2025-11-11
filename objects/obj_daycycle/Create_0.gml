@@ -14,7 +14,7 @@ hours = 0;
 globalvar day, season, year;
 
 day = 1;
-season = SPRING;
+season = AUTUMN;
 year = 1;
 
 time_increment = 1; //seconds per step
