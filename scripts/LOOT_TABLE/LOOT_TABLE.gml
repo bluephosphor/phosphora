@@ -32,7 +32,8 @@ function loot_item_effect(list){
 		_chance = _obj.rarity;
 		
 		if (irandom(_chance == _chance)){
-			return { index: _obj.index, level: irandom_range(1,_obj.max_lev), duration: choose(10,15,30,60,90,120) };
+			var _dur = round(irandom_range(_obj.min_duration, _obj.max_duration) / 30) * 30
+			return { index: _obj.index, level: irandom_range(_obj.min_lev, _obj.max_lev), duration: _dur };
 		}
 		
 	} until (1 == 2); //lol

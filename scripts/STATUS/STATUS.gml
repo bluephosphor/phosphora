@@ -239,8 +239,6 @@ function effect_apply(index,level,entity,seconds){
 		var i = 0; repeat(array_length(affected)){
 			_change = false;
 			var _len = array_length(_new_effect.overrides)
-			debug_log_add(string("New effect length is {0}", _len))
-			debug_log_add(string("New effect name is {0}", _new_effect.name))
 			var j = 0; repeat(_len) {
 				if (affected[i].effect == _new_effect.overrides[j]) {
 					with (affected[i].id){

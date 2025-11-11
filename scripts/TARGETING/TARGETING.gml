@@ -56,7 +56,7 @@ function update_target() {
 		case TARGET_FOLLOW: ////////////////////////////////////////////
 			if (t_anim_frame < t_anim_len) t_anim_frame++;
 			t_anim_rot += 1;
-			t_anim_alpha = 1 * t_anim_frame / t_anim_len;
+			t_anim_alpha = 0.5 * t_anim_frame / t_anim_len;
 			if (instance_exists(current_target)){
 				tar_x = current_target.x;
 				tar_y = current_target.y;

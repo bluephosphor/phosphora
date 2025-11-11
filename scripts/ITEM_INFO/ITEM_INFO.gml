@@ -157,10 +157,10 @@ function define_items(){
 	//special properties
 	item_info[# PROPS,item.b_potion] = {
 		effect_table: [
-			{ index: effect.regen, max_lev: 3, rarity: 1 },
-			{ index: effect.haste, max_lev: 2, rarity: 1 },
-			{ index: effect.buff,  max_lev: 3, rarity: 1 },
-			{ index: effect.glow,  max_lev: 3, rarity: 3 },
+			{ index: effect.regen, min_lev: 1, max_lev: 3, rarity: 1, min_duration: 15, max_duration: 120 },
+			{ index: effect.haste, min_lev: 1, max_lev: 2, rarity: 1, min_duration: 30, max_duration: 300 },
+			{ index: effect.buff,  min_lev: 1, max_lev: 3, rarity: 1, min_duration: 30, max_duration: 300 },
+			{ index: effect.glow,  min_lev: 2, max_lev: 5, rarity: 3, min_duration: 60, max_duration: 300 },
 		],
 	};
 }
