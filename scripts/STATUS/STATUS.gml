@@ -229,33 +229,44 @@ function effect_apply(index,level,entity,seconds){
 	
 	entity.status = index;
 	//              ^ make this into an array of statuseus later, have each entity run their own clock!
-	array_push(affected, {id: entity, effect: index, lv: level, duration: new timer(seconds)});
-	var _obj = effect_data[index];
+	
+	var _new_effect = effect_data[index];
 	
 	//end effects that conflict/overrite //LOOK AT THIS LATER
-	if (variable_struct_exists(_obj,"overrides")){
+	if (variable_struct_exists(_new_effect,"overrides")){
 		var _change;
-		var _array = [];
-		var i = 0, j = 0; repeat(array_length(affected)){
+		var _new_affected = [];
+		var i = 0; repeat(array_length(affected)){
 			_change = false;
-			repeat(array_length(_obj.overrides)){
-				if (affected[i].effect == _obj.overrides[j]) {
-					_change = true;
+			var _len = array_length(_new_effect.overrides)
+			debug_log_add(string("New effect length is {0}", _len))
+			debug_log_add(string("New effect name is {0}", _new_effect.name))
+			var j = 0; repeat(_len) {
+				if (affected[i].effect == _new_effect.overrides[j]) {
 					with (affected[i].id){
 						status = effect.none;
-						effects_clear(entity,_obj.overrides[j]);
+						effects_clear(entity,_new_effect.overrides[j]);
 					}
+					delete affected[i]
+					_change = true;
 				}
 				j++;
 			}
-			if (!_change) array_push(_array,affected[i]);
+			if (!_change) array_push(_new_affected,affected[i]);
 			i++;
 		}
-		affected = _array;
+		affected = _new_affected;
 	}
 	
+	array_push(affected, {
+		id: entity, 
+		effect: index, 
+		lv: level, 
+		duration: new timer(seconds)
+	});
+	
 	with (entity) {
-		if (variable_struct_exists(_obj,"start_method")) _obj.start_method(entity,level);
+		if (variable_struct_exists(_new_effect,"start_method")) _new_effect.start_method(entity,level);
 	}
 }
 
