@@ -18,12 +18,12 @@ if (str_pause > 0){
 				str_pause = 5; 
 				scribble_autotype_set_pause(scribble_line, true);
 			break;
-			case ".": 
-			case "!": 
-			case "?": 
-				str_pause = 10; 
-				scribble_autotype_set_pause(scribble_line, true);
-			break;
+			//case ".": 
+			//case "!": 
+			//case "?": 
+			//	str_pause = 10; 
+			//	scribble_autotype_set_pause(scribble_line, true);
+			//break;
 		}
 	}
 }

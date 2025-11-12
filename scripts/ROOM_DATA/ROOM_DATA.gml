@@ -18,6 +18,7 @@ enum rm {
 	void_scenery_f,
 	scenery_c,
 	scenery_glow,
+	props,
 	width,
 }
 
@@ -184,6 +185,19 @@ room_data[# rm.water_scenery_f,	r_cavern]	= [6];
 room_data[# rm.scenery_c,		r_cavern]	= c_fuchsia;
 room_data[# rm.scenery_glow,	r_cavern]	= true;
 room_data[# rm.tree_overcast,	r_cavern]	= false;
+room_data[# rm.props,           r_cavern]   = {
+	item_pools: [
+		{
+			item_index: item.b_potion,
+			effect_table: [
+				{ index: effect.glow,   min_lev: 2, max_lev: 5, rarity: 1, min_duration: 60, max_duration: 300 },
+				{ index: effect.haste,  min_lev: 1, max_lev: 2, rarity: 2, min_duration: 60, max_duration: 300 },
+				{ index: effect.regen,  min_lev: 2, max_lev: 3, rarity: 3, min_duration: 30, max_duration: 60 },
+				{ index: effect.poison, min_lev: 4, max_lev: 5, rarity: 5, min_duration: 30, max_duration: 60 },
+			]
+		}
+	]
+}
 
 	        //chest loot table//
 //--Item----------------Chance(in percent)//

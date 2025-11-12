@@ -13,7 +13,6 @@ last_page = 0;
 selected_item = 0;
 
 autogen = false;
-
 entries = 16;
 
 //loot_table
@@ -21,7 +20,7 @@ loot_table = -1;
 ltc = 0;
 var list = room_data[# rm.special_loot,room];
 if (list != -1){
-	var len = array_length_1d(list)
+	var len = array_length(list)
 	var i = 0; repeat(len){
 		var info = list[i];
 		loot_table_add(info[0],info[1]);
@@ -47,6 +46,6 @@ if (list != -1){
 
 pages = [chest_inventory,inventory];
 page = 0;
-max_pages = array_length_1d(pages);
+max_pages = array_length(pages);
 
 alarm[0] = 1;

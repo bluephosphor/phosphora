@@ -12,8 +12,8 @@ last_selected = 0;
 last_page = 0;
 selected_item = 0;
 
-entries = 16;
 autogen = true;
+entries = 16;
 
 //loot_table
 loot_table = -1;
