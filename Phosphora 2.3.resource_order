@@ -180,6 +180,7 @@
     {"name":"spr_hb_container_p","order":5,"path":"sprites/spr_hb_container_p/spr_hb_container_p.yy",},
     {"name":"spr_hb_container","order":4,"path":"sprites/spr_hb_container/spr_hb_container.yy",},
     {"name":"spr_items","order":1,"path":"sprites/spr_items/spr_items.yy",},
+    {"name":"spr_magic_bullet_mono","order":15,"path":"sprites/spr_magic_bullet_mono/spr_magic_bullet_mono.yy",},
     {"name":"spr_minky","order":2,"path":"sprites/spr_minky/spr_minky.yy",},
     {"name":"spr_mob_shrubbie","order":9,"path":"sprites/spr_mob_shrubbie/spr_mob_shrubbie.yy",},
     {"name":"spr_onepixel","order":9,"path":"sprites/spr_onepixel/spr_onepixel.yy",},

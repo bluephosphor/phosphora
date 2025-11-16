@@ -36,8 +36,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_shrub_bullet",
-    "path":"sprites/spr_shrub_bullet/spr_shrub_bullet.yy",
+    "name":"spr_magic_bullet_mono",
+    "path":"sprites/spr_magic_bullet_mono/spr_magic_bullet_mono.yy",
   },
   "spriteMaskId":null,
   "visible":true,

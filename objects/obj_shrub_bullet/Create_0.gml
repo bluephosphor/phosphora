@@ -25,3 +25,10 @@ with (my_light){
 	draw_strength = light_strength;
 	light_size = 1;
 }
+
+reset_color = function(){
+	var _e_index = inflicts.index
+	if (variable_struct_exists(effect_data[_e_index], "color")){
+		image_blend = effect_data[_e_index].color;
+	}
+}

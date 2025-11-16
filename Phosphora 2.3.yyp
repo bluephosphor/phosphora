@@ -306,6 +306,7 @@
     {"id":{"name":"spr_hb_container","path":"sprites/spr_hb_container/spr_hb_container.yy",},},
     {"id":{"name":"spr_item_demon","path":"sprites/spr_item_demon/spr_item_demon.yy",},},
     {"id":{"name":"spr_items","path":"sprites/spr_items/spr_items.yy",},},
+    {"id":{"name":"spr_magic_bullet_mono","path":"sprites/spr_magic_bullet_mono/spr_magic_bullet_mono.yy",},},
     {"id":{"name":"spr_minky","path":"sprites/spr_minky/spr_minky.yy",},},
     {"id":{"name":"spr_mob_shrubbie","path":"sprites/spr_mob_shrubbie/spr_mob_shrubbie.yy",},},
     {"id":{"name":"spr_onepixel","path":"sprites/spr_onepixel/spr_onepixel.yy",},},

@@ -80,6 +80,10 @@ switch(substate){
 					var _self = id;
 					with (instance_create_layer(_xx,_yy,"Instances",obj_shrub_bullet)){
 						my_mob = _self;
+						if (irandom(1) == 1){
+							inflicts = {index: effect.poison, level: 1, duration: 5};
+						}
+						reset_color();
 					}
 				}
 				ds_list_destroy(_list);

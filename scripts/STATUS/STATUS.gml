@@ -34,6 +34,7 @@ effect_data[effect.slow]	= {
 	name: "Slow" ,		  
 	affects: [stat.max_spd, stat.accel],
 	overrides: [effect.haste],
+	color: make_colour_rgb(255,255,200),
 	start_method: function(id,level){
 		with(id){
 			max_speed    = mob_data[# mob_id, stat.max_spd] / (level+1);
@@ -46,6 +47,7 @@ effect_data[effect.poison]	= {
 	name: "Poison",		  
 	affects: [stat.special],
 	overrides: [effect.regen],
+	color: make_colour_rgb(200,255,200),
 	update_method: function(id,level){
 		with (id){
 			switch(mob_id){
@@ -78,6 +80,7 @@ effect_data[effect.regen]	= {
 	name: "Regeneration", 
 	affects: [stat.special],
 	overrides: [effect.poison],
+	color: make_colour_rgb(255,100,100),
 	update_method: function(id,level){
 		with (id){
 			switch(object_index){

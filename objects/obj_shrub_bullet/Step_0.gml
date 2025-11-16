@@ -48,7 +48,10 @@ switch(state){
 				i++;
 			}
 			var _cloud = instance_create_layer(x,y,"Instances",obj_status_ef_fog);
-			with (_cloud) from_bullet = true;
+			with (_cloud) {
+				from_bullet = true;
+				image_blend = other.image_blend;
+			}
 			my_light.follow = _cloud;
 			_cloud.my_light = my_light;
 			_cloud.inflicts = inflicts;
